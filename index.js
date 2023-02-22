@@ -46,6 +46,11 @@ function scrollFunction() {
   }
 }
 
+closeThis = () => {
+  cate.innerText = `Categories`
+  bringItUp.style.setProperty("display", "none", "important")
+}
+
 dropDropdown = (parameter) => {
   bringItUp.innerHTML = ""
   bringItUp.style.setProperty("display", "flex", "important")
