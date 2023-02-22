@@ -1204,19 +1204,40 @@
               </div>
             </div>
           </div>
-          <div class="d-grid w-100" style="border-top: 2px solid lightgray;">
+          <div class="d-grid w-100 position-relative" style="border-top: 2px solid lightgray;">
             <h6 class="my-auto d-flex" style="padding: 12px 5px;" id="category"><i class="fas fa-angle-left fs-3 d-none" id="cateAngle"></i><span class="d-flex my-auto w-100" id="cate">Categories</span></h6>
             <div class="small-screen-dropdown-links d-grid text-capitalize">
-              <a href="" class="d-flex justify-content-between">computers and accessories <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">phones and tablets <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">electronics <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">adex fashion <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">home and kitchen <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">babies, kids and toy <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">other categories <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">groceries <i class="fas fa-angle-right fs-3"></i></a>
-              <a href="" class="d-flex justify-content-between">intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i></a>
+              <button onclick="dropDropdown('computer')" class=" btn d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#dropIt">computers and accessories <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('phone')" class="btn d-flex justify-content-between">phones and tablets <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('elect')" class="btn d-flex justify-content-between">electronics <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('fashion')" class="btn d-flex justify-content-between">adex fashion <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('kitchen')" class="btn d-flex justify-content-between">home and kitchen <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('babies')" class="btn d-flex justify-content-between">babies, kids and toy <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('other')" class="btn d-flex justify-content-between">other categories <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('grocery')" class="btn d-flex justify-content-between">groceries <i class="fas fa-angle-right fs-3"></i></button>
+              <button onclick="dropDropdown('intel')" class="btn d-flex justify-content-between">intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i></button>
             </div>
+            <div class="w-100 h-100 d-none flex-column position-absolute bg-black" style="top: 45px; z-index: 5;" id="bringItUp">
+             
+            </div>
+
+<!-- <div class="modal " id="dropIt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
           </div>
         </div>
       </div>

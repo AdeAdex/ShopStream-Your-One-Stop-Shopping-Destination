@@ -46,6 +46,23 @@ function scrollFunction() {
   }
 }
 
+dropDropdown = (parameter) => {
+  bringItUp.innerHTML = ""
+  bringItUp.style.setProperty("display", "flex", "important")
+  if (parameter == "phone") {
+    bringItUp.innerHTML = `
+    <a href="" class="d-flex justify-content-between">phones and tablets <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">electronics <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">adex fashion <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">home and kitchen <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">babies, kids and toy <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">other categories <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">groceries <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i></a>
+    `
+  }
+}
+
 // function topFunction() {
 //   document.body.scrollTop = 0;
 //   document.documentElement.scrollTop = 0;
