@@ -49,16 +49,37 @@ function scrollFunction() {
 dropDropdown = (parameter) => {
   bringItUp.innerHTML = ""
   bringItUp.style.setProperty("display", "flex", "important")
-  if (parameter == "phone") {
+  if (parameter == "computer") {
+    cate.innerText = `Computers and Accessories`
     bringItUp.innerHTML = `
-    <a href="" class="d-flex justify-content-between">phones and tablets <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">electronics <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">adex fashion <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">home and kitchen <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">babies, kids and toy <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">other categories <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">groceries <i class="fas fa-angle-right fs-3"></i></a>
-    <a href="" class="d-flex justify-content-between">intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">laptops<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">desktop and monitors<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">computing accessories<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">printers, scanner and accessories<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">wifi and network<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">pC gaming<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">software<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">projectors<i class="fas fa-angle-right fs-3"></i></a>
+    `
+  } else if (parameter == "phone") {
+    cate.innerText = `Phones and Tablets`
+    bringItUp.innerHTML = `
+    <a href="" class="d-flex justify-content-between">mobile phones<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">mobile phones accessories<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">tablets<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">tablets and accessories<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">shop by price<i class="fas fa-angle-right fs-3"></i></a>
+    `
+  } else if (parameter == "electronics") {
+    cate.innerText = `Electronics`
+    bringItUp.innerHTML = `
+    <a href="" class="d-flex justify-content-between">television<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">DVD players and recorders<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">cameras<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">accessories<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">home theaters and audio systems<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">gams and consoles<i class="fas fa-angle-right fs-3"></i></a>
+    <a href="" class="d-flex justify-content-between">electronics bundles<i class="fas fa-angle-right fs-3"></i></a>
     `
   }
 }
