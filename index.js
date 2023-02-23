@@ -325,19 +325,22 @@ setBrowsingHistory = () => {
 currentProductIndex = localStorage.getItem("currentUserIndex");
 
 topDealProductPage = (eachTopDeal) => {
-  alert(eachTopDealProduct[eachTopDeal].productName)
-  // window.location.href = 'topDealProductPage.html'
-    // productPageDetails.innerHTML = "";
-  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
-//   eachTopDealProduct.map((eachUser, index) => {
-//     productPageDetails.innerHTML = eachTopDealProduct[eachTopDeal].productName
-// });
+  // alert(eachTopDealProduct[eachTopDeal].productName)
+  window.location.href = 'topDealProductPage.html'
+  
+  //  hey()
 };
 
-hey = () => {
-
-
+hey = (eachTopDeal) => {
+  // topDealProductPage()
+  productPageDetails.innerHTML = "";
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct.map((eachUser, index) => {
+    alert(eachTopDealProduct[eachTopDeal].productName)
+    // productPageDetails.innerHTML = `<h1>${eachTopDealProduct[eachTopDeal].productName}</h1>`
+});
+  
 }
 
 displayProducts = () => {

@@ -543,7 +543,7 @@ nav .dropbtn:hover {
     display: none;
   }
 
-  #blogContainer, #productPageDetails {
+  #blogContainer {
     display: none !important;
   }
 
@@ -636,11 +636,41 @@ nav .dropbtn:hover {
     /* border: 1px solid red; */
   }
   .carousel-inner img {
-    height: 400px !important;
+    /* height: 400px !important; */
   }
+
+  .product-main {
+    padding: 10px !important;
+    margin-top: 90px !important;
+  }
+
   #productCarousel {
     margin-top: 10px !important;
     /* border: 1px solid blue; */
+  }
+
+  #overview {
+    padding: 0px !important;
+  }
+
+  #overview .div1{
+    flex-direction: column !important;
+    gap: 0px !important;
+  }
+
+  #overview .each-click {
+    border-top: 1px solid lightgray;
+    padding: 15px 10px;
+    font-size: 14px !important;
+  }
+
+  #similarContainer {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  #similarContainer .eachsimilar {
+    min-width: 50% !important;
   }
   
 }
