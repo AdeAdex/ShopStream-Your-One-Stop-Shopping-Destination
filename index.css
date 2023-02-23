@@ -342,6 +342,10 @@ nav .dropbtn:hover {
     display: flex !important;
   }
 
+  #otherIconsOnSmallScreen div {
+    cursor: pointer;
+  }
+
   .logo-div {
     height: 50% !important;
   }
@@ -675,6 +679,9 @@ nav .dropbtn:hover {
 
   .nav-bar.responsive .small-screen-dropdown-links button {
     text-transform: capitalize;
+    border-top: 1px solid lightgray;
+    font-size: 14px;
+    padding: 10px 5px;
   }
 
   .nav-bar.responsive .fa-angle-right {
