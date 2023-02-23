@@ -673,6 +673,10 @@ nav .dropbtn:hover {
     text-transform: capitalize;
   }
 
+  .nav-bar.responsive .small-screen-dropdown-links button {
+    text-transform: capitalize;
+  }
+
   .nav-bar.responsive .fa-angle-right {
     color: rgb(160, 157, 157);
   }
