@@ -619,7 +619,7 @@ nav .dropbtn:hover {
 
   .nav-bar.responsive #secondNav {
     margin: 10px 10px 0px 10px !important;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     width: 95.95% !important;
   }
 
