@@ -373,6 +373,14 @@ nav .dropbtn:hover {
     width: 100%;
     top: 50px;
   }
+
+  #productPageMainContainer {
+    margin-top: 100px;
+    padding: 0px 10px !important;
+    width: 100%;
+    top: 50px;
+  }
+
   #carouselContainer {
     flex-direction: column;
     gap: 10px !important;
@@ -591,6 +599,48 @@ nav .dropbtn:hover {
 
   #dropIcon {
     display: flex;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  #productCarouselContainer {
+    flex-direction: column;
+  }
+  #productCarouselContainer div {
+    width: 100% !important;
+  }
+
+  #productCarouselContainer .carousel-indicators {
+    left: 0 !important;
+    justify-content: start !important;
+    width: 100% !important;
+    margin: 0px !important;
+    /* bottom: 40px; */
+  }
+
+  #productCarouselContainer .carousel-indicators img {
+    padding: 0px !important;
+    height: 50px !important;
+  }
+
+  .carousel-inner, .carousel-indicators  {
+    /* border: 1px solid red; */
+  }
+  .carousel-inner img {
+    height: 400px !important;
+  }
+  #productCarousel {
+    margin-top: 10px !important;
+    /* border: 1px solid blue; */
   }
   
 }
