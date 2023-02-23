@@ -185,19 +185,19 @@ text = () => {
 
 // let myPic = ""
 
-function readURL(input)
-{
-    img.style.display = "block";
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+// function readURL(input)
+// {
+//     img.style.display = "block";
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
 
-        reader.onload = function (e) {
-            img.src =  e.target.result;
-        }
+//         reader.onload = function (e) {
+//             img.src =  e.target.result;
+//         }
 
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
 // if(localStorage.getItem('img-BASE64')){
 //   document.querySelector('#img').src=localStorage.getItem('img-BASE64')
@@ -324,6 +324,26 @@ setBrowsingHistory = () => {
 
 currentProductIndex = localStorage.getItem("currentUserIndex");
 
+topDealProductPage = (eachTopDeal) => {
+  // alert(eachTopDealProduct[eachTopDeal].productName)
+  window.location.href = 'topDealProductPage.html'
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct.map((eachUser, index) => {
+    productPageDetails.innerHTML = "";
+    productPageDetails.innerHTML = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+    Why do we use it?
+    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`/* eachTopDealProduct[eachTopDeal].productName; */
+});
+};
+
+// hey = () => {
+//   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  
+// topDealProductPage()
+// }
+
 displayProducts = () => {
   todaysDeal.innerHTML = "";
   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
@@ -351,7 +371,7 @@ displayProducts = () => {
         >${eachTopDealProduct[index].productOff}% OFF</span
       >
     </div>
-    <img src="${e.target.files[0]}" alt="" id="dealsImg" />
+    <img src="Images/todays_deal8.webp" alt="" id="dealsImg" />
     <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
       <div class="text-capitalize" style="font-size: 14px" id="dealsProductName">
         ${eachTopDealProduct[index].productName}
@@ -718,192 +738,6 @@ showForEach = (param) => {
   }
 };
 
-
-
-topDealProductPage = (eachTopDeal) => {
-  // alert(eachTopDealProduct[eachTopDeal].productName)
- productPageDetails.innerHTML = "";
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
-  eachTopDealProduct.map((eachUser, index) => {
-   productPageDetails.innerHTML = `
-  <h2>${eachTopDealProduct[eachTopDeal].productName}</h2>
-  <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
-    Product Code:
-    <div class="text-dark">5754251</div>
-  </h5>
-  <hr />
-  <div class="d-flex gap-3">
-    <h4 class="fw-bold my-auto">₦7,500</h4>
-    <h6 class="my-auto text-decoration-line-through text-secondary">
-      ₦15,000
-    </h6>
-    <h6 class="my-auto text-success" style="font-size: 12px">
-      You save ₦7,500
-    </h6>
-  </div>
-  <hr />
-  <div class="d-flex gap-4">
-    Quantity:
-    <div class="d-flex cart-btn-container">
-      <button
-        class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 2px 0px 0px 2px"
-      >
-        -
-      </button>
-      <button
-        class="btn btn-light btn-sm border px-3"
-        style="border-radius: 0px 0px 0px 0px"
-      >
-        0
-      </button>
-      <button
-        class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 0px 2px 2px 0px"
-      >
-        +
-      </button>
-    </div>
-  </div>
-
-  <div class="d-flex flex-column mt-4">
-    <span class="text-secondary" style="font-size: 14px"
-      >Call us for bulk purchases:</span
-    >
-    <a
-      href="tel:+2347033959586"
-      class="text-decoration-none"
-      style="font-size: 14px; color: #ed017f"
-      >Click here to show phone number</a
-    >
-  </div>
-  <hr />
-  <div class="d-flex gap-4">
-    <button
-      class="text-capitalize btn w-50 text-white"
-      style="background-color: #33b27b"
-    >
-      buy now
-    </button>
-    <div class="d-flex gap-2">
-      <i
-        class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
-        style="
-          cursor: pointer;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          background-color: gray;
-          padding: 10px 0px;
-        "
-      ></i>
-      <span class="my-auto text-capitalize" style="font-size: 14px"
-        >save For Later</span
-      >
-    </div>
-  </div>
-  <div
-    class="d-flex gap-3 mt-4"
-    style="height: 70px; background-color: #f8f8f8"
-  >
-    <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
-    <a href="" class="my-auto" style="color: #ed017f"
-      >Get free delivery on items above ₦4,599 in LAGOS, ABUJA &
-      PORTHARCOURT</a
-    >
-  </div>
-  <div class="d-flex mt-4 gap-5">
-    <div class="d-flex position-relative gap-4">
-      <img
-        src="Images/pink-building-icon.png"
-        style="height: 30px"
-        alt=""
-      />
-      <img
-        src="Images/pink-truck-icon.png"
-        style="height: 30px; z-index: 1 !important"
-        class="position-absolute"
-        alt=""
-      />
-      <div class="my-auto" style="font-size: 14px">
-        Pickup & Pay on Collection Available
-      </div>
-    </div>
-    <div class="d-flex gap-3">
-      <img
-        src="Images/pink-building2.png"
-        style="height: 30px"
-        alt=""
-      />
-      <div class="my-auto" style="font-size: 14px">
-        Konga Warehouse
-      </div>
-    </div>
-  </div>
-  <hr />
-  <div class="d-flex gap-3" style="font-size: 14px">
-    <div>Next Day Delivery Available at:</div>
-    <div
-      class="w-75 py-2 px-2"
-      style="height: 50px; background-color: #f8f8f8"
-    >
-      <div
-        class="d-flex justify-content-center"
-        style="
-          width: 80px;
-          height: 100%;
-          border-radius: 45%;
-          background-color: orange;
-          padding-top: 4px;
-        "
-      >
-        Lagos
-      </div>
-    </div>
-  </div>
-  <div class="d-grid gap-2 mt-4" style="font-size: 14px">
-    <div class="">Share With Friends</div>
-    <div class="d-flex gap-3">
-      <i
-        class="fab fa-facebook-f border d-flex justify-content-center"
-        style="
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          padding: 7px 0px;
-          color: #39579a;
-        "
-      ></i>
-      <i
-        class="fab fa-twitter border d-flex justify-content-center"
-        style="
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          padding: 7px 0px;
-          color: #03a9f4;
-        "
-      ></i>
-      <i
-        class="fab fa-whatsapp border d-flex justify-content-center"
-        style="
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          padding: 7px 0px;
-          color: #3ec850;
-        "
-      ></i>
-    </div>
-  </div>
-  `;
-  });
-
-};
-
-// displayProductOnProductPage = (eachTopDeal) => {
-
-// }
 
 
 var mediaQuery = window.matchMedia("(max-width: 600px)")
