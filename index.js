@@ -16,6 +16,10 @@ function navDropdown(parameters) {
   let x = document.getElementById("nav");
   if (x.className === "nav-bar" && parameters == 'dropdownAll') {
     x.className += " responsive";
+    category.style.setProperty("background-color", "#535353", "important");
+    category.style.setProperty("color", "white", "important");
+    cate.style.setProperty("justify-content", "center", "important")
+    cateAngle.style.setProperty("display", "flex", "important")
     // dropIcon.classList.toggle("fa-xmark");
   } else if (x.className === "nav-bar" && parameters == 'browseAll') {
     x.className += " responsive";
@@ -65,6 +69,10 @@ dropDropdown = (parameter) => {
     <a href="" class="d-flex justify-content-between">pC gaming<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">software<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">projectors<i class="fas fa-angle-right fs-3"></i></a>
+    <footer class="d-flex gap-3 w-100 mt-auto" style="height: 40px; margin-bottom: 100px;">
+    <i class="fas fa-phone my-auto"></i>
+    <div class="my-auto">Contact Us</div>
+    </footer>
     `
   } else if (parameter == "phone") {
     cate.innerText = `Phones and Tablets`
@@ -74,6 +82,10 @@ dropDropdown = (parameter) => {
     <a href="" class="d-flex justify-content-between">tablets<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">tablets and accessories<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">shop by price<i class="fas fa-angle-right fs-3"></i></a>
+    <footer class="d-flex gap-3 w-100 mt-auto" style="height: 40px; margin-bottom: 100px;">
+    <i class="fas fa-phone my-auto"></i>
+    <div class="my-auto">Contact Us</div>
+    </footer>
     `
   } else if (parameter == "electronics") {
     cate.innerText = `Electronics`
@@ -85,6 +97,10 @@ dropDropdown = (parameter) => {
     <a href="" class="d-flex justify-content-between">home theaters and audio systems<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">gams and consoles<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">electronics bundles<i class="fas fa-angle-right fs-3"></i></a>
+    <footer class="d-flex gap-3 w-100 mt-auto" style="height: 40px; margin-bottom: 100px;">
+    <i class="fas fa-phone my-auto"></i>
+    <div class="my-auto">Contact Us</div>
+    </footer>
     `
   }
 }
