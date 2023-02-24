@@ -550,22 +550,28 @@ nav .dropbtn:hover {
   #footerTwo {
     flex-direction: column !important;
     gap: 30px !important;
+    position: relative !important;
+  }
+  #footerTwo .footer-dropdown {
+    gap: 0px !important;
+    position: relative;
   }
 
-  #footerOthersHeading {
+  .footer-dropdown-button {
     display: flex !important;
     justify-content: space-between;
   }
 
-  #footerOthersHeading i {
+  .footer-dropdown-button i {
     font-size: 25px;
     font-weight: bold;
-    display: block;
   }
 
-  #footerOthersContainer .footer-dropdown {
-    display: none !important;
-    position: relative;
+  .footer-dropdown-menu {
+    background-color: inherit !important;
+    position: relative !important;
+    margin-top: -20px !important;
+    padding-top: 0px !important;
   }
 
   #copyright {
@@ -599,6 +605,12 @@ nav .dropbtn:hover {
 
   #dropIcon {
     display: flex;
+  }
+
+  .chat-icon {
+    bottom: 80px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
 
 
@@ -635,7 +647,7 @@ nav .dropbtn:hover {
   .carousel-inner, .carousel-indicators  {
  
   } */
-  
+
   #productCarousel .carousel-inner img {
     height: 350px !important;
     border: 1px solid red;
