@@ -591,6 +591,10 @@ nav .dropbtn:hover {
     display: none !important;
   }
 
+  #footerOne {
+    display: none !important;
+  }
+
   #footerTwo {
     flex-direction: column !important;
     gap: 30px !important;
