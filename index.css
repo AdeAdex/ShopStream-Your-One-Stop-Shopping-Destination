@@ -221,12 +221,26 @@ nav .dropbtn:hover {
   color: rgb(255, 255, 255) !important;
 }
 
-.footer-others a:hover {
+.footer-dropdown-button i {
+  display: none;
+}
+
+.footer-dropdown-menu {
+  background-color: inherit !important;
+  text-transform: capitalize;
+}
+
+.footer-dropdown-menu a:hover {
+  color: white !important;
+  background-color: inherit;
+}
+
+.footer-dropdown:hover .footer-dropdown-button {
   color: white !important;
 }
 
-.footer-others-container:hover .footer-others-headings {
-  color: white !important;
+.social i {
+  cursor: pointer;
 }
 
 .social .fa-facebook-f:hover {
@@ -284,10 +298,6 @@ nav .dropbtn:hover {
   text-overflow: ellipsis !important;
 }
 
-#footerOthersHeading i {
-  display: none;
-}
-
 #dropIcon {
   display: none;
 }
@@ -302,7 +312,41 @@ nav .dropbtn:hover {
 
 
 
+@media screen and (min-width: 1024px) {
+  #footerTwo {
+    justify-content: start;
+    gap: 100px;
+  }
 
+  .footer-dropdown-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* border: 1px solid #eee; */
+    width: 70%;
+  }
+  
+  .footer-contact-container {
+    /* border: 1px solid cyan; */
+    width: 25%;
+  }
+
+  .footer-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-dropdown-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    gap: 8px;
+  }
+
+  .footer-dropdown-menu a {
+  padding: 0px !important;
+  }
+}
 
 
 
@@ -552,6 +596,18 @@ nav .dropbtn:hover {
     gap: 30px !important;
     position: relative !important;
   }
+  .footer-dropdown-container {
+    flex-wrap: unset !important;
+    justify-content: unset;
+    width: 100%;
+    flex-direction: column !important;
+    gap: 30px;
+  }
+  
+  .footer-contact-container {
+    width: 100%;
+  }
+
   #footerTwo .footer-dropdown {
     gap: 0px !important;
     position: relative;
@@ -560,11 +616,13 @@ nav .dropbtn:hover {
   .footer-dropdown-button {
     display: flex !important;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   .footer-dropdown-button i {
     font-size: 25px;
     font-weight: bold;
+    display: block;
   }
 
   .footer-dropdown-menu {
@@ -595,7 +653,7 @@ nav .dropbtn:hover {
     display: flex !important;
   }
 
-  #footerconnect {
+  #footerTwo .footerconnect {
     margin-left: 0px !important;
   }
 
