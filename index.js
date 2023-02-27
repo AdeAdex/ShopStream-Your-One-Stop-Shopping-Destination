@@ -758,12 +758,11 @@ function readMore() {
   }
 }
 
-// footerOthersHeading.addEventListener('click', dropMore)
-let showFooter = document.querySelectorAll('.footer-dropdown')
-let footericon = document.querySelectorAll('.fa-plus')
-// function dropMore(eachDropdown) {
-//   for (let index = 0; index < showFooter.length; index++) {
-//     showFooter[index].classList.toggle("footer-dropdown");
-//     // footericon.classList.toggle("fa-square-minus");
+
+// let footerIcon = document.querySelectorAll('.fa-plus')
+// texting = (eachIcon) => {
+//   for (let index = 0; index < footerIcon.length; index++) {
+//     footerIcon[eachIcon].classList.toggle("fa-square-minus");
+//     // break;
 //   }
 // }

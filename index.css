@@ -346,6 +346,10 @@ nav .dropbtn:hover {
   .footer-dropdown-menu a {
   padding: 0px !important;
   }
+
+  .dont-have-account-small-screen {
+    display: none;
+  }
 }
 
 
@@ -409,6 +413,54 @@ nav .dropbtn:hover {
 
   #thirdNav {
     display: none;
+  }
+
+  #loginOffcanvas {
+    width: 100% !important;
+    padding-bottom: 30px;
+  }
+
+  #loginOffcanvas .offcanvas-header {
+    display: flex;
+  }
+  #offcanvasTitle {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .login-with {
+    flex-direction: column;
+  }
+
+  .login-with button {
+    width: 100% !important;
+    font-size: 12px !important;
+  }
+
+  .login-with img {
+    height: 30px;
+  }
+
+  .offcanvas-body, .offcanvas-body input, .offcanvas-body button {
+    font-size: 12px;
+  }
+  .offcanvas-footer a {
+    display: none;
+  }
+
+  .offcanvas-footer {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .offcanvas-footer .create-btn {
+    border: 1px solid #ed017f;
+    color: #ed017f;
+  }
+
+  .dont-have-account-small-screen {
+    display: flex;
+    flex-direction: column;
   }
 
   #mainContainer {
@@ -623,7 +675,7 @@ nav .dropbtn:hover {
     cursor: pointer;
   }
 
-  .footer-dropdown-button i {
+  .footer-dropdown-button i, .fa-square-minus {
     font-size: 25px;
     font-weight: bold;
     display: block;
