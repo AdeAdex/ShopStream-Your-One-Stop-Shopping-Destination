@@ -300,6 +300,7 @@ nav .dropbtn:hover {
 
 #dropIcon {
   display: none;
+  cursor: pointer;
 }
 
 
@@ -359,7 +360,7 @@ nav .dropbtn:hover {
 
 
 @media screen and (max-width: 1024px) {
-  #nav {
+  #navBar {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -818,32 +819,32 @@ nav .dropbtn:hover {
 
 
 @media screen and (max-width: 1024px) {
-  
-  .nav-bar.responsive {
+  .nav.responsive {
     width: 100%;
     padding: 0px !important;
+    position: relative;
   }
 
-  .nav-bar.responsive #secondNav {
+  .nav.responsive #secondNav {
     margin: 10px 10px 0px 10px !important;
     /* border: 1px solid #eee; */
-    width: 95.95% !important;
+    width: 100% !important;
   }
 
-  .nav-bar.responsive #searchOnSmallScreen {
+  .nav.responsive #searchOnSmallScreen {
     display: none !important;
     background-color: unset !important;
   }
 
-  .nav-bar.responsive #thirdNav {
+  .nav.responsive #thirdNav {
     display: block !important;
     background-color: unset !important;
   }
 
-  .nav-bar.responsive #thirdNav ul {
+  .nav.responsive #thirdNav ul {
     display: none !important;
   }
-  .nav-bar.responsive #smallScreenDropdown {
+  .nav.responsive #smallScreenDropdown {
     display: flex !important;;
     flex-direction: column;
     background-color: whitesmoke !important;
@@ -875,7 +876,7 @@ nav .dropbtn:hover {
     }
   }
 
-  .nav-bar.responsive #bringItUp a {
+  .nav.responsive #bringItUp a {
     text-decoration: none;
     color: black !important;
     border-top: 1px solid lightgray;
@@ -884,27 +885,27 @@ nav .dropbtn:hover {
     text-transform: capitalize;
   }
 
-  .nav-bar.responsive .small-screen-dropdown-links button {
+  .nav.responsive .small-screen-dropdown-links button {
     text-transform: capitalize;
     border-top: 1px solid lightgray;
     font-size: 14px;
     padding: 10px 5px;
   }
 
-  .nav-bar.responsive .fa-angle-right {
+  .nav.responsive .fa-angle-right {
     color: rgb(160, 157, 157);
   }
 
-  .nav-bar.responsive #myDropdown {
+  .nav.responsive #myDropdown {
     display: flex !important;
     flex-direction: column;
   }
 
-  .nav-bar.responsive .nav-categories-options {
+  .nav.responsive .nav-categories-options {
     min-width: 100% !important;
   }
 
-  .nav-bar.responsive .dropbtn {
+  .nav.responsive .dropbtn {
     display: none;
     color: black !important;
     border-top: 1px solid gray !important;

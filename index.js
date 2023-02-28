@@ -13,16 +13,16 @@
 // let sidenav = document.querySelector(".quick-menu");
 
 function navDropdown(parameters) {
-  let x = document.getElementById("nav");
-  if (x.className === "nav-bar" && parameters == 'dropdownAll') {
-    x.className += " responsive";
+  let myNav = document.getElementById("navBar");
+  if (myNav.className === "nav" && parameters == 'dropdownAll') {
+    myNav.className += " responsive";
     category.style.setProperty("background-color", "#535353", "important");
     category.style.setProperty("color", "white", "important");
     cate.style.setProperty("justify-content", "center", "important")
     cateAngle.style.setProperty("display", "flex", "important")
     // dropIcon.classList.toggle("fa-xmark");
-  } else if (x.className === "nav-bar" && parameters == 'browseAll') {
-    x.className += " responsive";
+  } else if (myNav.className === "nav" && parameters == 'browseAll') {
+    myNav.className += " responsive";
     loginSignupOnSmallScreen.style.setProperty("display", "none", "important");
     tracksOnSmallScreen.style.setProperty("display", "none", "important");
     category.style.setProperty("background-color", "#535353", "important");
@@ -30,7 +30,7 @@ function navDropdown(parameters) {
     cate.style.setProperty("justify-content", "center", "important")
     cateAngle.style.setProperty("display", "flex", "important")
   } else {
-    x.className = "nav-bar";
+    myNav.className = "nav";
     // dropIcon.classList.toggle("fa-border-all");
   }
 };
@@ -44,16 +44,28 @@ function scrollFunction() {
     document.body.scrollTop > 130 ||
     document.documentElement.scrollTop > 130
   ) {
-    nav.style.top = "-40px";
+    navBar.style.top = "-40px";
   } else {
 
   }
 }
 
 closeThis = () => {
+  shut = false;
   cate.innerText = `Categories`
   bringItUp.style.setProperty("display", "none", "important")
+  if (cate.innerText === `Categories`){
+    shut = true;
+  } 
+  if (shut) {
+    // alert("sise")
+  }
 }
+
+// closeAll = () => {
+//   alert("Yoooo")
+//   // smallScreenDropdown.style.setProperty("display", "none", "important");
+// }
 
 dropDropdown = (parameter) => {
   bringItUp.innerHTML = ""
