@@ -2113,10 +2113,14 @@
 
     <footer class="w-100 flex-column mt-5 text-white" id="footer">
       <div
-        class="d-flex gap-5"
+        class=" dropdown"
         style="height: 80px; background-color: #2e2e2e; padding: 8px 5%" id="footerOne"
       >
-        <div class="d-flex gap-2 my-auto">
+      <div class="fw-bold footer-one-dropdown" style="color: rgba(211, 211, 211, 0.656)" data-bs-toggle="dropdown" aria-expanded="false">
+        Contact Us
+      </div>
+      <div class="dropdown-menu border-0 footer-one-dropdown-menu">
+        <div class="d-flex gap-2 my-auto each-contact">
           <a href="#sponsoredPro"
             ><i
               class="fas fa-envelope my-auto bg-white text-dark justify-content-center d-flex py-2"
@@ -2136,7 +2140,7 @@
             >
           </div>
         </div>
-        <div class="d-flex gap-2 my-auto">
+        <div class="d-flex gap-2 my-auto each-contact">
           <i
             class="fas fa-phone my-auto bg-white text-dark justify-content-center d-flex py-2"
             style="border-radius: 50%; height: 30px; width: 30px"
@@ -2154,7 +2158,7 @@
             >
           </div>
         </div>
-        <div class="d-flex gap-2 my-auto">
+        <div class="d-flex gap-2 my-auto each-contact">
           <i
             class="fab fa-whatsapp my-auto bg-white text-dark justify-content-center d-flex py-2"
             style="border-radius: 50%; height: 30px; width: 30px"
@@ -2172,7 +2176,7 @@
             >
           </div>
         </div>
-        <div class="d-flex gap-2 my-auto">
+        <div class="d-flex gap-2 my-auto each-contact">
           <div
             class="d-grid gap-1 contact"
             style="color: rgba(211, 211, 211, 0.656)"
@@ -2200,6 +2204,7 @@
             Subscribe
           </button>
         </div>
+      </div>
       </div>
       <div class="d-grid w-100" style="background-color: #0c0c0c">
         <div class="w-100 d-flex" style="padding: 20px 5%;" id="footerTwo">
