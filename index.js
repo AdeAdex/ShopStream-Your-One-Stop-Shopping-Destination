@@ -13,6 +13,7 @@
 // let sidenav = document.querySelector(".quick-menu");
 
 function navDropdown(parameters) {
+  dropIcon.classList.toggle("fa-times");
   let myNav = document.getElementById("navBar");
   if (myNav.className === "nav" && parameters == 'dropdownAll') {
     myNav.className += " responsive";
@@ -20,7 +21,6 @@ function navDropdown(parameters) {
     category.style.setProperty("color", "white", "important");
     cate.style.setProperty("justify-content", "center", "important")
     cateAngle.style.setProperty("display", "flex", "important")
-    // dropIcon.classList.toggle("fa-xmark");
   } else if (myNav.className === "nav" && parameters == 'browseAll') {
     myNav.className += " responsive";
     loginSignupOnSmallScreen.style.setProperty("display", "none", "important");

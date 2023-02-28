@@ -728,6 +728,11 @@ nav .dropbtn:hover {
     height: 50px !important;
   }
 
+  .fa-times {
+    font-size: 35px !important;
+    top: -7px !important;
+  }
+
 
 
 
