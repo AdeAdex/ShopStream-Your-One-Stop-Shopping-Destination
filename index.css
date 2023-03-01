@@ -367,7 +367,15 @@ nav .dropbtn:hover {
   display: none !important;
 }
 
-.chat-modal-content 
+#chatModal .chat-modal-content {
+  top: 200px !important;
+  left: 100%;
+  margin-left: auto !important;
+  height: 100% !important;
+  width: 80% !important;
+}
+
+#
 
 }
 
