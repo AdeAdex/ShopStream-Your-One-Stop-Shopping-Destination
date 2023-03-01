@@ -359,7 +359,7 @@ nav .dropbtn:hover {
     gap: 30px;
   }
 
-.div2 .each-click:focus:after {
+.div2 .each-click:hover {
   color: #ed017f !important;
 }
 
