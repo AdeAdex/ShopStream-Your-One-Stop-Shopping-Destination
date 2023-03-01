@@ -633,12 +633,14 @@ displayProducts = () => {
   };
 }
 
-showForEach = (param) => {
+showForEach = () => {
+  let myAngle = document.querySelectorAll(".fa-angle-down")
+  for (let index = 0; index < myAngle.length; index++) {
+    myAngle[index].classList.toggle("fa-angle-up")
+  }
+}
+showForEachLargeScreen = (param) => {
   showThis.innerHTML = "";
-  // let mumu = document.querySelectorAll('.each-click')
-  // for (let index = 0; index < mumu.length; index++) {
-  //   mumu[index].style.color = "red"
-  // }
   if (param == "overview") {
     showThis.innerHTML = `
     <h6 class="text-uppercase text-secondary">features</h6>

@@ -272,10 +272,6 @@ nav .dropbtn:hover {
   background-color: orange !important;
 }
 
-.each-click:focus {
-  color: #ed017f;
-}
-
 .logo-div .fa-bars {
   display: none;
 }
@@ -362,6 +358,15 @@ nav .dropbtn:hover {
     background-color: inherit !important;
     gap: 30px;
   }
+
+.div2 .each-click:focus:after {
+  color: #ed017f !important;
+}
+
+#overview .div1 {
+  display: none !important;
+}
+
 }
 
 
@@ -828,6 +833,10 @@ nav .dropbtn:hover {
     padding: 0px !important;
   }
 
+  #overview .div2 {
+    display: none !important;
+  }
+
   #overview .div1{
     flex-direction: column !important;
     gap: 0px !important;
@@ -837,7 +846,41 @@ nav .dropbtn:hover {
     border-top: 1px solid lightgray;
     padding: 15px 10px;
     font-size: 14px !important;
+    height: auto !important;
   }
+
+  .product-details-dropdown-menu ul {
+    border: 1px solid #eee;
+  }
+  
+  .each-click .product-details-dropdown-menu {
+    top: -20px !important;
+    position: relative !important;
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+    animation-name: ani;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    z-index: 1;
+  }
+
+  @keyframes ani {
+    0% {
+      opacity: 0;
+      height: 0%;
+      width: 100%;
+    }
+    100% {
+      opacity: 1;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  
 
   #similarContainer {
     overflow-x: auto;
