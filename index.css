@@ -299,6 +299,16 @@ nav .dropbtn:hover {
   cursor: pointer;
 }
 
+.chat-social .fa-facebook-messenger {
+  background-color: #2196F3;
+}
+.chat-social .fa-twitter {
+  background-color: #26A6D1;
+}
+.chat-social .fa-whatsapp {
+  background-color: #4CAF50;
+}
+
 
 
 
@@ -373,7 +383,7 @@ nav .dropbtn:hover {
   margin-left: auto !important;
   height: 100% !important;
   width: 80% !important;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
 }
 
 .chat-social i {
@@ -385,16 +395,6 @@ nav .dropbtn:hover {
   display: flex;
   padding: 12px 0px;
   cursor: pointer;
-}
-
-.chat-social .fa-facebook-messenger {
-  background-color: #2196F3;
-}
-.chat-social .fa-twitter {
-  background-color: #26A6D1;
-}
-.chat-social .fa-whatsapp {
-  background-color: #4CAF50;
 }
 
 }
@@ -808,6 +808,17 @@ nav .dropbtn:hover {
   .fa-times {
     font-size: 35px !important;
     top: -7px !important;
+  }
+
+  .chat-social i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    justify-content: center;
+    display: flex;
+    padding: 8px 0px;
+    cursor: pointer;
   }
 
 
