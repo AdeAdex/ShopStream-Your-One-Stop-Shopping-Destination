@@ -1,0 +1,2189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link href="fontawesome-free-6.1.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <title>Adex Shopping Cart</title>
+  </head>
+  <body>
+    <nav
+      class="nav"
+      id="navBar"
+      style="width: 100%; position: sticky; top: -155px; z-index: 6"
+    >
+      <div
+        class="w-100 d-flex justify-content-center py-2"
+        style="height: 35px; background-color: white"
+        id="firstNav"
+      >
+        <img
+          src="Images/nav11.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nva12.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nav13.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nav14.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nva15.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nav16.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+        <img
+          src="Images/nav17.webp"
+          class="pe-5"
+          style="height: 80%; cursor: pointer"
+          alt=""
+        />
+      </div>
+      <div
+        class="w-100 gap-2 d-flex nav-2"
+        style="height: 55px; padding: 0px 5%; background-color: #ed017f"
+        id="secondNav"
+      >
+        <div
+          class="my-auto d-flex pe-4 logo-div position-relative"
+          style="height: 60%"
+        >
+          <i
+            class="fas fa-bars icon text-white me-2"
+            id="dropIcon"
+            style="font-size: 25px; top: -2px; position: relative"
+            onclick="navDropdown('dropdownAll')"
+          ></i>
+          <img src="Images/ade.png" alt="" class="w-100 h-100" />
+          <h4 class="text-white my-auto" style="font-family: cursive">ADEX</h4>
+        </div>
+        <button
+          class="px-3 border-0 nav2-btn"
+          style="background-color: inherit"
+        >
+          Store Locator
+        </button>
+        <button
+          class="px-3 border-0 nav2-btn"
+          style="background-color: inherit"
+        >
+          Sell on Adex
+        </button>
+        <div class="d-flex search-container" id="searchCon" style="width: 40%">
+          <input
+            type="text"
+            class="my-auto px-3 form-control input-lg"
+            style="
+              font-size: 12px;
+              font-family: serif;
+              width: 95%;
+              height: 60%;
+              border-top-right-radius: unset;
+              border-bottom-right-radius: unset;
+              border-top-left-radius: 3px;
+              border-bottom-left-radius: 3px;
+            "
+            placeholder="Search for products, brands and categories..."
+          />
+          <button
+            class="py-2 bg-warning justify-content-center d-flex my-auto border-0 search-btn"
+            style="
+              width: 5%;
+              height: 60%;
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+              border-top-right-radius: 3px;
+              border-bottom-right-radius: 3px;
+            "
+          >
+            <i class="fas fa-search my-auto"></i>
+          </button>
+        </div>
+        <button
+          class="px-3 border-0 d-flex gap-1 nav2-btn"
+          style="background-color: inherit"
+          id="helpBtn"
+        >
+          <i
+            class="fas fa-question-circle fs-5 my-auto"
+            style="
+              color: #fab7da;
+              background-color: rgb(255, 255, 255);
+              border-radius: 50%;
+            "
+          ></i
+          ><span class="my-auto">Help</span>
+          <i class="fas fa-angle-down my-auto"></i>
+        </button>
+        <button
+          class="px-3 border-0 nav2-btn"
+          style="background-color: inherit"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#loginOffcanvas"
+          aria-controls="loginOffcanvas"
+        >
+          Login / Signup
+        </button>
+        <button
+          class="w-auto d-flex my-auto border-0 justify-content-center gap-1 py-2 px-4"
+          id="cartBtn"
+          style="background-color: #2d9e6d; border-radius: 3px"
+        >
+          <i class="fas fa-cart-shopping my-auto" style="font-size: 14px"></i>
+          <span class="my-auto me-2">My Cart</span>
+          <div
+            class="bg-white px-2 text-dark my-auto fw-bold"
+            style="border-radius: 2px; padding-top: 2px; padding-bottom: 2px"
+            id="totalCart"
+          >
+            0
+          </div>
+        </button>
+        <div class="my-auto text-white gap-2 d-none small-screen-cart-icon">
+          <i class="fas fa-store" style="font-size: 20px"></i>
+          <i class="fas fa-cart-shopping" style="font-size: 20px"></i>
+        </div>
+      </div>
+      <input
+        type="text"
+        name=""
+        id="searchOnSmallScreen"
+        class="search-on-small w-100 d-none p-2 mt-2 border-0"
+        style="background-color: #e8e8e8"
+        placeholder="Search for products, brands and categories..."
+      />
+      <div
+        class="w-100"
+        style="height: 35px; background-color: #94004f"
+        id="thirdNav"
+      >
+        <ul class="d-flex h-100" id="" style="padding: 0px 3%">
+          <li class="dropdown">
+            <a href="#" class="nav-active dropbtn fw-bold d-flex gap-1"
+              >all categories<i class="fas fa-bars my-auto"></i
+            ></a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>all categories</h4>
+              <div class="nav-categories">
+                <div class="nav-categories-options text-capitalize">
+                  <a href="">computers and accessories</a>
+                  <a href="">phones and tablets</a>
+                  <a href="">electronics</a>
+                  <a href="">adex fashion</a>
+                  <a href="">home and kitchen</a>
+                  <a href="">babies, kids and toy</a>
+                  <a href="">other categories</a>
+                  <a href="">groceries</a>
+                  <a href="">intel 11th gen campaing</a>
+                </div>
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn">computers and accessories</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>computers and accessories</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn">phones and tablet</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>phones and tablet</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn">electronics</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>electronics</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn">adex fashion</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>adex fashion</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">home and kitchen</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>home and kitchen</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropbtn">baby, kids and toys</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>baby, kids and toys</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">other categories</a>
+            <div class="dropdown-content" id="myDropdown">
+              <h4>other categories</h4>
+              <div class="nav-categories">
+                <!-- <div class="nav-categories-options text-capitalize">
+                            <a href="">computers and accessories</a>
+                            <a href="">phones and tablets</a>
+                            <a href="">electronics</a>
+                            <a href="">adex fashion</a>
+                            <a href="">home and kitchen</a>
+                            <a href="">babies, kids and toy</a>
+                            <a href="">other categories</a>
+                            <a href="">groceries</a>
+                            <a href="">intel 11th gen campaing</a>
+                          </div> -->
+
+                <div class="right-view gap-4 ps-5">
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                    <div class="gap-0">
+                      <a href="">mini laptops and netbooks</a>
+                      <a href="">notebooks</a>
+                      <a href="">ultrabooks</a>
+                      <a href="">hubrids pc</a>
+                      <a href="">macbooks</a>
+                    </div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div
+                    class="d-grid links-inside-right-view"
+                    style="width: 18%"
+                  >
+                    <img src="Images/carousel8.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+              <div class="nav-categories-footer">
+                <div class="multi-colored-line"></div>
+                <div class="nav-categories-footer-i">
+                  <a href="tel:+2347033959586"
+                    ><i class="fas fa-phone"></i>contact us</a
+                  >
+                  <a href=""><i class="fas fa-life-ring"></i>help & support</a>
+                  <a href=""><i class="fas fa-location-dot"></i>location</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="d-none" id="smallScreenDropdown" style="padding: 10px">
+          <div class="d-flex w-100 gap-3" id="loginSignupOnSmallScreen">
+            <button
+              class="btn w-50"
+              style="border: 1px solid #ed017f"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#loginOffcanvas"
+              aria-controls="loginOffcanvas"
+            >
+              Login
+            </button>
+            <button
+              class="btn w-50"
+              style="border: 1px solid #ed017f"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              Signup
+            </button>
+          </div>
+          <div class="d-flex w-100 flex-wrap mt-2" id="tracksOnSmallScreen">
+            <div class="w-50 border d-flex gap-3 p-2">
+              <i
+                class="fas fa-location-dot my-auto"
+                style="font-size: 20px"
+              ></i>
+              <div class="d-grid" style="font-size: 12px">
+                <span class="">Track orders</span>
+                <span>view order status</span>
+              </div>
+            </div>
+            <div class="w-50 border d-flex gap-3 p-2">
+              <i class="far fa-star my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
+                <span class="">Pending items</span>
+                <span></span>
+              </div>
+            </div>
+            <div class="w-50 border d-flex gap-3 p-2">
+              <i class="fas fa-tag my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
+                <span class="">Sell on Adex</span>
+                <span>Join other merchants</span>
+              </div>
+            </div>
+            <div class="w-50 border d-flex gap-3 p-2">
+              <i class="fas fa-store my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
+                <span class="">Physical Stores</span>
+                <span>Stores around you</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-grid w-100 position-relative"
+            style="border-top: 2px solid lightgray"
+          >
+            <h6
+              class="my-auto d-flex px-3"
+              style="padding: 12px 5px"
+              id="category"
+            >
+              <i
+                class="fas fa-angle-left fs-3 d-none"
+                style="cursor: pointer"
+                id="cateAngle"
+                onclick="closeThis()"
+              ></i
+              ><span class="d-flex my-auto w-100" id="cate">Categories</span>
+            </h6>
+            <div
+              class="small-screen-dropdown-links d-grid text-capitalize"
+              id="yhes"
+            >
+              <button
+                onclick="dropDropdown('computer')"
+                class="btn d-flex justify-content-between"
+              >
+                computers and accessories
+                <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('phone')"
+                class="btn d-flex justify-content-between"
+              >
+                phones and tablets <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('electronics')"
+                class="btn d-flex justify-content-between"
+              >
+                electronics <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('fashion')"
+                class="btn d-flex justify-content-between"
+              >
+                adex fashion <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('kitchen')"
+                class="btn d-flex justify-content-between"
+              >
+                home and kitchen <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('babies')"
+                class="btn d-flex justify-content-between"
+              >
+                babies, kids and toy <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('other')"
+                class="btn d-flex justify-content-between"
+              >
+                other categories <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('grocery')"
+                class="btn d-flex justify-content-between"
+              >
+                groceries <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('intel')"
+                class="btn d-flex justify-content-between"
+              >
+                intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i>
+              </button>
+            </div>
+            <div
+              class="w-100 d-none flex-column position-absolute start-0"
+              style="
+                top: 45px;
+                z-index: 5 !important;
+                height: 100vh;
+                padding-bottom: 100px;
+                background-color: #f5f5f5;
+              "
+              id="bringItUp"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="offcanvas offcanvas-end bg-light"
+      style="width: 30%"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="loginOffcanvas"
+      aria-labelledby="loginOffcanvasLabel"
+    >
+      <div class="offcanvas-header container-fluid shadow shadow-lg">
+        <h4 class="offcanvas-title fw-bold" id="offcanvasTitle">Login</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body mt-4 px-4">
+        <!-- <form> -->
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email Address or Phone Number</label
+          >
+          <input
+            type="email"
+            class="form-control input-lg"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter Email Address Or Phone Number"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control input-lg"
+            id="exampleInputPassword1"
+            placeholder="Enter Password"
+          />
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1"
+            >Check me out</label
+          >
+        </div>
+        <button type="submit" class="btn btn-lg btn-success w-100">
+          Login
+        </button>
+        <div class="w-100 d-flex mt-5">
+          <hr class="w-50" />
+          <div
+            class="border border-secondary justify-content-center d-flex my-auto text-secondary"
+            style="
+              width: 30px;
+              height: 30px;
+              font-size: 12px;
+              border-radius: 50%;
+              padding-top: 5px;
+              padding-bottom: 5px;
+            "
+          >
+            OR
+          </div>
+          <hr class="w-50" />
+        </div>
+        <div class="d-flex gap-3 mt-5 login-with">
+          <button
+            class="btn w-50 d-flex justify-content-center border border-primary fs-6"
+          >
+            <span class="my-auto">Login with</span
+            ><img
+              src="Images/facebook.png"
+              class="my-auto"
+              style="width: 40%"
+              alt=""
+            />
+          </button>
+          <button
+            class="btn w-50 d-flex justify-content-center border border-primary fs-6"
+          >
+            <span class="my-auto">Login with</span
+            ><img
+              src="Images/google.png"
+              class="my-auto pt-1"
+              style="width: 40%"
+              alt=""
+            />
+          </button>
+        </div>
+        <!-- </form> -->
+      </div>
+      <div
+        class="offcanvas-footer d-flex justify-content-center"
+        style="height: 70px; background-color: #f2f2f2"
+      >
+        <a
+          href=""
+          class="text-decoration-none my-auto"
+          style="color: #ed017f"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          >Don't have an account? Sign Up</a
+        >
+        <div class="w-100 dont-have-account-small-screen gap-2 py-3">
+          <span class="text-center">Dont have an Account?</span>
+          <button
+            class="w-100 btn d-flex justify-content-center create-btn"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Create an Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1
+              class="modal-title fs-5 text-capitalize"
+              id="staticBackdropLabel"
+            >
+              create an account
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body px-5">
+            <div class="d-flex justify-content-center">
+              <img
+                src="Images/ade.png"
+                style="width: 60px; height: 60px"
+                alt=""
+              />
+            </div>
+            <hr />
+            <div class="d-grid">
+              <!-- <form> -->
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >First Name</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Last Name</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Phone Number</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <!-- <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div> -->
+              <button type="submit" class="btn w-100 btn-success mt-3">
+                Create an Account
+              </button>
+              <span class="px-3 mt-4"
+                >By signing up you accept our
+                <a href="" style="color: #ed017f">terms and conditions</a> &
+                <a href="" style="color: #ed017f">privacy policy</a></span
+              >
+              <!-- </form> -->
+            </div>
+          </div>
+          <div
+            class="modal-footer mt-5 pb-3 px-5"
+            style="background-color: #f8f8f8"
+          >
+            <span class="d-flex justify-content-center w-100"
+              >Already have an Account</span
+            >
+            <button
+              type="button"
+              class="btn btn-light w-100"
+              style="border: 1px solid #ed017f"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#loginOffcanvas"
+              aria-controls="loginOffcanvas"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="cart-main"
+      style="width: 100%; padding: 0px; background-color: #f2f2f2;"
+    >
+      <section
+        class="w-100 border"
+        style="height: 100px; background-color: #ffffff; padding: 10px 5%"
+      >
+        <div class="d-flex gap-2">
+          <a
+            href=""
+            class="text-decoration-none text-dark my-auto"
+            style="font-size: 12px"
+            >Home</a
+          >
+          <i class="fas fa-angle-right my-auto" style="font-size: 10px"></i>
+          <a
+            href=""
+            class="text-decoration-none text-dark my-auto"
+            style="font-size: 12px"
+            >Shopping Cart</a
+          >
+        </div>
+        <h1 class="fw-bold">Shopping Cart</h1>
+      </section>
+      <section style="padding: 10px 5%">
+        <button class="d-flex btn btn-sm w-auto py-2 px-2 gap-2" style="background-color: inherit; border: 1px solid #ed017f; color: #ed017f;">
+                <i class="fas fa-arrow-left my-auto"></i>
+                <div class="my-auto">Continue Shopping</div>
+        </button>
+      </section>
+      <section  style="padding: 10px 5%">
+        <div class="w-75" style="">
+                <h6 class="d-flex">
+                        <span class="w-50">Items Details</span>
+                        <span class="border" style="width: 15%;">Quantity</span>
+                        <span class="border" style="width: 20%;">Item Price</span>
+                        <span class="border text-end" style="width: 15%;">Action</span>
+                </h6>
+                <h6 class="d-flex">
+                        <span class="w-50">Items Details</span>
+                        <div class="d-flex cart-btn-container"  style="width: 15%;">
+                                <button
+                                  class="btn btn-light btn-sm border fw-bold"
+                                  style="border-radius: 2px 0px 0px 2px" onclick="decrement()" id="minusBtn"
+                                >
+                                  -
+                                </button>
+                                <button
+                                  class="btn btn-light btn-sm border px-3"
+                                  style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
+                                >
+                                  0
+                                </button>
+                                <button
+                                  class="btn btn-light btn-sm border fw-bold"
+                                  style="border-radius: 0px 2px 2px 0px" onclick="increment()" id="plusBtn"
+                                >
+                                  +
+                                </button>
+                              </div>
+                        <div class="border" style="width: 20%;"></div>
+                        <span class="border text-end" style="width: 15%;">Action</span>
+                </h6>
+        </div>
+        <div class="w-25">
+
+        </div>
+      </section>
+    </div>
+
+    <footer class="w-100 flex-column mt-5 text-white" id="footer">
+      <div
+        class="dropdown"
+        style="height: 80px; background-color: #2e2e2e; padding: 8px 5%"
+        id="footerOne"
+      >
+        <div
+          class="fw-bold footer-one-dropdown"
+          style="color: rgba(211, 211, 211, 0.656)"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Contact Us
+        </div>
+        <div class="dropdown-menu border-0 footer-one-dropdown-menu">
+          <div class="d-flex gap-2 my-auto each-contact">
+            <a href="#sponsoredPro"
+              ><i
+                class="fas fa-envelope my-auto bg-white text-dark justify-content-center d-flex py-2"
+                style="border-radius: 50%; height: 30px; width: 30px"
+              ></i
+            ></a>
+            <div
+              class="d-grid gap-1 contact"
+              style="color: rgba(211, 211, 211, 0.656)"
+            >
+              <h6 class="text-uppercase">email support</h6>
+              <a
+                href=""
+                class="text-decoration-none contact-link"
+                style="color: rgba(211, 211, 211, 0.656)"
+                >help@adex.com</a
+              >
+            </div>
+          </div>
+          <div class="d-flex gap-2 my-auto each-contact">
+            <i
+              class="fas fa-phone my-auto bg-white text-dark justify-content-center d-flex py-2"
+              style="border-radius: 50%; height: 30px; width: 30px"
+            ></i>
+            <div
+              class="d-grid gap-1 contact"
+              style="color: rgba(211, 211, 211, 0.656)"
+            >
+              <h6 class="text-uppercase">phone support</h6>
+              <a
+                href=""
+                class="text-decoration-none contact-link"
+                style="color: rgba(211, 211, 211, 0.656)"
+                >07033959586, 09014145628, 09025203985</a
+              >
+            </div>
+          </div>
+          <div class="d-flex gap-2 my-auto each-contact">
+            <i
+              class="fab fa-whatsapp my-auto bg-white text-dark justify-content-center d-flex py-2"
+              style="border-radius: 50%; height: 30px; width: 30px"
+            ></i>
+            <div
+              class="d-grid gap-1 contact"
+              style="color: rgba(211, 211, 211, 0.656)"
+            >
+              <h6 class="text-uppercase">whatsapp</h6>
+              <a
+                href=""
+                class="text-decoration-none contact-link"
+                style="color: rgba(211, 211, 211, 0.656)"
+                >07033959586</a
+              >
+            </div>
+          </div>
+          <div class="d-flex gap-2 my-auto each-contact">
+            <div
+              class="d-grid gap-1 contact"
+              style="color: rgba(211, 211, 211, 0.656)"
+            >
+              <h6 class="text-uppercase">get latest deals</h6>
+              <a
+                href=""
+                class="text-decoration-none contact-link"
+                style="color: rgba(211, 211, 211, 0.656)"
+                >our best promotion sent to your inbox</a
+              >
+            </div>
+          </div>
+          <div class="d-flex my-auto" style="height: 70%">
+            <input
+              type="text"
+              placeholder="Email Address"
+              class="form-control text-black"
+              style="border-radius: 5px 0px 0px 5px"
+            />
+            <button
+              class="px-4 text-white fw-bold border-0"
+              style="border-radius: 0px 5px 5px 0px; background-color: #ed017f"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid w-100" style="background-color: #0c0c0c">
+        <div class="w-100 d-flex" style="padding: 20px 5%" id="footerTwo">
+          <div class="d-flex footer-dropdown-container">
+            <div class="dropdown footer-dropdown w-auto">
+              <div
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="text-uppercase fw-bold footer-dropdown-button"
+                style="color: rgba(211, 211, 211, 0.656)"
+              >
+                about adex <i class="fas fa-plus" id=""></i>
+              </div>
+              <div class="dropdown-menu footer-dropdown-menu">
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >contact us</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >about us</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >careers</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >our blog</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >forum</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >terms</a
+                >
+              </div>
+            </div>
+            <div class="dropdown footer-dropdown w-auto">
+              <div
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="text-uppercase fw-bold footer-dropdown-button"
+                style="color: rgba(211, 211, 211, 0.656)"
+              >
+                payment <i class="fas fa-plus" id=""></i>
+              </div>
+              <div class="dropdown-menu footer-dropdown-menu">
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >adex pay</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >wallet</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >verve</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >mastercard</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >visa</a
+                >
+              </div>
+            </div>
+            <div class="dropdown footer-dropdown w-auto">
+              <div
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="text-uppercase fw-bold footer-dropdown-button"
+                style="color: rgba(211, 211, 211, 0.656)"
+              >
+                buying on adex <i class="fas fa-plus"></i>
+              </div>
+              <div class="dropdown-menu footer-dropdown-menu">
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >buyer safety centre</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >fAQs</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >delivery</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >adex return policy</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >digital service</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >bulk purchase</a
+                >
+              </div>
+            </div>
+            <div class="dropdown footer-dropdown w-auto">
+              <div
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="text-uppercase fw-bold footer-dropdown-button"
+                style="color: rgba(211, 211, 211, 0.656)"
+              >
+                more info <i class="fas fa-plus"></i>
+              </div>
+              <div class="dropdown-menu footer-dropdown-menu">
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >site map</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >track my order</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >privacy policy</a
+                >
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >authentic items policy</a
+                >
+              </div>
+            </div>
+            <div class="dropdown footer-dropdown w-auto">
+              <div
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                class="text-uppercase fw-bold footer-dropdown-button"
+                style="color: rgba(211, 211, 211, 0.656)"
+              >
+                make money on adex <i class="fas fa-plus"></i>
+              </div>
+              <div class="dropdown-menu footer-dropdown-menu">
+                <a
+                  href=""
+                  class="dropdown-item text-decoration-none"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                  >become adex affilate</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="footer-contact-container">
+            <div class="d-flex flex-column gap-5 w-100 footerconnect">
+              <div class="d-grid gap-3">
+                <div
+                  class="text-uppercase fw-bold"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                >
+                  download & connect with us
+                </div>
+                <div class="d-flex gap-4">
+                  <img
+                    src="Images/applelogo.png"
+                    alt=""
+                    class=""
+                    style="width: 120px; height: 40px; cursor: pointer"
+                  />
+                  <img
+                    src="Images/googleplaylogo.png"
+                    alt=""
+                    class=""
+                    style="width: 120px; height: 40px; cursor: pointer"
+                  />
+                </div>
+              </div>
+              <div class="gap-3 d-grid">
+                <div
+                  class="text-uppercase fw-bold"
+                  style="color: rgba(211, 211, 211, 0.656)"
+                >
+                  CONNECT WITH US
+                </div>
+                <div class="d-flex gap-4 social">
+                  <i
+                    class="fab fa-facebook-f justify-content-center d-flex py-2 fs-5"
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      background-color: #2e2e2e;
+                    "
+                  ></i>
+                  <i
+                    class="fab fa-twitter justify-content-center d-flex py-2 fs-5"
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      background-color: #2e2e2e;
+                    "
+                  ></i>
+                  <i
+                    class="fab fa-instagram justify-content-center d-flex py-2 fs-5"
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      background-color: #2e2e2e;
+                    "
+                  ></i>
+                  <i
+                    class="fab fa-youtube-square justify-content-center d-flex py-2 fs-5"
+                    style="
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 50%;
+                      background-color: #2e2e2e;
+                    "
+                  ></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex w-100 pb-5 gap-2 justify-content-center"
+          id="copyright"
+        >
+          <hr class="" style="width: 33%" />
+          <span class="mt-1" style="color: rgba(211, 211, 211, 0.656)"
+            >Copyright © 2023 Adex.com. All rights reserved</span
+          >
+          <hr class="" style="width: 33%" />
+        </div>
+      </div>
+    </footer>
+    <footer
+      class="d-none w-100 navbar position-fixed bottom-0 pt-3 px-3"
+      style="z-index: 10; background-color: white"
+      id="fixedFooter"
+    >
+      <div class="d-grid gap-2">
+        <i class="fas fa-home mx-auto" style="font-size: 20px"></i>
+        <div class="text-capitalize" style="font-size: 12px">home</div>
+      </div>
+      <div class="d-grid gap-2">
+        <i class="fas fa-tag mx-auto" style="font-size: 20px"></i>
+        <div class="text-capitalize" style="font-size: 12px">deals</div>
+      </div>
+      <div class="d-grid gap-2">
+        <i class="fas fa-cart-shopping mx-auto" style="font-size: 20px"></i>
+        <div class="text-capitalize" style="font-size: 12px">cart</div>
+      </div>
+      <div class="d-grid gap-2">
+        <i class="fas fa-bars-staggered mx-auto" style="font-size: 20px"></i>
+        <div class="text-capitalize" style="font-size: 12px">more</div>
+      </div>
+    </footer>
+    <img
+      src="Images/chat3.png"
+      alt="chat-icon"
+      class="position-fixed chat-icon"
+      style="
+        width: 80px;
+        height: 80px;
+        bottom: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        object-fit: cover;
+        right: 50px;
+        background-color: #fff;
+      "
+      data-bs-toggle="modal"
+      data-bs-target="#chatModal"
+    />
+    <div
+      class="modal fade"
+      id="chatModal"
+      tabindex="-1"
+      aria-labelledby="chatModalLabel"
+      aria-hidden="true"
+      style="padding: 0px"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content chat-modal-content" style="height: 100vh">
+          <div
+            class="modal-header"
+            style="height: 60px; background-color: #ed017f"
+          >
+            <img src="Images/ade.png" alt="" class="h-100" />
+            <h4 class="text-white my-auto" style="font-family: cursive">
+              ADEX
+            </h4>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              style="color: white !important; background-color: white"
+            ></button>
+          </div>
+          <div
+            class="modal-body d-flex flex-column gap-4"
+            style="font-size: 12px"
+          >
+            <span class="fw-bold" style="font-size: 14px"
+              >Hello there. To continue, please introduce yourself below.</span
+            >
+            <div class="col-md-4 w-100">
+              <label for="validationServer01" class="form-label"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                class="form-control chat-input"
+                id="validationServer01"
+                value=""
+                required
+              />
+              <!-- <div class="valid-feedback">
+                    Looks good!
+                  </div> -->
+            </div>
+            <div class="col-md-4 w-100">
+              <label for="validationServer02" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="text"
+                class="form-control chat-input"
+                id="validationServer02"
+                value=""
+                required
+              />
+              <!-- <div class="valid-feedback">
+                    Looks good!
+                  </div> -->
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="invalidCheck3"
+                aria-describedby="invalidCheck3Feedback"
+                required
+              />
+              <label class="form-check-label" for="invalidCheck3">
+                Remember Me
+              </label>
+              <!-- <div id="invalidCheck3Feedback" class="invalid-feedback">
+                    You must agree before submitting.
+                  </div> -->
+            </div>
+            <button class="btn btn-dark text-white w-100">
+              Start Conversation
+            </button>
+            <div
+              class="d-flex flex-column justify-content-center w-100 gap-2 chat-social"
+            >
+              <span class="mx-auto fw-bold fs-6">Or Chat us on</span>
+              <div class="mx-auto d-flex gap-2">
+                <i class="fab fa-facebook-messenger fs-3"></i>
+                <i class="fab fa-twitter fs-3"></i>
+                <i class="fab fa-whatsapp fs-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer mt-3"></div>
+        </div>
+      </div>
+    </div>
+    <script src="index.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+    <!-- <script src="bootstrap.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+  </body>
+</html>
