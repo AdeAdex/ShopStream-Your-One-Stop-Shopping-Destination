@@ -397,7 +397,7 @@ topDealProductPage = (eachTopDeal) => {
   </div>
   <hr />
   <div class="d-flex gap-4">
-   <button
+   <button onclick="${window.location.href = 'shoppingCart.html'}"
      class="text-capitalize btn w-50 text-white"
      style="background-color: #33b27b"
    >
