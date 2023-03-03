@@ -238,6 +238,7 @@ setTodaysDeal = () => {
       productOldPrice: adminOldPrice.value,
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
+      productIDNumber: Math.floor(Math.random() * 1000000),
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
       productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
     };
@@ -347,16 +348,16 @@ topDealProductPage = (eachTopDeal) => {
     <h2>${eachTopDealProduct[eachTopDeal].productName}</h2>
   <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
    Product Code:
-   <div class="text-dark">5754251</div>
+   <div class="text-dark" id="productID">${eachTopDealProduct[eachTopDeal].productIDNumber}</div>
   </h5>
   <hr />
   <div class="d-flex gap-3">
-   <h4 class="fw-bold my-auto">₦7,500</h4>
+   <h4 class="fw-bold my-auto">₦${eachTopDealProduct[eachTopDeal].productNewPrice}</h4>
    <h6 class="my-auto text-decoration-line-through text-secondary">
-     ₦15,000
+   ₦${eachTopDealProduct[eachTopDeal].productOldPrice}
    </h6>
    <h6 class="my-auto text-success" style="font-size: 12px">
-     You save ₦7,500
+   ₦${eachTopDealProduct[eachTopDeal].productSavePrice}
    </h6>
   </div>
   <hr />
@@ -397,7 +398,7 @@ topDealProductPage = (eachTopDeal) => {
   </div>
   <hr />
   <div class="d-flex gap-4">
-   <button onclick="${window.location.href = 'shoppingCart.html'}"
+   <button 
      class="text-capitalize btn w-50 text-white"
      style="background-color: #33b27b"
    >

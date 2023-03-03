@@ -931,6 +931,43 @@ nav .dropbtn:hover {
   #similarContainer .eachsimilar {
     min-width: 50% !important;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .cart-main {
+    margin-top: 100px;
+  }
+  .cart-main .cart-top div {
+    display: none !important;
+  }
+  
+  .cart-top h1 {
+    font-size: 15px !important;
+  }
+
+  .shipping-info {
+    flex-direction: column;
+  }
+  .shipping-info .div1 {
+    width: 100% !important;
+  }
+
+  .shipping-info .div2 {
+    width: 100% !important;
+  }
+  
   
 }
 

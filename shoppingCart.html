@@ -1593,10 +1593,10 @@
 
     <div
       class="cart-main"
-      style="width: 100%; padding: 0px; background-color: #f2f2f2;"
+      style="width: 100%; padding: 0px; background-color: #f2f2f2"
     >
       <section
-        class="w-100 border"
+        class="w-100 border cart-top"
         style="height: 100px; background-color: #ffffff; padding: 10px 5%"
       >
         <div class="d-flex gap-2">
@@ -1616,48 +1616,146 @@
         </div>
         <h1 class="fw-bold">Shopping Cart</h1>
       </section>
+      <section class="d-flex justify-content-between w-100">
+        <div>Subtotal (1 Item)</div>
+        <div class="fw-bold" style="font-size: 14px">₦18000</div>
+      </section>
       <section style="padding: 10px 5%">
-        <button class="d-flex btn btn-sm w-auto py-2 px-2 gap-2" style="background-color: inherit; border: 1px solid #ed017f; color: #ed017f;">
-                <i class="fas fa-arrow-left my-auto"></i>
-                <div class="my-auto">Continue Shopping</div>
+        <button
+          class="d-flex btn btn-sm w-auto py-2 px-2 gap-2"
+          style="
+            background-color: inherit;
+            border: 1px solid #ed017f;
+            color: #ed017f;
+          "
+        >
+          <i class="fas fa-arrow-left my-auto"></i>
+          <div class="my-auto">Continue Shopping</div>
         </button>
       </section>
-      <section  style="padding: 10px 5%">
-        <div class="w-75" style="">
-                <h6 class="d-flex">
-                        <span class="w-50">Items Details</span>
-                        <span class="border" style="width: 15%;">Quantity</span>
-                        <span class="border" style="width: 20%;">Item Price</span>
-                        <span class="border text-end" style="width: 15%;">Action</span>
-                </h6>
-                <h6 class="d-flex">
-                        <span class="w-50">Items Details</span>
-                        <div class="d-flex cart-btn-container"  style="width: 15%;">
-                                <button
-                                  class="btn btn-light btn-sm border fw-bold"
-                                  style="border-radius: 2px 0px 0px 2px" onclick="decrement()" id="minusBtn"
-                                >
-                                  -
-                                </button>
-                                <button
-                                  class="btn btn-light btn-sm border px-3"
-                                  style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
-                                >
-                                  0
-                                </button>
-                                <button
-                                  class="btn btn-light btn-sm border fw-bold"
-                                  style="border-radius: 0px 2px 2px 0px" onclick="increment()" id="plusBtn"
-                                >
-                                  +
-                                </button>
-                              </div>
-                        <div class="border" style="width: 20%;"></div>
-                        <span class="border text-end" style="width: 15%;">Action</span>
-                </h6>
+      <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
+        <div class="w-75 d-flex flex-column gap-1 div1" style="">
+          <div
+            class="d-flex p-2 fw-bold"
+            style="background-color: #e6e6e6; font-size: 14px"
+          >
+            <span class="w-50">Items Details</span>
+            <span class="ps-4" style="width: 15%">Quantity</span>
+            <span class="" style="width: 20%">Item Price</span>
+            <span class="text-end" style="width: 15%">Action</span>
+          </div>
+          <div id="eachShoppingCart">
+            <div class="d-flex bg-white px-3">
+              <div class="w-50 d-flex">
+                <img
+                  src="Images/browsingHistory1.webp"
+                  alt=""
+                  style="width: 150px"
+                />
+                <div class="d-flex flex-column gap-2 my-auto">
+                  <div class="" style="width: 90%">
+                    Oraimo Power Bank - Opd-p110d-10000mAh
+                  </div>
+                  <div class="d-flex gap-1">
+                    <span class="my-auto" style="font-size: 12px">Sold by</span>
+                    <div class="my-auto fw-bold" style="font-size: 14px">
+                      YOMILINCON BRAND
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="d-flex flex-row cart-btn-container my-auto"
+                style="width: 15%"
+              >
+                <button
+                  class="btn btn-light btn-sm border fw-bold"
+                  style="border-radius: 2px 0px 0px 2px"
+                  onclick="decrement()"
+                  id="minusBtn"
+                >
+                  -
+                </button>
+                <button
+                  class="btn btn-light btn-sm border px-3"
+                  style="border-radius: 0px 0px 0px 0px"
+                  id="totalButtonCart"
+                >
+                  0
+                </button>
+                <button
+                  class="btn btn-light btn-sm border fw-bold"
+                  style="border-radius: 0px 2px 2px 0px"
+                  onclick="increment()"
+                  id="plusBtn"
+                >
+                  +
+                </button>
+              </div>
+              <div class="d-flex flex-column gap-1 my-auto" style="width: 20%">
+                <div class="fw-bold fs-5">₦12999</div>
+                <div
+                  class="d-flex gap-1"
+                  style="color: #bdc7d6; font-size: 14px"
+                >
+                  <div>₦12999</div>
+                  <div>x</div>
+                  <div>0</div>
+                  <div>item</div>
+                </div>
+              </div>
+              <div
+                class="text-end my-auto d-flex flex-column gap-1"
+                style="width: 15%; font-size: 14px; color: #94004f"
+              >
+                <div onclick="del()" class="" style="cursor: pointer">
+                  Remove item
+                </div>
+                <div onclick="sav()" class="" style="cursor: pointer">
+                  Save for Later
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="w-25">
-
+        <div class="w-25 bg-white d-flex flex-column p-3 div2">
+          <div class="d-flex justify-content-between fw-bold">
+            <div>Order Summary</div>
+            <div class="d-flex gap-2">
+              <div>2</div>
+              <div>Items</div>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between w-100">
+                <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
+                <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between w-100">
+                <div class="" style="font-size: 12px;">Subtotal:</div>
+                <div class="fw-bold" style="font-size: 14px;">₦18399</div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between w-100">
+                <div class="fw-bold">Total:</div>
+                <div class="fw-bold" style="font-size: 18px;">₦18399</div>
+          </div>
+          <hr>
+          <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
+          <button class="btn btn-sm text-white mt-2 fw-bold" style="background-color: #33B27B;">Continue to Checkout</button>
+          <hr>
+          <div class="d-flex justify-content-between" style="margin-top: -10px; color: #CBCBCB;">
+                <div class="my-auto" style="font-size: 12px;">We accept:</div>
+                <img src="Images/mastercard.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/visa.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/verve.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/opay.png" class="my-auto" style="height: 15px;" alt="">
+          </div>
+          <div class="d-flex gap-2 mt-2">
+                <img class="my-auto" src="Images/padlock.jpeg" style="height: 30px;" alt="">
+                <div class="my-auto" style="font-size: 12px; color: #CBCBCB;">Transaction are 100% Safe and Secure</div>
+          </div>
         </div>
       </section>
     </div>
