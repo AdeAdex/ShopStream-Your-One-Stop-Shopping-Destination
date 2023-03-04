@@ -337,8 +337,92 @@ setBrowsingHistory = () => {
 
 currentProductIndex = localStorage.getItem("currentUserIndex");
 
+
+setEachCartItem = (eachTopDeal) => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct.map((eachUser, index) => {
+    eachShoppingCart.innerHTML += `
+    <div class="d-flex bg-white px-3 cart-details">
+    <div class="w-50 d-flex cart-img">
+      <img
+        src="Images/browsingHistory1.webp"
+        alt=""
+        style="width: 150px" class=""
+      />
+      <div class="d-flex flex-column gap-2 my-auto cart-name">
+        <div class="" style="width: 90%">
+          Oraimo Power Bank - Opd-p110d-10000mAh
+        </div>
+        <div class="d-flex gap-1">
+          <span class="my-auto" style="font-size: 12px">Sold by</span>
+          <div class="my-auto fw-bold sold-by" style="font-size: 14px">
+            YOMILINCON BRAND
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+      <div
+      class="d-flex flex-row cart-btn-container my-auto"
+    >
+      <button
+        class="btn btn-light btn-sm border fw-bold"
+        style="border-radius: 2px 0px 0px 2px"
+        onclick="decrement()"
+        id="minusBtn"
+      >
+        -
+      </button>
+      <button
+        class="btn btn-light btn-sm border px-3"
+        style="border-radius: 0px 0px 0px 0px"
+        id="totalButtonCart"
+      >
+        0
+      </button>
+      <button
+        class="btn btn-light btn-sm border fw-bold"
+        style="border-radius: 0px 2px 2px 0px"
+        onclick="increment()"
+        id="plusBtn"
+      >
+        +
+      </button>
+    </div>
+    <div class="d-flex flex-column  my-auto">
+      <div class="fw-bold fs-5">₦12999</div>
+      <div
+        class="d-flex gap-1"
+        style="color: #bdc7d6; font-size: 14px"
+      >
+        <div>₦12999</div>
+        <div>x</div>
+        <div>0</div>
+        <div>item</div>
+      </div>
+    </div>
+    </div>
+    <hr>
+    <div
+      class="text-end my-auto d-flex flex-column gap-1 cart-action"
+      style="width: 20%; font-size: 14px; color: #94004f"
+    >
+      <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
+        Save for Later
+      </div>
+      <div onclick="del()" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
+        Remove item
+      </div>
+    </div>
+  </div>
+    `
+  });
+}
+
 topDealProductPage = (eachTopDeal) => {
   // window.location.href = 'topDealProductPage.html'
+  productMain.style.setProperty("display", "block", "important")
   productPageDetails.innerHTML = "";
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
@@ -398,7 +482,7 @@ topDealProductPage = (eachTopDeal) => {
   </div>
   <hr />
   <div class="d-flex gap-4">
-   <button 
+   <button onclick="setEachCartItem()"
      class="text-capitalize btn w-50 text-white"
      style="background-color: #33b27b"
    >

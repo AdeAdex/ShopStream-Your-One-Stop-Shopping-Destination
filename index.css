@@ -312,7 +312,12 @@ nav .dropbtn:hover {
 
 
 
-
+#productMain {
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  height: 100vh !important;
+}
 
 
 
@@ -1026,6 +1031,24 @@ nav .dropbtn:hover {
     text-align: center;
     padding: 5px 0px;
     font-size: 12px;
+    color: black;
+  }
+
+  .shipping-info .div2 {
+    background-color: #F2F2F2 !important;
+  }
+
+  .div2 .details-off {
+    display: none;
+  }
+
+  .div2 .accept-payment {
+    justify-content: space-around !important;
+  }
+
+  .div2 .checkout-btn {
+    display: block !important;
+    margin-top: 50px;
   }
   
   
