@@ -13,7 +13,7 @@
     />
     <title>Adex Shopping Cart</title>
   </head>
-  <body>
+  <body class="cart-body">
     <nav
       class="nav"
       id="navBar"
@@ -1616,7 +1616,7 @@
         </div>
         <h1 class="fw-bold">Shopping Cart</h1>
       </section>
-      <section class="d-flex justify-content-between w-100">
+      <section class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2">
         <div>Subtotal (1 Item)</div>
         <div class="fw-bold" style="font-size: 14px">₦18000</div>
       </section>
@@ -1634,39 +1634,41 @@
         </button>
       </section>
       <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
-        <div class="w-75 d-flex flex-column gap-1 div1" style="">
+        <div class="w-75 d-flex flex-column gap-1 div1">
           <div
-            class="d-flex p-2 fw-bold"
+            class="d-flex py-2 px-4 fw-bold cart-head"
             style="background-color: #e6e6e6; font-size: 14px"
           >
             <span class="w-50">Items Details</span>
-            <span class="ps-4" style="width: 15%">Quantity</span>
-            <span class="" style="width: 20%">Item Price</span>
+            <div class="d-flex " style="width: 35%;">
+              <span class="text-center" style="width: 40%;">Quantity</span>
+              <span class="ps-5" style="width: 60%;">Item Price</span>
+            </div>
             <span class="text-end" style="width: 15%">Action</span>
           </div>
           <div id="eachShoppingCart">
-            <div class="d-flex bg-white px-3">
-              <div class="w-50 d-flex">
+            <div class="d-flex bg-white px-3 cart-details">
+              <div class="w-50 d-flex cart-img">
                 <img
                   src="Images/browsingHistory1.webp"
                   alt=""
-                  style="width: 150px"
+                  style="width: 150px" class=""
                 />
-                <div class="d-flex flex-column gap-2 my-auto">
+                <div class="d-flex flex-column gap-2 my-auto cart-name">
                   <div class="" style="width: 90%">
                     Oraimo Power Bank - Opd-p110d-10000mAh
                   </div>
                   <div class="d-flex gap-1">
                     <span class="my-auto" style="font-size: 12px">Sold by</span>
-                    <div class="my-auto fw-bold" style="font-size: 14px">
+                    <div class="my-auto fw-bold sold-by" style="font-size: 14px">
                       YOMILINCON BRAND
                     </div>
                   </div>
                 </div>
               </div>
-              <div
+              <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+                <div
                 class="d-flex flex-row cart-btn-container my-auto"
-                style="width: 15%"
               >
                 <button
                   class="btn btn-light btn-sm border fw-bold"
@@ -1692,7 +1694,7 @@
                   +
                 </button>
               </div>
-              <div class="d-flex flex-column gap-1 my-auto" style="width: 20%">
+              <div class="d-flex flex-column  my-auto">
                 <div class="fw-bold fs-5">₦12999</div>
                 <div
                   class="d-flex gap-1"
@@ -1704,9 +1706,11 @@
                   <div>item</div>
                 </div>
               </div>
+              </div>
+              <hr>
               <div
-                class="text-end my-auto d-flex flex-column gap-1"
-                style="width: 15%; font-size: 14px; color: #94004f"
+                class="text-end my-auto d-flex flex-column gap-1 cart-action"
+                style="width: 20%; font-size: 14px; color: #94004f"
               >
                 <div onclick="del()" class="" style="cursor: pointer">
                   Remove item

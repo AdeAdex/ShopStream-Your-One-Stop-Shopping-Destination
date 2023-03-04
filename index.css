@@ -397,6 +397,10 @@ nav .dropbtn:hover {
   cursor: pointer;
 }
 
+.cart-main .cart-total-on-small-screen {
+  display: none !important;
+}
+
 }
 
 
@@ -947,10 +951,15 @@ nav .dropbtn:hover {
 
 
   .cart-main {
-    margin-top: 100px;
+    margin-top: 60px;
   }
   .cart-main .cart-top div {
     display: none !important;
+  }
+
+  .cart-top {
+    height: auto !important;
+    background-color: inherit !important;
   }
   
   .cart-top h1 {
@@ -959,6 +968,7 @@ nav .dropbtn:hover {
 
   .shipping-info {
     flex-direction: column;
+    padding: 10px 2% !important;
   }
   .shipping-info .div1 {
     width: 100% !important;
@@ -966,6 +976,56 @@ nav .dropbtn:hover {
 
   .shipping-info .div2 {
     width: 100% !important;
+  }
+  .shipping-info .cart-head {
+    display: none !important;
+  }
+
+  #eachShoppingCart .cart-details {
+    flex-direction: column;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 10px;
+  }
+
+  .cart-details .cart-name {
+    font-size: 12px !important;
+  }
+
+  .cart-name div:first-child {
+    width: 100% !important;
+    font-weight: bold;
+  }
+  .cart-name .sold-by {
+    font-size: 12px !important;
+  }
+
+  .cart-details .cart-img {
+    width: 100% !important;
+  }
+
+  .cart-price {
+    width: 70% !important;
+  }
+
+  .cart-body #searchOnSmallScreen {
+    display: none !important;
+  }
+
+  .cart-details .cart-action {
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    gap: 20px !important;
+    padding: 0px 10px;
+  }
+
+  .cart-action div {
+    border: 1px solid #eee;
+    width: 50%;
+    text-align: center;
+    padding: 5px 0px;
+    font-size: 12px;
   }
   
   
