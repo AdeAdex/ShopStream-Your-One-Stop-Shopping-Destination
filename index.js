@@ -57,14 +57,9 @@ closeThis = () => {
     shut = true;
   }
   if (shut) {
-    // alert("sise")
   }
 };
 
-// closeAll = () => {
-//   alert("Yoooo")
-//   // smallScreenDropdown.style.setProperty("display", "none", "important");
-// }
 
 dropDropdown = (parameter) => {
   bringItUp.innerHTML = "";
@@ -239,6 +234,7 @@ setTodaysDeal = () => {
       productOldPrice: adminOldPrice.value,
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
+      productBy: adminDealBy.value,
       productIDNumber: Math.floor(Math.random() * 1000000),
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
       productOff: Math.ceil(
@@ -352,98 +348,19 @@ setBrowsingHistory = () => {
 
 currentProductIndex = localStorage.getItem("currentUserIndex");
 
-setEachCartItem = (eachTopDea) => {
+setEachCartItem = () => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     let myCartHistory = {
       cartName: eachTopDealProduct[index].productSelectName,
       cartPrice: eachTopDealProduct[index].productSelectNewPrice,
+      cartSoldBy: eachTopDealProduct[index].productSelectSoldBy
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
     window.location.href = "shoppingCart.html";
   }
-  
-  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  // eachTopDealProduct = allProducts[currentProductIndex].topDeal;
-  // eachTopDealProduct.map((eachUser, index) => {
-  //   eachShoppingCart.innerHTML += `
-  //   <div class="d-flex bg-white px-3 cart-details">
-  //   <div class="w-50 d-flex cart-img">
-  //     <img
-  //       src="Images/browsingHistory1.webp"
-  //       alt=""
-  //       style="width: 150px" class=""
-  //     />
-  //     <div class="d-flex flex-column gap-2 my-auto cart-name">
-  //       <div class="" style="width: 90%">
-  //         Oraimo Power Bank - Opd-p110d-10000mAh
-  //       </div>
-  //       <div class="d-flex gap-1">
-  //         <span class="my-auto" style="font-size: 12px">Sold by</span>
-  //         <div class="my-auto fw-bold sold-by" style="font-size: 14px">
-  //           YOMILINCON BRAND
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   <div class="d-flex justify-content-around cart-price" style="width: 30%;">
-  //     <div
-  //     class="d-flex flex-row cart-btn-container my-auto"
-  //   >
-  //     <button
-  //       class="btn btn-light btn-sm border fw-bold"
-  //       style="border-radius: 2px 0px 0px 2px"
-  //       onclick="decrement()"
-  //       id="minusBtn"
-  //     >
-  //       -
-  //     </button>
-  //     <button
-  //       class="btn btn-light btn-sm border px-3"
-  //       style="border-radius: 0px 0px 0px 0px"
-  //       id="totalButtonCart"
-  //     >
-  //       0
-  //     </button>
-  //     <button
-  //       class="btn btn-light btn-sm border fw-bold"
-  //       style="border-radius: 0px 2px 2px 0px"
-  //       onclick="increment()"
-  //       id="plusBtn"
-  //     >
-  //       +
-  //     </button>
-  //   </div>
-  //   <div class="d-flex flex-column  my-auto">
-  //     <div class="fw-bold fs-5">₦12999</div>
-  //     <div
-  //       class="d-flex gap-1"
-  //       style="color: #bdc7d6; font-size: 14px"
-  //     >
-  //       <div>₦12999</div>
-  //       <div>x</div>
-  //       <div>0</div>
-  //       <div>item</div>
-  //     </div>
-  //   </div>
-  //   </div>
-  //   <hr>
-  //   <div
-  //     class="text-end my-auto d-flex flex-column gap-1 cart-action"
-  //     style="width: 20%; font-size: 14px; color: #94004f"
-  //   >
-  //     <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
-  //       Save for Later
-  //     </div>
-  //     <div onclick="del(${index})" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
-  //       Remove item
-  //     </div>
-  //   </div>
-  // </div>
-  //   `
-  // });
 };
 
 del = (userDelete) => {
@@ -453,97 +370,85 @@ del = (userDelete) => {
 }
 
 showMyCart = () => {
-  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachShoppingCart.innerHTML = ""
+  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     eachShoppingCart.innerHTML += `
-    <h2>${eachTopDealProduct[index].cartName}</h2>
-    <h2>${eachTopDealProduct[index].cartPrice}</h2>
-    <button onclick="del(${index})">Remove</button>
-    `
-
-  //   eachShoppingCart.innerHTML += `
-  //    <div class="d-flex bg-white px-3 cart-details">
-  //    <div class="w-50 d-flex cart-img">
-  //      <img
-  //        src="Images/browsingHistory1.webp"
-  //        alt=""
-  //        style="width: 150px" class=""
-  //      />
-  //      <div class="d-flex flex-column gap-2 my-auto cart-name">
-  //        <div class="" style="width: 90%">
-  //          Oraimo Power Bank - Opd-p110d-10000mAh
-  //        </div>
-  //        <div class="d-flex gap-1">
-  //          <span class="my-auto" style="font-size: 12px">Sold by</span>
-  //          <div class="my-auto fw-bold sold-by" style="font-size: 14px">
-  //            YOMILINCON BRAND
-  //          </div>
-  //        </div>
-  //      </div>
-  //    </div>
-  //    <div class="d-flex justify-content-around cart-price" style="width: 30%;">
-  //      <div
-  //      class="d-flex flex-row cart-btn-container my-auto"
-  //    >
-  //      <button
-  //        class="btn btn-light btn-sm border fw-bold"
-  //        style="border-radius: 2px 0px 0px 2px"
-  //        onclick="decrement()"
-  //        id="minusBtn"
-  //      >
-  //        -
-  //      </button>
-  //      <button
-  //        class="btn btn-light btn-sm border px-3"
-  //        style="border-radius: 0px 0px 0px 0px"
-  //        id="totalButtonCart"
-  //      >
-  //        0
-  //      </button>
-  //      <button
-  //        class="btn btn-light btn-sm border fw-bold"
-  //        style="border-radius: 0px 2px 2px 0px"
-  //        onclick="increment()"
-  //        id="plusBtn"
-  //      >
-  //        +
-  //      </button>
-  //    </div>
-  //    <div class="d-flex flex-column  my-auto">
-  //      <div class="fw-bold fs-5">₦12999</div>
-  //      <div
-  //        class="d-flex gap-1"
-  //        style="color: #bdc7d6; font-size: 14px"
-  //      >
-  //        <div>₦12999</div>
-  //        <div>x</div>
-  //        <div>0</div>
-  //        <div>item</div>
-  //      </div>
-  //    </div>
-  //    </div>
-  //    <hr>
-  //    <div
-  //      class="text-end my-auto d-flex flex-column gap-1 cart-action"
-  //      style="width: 20%; font-size: 14px; color: #94004f"
-  //    >
-  //      <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
-  //        Save for Later
-  //      </div>
-  //      <div onclick="del(${index})" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
-  //        Remove item
-  //      </div>
-  //    </div>
-  //  </div>
-  //    `;
+     <div class="d-flex bg-white px-3 cart-details">
+     <div class="w-50 d-flex cart-img">
+       <img
+         src="Images/browsingHistory1.webp"
+         alt=""
+         style="width: 150px" class=""
+       />
+       <div class="d-flex flex-column gap-2 my-auto cart-name">
+         <div class="text-capitalize" style="width: 90%">${eachTopDealProduct[index].cartName}</div>
+         <div class="d-flex gap-1">
+           <span class="my-auto" style="font-size: 12px">Sold by</span>
+           <div class="my-auto fw-bold text-capitalize sold-by" style="font-size: 14px">${eachTopDealProduct[index].cartSoldBy}</div>
+         </div>
+       </div>
+     </div>
+     <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+       <div
+       class="d-flex flex-row cart-btn-container my-auto"
+     >
+       <button
+         class="btn btn-light btn-sm border fw-bold"
+         style="border-radius: 2px 0px 0px 2px"
+         onclick="decrement()"
+         id="minusBtn"
+       >
+         -
+       </button>
+       <button
+         class="btn btn-light btn-sm border px-3"
+         style="border-radius: 0px 0px 0px 0px"
+         id="totalButtonCart"
+       >
+         0
+       </button>
+       <button
+         class="btn btn-light btn-sm border fw-bold"
+         style="border-radius: 0px 2px 2px 0px"
+         onclick="increment()"
+         id="plusBtn"
+       >
+         +
+       </button>
+     </div>
+     <div class="d-flex flex-column  my-auto">
+       <div class="fw-bold fs-5">₦${eachTopDealProduct[index].cartPrice}</div>
+       <div
+         class="d-flex gap-1"
+         style="color: #bdc7d6; font-size: 14px"
+       >
+         <div>₦${eachTopDealProduct[index].cartPrice}</div>
+         <div>x</div>
+         <div>0</div>
+         <div>item</div>
+       </div>
+     </div>
+     </div>
+     <hr>
+     <div
+       class="text-end my-auto d-flex flex-column gap-1 cart-action"
+       style="width: 20%; font-size: 14px; color: #94004f"
+     >
+       <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
+         Save for Later
+       </div>
+       <div onclick="del(${index})" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
+         Remove item
+       </div>
+     </div>
+   </div>
+     `;
   });
 };
 
 topDealProductPage = (eachTopDeal) => {
-  // window.location.href = 'topDealProductPage.html'
-  // productMain.style.setProperty("display", "block", "important");
-  // productPageDetails.innerHTML = "";
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
   for (let index = 0; index < allProducts.length; index++) {
@@ -553,200 +458,24 @@ topDealProductPage = (eachTopDeal) => {
       productSelectOldPrice: eachTopDealProduct[eachTopDeal].productOldPrice,
       productSelectSavePrice: eachTopDealProduct[eachTopDeal].productSavePrice,
       productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
+      productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
       myProductSelect: []
     }
     allProducts[index].myProductSelect.splice(0, 1, productSelect);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   }
     window.location.href = "topDealProductPage.html";
-
-  
-
-  // eachTopDealProduct.map((eachUser, index) => {
-  //   productPageDetails.innerHTML = `
-    
-  //   <h2>${eachTopDealProduct[eachTopDeal].productName}</h2>
-  // <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
-  //  Product Code:
-  //  <div class="text-dark" id="productID">${eachTopDealProduct[eachTopDeal].productIDNumber}</div>
-  // </h5>
-  // <hr />
-  // <div class="d-flex gap-3">
-  //  <h4 class="fw-bold my-auto">₦${eachTopDealProduct[eachTopDeal].productNewPrice}</h4>
-  //  <h6 class="my-auto text-decoration-line-through text-secondary">
-  //  ₦${eachTopDealProduct[eachTopDeal].productOldPrice}
-  //  </h6>
-  //  <h6 class="my-auto text-success" style="font-size: 12px">
-  //  ₦${eachTopDealProduct[eachTopDeal].productSavePrice}
-  //  </h6>
-  // </div>
-  // <hr />
-  // <div class="d-flex gap-4">
-  //  Quantity:
-  //  <div class="d-flex cart-btn-container">
-  //    <button
-  //      class="btn btn-light btn-sm border fw-bold"
-  //      style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
-  //    >
-  //      -
-  //    </button>
-  //    <button
-  //      class="btn btn-light btn-sm border px-3"
-  //      style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
-  //    >
-  //      0
-  //    </button>
-  //    <button
-  //      class="btn btn-light btn-sm border fw-bold"
-  //      style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
-  //    >
-  //      +
-  //    </button>
-  //  </div>
-  // </div>
-  
-  // <div class="d-flex flex-column mt-4">
-  //  <span class="text-secondary" style="font-size: 14px"
-  //    >Call us for bulk purchases:</span
-  //  >
-  //  <a
-  //    href="tel:+2347033959586"
-  //    class="text-decoration-none"
-  //    style="font-size: 14px; color: #ed017f"
-  //    >Click here to show phone number</a
-  //  >
-  // </div>
-  // <hr />
-  // <div class="d-flex gap-4">
-  //  <button onclick="setEachCartItem(${index})"
-  //    class="text-capitalize btn w-50 text-white"
-  //    style="background-color: #33b27b"
-  //  >
-  //    buy now
-  //  </button>
-  //  <div class="d-flex gap-2">
-  //    <i
-  //      class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
-  //      style="
-  //        cursor: pointer;
-  //        border-radius: 50%;
-  //        width: 40px;
-  //        height: 40px;
-  //        background-color: gray;
-  //        padding: 10px 0px;
-  //      "
-  //    ></i>
-  //    <span class="my-auto text-capitalize" style="font-size: 14px"
-  //      >save For Later</span
-  //    >
-  //  </div>
-  // </div>
-  // <div
-  //  class="d-flex gap-3 mt-4"
-  //  style="height: 70px; background-color: #f8f8f8"
-  // >
-  //  <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
-  //  <a href="" class="my-auto" style="color: #ed017f"
-  //    >Get free delivery on items above ₦4,599 in LAGOS, ABUJA &
-  //    PORTHARCOURT</a
-  //  >
-  // </div>
-  // <div class="d-flex mt-4 gap-5">
-  //  <div class="d-flex position-relative gap-4">
-  //    <img
-  //      src="Images/pink-building-icon.png"
-  //      style="height: 30px"
-  //      alt=""
-  //    />
-  //    <img
-  //      src="Images/pink-truck-icon.png"
-  //      style="height: 30px; z-index: 1 !important"
-  //      class="position-absolute"
-  //      alt=""
-  //    />
-  //    <div class="my-auto" style="font-size: 14px">
-  //      Pickup & Pay on Collection Available
-  //    </div>
-  //  </div>
-  //  <div class="d-flex gap-3">
-  //    <img
-  //      src="Images/pink-building2.png"
-  //      style="height: 30px"
-  //      alt=""
-  //    />
-  //    <div class="my-auto" style="font-size: 14px">
-  //      Konga Warehouse
-  //    </div>
-  //  </div>
-  // </div>
-  // <hr />
-  // <div class="d-flex gap-3" style="font-size: 14px">
-  //  <div>Next Day Delivery Available at:</div>
-  //  <div
-  //    class="w-75 py-2 px-2"
-  //    style="height: 50px; background-color: #f8f8f8"
-  //  >
-  //    <div
-  //      class="d-flex justify-content-center"
-  //      style="
-  //        width: 80px;
-  //        height: 100%;
-  //        border-radius: 45%;
-  //        background-color: orange;
-  //        padding-top: 4px;
-  //      "
-  //    >
-  //      Lagos
-  //    </div>
-  //  </div>
-  // </div>
-  // <div class="d-grid gap-2 mt-4" style="font-size: 14px">
-  //  <div class="">Share With Friends</div>
-  //  <div class="d-flex gap-3">
-  //    <i
-  //      class="fab fa-facebook-f border d-flex justify-content-center"
-  //      style="
-  //        width: 30px;
-  //        height: 30px;
-  //        border-radius: 50%;
-  //        padding: 7px 0px;
-  //        color: #39579a;
-  //      "
-  //    ></i>
-  //    <i
-  //      class="fab fa-twitter border d-flex justify-content-center"
-  //      style="
-  //        width: 30px;
-  //        height: 30px;
-  //        border-radius: 50%;
-  //        padding: 7px 0px;
-  //        color: #03a9f4;
-  //      "
-  //    ></i>
-  //    <i
-  //      class="fab fa-whatsapp border d-flex justify-content-center"
-  //      style="
-  //        width: 30px;
-  //        height: 30px;
-  //        border-radius: 50%;
-  //        padding: 7px 0px;
-  //        color: #3ec850;
-  //      "
-  //    ></i>
-  //  </div>
-  // </div>
-  //   `;
-  // });
 };
 
 hey = () => {
   productPageDetails.innerHTML = "";
+  productPageSoldBy.innerHTML =  "";
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
      eachTopDealProduct.map((eachUser, index) => {
      productPageDetails.innerHTML = `
-    
-     <h2>${eachTopDealProduct[index].productSelectName}</h2>
+     
+     <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
     Product Code:
     <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
@@ -917,6 +646,19 @@ hey = () => {
     </div>
    </div>
      `;
+
+     productPageSoldBy.innerHTML = `
+     <div
+            class="d-flex gap-3 mt-4"
+            style="height: 80px; background-color: #fff"
+          >
+            <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
+            <div class="my-auto">Sold by</div>
+            <a href="" class="my-auto text-capitalize" style="color: #ed017f"
+              >${eachTopDealProduct[index].productSelectSoldBy}</a
+            >
+          </div>
+     `
    });
 }
 
