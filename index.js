@@ -454,9 +454,9 @@ let count = 0;
 increment = (myIncrement) => {
   count += 1;
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
-  eachTopDealProduct.map((eachUser, index) => {
-  eachTopDealProduct[myIncrement].eachCartTotalPrice = Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) + Number(eachTopDealProduct[myIncrement].cartPrice)
-});
+  // eachTopDealProduct.map((eachUser, index) => {
+  eachTopDealProduct[myIncrement].eachCartTotalPrice = Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +  Number(eachTopDealProduct[myIncrement].cartPrice)
+// });
 localStorage.setItem("companyProduct", JSON.stringify(allProducts));
 showMyCart()
 
