@@ -474,12 +474,11 @@ hey = () => {
   eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
      eachTopDealProduct.map((eachUser, index) => {
      productPageDetails.innerHTML = `
-     
      <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
-    Product Code:
-    <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
+    Product Code: <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
    </h5>
+   <h5 class="d-flex gap-2 text-capitalize" style="font-size: 14px; color: gray">Brand: ${eachTopDealProduct[index].productSelectName}</h5>
    <hr />
    <div class="d-flex gap-3">
     <h4 class="fw-bold my-auto">₦${eachTopDealProduct[index].productSelectNewPrice}</h4>
@@ -527,7 +526,7 @@ hey = () => {
     >
    </div>
    <hr />
-   <div class="d-flex gap-4">
+   <div class="d-flex gap-4 buy-now-and-save-btn">
     <button onclick="setEachCartItem(${index})"
       class="text-capitalize btn w-50 text-white"
       style="background-color: #33b27b"

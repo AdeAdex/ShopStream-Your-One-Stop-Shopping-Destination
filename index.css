@@ -844,7 +844,7 @@ nav .dropbtn:hover {
   #productCarouselContainer {
     flex-direction: column;
   }
-  #productCarouselContainer div {
+  #productCarouselContainer .div1, #productCarouselContainer .div2 {
     width: 100% !important;
   }
 
@@ -856,14 +856,18 @@ nav .dropbtn:hover {
     /* bottom: 40px; */
   }
 
+  .buy-now-and-save-btn button:first-child {
+    width: 80% !important;
+  }
+
+  .buy-now-and-save-btn button:last-child {
+    width: 20% !important;
+  }
+
   #productCarouselContainer .carousel-indicators img {
     padding: 0px !important;
     height: 50px !important;
   }
-/* 
-  .carousel-inner, .carousel-indicators  {
- 
-  } */
 
   #productCarousel .carousel-inner img {
     height: 350px !important;
@@ -874,10 +878,6 @@ nav .dropbtn:hover {
     padding: 10px !important;
     margin-top: 90px !important;
   }
-
-  /* #productCarousel {
-
-  } */
 
   #overview {
     padding: 0px !important;
