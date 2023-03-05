@@ -421,7 +421,7 @@ showMyCart = () => {
        </button>
      </div>
      <div class="d-flex flex-column  my-auto">
-       <div class="fw-bold fs-5" id="mumuPrice"></div>
+       <div class="fw-bold fs-5" id="mumuPrice">₦${eachTopDealProduct[index].eachCartTotalPrice}</div>
        <div
          class="d-flex gap-1"
          style="color: #bdc7d6; font-size: 14px"
@@ -458,20 +458,27 @@ increment = (myIncrement) => {
   eachTopDealProduct[myIncrement].eachCartTotalPrice = Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) + Number(eachTopDealProduct[myIncrement].cartPrice)
 });
 localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+showMyCart()
 
 
   // totalCart.innerHTML = count;
   // totalButtonCart.innerHTML = count;
 };
 decrement = (myDecrement) => {
-  if (totalCart.innerHTML === 1) {
-    minusBtn.disabled = true;
-  } else if (totalCart.innerHTML >= 1) {
+  // if (totalCart.innerHTML === 1) {
+    // minusBtn.disabled = true;
+  // } else if (totalCart.innerHTML >= 1) {
     minusBtn.disabled = false;
     count -= 1;
-    totalCart.innerHTML = count;
-    totalButtonCart.innerHTML = count;
-  }
+    eachTopDealProduct = allProducts[currentProductIndex].myCart;
+    eachTopDealProduct.map((eachUser, index) => {
+    eachTopDealProduct[myDecrement].eachCartTotalPrice = Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) - Number(eachTopDealProduct[myDecrement].cartPrice)
+});
+localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+showMyCart()
+    // totalCart.innerHTML = count;
+    // totalButtonCart.innerHTML = count;
+  // }
 };
 
 topDealProductPage = (eachTopDeal) => {
@@ -523,7 +530,7 @@ hey = () => {
     <div class="d-flex cart-btn-container">
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
+        style="border-radius: 2px 0px 0px 2px" onclick="s(${index})" id="minusBtn"
       >
         -
       </button>
@@ -535,7 +542,7 @@ hey = () => {
       </button>
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
+        style="border-radius: 0px 2px 2px 0px" onclick="ds(${index})" id="plusBtn"
       >
         +
       </button>
