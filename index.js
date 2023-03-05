@@ -355,7 +355,8 @@ setEachCartItem = () => {
     let myCartHistory = {
       cartName: eachTopDealProduct[index].productSelectName,
       cartPrice: eachTopDealProduct[index].productSelectNewPrice,
-      cartSoldBy: eachTopDealProduct[index].productSelectSoldBy
+      cartSoldBy: eachTopDealProduct[index].productSelectSoldBy,
+      eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -397,7 +398,7 @@ showMyCart = () => {
        <button
          class="btn btn-light btn-sm border fw-bold"
          style="border-radius: 2px 0px 0px 2px"
-         onclick="decrement()"
+         onclick="decrement(${index})"
          id="minusBtn"
        >
          -
@@ -412,14 +413,14 @@ showMyCart = () => {
        <button
          class="btn btn-light btn-sm border fw-bold"
          style="border-radius: 0px 2px 2px 0px"
-         onclick="increment()"
+         onclick="increment(${index})"
          id="plusBtn"
        >
          +
        </button>
      </div>
      <div class="d-flex flex-column  my-auto">
-       <div class="fw-bold fs-5">₦${eachTopDealProduct[index].cartPrice}</div>
+       <div class="fw-bold fs-5" id="mumuPrice">${eachTopDealProduct[index].eachCartTotalPrice}</div>
        <div
          class="d-flex gap-1"
          style="color: #bdc7d6; font-size: 14px"
@@ -448,6 +449,31 @@ showMyCart = () => {
   });
 };
 
+let count = 0;
+increment = (myIncrement) => {
+  count += 1;
+  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachTopDealProduct.map((eachUser, index) => {
+  eachTopDealProduct[index].eachCartTotalPrice = Number(eachTopDealProduct[index].eachCartTotalPrice) + Number(eachTopDealProduct[index].cartPrice)
+  // alert(eachTopDealProduct[index].cartPrice)
+});
+localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+
+
+  // totalCart.innerHTML = count;
+  // totalButtonCart.innerHTML = count;
+};
+decrement = (myDecrement) => {
+  if (totalCart.innerHTML === 1) {
+    minusBtn.disabled = true;
+  } else if (totalCart.innerHTML >= 1) {
+    minusBtn.disabled = false;
+    count -= 1;
+    totalCart.innerHTML = count;
+    totalButtonCart.innerHTML = count;
+  }
+};
+
 topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
@@ -466,6 +492,7 @@ topDealProductPage = (eachTopDeal) => {
   }
     window.location.href = "topDealProductPage.html";
 };
+
 
 hey = () => {
   productPageDetails.innerHTML = "";
@@ -1075,22 +1102,7 @@ function readMore() {
   }
 }
 
-let count = 0;
-increment = () => {
-  count += 1;
-  totalCart.innerHTML = count;
-  totalButtonCart.innerHTML = count;
-};
-decrement = () => {
-  if (totalCart.innerHTML === 1) {
-    minusBtn.disabled = true;
-  } else if (totalCart.innerHTML >= 1) {
-    minusBtn.disabled = false;
-    count -= 1;
-    totalCart.innerHTML = count;
-    totalButtonCart.innerHTML = count;
-  }
-};
+
 
 // let footerIcon = document.querySelectorAll('.fa-plus')
 // texting = (eachIcon) => {
