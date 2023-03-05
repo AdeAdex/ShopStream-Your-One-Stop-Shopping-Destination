@@ -15,25 +15,25 @@
 function navDropdown(parameters) {
   dropIcon.classList.toggle("fa-times");
   let myNav = document.getElementById("navBar");
-  if (myNav.className === "nav" && parameters == 'dropdownAll') {
+  if (myNav.className === "nav" && parameters == "dropdownAll") {
     myNav.className += " responsive";
     category.style.setProperty("background-color", "#535353", "important");
     category.style.setProperty("color", "white", "important");
-    cate.style.setProperty("justify-content", "center", "important")
-    cateAngle.style.setProperty("display", "flex", "important")
-  } else if (myNav.className === "nav" && parameters == 'browseAll') {
+    cate.style.setProperty("justify-content", "center", "important");
+    cateAngle.style.setProperty("display", "flex", "important");
+  } else if (myNav.className === "nav" && parameters == "browseAll") {
     myNav.className += " responsive";
     loginSignupOnSmallScreen.style.setProperty("display", "none", "important");
     tracksOnSmallScreen.style.setProperty("display", "none", "important");
     category.style.setProperty("background-color", "#535353", "important");
     category.style.setProperty("color", "white", "important");
-    cate.style.setProperty("justify-content", "center", "important")
-    cateAngle.style.setProperty("display", "flex", "important")
+    cate.style.setProperty("justify-content", "center", "important");
+    cateAngle.style.setProperty("display", "flex", "important");
   } else {
     myNav.className = "nav";
     // dropIcon.classList.toggle("fa-border-all");
   }
-};
+}
 
 window.onscroll = function () {
   scrollFunction();
@@ -46,21 +46,20 @@ function scrollFunction() {
   ) {
     navBar.style.top = "-40px";
   } else {
-
   }
 }
 
 closeThis = () => {
   shut = false;
-  cate.innerText = `Categories`
-  bringItUp.style.setProperty("display", "none", "important")
-  if (cate.innerText === `Categories`){
+  cate.innerText = `Categories`;
+  bringItUp.style.setProperty("display", "none", "important");
+  if (cate.innerText === `Categories`) {
     shut = true;
-  } 
+  }
   if (shut) {
     // alert("sise")
   }
-}
+};
 
 // closeAll = () => {
 //   alert("Yoooo")
@@ -68,10 +67,10 @@ closeThis = () => {
 // }
 
 dropDropdown = (parameter) => {
-  bringItUp.innerHTML = ""
-  bringItUp.style.setProperty("display", "flex", "important")
+  bringItUp.innerHTML = "";
+  bringItUp.style.setProperty("display", "flex", "important");
   if (parameter == "computer") {
-    cate.innerText = `Computers and Accessories`
+    cate.innerText = `Computers and Accessories`;
     bringItUp.innerHTML = `
     <a href="" class="d-flex justify-content-between">laptops<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">desktop and monitors<i class="fas fa-angle-right fs-3"></i></a>
@@ -85,9 +84,9 @@ dropDropdown = (parameter) => {
     <i class="fas fa-phone my-auto"></i>
     <div class="my-auto">Contact Us</div>
     </footer>
-    `
+    `;
   } else if (parameter == "phone") {
-    cate.innerText = `Phones and Tablets`
+    cate.innerText = `Phones and Tablets`;
     bringItUp.innerHTML = `
     <a href="" class="d-flex justify-content-between">mobile phones<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">mobile phones accessories<i class="fas fa-angle-right fs-3"></i></a>
@@ -98,9 +97,9 @@ dropDropdown = (parameter) => {
     <i class="fas fa-phone my-auto"></i>
     <div class="my-auto">Contact Us</div>
     </footer>
-    `
+    `;
   } else if (parameter == "electronics") {
-    cate.innerText = `Electronics`
+    cate.innerText = `Electronics`;
     bringItUp.innerHTML = `
     <a href="" class="d-flex justify-content-between">television<i class="fas fa-angle-right fs-3"></i></a>
     <a href="" class="d-flex justify-content-between">DVD players and recorders<i class="fas fa-angle-right fs-3"></i></a>
@@ -113,9 +112,9 @@ dropDropdown = (parameter) => {
     <i class="fas fa-phone my-auto"></i>
     <div class="my-auto">Contact Us</div>
     </footer>
-    `
+    `;
   }
-}
+};
 
 // function topFunction() {
 //   document.body.scrollTop = 0;
@@ -187,6 +186,8 @@ text = () => {
     fitnessToolsEquipment: [],
     kidsWearAccessories: [],
     topDealOnTelevision: [],
+    myCart: [],
+    myProductSelect: [],
   };
 
   allProducts.push(products);
@@ -240,7 +241,10 @@ setTodaysDeal = () => {
       productNewPrice: adminNewPrice.value,
       productIDNumber: Math.floor(Math.random() * 1000000),
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
+      productOff: Math.ceil(
+        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
+          100
+      ),
     };
     allProducts[index].topDeal.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -257,7 +261,10 @@ setSponsored = () => {
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
+      productOff: Math.ceil(
+        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
+          100
+      ),
     };
     allProducts[index].sponsorProduct.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -274,7 +281,10 @@ setRecommended = () => {
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
+      productOff: Math.ceil(
+        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
+          100
+      ),
     };
     allProducts[index].recommendedProduct.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -291,7 +301,10 @@ setInspired = () => {
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
+      productOff: Math.ceil(
+        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
+          100
+      ),
     };
     allProducts[index].inspiredProduct.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -308,14 +321,16 @@ setBrowsingHistory = () => {
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(((adminOldPrice.value - adminNewPrice.value) / (adminOldPrice.value)) * 100)
+      productOff: Math.ceil(
+        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
+          100
+      ),
     };
     allProducts[index].browsingProduct.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
     // localStorage.setItem("currentUserIndex", index);
   }
 };
-
 
 // if(localStorage.getItem('img-BASE64')){
 //   document.querySelector('#img').src=localStorage.getItem('img-BASE64')
@@ -337,283 +352,573 @@ setBrowsingHistory = () => {
 
 currentProductIndex = localStorage.getItem("currentUserIndex");
 
-
-setEachCartItem = (eachTopDeal) => {
+setEachCartItem = (eachTopDea) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
+  for (let index = 0; index < eachTopDealProduct.length; index++) {
+    let myCartHistory = {
+      cartName: eachTopDealProduct[index].productSelectName,
+      cartPrice: eachTopDealProduct[index].productSelectNewPrice,
+    };
+    allProducts[index].myCart.push(myCartHistory);
+    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    window.location.href = "shoppingCart.html";
+  }
+  
+  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  // eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  // eachTopDealProduct.map((eachUser, index) => {
+  //   eachShoppingCart.innerHTML += `
+  //   <div class="d-flex bg-white px-3 cart-details">
+  //   <div class="w-50 d-flex cart-img">
+  //     <img
+  //       src="Images/browsingHistory1.webp"
+  //       alt=""
+  //       style="width: 150px" class=""
+  //     />
+  //     <div class="d-flex flex-column gap-2 my-auto cart-name">
+  //       <div class="" style="width: 90%">
+  //         Oraimo Power Bank - Opd-p110d-10000mAh
+  //       </div>
+  //       <div class="d-flex gap-1">
+  //         <span class="my-auto" style="font-size: 12px">Sold by</span>
+  //         <div class="my-auto fw-bold sold-by" style="font-size: 14px">
+  //           YOMILINCON BRAND
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+  //     <div
+  //     class="d-flex flex-row cart-btn-container my-auto"
+  //   >
+  //     <button
+  //       class="btn btn-light btn-sm border fw-bold"
+  //       style="border-radius: 2px 0px 0px 2px"
+  //       onclick="decrement()"
+  //       id="minusBtn"
+  //     >
+  //       -
+  //     </button>
+  //     <button
+  //       class="btn btn-light btn-sm border px-3"
+  //       style="border-radius: 0px 0px 0px 0px"
+  //       id="totalButtonCart"
+  //     >
+  //       0
+  //     </button>
+  //     <button
+  //       class="btn btn-light btn-sm border fw-bold"
+  //       style="border-radius: 0px 2px 2px 0px"
+  //       onclick="increment()"
+  //       id="plusBtn"
+  //     >
+  //       +
+  //     </button>
+  //   </div>
+  //   <div class="d-flex flex-column  my-auto">
+  //     <div class="fw-bold fs-5">₦12999</div>
+  //     <div
+  //       class="d-flex gap-1"
+  //       style="color: #bdc7d6; font-size: 14px"
+  //     >
+  //       <div>₦12999</div>
+  //       <div>x</div>
+  //       <div>0</div>
+  //       <div>item</div>
+  //     </div>
+  //   </div>
+  //   </div>
+  //   <hr>
+  //   <div
+  //     class="text-end my-auto d-flex flex-column gap-1 cart-action"
+  //     style="width: 20%; font-size: 14px; color: #94004f"
+  //   >
+  //     <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
+  //       Save for Later
+  //     </div>
+  //     <div onclick="del(${index})" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
+  //       Remove item
+  //     </div>
+  //   </div>
+  // </div>
+  //   `
+  // });
+};
+
+del = (userDelete) => {
+  allProducts[currentProductIndex].myCart.splice(userDelete, 1)
+  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  location.reload()
+}
+
+showMyCart = () => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     eachShoppingCart.innerHTML += `
-    <div class="d-flex bg-white px-3 cart-details">
-    <div class="w-50 d-flex cart-img">
-      <img
-        src="Images/browsingHistory1.webp"
-        alt=""
-        style="width: 150px" class=""
-      />
-      <div class="d-flex flex-column gap-2 my-auto cart-name">
-        <div class="" style="width: 90%">
-          Oraimo Power Bank - Opd-p110d-10000mAh
-        </div>
-        <div class="d-flex gap-1">
-          <span class="my-auto" style="font-size: 12px">Sold by</span>
-          <div class="my-auto fw-bold sold-by" style="font-size: 14px">
-            YOMILINCON BRAND
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-around cart-price" style="width: 30%;">
-      <div
-      class="d-flex flex-row cart-btn-container my-auto"
-    >
+    <h2>${eachTopDealProduct[index].cartName}</h2>
+    <h2>${eachTopDealProduct[index].cartPrice}</h2>
+    <button onclick="del(${index})">Remove</button>
+    `
+
+  //   eachShoppingCart.innerHTML += `
+  //    <div class="d-flex bg-white px-3 cart-details">
+  //    <div class="w-50 d-flex cart-img">
+  //      <img
+  //        src="Images/browsingHistory1.webp"
+  //        alt=""
+  //        style="width: 150px" class=""
+  //      />
+  //      <div class="d-flex flex-column gap-2 my-auto cart-name">
+  //        <div class="" style="width: 90%">
+  //          Oraimo Power Bank - Opd-p110d-10000mAh
+  //        </div>
+  //        <div class="d-flex gap-1">
+  //          <span class="my-auto" style="font-size: 12px">Sold by</span>
+  //          <div class="my-auto fw-bold sold-by" style="font-size: 14px">
+  //            YOMILINCON BRAND
+  //          </div>
+  //        </div>
+  //      </div>
+  //    </div>
+  //    <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+  //      <div
+  //      class="d-flex flex-row cart-btn-container my-auto"
+  //    >
+  //      <button
+  //        class="btn btn-light btn-sm border fw-bold"
+  //        style="border-radius: 2px 0px 0px 2px"
+  //        onclick="decrement()"
+  //        id="minusBtn"
+  //      >
+  //        -
+  //      </button>
+  //      <button
+  //        class="btn btn-light btn-sm border px-3"
+  //        style="border-radius: 0px 0px 0px 0px"
+  //        id="totalButtonCart"
+  //      >
+  //        0
+  //      </button>
+  //      <button
+  //        class="btn btn-light btn-sm border fw-bold"
+  //        style="border-radius: 0px 2px 2px 0px"
+  //        onclick="increment()"
+  //        id="plusBtn"
+  //      >
+  //        +
+  //      </button>
+  //    </div>
+  //    <div class="d-flex flex-column  my-auto">
+  //      <div class="fw-bold fs-5">₦12999</div>
+  //      <div
+  //        class="d-flex gap-1"
+  //        style="color: #bdc7d6; font-size: 14px"
+  //      >
+  //        <div>₦12999</div>
+  //        <div>x</div>
+  //        <div>0</div>
+  //        <div>item</div>
+  //      </div>
+  //    </div>
+  //    </div>
+  //    <hr>
+  //    <div
+  //      class="text-end my-auto d-flex flex-column gap-1 cart-action"
+  //      style="width: 20%; font-size: 14px; color: #94004f"
+  //    >
+  //      <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
+  //        Save for Later
+  //      </div>
+  //      <div onclick="del(${index})" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
+  //        Remove item
+  //      </div>
+  //    </div>
+  //  </div>
+  //    `;
+  });
+};
+
+topDealProductPage = (eachTopDeal) => {
+  // window.location.href = 'topDealProductPage.html'
+  // productMain.style.setProperty("display", "block", "important");
+  // productPageDetails.innerHTML = "";
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  for (let index = 0; index < allProducts.length; index++) {
+    let productSelect = {
+      productSelectName: eachTopDealProduct[eachTopDeal].productName,
+      productSelectNewPrice: eachTopDealProduct[eachTopDeal].productNewPrice,
+      productSelectOldPrice: eachTopDealProduct[eachTopDeal].productOldPrice,
+      productSelectSavePrice: eachTopDealProduct[eachTopDeal].productSavePrice,
+      productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
+      myProductSelect: []
+    }
+    allProducts[index].myProductSelect.splice(0, 1, productSelect);
+    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  }
+    window.location.href = "topDealProductPage.html";
+
+  
+
+  // eachTopDealProduct.map((eachUser, index) => {
+  //   productPageDetails.innerHTML = `
+    
+  //   <h2>${eachTopDealProduct[eachTopDeal].productName}</h2>
+  // <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
+  //  Product Code:
+  //  <div class="text-dark" id="productID">${eachTopDealProduct[eachTopDeal].productIDNumber}</div>
+  // </h5>
+  // <hr />
+  // <div class="d-flex gap-3">
+  //  <h4 class="fw-bold my-auto">₦${eachTopDealProduct[eachTopDeal].productNewPrice}</h4>
+  //  <h6 class="my-auto text-decoration-line-through text-secondary">
+  //  ₦${eachTopDealProduct[eachTopDeal].productOldPrice}
+  //  </h6>
+  //  <h6 class="my-auto text-success" style="font-size: 12px">
+  //  ₦${eachTopDealProduct[eachTopDeal].productSavePrice}
+  //  </h6>
+  // </div>
+  // <hr />
+  // <div class="d-flex gap-4">
+  //  Quantity:
+  //  <div class="d-flex cart-btn-container">
+  //    <button
+  //      class="btn btn-light btn-sm border fw-bold"
+  //      style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
+  //    >
+  //      -
+  //    </button>
+  //    <button
+  //      class="btn btn-light btn-sm border px-3"
+  //      style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
+  //    >
+  //      0
+  //    </button>
+  //    <button
+  //      class="btn btn-light btn-sm border fw-bold"
+  //      style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
+  //    >
+  //      +
+  //    </button>
+  //  </div>
+  // </div>
+  
+  // <div class="d-flex flex-column mt-4">
+  //  <span class="text-secondary" style="font-size: 14px"
+  //    >Call us for bulk purchases:</span
+  //  >
+  //  <a
+  //    href="tel:+2347033959586"
+  //    class="text-decoration-none"
+  //    style="font-size: 14px; color: #ed017f"
+  //    >Click here to show phone number</a
+  //  >
+  // </div>
+  // <hr />
+  // <div class="d-flex gap-4">
+  //  <button onclick="setEachCartItem(${index})"
+  //    class="text-capitalize btn w-50 text-white"
+  //    style="background-color: #33b27b"
+  //  >
+  //    buy now
+  //  </button>
+  //  <div class="d-flex gap-2">
+  //    <i
+  //      class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
+  //      style="
+  //        cursor: pointer;
+  //        border-radius: 50%;
+  //        width: 40px;
+  //        height: 40px;
+  //        background-color: gray;
+  //        padding: 10px 0px;
+  //      "
+  //    ></i>
+  //    <span class="my-auto text-capitalize" style="font-size: 14px"
+  //      >save For Later</span
+  //    >
+  //  </div>
+  // </div>
+  // <div
+  //  class="d-flex gap-3 mt-4"
+  //  style="height: 70px; background-color: #f8f8f8"
+  // >
+  //  <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
+  //  <a href="" class="my-auto" style="color: #ed017f"
+  //    >Get free delivery on items above ₦4,599 in LAGOS, ABUJA &
+  //    PORTHARCOURT</a
+  //  >
+  // </div>
+  // <div class="d-flex mt-4 gap-5">
+  //  <div class="d-flex position-relative gap-4">
+  //    <img
+  //      src="Images/pink-building-icon.png"
+  //      style="height: 30px"
+  //      alt=""
+  //    />
+  //    <img
+  //      src="Images/pink-truck-icon.png"
+  //      style="height: 30px; z-index: 1 !important"
+  //      class="position-absolute"
+  //      alt=""
+  //    />
+  //    <div class="my-auto" style="font-size: 14px">
+  //      Pickup & Pay on Collection Available
+  //    </div>
+  //  </div>
+  //  <div class="d-flex gap-3">
+  //    <img
+  //      src="Images/pink-building2.png"
+  //      style="height: 30px"
+  //      alt=""
+  //    />
+  //    <div class="my-auto" style="font-size: 14px">
+  //      Konga Warehouse
+  //    </div>
+  //  </div>
+  // </div>
+  // <hr />
+  // <div class="d-flex gap-3" style="font-size: 14px">
+  //  <div>Next Day Delivery Available at:</div>
+  //  <div
+  //    class="w-75 py-2 px-2"
+  //    style="height: 50px; background-color: #f8f8f8"
+  //  >
+  //    <div
+  //      class="d-flex justify-content-center"
+  //      style="
+  //        width: 80px;
+  //        height: 100%;
+  //        border-radius: 45%;
+  //        background-color: orange;
+  //        padding-top: 4px;
+  //      "
+  //    >
+  //      Lagos
+  //    </div>
+  //  </div>
+  // </div>
+  // <div class="d-grid gap-2 mt-4" style="font-size: 14px">
+  //  <div class="">Share With Friends</div>
+  //  <div class="d-flex gap-3">
+  //    <i
+  //      class="fab fa-facebook-f border d-flex justify-content-center"
+  //      style="
+  //        width: 30px;
+  //        height: 30px;
+  //        border-radius: 50%;
+  //        padding: 7px 0px;
+  //        color: #39579a;
+  //      "
+  //    ></i>
+  //    <i
+  //      class="fab fa-twitter border d-flex justify-content-center"
+  //      style="
+  //        width: 30px;
+  //        height: 30px;
+  //        border-radius: 50%;
+  //        padding: 7px 0px;
+  //        color: #03a9f4;
+  //      "
+  //    ></i>
+  //    <i
+  //      class="fab fa-whatsapp border d-flex justify-content-center"
+  //      style="
+  //        width: 30px;
+  //        height: 30px;
+  //        border-radius: 50%;
+  //        padding: 7px 0px;
+  //        color: #3ec850;
+  //      "
+  //    ></i>
+  //  </div>
+  // </div>
+  //   `;
+  // });
+};
+
+hey = () => {
+  productPageDetails.innerHTML = "";
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
+     eachTopDealProduct.map((eachUser, index) => {
+     productPageDetails.innerHTML = `
+    
+     <h2>${eachTopDealProduct[index].productSelectName}</h2>
+   <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
+    Product Code:
+    <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
+   </h5>
+   <hr />
+   <div class="d-flex gap-3">
+    <h4 class="fw-bold my-auto">₦${eachTopDealProduct[index].productSelectNewPrice}</h4>
+    <h6 class="my-auto text-decoration-line-through text-secondary">
+    ₦${eachTopDealProduct[index].productSelectOldPrice}
+    </h6>
+    <h6 class="my-auto text-success" style="font-size: 12px">
+    ₦${eachTopDealProduct[index].productSelectSavePrice}
+    </h6>
+   </div>
+   <hr />
+   <div class="d-flex gap-4">
+    Quantity:
+    <div class="d-flex cart-btn-container">
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 2px 0px 0px 2px"
-        onclick="decrement()"
-        id="minusBtn"
+        style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
       >
         -
       </button>
       <button
         class="btn btn-light btn-sm border px-3"
-        style="border-radius: 0px 0px 0px 0px"
-        id="totalButtonCart"
+        style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
       >
         0
       </button>
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 0px 2px 2px 0px"
-        onclick="increment()"
-        id="plusBtn"
+        style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
       >
         +
       </button>
     </div>
-    <div class="d-flex flex-column  my-auto">
-      <div class="fw-bold fs-5">₦12999</div>
-      <div
-        class="d-flex gap-1"
-        style="color: #bdc7d6; font-size: 14px"
-      >
-        <div>₦12999</div>
-        <div>x</div>
-        <div>0</div>
-        <div>item</div>
-      </div>
-    </div>
-    </div>
-    <hr>
-    <div
-      class="text-end my-auto d-flex flex-column gap-1 cart-action"
-      style="width: 20%; font-size: 14px; color: #94004f"
+   </div>
+  
+   <div class="d-flex flex-column mt-4">
+    <span class="text-secondary" style="font-size: 14px"
+      >Call us for bulk purchases:</span
     >
-      <div onclick="sav()" class="" style="cursor: pointer"><i class="fas fa-heart"></i>
-        Save for Later
-      </div>
-      <div onclick="del()" class="" style="cursor: pointer"><i class="fas fa-times-circle"></i>
-        Remove item
+    <a
+      href="tel:+2347033959586"
+      class="text-decoration-none"
+      style="font-size: 14px; color: #ed017f"
+      >Click here to show phone number</a
+    >
+   </div>
+   <hr />
+   <div class="d-flex gap-4">
+    <button onclick="setEachCartItem(${index})"
+      class="text-capitalize btn w-50 text-white"
+      style="background-color: #33b27b"
+    >
+      buy now
+    </button>
+    <div class="d-flex gap-2">
+      <i
+        class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
+        style="
+          cursor: pointer;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          background-color: gray;
+          padding: 10px 0px;
+        "
+      ></i>
+      <span class="my-auto text-capitalize" style="font-size: 14px"
+        >save For Later</span
+      >
+    </div>
+   </div>
+   <div
+    class="d-flex gap-3 mt-4"
+    style="height: 70px; background-color: #f8f8f8"
+   >
+    <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
+    <a href="" class="my-auto" style="color: #ed017f"
+      >Get free delivery on items above ₦4,599 in LAGOS, ABUJA &
+      PORTHARCOURT</a
+    >
+   </div>
+   <div class="d-flex mt-4 gap-5">
+    <div class="d-flex position-relative gap-4">
+      <img
+        src="Images/pink-building-icon.png"
+        style="height: 30px"
+        alt=""
+      />
+      <img
+        src="Images/pink-truck-icon.png"
+        style="height: 30px; z-index: 1 !important"
+        class="position-absolute"
+        alt=""
+      />
+      <div class="my-auto" style="font-size: 14px">
+        Pickup & Pay on Collection Available
       </div>
     </div>
-  </div>
-    `
-  });
-}
-
-topDealProductPage = (eachTopDeal) => {
-  // window.location.href = 'topDealProductPage.html'
-  productMain.style.setProperty("display", "block", "important")
-  productPageDetails.innerHTML = "";
-  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
-  eachTopDealProduct.map((eachUser, index) => {
-    productPageDetails.innerHTML = `
-    
-    <h2>${eachTopDealProduct[eachTopDeal].productName}</h2>
-  <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
-   Product Code:
-   <div class="text-dark" id="productID">${eachTopDealProduct[eachTopDeal].productIDNumber}</div>
-  </h5>
-  <hr />
-  <div class="d-flex gap-3">
-   <h4 class="fw-bold my-auto">₦${eachTopDealProduct[eachTopDeal].productNewPrice}</h4>
-   <h6 class="my-auto text-decoration-line-through text-secondary">
-   ₦${eachTopDealProduct[eachTopDeal].productOldPrice}
-   </h6>
-   <h6 class="my-auto text-success" style="font-size: 12px">
-   ₦${eachTopDealProduct[eachTopDeal].productSavePrice}
-   </h6>
-  </div>
-  <hr />
-  <div class="d-flex gap-4">
-   Quantity:
-   <div class="d-flex cart-btn-container">
-     <button
-       class="btn btn-light btn-sm border fw-bold"
-       style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
-     >
-       -
-     </button>
-     <button
-       class="btn btn-light btn-sm border px-3"
-       style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
-     >
-       0
-     </button>
-     <button
-       class="btn btn-light btn-sm border fw-bold"
-       style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
-     >
-       +
-     </button>
+    <div class="d-flex gap-3">
+      <img
+        src="Images/pink-building2.png"
+        style="height: 30px"
+        alt=""
+      />
+      <div class="my-auto" style="font-size: 14px">
+        Konga Warehouse
+      </div>
+    </div>
    </div>
-  </div>
-  
-  <div class="d-flex flex-column mt-4">
-   <span class="text-secondary" style="font-size: 14px"
-     >Call us for bulk purchases:</span
-   >
-   <a
-     href="tel:+2347033959586"
-     class="text-decoration-none"
-     style="font-size: 14px; color: #ed017f"
-     >Click here to show phone number</a
-   >
-  </div>
-  <hr />
-  <div class="d-flex gap-4">
-   <button onclick="setEachCartItem()"
-     class="text-capitalize btn w-50 text-white"
-     style="background-color: #33b27b"
-   >
-     buy now
-   </button>
-   <div class="d-flex gap-2">
-     <i
-       class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
-       style="
-         cursor: pointer;
-         border-radius: 50%;
-         width: 40px;
-         height: 40px;
-         background-color: gray;
-         padding: 10px 0px;
-       "
-     ></i>
-     <span class="my-auto text-capitalize" style="font-size: 14px"
-       >save For Later</span
-     >
+   <hr />
+   <div class="d-flex gap-3" style="font-size: 14px">
+    <div>Next Day Delivery Available at:</div>
+    <div
+      class="w-75 py-2 px-2"
+      style="height: 50px; background-color: #f8f8f8"
+    >
+      <div
+        class="d-flex justify-content-center"
+        style="
+          width: 80px;
+          height: 100%;
+          border-radius: 45%;
+          background-color: orange;
+          padding-top: 4px;
+        "
+      >
+        Lagos
+      </div>
+    </div>
    </div>
-  </div>
-  <div
-   class="d-flex gap-3 mt-4"
-   style="height: 70px; background-color: #f8f8f8"
-  >
-   <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
-   <a href="" class="my-auto" style="color: #ed017f"
-     >Get free delivery on items above ₦4,599 in LAGOS, ABUJA &
-     PORTHARCOURT</a
-   >
-  </div>
-  <div class="d-flex mt-4 gap-5">
-   <div class="d-flex position-relative gap-4">
-     <img
-       src="Images/pink-building-icon.png"
-       style="height: 30px"
-       alt=""
-     />
-     <img
-       src="Images/pink-truck-icon.png"
-       style="height: 30px; z-index: 1 !important"
-       class="position-absolute"
-       alt=""
-     />
-     <div class="my-auto" style="font-size: 14px">
-       Pickup & Pay on Collection Available
-     </div>
+   <div class="d-grid gap-2 mt-4" style="font-size: 14px">
+    <div class="">Share With Friends</div>
+    <div class="d-flex gap-3">
+      <i
+        class="fab fa-facebook-f border d-flex justify-content-center"
+        style="
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          padding: 7px 0px;
+          color: #39579a;
+        "
+      ></i>
+      <i
+        class="fab fa-twitter border d-flex justify-content-center"
+        style="
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          padding: 7px 0px;
+          color: #03a9f4;
+        "
+      ></i>
+      <i
+        class="fab fa-whatsapp border d-flex justify-content-center"
+        style="
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          padding: 7px 0px;
+          color: #3ec850;
+        "
+      ></i>
+    </div>
    </div>
-   <div class="d-flex gap-3">
-     <img
-       src="Images/pink-building2.png"
-       style="height: 30px"
-       alt=""
-     />
-     <div class="my-auto" style="font-size: 14px">
-       Konga Warehouse
-     </div>
-   </div>
-  </div>
-  <hr />
-  <div class="d-flex gap-3" style="font-size: 14px">
-   <div>Next Day Delivery Available at:</div>
-   <div
-     class="w-75 py-2 px-2"
-     style="height: 50px; background-color: #f8f8f8"
-   >
-     <div
-       class="d-flex justify-content-center"
-       style="
-         width: 80px;
-         height: 100%;
-         border-radius: 45%;
-         background-color: orange;
-         padding-top: 4px;
-       "
-     >
-       Lagos
-     </div>
-   </div>
-  </div>
-  <div class="d-grid gap-2 mt-4" style="font-size: 14px">
-   <div class="">Share With Friends</div>
-   <div class="d-flex gap-3">
-     <i
-       class="fab fa-facebook-f border d-flex justify-content-center"
-       style="
-         width: 30px;
-         height: 30px;
-         border-radius: 50%;
-         padding: 7px 0px;
-         color: #39579a;
-       "
-     ></i>
-     <i
-       class="fab fa-twitter border d-flex justify-content-center"
-       style="
-         width: 30px;
-         height: 30px;
-         border-radius: 50%;
-         padding: 7px 0px;
-         color: #03a9f4;
-       "
-     ></i>
-     <i
-       class="fab fa-whatsapp border d-flex justify-content-center"
-       style="
-         width: 30px;
-         height: 30px;
-         border-radius: 50%;
-         padding: 7px 0px;
-         color: #3ec850;
-       "
-     ></i>
-   </div>
-  </div>
-    `;
+     `;
    });
-};
-
-// hey = (eachTopDeal) => {
-//   // topDealProductPage()
-//   productPageDetails.innerHTML = "";
-//   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-//   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
-//   eachTopDealProduct.map((eachUser, index) => {
-//     alert(eachTopDealProduct[eachTopDeal].productName)
-//     // productPageDetails.innerHTML = `<h1>${eachTopDealProduct[eachTopDeal].productName}</h1>`
-// });
-  
-// }
+}
 
 displayProducts = () => {
   todaysDeal.innerHTML = "";
@@ -674,7 +979,7 @@ displayProducts = () => {
 
   eachSponsoredProduct = allProducts[currentProductIndex].sponsorProduct;
   for (let index = 0; index < eachSponsoredProduct.length; index++) {
-  sponsoredPro.innerHTML += `
+    sponsoredPro.innerHTML += `
   <div
       class="d-flex flex-column shadow pt-2 pb-5 position-relative"
       style="height: 300px; min-width: 19.5%; cursor: pointer"
@@ -724,9 +1029,9 @@ displayProducts = () => {
     </div>
     </div>
     </div>
-  `
-  };
-  
+  `;
+  }
+
   eachRecommendedProduct = allProducts[currentProductIndex].recommendedProduct;
   for (let index = 0; index < eachRecommendedProduct.length; index++) {
     recommendedPro.innerHTML += `
@@ -784,7 +1089,7 @@ displayProducts = () => {
 
   eachInspiredProduct = allProducts[currentProductIndex].inspiredProduct;
   for (let index = 0; index < eachInspiredProduct.length; index++) {
-  inspiredPro.innerHTML += `
+    inspiredPro.innerHTML += `
   <div
       class="d-flex flex-column shadow pt-2 pb-5 position-relative"
       style="height: 300px; min-width: 19.5%; cursor: pointer"
@@ -834,8 +1139,8 @@ displayProducts = () => {
     </div>
     </div>
     </div>
-  `
-  };
+  `;
+  }
 
   eachBrowsingProduct = allProducts[currentProductIndex].browsingProduct;
   for (let index = 0; index < eachBrowsingProduct.length; index++) {
@@ -889,16 +1194,16 @@ displayProducts = () => {
     </div>
     </div>
     </div>
-  `
-  };
-}
+  `;
+  }
+};
 
 showForEach = () => {
-  let myAngle = document.querySelectorAll(".fa-angle-down")
+  let myAngle = document.querySelectorAll(".fa-angle-down");
   for (let index = 0; index < myAngle.length; index++) {
-    myAngle[index].classList.toggle("fa-angle-up")
+    myAngle[index].classList.toggle("fa-angle-up");
   }
-}
+};
 showForEachLargeScreen = (param) => {
   showThis.innerHTML = "";
   if (param == "overview") {
@@ -911,7 +1216,7 @@ showForEachLargeScreen = (param) => {
                 <li>Fits in Pocket</li>
         </ul>
     `;
-  } else if (param == 'description') {
+  } else if (param == "description") {
     showThis.innerHTML = `
     <div class="text-secondary px-2">
     <div class="d-flex w-100">
@@ -957,7 +1262,7 @@ showForEachLargeScreen = (param) => {
       <li>Up to 8 hours battery life</li>
     </ul>
   </div>
-    `
+    `;
   } else if (param == "shipping") {
     showThis.innerHTML = `
     <div class="d-flex gap-3">
@@ -1011,9 +1316,7 @@ showForEachLargeScreen = (param) => {
   }
 };
 
-
-
-var mediaQuery = window.matchMedia("(max-width: 600px)")
+var mediaQuery = window.matchMedia("(max-width: 600px)");
 if (mediaQuery.matches) {
   othersAdsOne.src = "Images/ads.jpg";
 }
@@ -1021,34 +1324,33 @@ if (mediaQuery.matches) {
 function readMore() {
   if (readDots.style.display === "none") {
     readDots.style.display = "inline";
-    readBtn.innerHTML = "Read more"; 
+    readBtn.innerHTML = "Read more";
     moreText.style.display = "none";
-    readBtn.style.backgroundColor = "blue"
+    readBtn.style.backgroundColor = "blue";
   } else {
     readDots.style.display = "none";
-    readBtn.innerHTML = "Read less"; 
+    readBtn.innerHTML = "Read less";
     moreText.style.display = "inline";
-    readBtn.style.backgroundColor = "purple"
+    readBtn.style.backgroundColor = "purple";
   }
 }
 
 let count = 0;
 increment = () => {
-  count+=1;
+  count += 1;
   totalCart.innerHTML = count;
   totalButtonCart.innerHTML = count;
-}
+};
 decrement = () => {
   if (totalCart.innerHTML === 1) {
     minusBtn.disabled = true;
-  } else if (totalCart.innerHTML >=1) {
-   minusBtn.disabled = false;
-   count-=1;
-   totalCart.innerHTML = count;
-   totalButtonCart.innerHTML = count;
+  } else if (totalCart.innerHTML >= 1) {
+    minusBtn.disabled = false;
+    count -= 1;
+    totalCart.innerHTML = count;
+    totalButtonCart.innerHTML = count;
   }
-}
-
+};
 
 // let footerIcon = document.querySelectorAll('.fa-plus')
 // texting = (eachIcon) => {
