@@ -533,7 +533,7 @@ hey = () => {
     >
       buy now
     </button>
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 save-icon">
       <i
         class="fas fa-heart text-white justify-content-center d-flex fs-5 cart-heart"
         style="
@@ -551,7 +551,7 @@ hey = () => {
     </div>
    </div>
    <div
-    class="d-flex gap-3 mt-4"
+    class="d-flex gap-3 mt-4 get-free-delivery"
     style="height: 70px; background-color: #f8f8f8"
    >
     <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />
@@ -560,7 +560,7 @@ hey = () => {
       PORTHARCOURT</a
     >
    </div>
-   <div class="d-flex mt-4 gap-5">
+   <div class="d-flex mt-4 gap-5 pickup-and-pay">
     <div class="d-flex position-relative gap-4">
       <img
         src="Images/pink-building-icon.png"
@@ -573,7 +573,7 @@ hey = () => {
         class="position-absolute"
         alt=""
       />
-      <div class="my-auto" style="font-size: 14px">
+      <div class="my-auto txt1" style="font-size: 14px">
         Pickup & Pay on Collection Available
       </div>
     </div>
@@ -583,13 +583,13 @@ hey = () => {
         style="height: 30px"
         alt=""
       />
-      <div class="my-auto" style="font-size: 14px">
+      <div class="my-auto txt2" style="font-size: 14px">
         Konga Warehouse
       </div>
     </div>
    </div>
    <hr />
-   <div class="d-flex gap-3" style="font-size: 14px">
+   <div class="d-flex gap-3 txt3" style="font-size: 14px">
     <div>Next Day Delivery Available at:</div>
     <div
       class="w-75 py-2 px-2"
@@ -647,8 +647,7 @@ hey = () => {
      `;
 
      productPageSoldBy.innerHTML = `
-     <div
-            class="d-flex gap-3 mt-4"
+     <div class="d-flex gap-3 mt-4 txt4"
             style="height: 80px; background-color: #fff"
           >
             <img src="Images/Rectangle_81.webp" style="height: 100%" alt="" />

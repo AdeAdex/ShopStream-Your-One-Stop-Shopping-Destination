@@ -846,6 +846,8 @@ nav .dropbtn:hover {
   }
   #productCarouselContainer .div1, #productCarouselContainer .div2 {
     width: 100% !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
   }
 
   #productCarouselContainer .carousel-indicators {
@@ -857,11 +859,28 @@ nav .dropbtn:hover {
   }
 
   .buy-now-and-save-btn button:first-child {
-    width: 80% !important;
+    width: 85% !important;
   }
 
-  .buy-now-and-save-btn button:last-child {
-    width: 20% !important;
+  .buy-now-and-save-btn .save-icon {
+    width: 15% !important;
+  }
+
+  .save-icon span {
+    display: none;
+  }
+
+  .get-free-delivery {
+    font-size: 12px;
+    height: 50px !important;
+  }
+
+  #productCarouselContainer .pickup-and-pay {
+    flex-direction: column;
+    gap: 10px !important;
+  }
+  .pickup-and-pay .txt1, .pickup-and-pay .txt2, .txt3, .txt4{
+    font-size: 12px !important;
   }
 
   #productCarouselContainer .carousel-indicators img {
