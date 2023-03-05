@@ -60,7 +60,6 @@ closeThis = () => {
   }
 };
 
-
 dropDropdown = (parameter) => {
   bringItUp.innerHTML = "";
   bringItUp.style.setProperty("display", "flex", "important");
@@ -357,7 +356,8 @@ setEachCartItem = () => {
       cartName: eachTopDealProduct[index].productSelectName,
       cartPrice: eachTopDealProduct[index].productSelectNewPrice,
       cartSoldBy: eachTopDealProduct[index].productSelectSoldBy,
-      eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice
+      eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice,
+      eachItemNumber: eachTopDealProduct[index].productNumberOfItem,
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -366,13 +366,13 @@ setEachCartItem = () => {
 };
 
 del = (userDelete) => {
-  allProducts[currentProductIndex].myCart.splice(userDelete, 1)
+  allProducts[currentProductIndex].myCart.splice(userDelete, 1);
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-  location.reload()
-}
+  location.reload();
+};
 
 showMyCart = () => {
-  eachShoppingCart.innerHTML = ""
+  eachShoppingCart.innerHTML = "";
   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
@@ -409,7 +409,7 @@ showMyCart = () => {
          style="border-radius: 0px 0px 0px 0px"
          id="totalButtonCart"
        >
-         0
+       ${eachTopDealProduct[index].eachItemNumber}
        </button>
        <button
          class="btn btn-light btn-sm border fw-bold"
@@ -454,30 +454,29 @@ let count = 0;
 increment = (myIncrement) => {
   count += 1;
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
-  // eachTopDealProduct.map((eachUser, index) => {
-  eachTopDealProduct[myIncrement].eachCartTotalPrice = Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +  Number(eachTopDealProduct[myIncrement].cartPrice)
-// });
-localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-showMyCart()
-
+  eachTopDealProduct[myIncrement].eachCartTotalPrice =
+    Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
+    Number(eachTopDealProduct[myIncrement].cartPrice);
+    eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + count
+  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  showMyCart();
 
   // totalCart.innerHTML = count;
-  // totalButtonCart.innerHTML = count;
+  totalButtonCart.innerHTML = count;
 };
 decrement = (myDecrement) => {
-  // if (totalCart.innerHTML === 1) {
-    // minusBtn.disabled = true;
-  // } else if (totalCart.innerHTML >= 1) {
-    minusBtn.disabled = false;
-    count -= 1;
-    eachTopDealProduct = allProducts[currentProductIndex].myCart;
-    eachTopDealProduct.map((eachUser, index) => {
-    eachTopDealProduct[myDecrement].eachCartTotalPrice = Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) - Number(eachTopDealProduct[myDecrement].cartPrice)
-});
-localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-showMyCart()
-    // totalCart.innerHTML = count;
-    // totalButtonCart.innerHTML = count;
+  // if (eachTopDealProduct[myDecrement].eachItemNumber === 1) {
+  // minusBtn.disabled = true;
+  // } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
+  // minusBtn.disabled = false;
+  count -= 1;
+  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachTopDealProduct[myDecrement].eachCartTotalPrice =
+    Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
+    Number(eachTopDealProduct[myDecrement].cartPrice);
+    eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - count
+  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  showMyCart();
   // }
 };
 
@@ -493,22 +492,22 @@ topDealProductPage = (eachTopDeal) => {
       productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
       productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
       productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
-      myProductSelect: []
-    }
+      productNumberOfItem: 0,
+      myProductSelect: [],
+    };
     allProducts[index].myProductSelect.splice(0, 1, productSelect);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   }
-    window.location.href = "topDealProductPage.html";
+  window.location.href = "topDealProductPage.html";
 };
-
 
 hey = () => {
   productPageDetails.innerHTML = "";
-  productPageSoldBy.innerHTML =  "";
+  productPageSoldBy.innerHTML = "";
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
-     eachTopDealProduct.map((eachUser, index) => {
-     productPageDetails.innerHTML = `
+  eachTopDealProduct.map((eachUser, index) => {
+    productPageDetails.innerHTML = `
      <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
     Product Code: <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
@@ -538,7 +537,7 @@ hey = () => {
         class="btn btn-light btn-sm border px-3"
         style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
       >
-        0
+      ${eachTopDealProduct[index].productNumberOfItem}
       </button>
       <button
         class="btn btn-light btn-sm border fw-bold"
@@ -681,7 +680,7 @@ hey = () => {
    </div>
      `;
 
-     productPageSoldBy.innerHTML = `
+    productPageSoldBy.innerHTML = `
      <div class="d-flex gap-3 mt-4 txt4"
             style="height: 80px; background-color: #fff"
           >
@@ -691,9 +690,9 @@ hey = () => {
               >${eachTopDealProduct[index].productSelectSoldBy}</a
             >
           </div>
-     `
-   });
-}
+     `;
+  });
+};
 
 displayProducts = () => {
   todaysDeal.innerHTML = "";
@@ -1109,8 +1108,6 @@ function readMore() {
     readBtn.style.backgroundColor = "purple";
   }
 }
-
-
 
 // let footerIcon = document.querySelectorAll('.fa-plus')
 // texting = (eachIcon) => {
