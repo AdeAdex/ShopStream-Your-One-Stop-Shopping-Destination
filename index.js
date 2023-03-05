@@ -235,6 +235,7 @@ setTodaysDeal = () => {
       productCategory: `product`,
       productNewPrice: adminNewPrice.value,
       productBy: adminDealBy.value,
+      productBrand: adminBrand.value,
       productIDNumber: Math.floor(Math.random() * 1000000),
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
       productOff: Math.ceil(
@@ -420,7 +421,7 @@ showMyCart = () => {
        </button>
      </div>
      <div class="d-flex flex-column  my-auto">
-       <div class="fw-bold fs-5" id="mumuPrice">${eachTopDealProduct[index].eachCartTotalPrice}</div>
+       <div class="fw-bold fs-5" id="mumuPrice"></div>
        <div
          class="d-flex gap-1"
          style="color: #bdc7d6; font-size: 14px"
@@ -454,8 +455,7 @@ increment = (myIncrement) => {
   count += 1;
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
-  eachTopDealProduct[index].eachCartTotalPrice = Number(eachTopDealProduct[index].eachCartTotalPrice) + Number(eachTopDealProduct[index].cartPrice)
-  // alert(eachTopDealProduct[index].cartPrice)
+  eachTopDealProduct[myIncrement].eachCartTotalPrice = Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) + Number(eachTopDealProduct[myIncrement].cartPrice)
 });
 localStorage.setItem("companyProduct", JSON.stringify(allProducts));
 
@@ -485,6 +485,7 @@ topDealProductPage = (eachTopDeal) => {
       productSelectSavePrice: eachTopDealProduct[eachTopDeal].productSavePrice,
       productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
       productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
+      productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
       myProductSelect: []
     }
     allProducts[index].myProductSelect.splice(0, 1, productSelect);
@@ -505,7 +506,7 @@ hey = () => {
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
     Product Code: <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
    </h5>
-   <h5 class="d-flex gap-2 text-capitalize" style="font-size: 14px; color: gray">Brand: ${eachTopDealProduct[index].productSelectName}</h5>
+   <h5 class="d-flex gap-2 text-capitalize" style="font-size: 14px; color: gray">Brand: ${eachTopDealProduct[index].productSelectBrand}</h5>
    <hr />
    <div class="d-flex gap-3">
     <h4 class="fw-bold my-auto">₦${eachTopDealProduct[index].productSelectNewPrice}</h4>
