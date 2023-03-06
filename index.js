@@ -182,6 +182,7 @@ text = () => {
     topDealOnTelevision: [],
     myCart: [],
     myProductSelect: [],
+    totalBalance: 0,
   };
 
   allProducts.push(products);
@@ -362,8 +363,11 @@ setEachCartItem = () => {
       eachItemTotalAvailable: eachTopDealProduct[index].productSelectTotalItem,
     };
     allProducts[index].myCart.push(myCartHistory);
+    // localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    // allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].eachCartTotalPrice)
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    window.location.href = "shoppingCart.html";
+    alert(allProducts[currentProductIndex].totalBalance)
+    // window.location.href = "shoppingCart.html";
   }
 };
 
@@ -455,7 +459,7 @@ showMyCart = () => {
 
      subtotalAndTotalPrice.innerHTML = `
      <div>Subtotal ( ${ eachTopDealProduct.length} Item )</div>
-     <div class="fw-bold" style="font-size: 14px">₦18000</div>
+     <div class="fw-bold" style="font-size: 14px" id="total">₦$</div>
      `
 
      orderSummaryOnLargeScreen.innerHTML = `
@@ -492,8 +496,10 @@ showMyCart = () => {
 let count = 0;
 increment = (myIncrement) => {
   if (eachTopDealProduct[myIncrement].eachItemNumber == eachTopDealProduct[myIncrement].eachItemTotalAvailable) {
-    leftItems.style.setProperty("display", "block", "important");
+    // document.getElementById("leftItems").style.setProperty("display", "block", "important");
+    alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`)
   } else {
+    document.getElementById("leftItems").style.setProperty("display", "block", "important");
     eachTopDealProduct = allProducts[currentProductIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
