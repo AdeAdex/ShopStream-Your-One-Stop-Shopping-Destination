@@ -370,13 +370,6 @@ setEachCartItem = () => {
   }
 };
 
-del = (userDelete) => {
-  allProducts[currentProductIndex].myCart.splice(userDelete, 1);
-  allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
-  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-  location.reload();
-};
-
 showMyCart = () => {
   eachShoppingCart.innerHTML = "";
   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
@@ -527,6 +520,17 @@ decrement = (myDecrement) => {
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
   }
+};
+
+del = (userDelete) => {
+  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  allProducts[currentProductIndex].myCart.splice(userDelete, 1);
+  for (let index = 0; index < eachTopDealProduct.length; index++) {  
+    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
+  }
+  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  location.reload();
 };
 
 topDealProductPage = (eachTopDeal) => {
