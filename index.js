@@ -183,6 +183,7 @@ text = () => {
     myCart: [],
     myProductSelect: [],
     totalBalance: 0,
+    totalCart: 0,
   };
 
   allProducts.push(products);
@@ -364,7 +365,8 @@ setEachCartItem = () => {
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice)
+    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice);
+    allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) + Number(eachTopDealProduct[index].productNumberOfItem + 1)
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
     window.location.href = "shoppingCart.html";
   }
@@ -375,6 +377,7 @@ showMyCart = () => {
   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
+    totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
     eachShoppingCart.innerHTML += `
      <div class="d-flex bg-white px-3 cart-details">
      <div class="w-50 d-flex cart-img">
@@ -506,12 +509,13 @@ increment = (myIncrement) => {
       Number(eachTopDealProduct[myIncrement].cartPrice);
       eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1,
       allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
+      allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) + 1
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
   }  
   
   if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
-totalForEach.innerHTML = `Items`
+    totalForEach.innerHTML = `Items`
   } 
 };
 
@@ -528,12 +532,13 @@ decrement = (myDecrement) => {
     Number(eachTopDealProduct[myDecrement].cartPrice);
     eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - 1
     allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[myDecrement].cartPrice)
+    allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) - 1
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
   }
   
   if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
-totalForEach.innerHTML = `Item`
+    totalForEach.innerHTML = `Item`
   } else {
     totalForEach.innerHTML = `Items`
   } 
@@ -542,6 +547,7 @@ totalForEach.innerHTML = `Item`
 del = (userDelete) => {
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
+  allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
   allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
