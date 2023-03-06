@@ -431,7 +431,7 @@ showMyCart = () => {
          <div>₦${eachTopDealProduct[index].cartPrice}</div>
          <div>x</div>
          <div>${eachTopDealProduct[index].eachItemNumber}</div>
-         <div>item</div>
+         <div id="totalForEach">Item</div>
        </div>
      </div>
      </div>
@@ -451,7 +451,7 @@ showMyCart = () => {
      `;
 
      subtotalAndTotalPrice.innerHTML = `
-     <div>Subtotal ( ${ eachTopDealProduct.length} Item )</div>
+     <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
      <div class="fw-bold" style="font-size: 14px" id="total">₦${allProducts[currentProductIndex].totalBalance}</div>
      `
 
@@ -459,8 +459,8 @@ showMyCart = () => {
      <div class="d-flex justify-content-between fw-bold">
      <div>Order Summary</div>
      <div class="d-flex gap-2">
-       <div>${ eachTopDealProduct.length}</div>
-       <div>Items</div>
+       <div>${eachTopDealProduct.length}</div>
+       <div id="itemLScreen">Item</div>
      </div>
    </div>
    <hr>
@@ -484,6 +484,13 @@ showMyCart = () => {
    <hr>
      `
   });
+   if (eachTopDealProduct.length == 1) {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
+    itemLScreen.innerHTML = `Item`
+  } else {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
+    itemLScreen.innerHTML = `Items`
+  }
 };
 
 let count = 0;
@@ -491,7 +498,7 @@ increment = (myIncrement) => {
   if (eachTopDealProduct[myIncrement].eachItemNumber == eachTopDealProduct[myIncrement].eachItemTotalAvailable) {
     // document.getElementById("leftItems").style.setProperty("display", "block", "important");
     alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`)
-  } else {
+  }else {
     document.getElementById("leftItems").style.setProperty("display", "block", "important");
     eachTopDealProduct = allProducts[currentProductIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
@@ -499,14 +506,18 @@ increment = (myIncrement) => {
       Number(eachTopDealProduct[myIncrement].cartPrice);
       eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1,
       allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-  }
+  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
+  }  
+  
+  if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
+totalForEach.innerHTML = `Items`
+  } 
 };
 
 
 decrement = (myDecrement) => {
-  if (eachTopDealProduct[myDecrement].eachItemNumber === 1) {
+  if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
   minusBtn.disabled = true;
   } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
   minusBtn.disabled = false;
@@ -520,6 +531,12 @@ decrement = (myDecrement) => {
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
   }
+  
+  if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
+totalForEach.innerHTML = `Item`
+  } else {
+    totalForEach.innerHTML = `Items`
+  } 
 };
 
 del = (userDelete) => {
