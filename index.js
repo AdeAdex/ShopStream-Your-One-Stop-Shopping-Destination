@@ -359,6 +359,7 @@ setEachCartItem = () => {
       cartSoldBy: eachTopDealProduct[index].productSelectSoldBy,
       eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice,
       eachItemNumber: eachTopDealProduct[index].productNumberOfItem + 1,
+      eachItemTotalAvailable: eachTopDealProduct[index].productSelectTotalItem,
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -394,8 +395,9 @@ showMyCart = () => {
        </div>
      </div>
      <div class="d-flex justify-content-around cart-price" style="width: 30%;">
+     <div class="d-flex flex-column gap-2 my-auto">
        <div
-       class="d-flex flex-row cart-btn-container my-auto"
+       class="d-flex flex-row cart-btn-container "
      >
        <button
          class="btn btn-light btn-sm border fw-bold"
@@ -420,9 +422,11 @@ showMyCart = () => {
        >
          +
        </button>
-     </div>
+       </div>
+       <div class="d-none" id="leftItems" style="font-size: 12px">Only ${eachTopDealProduct[index].eachItemTotalAvailable} items left</div>
+       </div>
      <div class="d-flex flex-column  my-auto">
-       <div class="fw-bold fs-5" id="mumuPrice">₦${eachTopDealProduct[index].eachCartTotalPrice}</div>
+       <div class="fw-bold fs-5" id="">₦${eachTopDealProduct[index].eachCartTotalPrice}</div>
        <div
          class="d-flex gap-1"
          style="color: #bdc7d6; font-size: 14px"
@@ -487,12 +491,16 @@ showMyCart = () => {
 
 let count = 0;
 increment = (myIncrement) => {
-  eachTopDealProduct = allProducts[currentProductIndex].myCart;
-  eachTopDealProduct[myIncrement].eachCartTotalPrice =
-    Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
-    Number(eachTopDealProduct[myIncrement].cartPrice);
-    eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1
-  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  if (eachTopDealProduct[myIncrement].eachItemNumber == eachTopDealProduct[myIncrement].eachItemTotalAvailable) {
+    leftItems.style.setProperty("display", "block", "important");
+  } else {
+    eachTopDealProduct = allProducts[currentProductIndex].myCart;
+    eachTopDealProduct[myIncrement].eachCartTotalPrice =
+      Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
+      Number(eachTopDealProduct[myIncrement].cartPrice);
+      eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1
+    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  }
   showMyCart();
 };
 
@@ -526,6 +534,7 @@ topDealProductPage = (eachTopDeal) => {
       productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
       productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
       productNumberOfItem: 0,
+      productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
       myProductSelect: [],
     };
     allProducts[index].myProductSelect.splice(0, 1, productSelect);
