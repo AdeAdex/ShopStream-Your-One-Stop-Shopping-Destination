@@ -378,6 +378,7 @@ showMyCart = () => {
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
+    totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
     eachShoppingCart.innerHTML += `
      <div class="d-flex bg-white px-3 cart-details">
      <div class="w-50 d-flex cart-img">
