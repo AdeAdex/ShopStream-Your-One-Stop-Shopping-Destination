@@ -523,12 +523,9 @@ decrement = (myDecrement) => {
 };
 
 del = (userDelete) => {
-  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
-  allProducts[currentProductIndex].myCart.splice(userDelete, 1);
-  for (let index = 0; index < eachTopDealProduct.length; index++) {  
-    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
-  }
+  allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
+  allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
 };
