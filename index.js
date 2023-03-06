@@ -447,6 +447,40 @@ showMyCart = () => {
      </div>
    </div>
      `;
+
+     subtotalAndTotalPrice.innerHTML = `
+     <div>Subtotal ( ${ eachTopDealProduct.length} Item )</div>
+     <div class="fw-bold" style="font-size: 14px">₦18000</div>
+     `
+
+     orderSummaryOnLargeScreen.innerHTML = `
+     <div class="d-flex justify-content-between fw-bold">
+     <div>Order Summary</div>
+     <div class="d-flex gap-2">
+       <div>${ eachTopDealProduct.length}</div>
+       <div>Items</div>
+     </div>
+   </div>
+   <hr>
+   <div class="d-flex justify-content-between w-100">
+         <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
+         <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
+   </div>
+   <hr>
+   <div class="d-flex justify-content-between w-100">
+         <div class="" style="font-size: 12px;">Subtotal:</div>
+         <div class="fw-bold" style="font-size: 14px;">₦18399</div>
+   </div>
+   <hr>
+   <div class="d-flex justify-content-between w-100">
+         <div class="fw-bold">Total:</div>
+         <div class="fw-bold" style="font-size: 18px;">₦18399</div>
+   </div>
+   <hr>
+   <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
+   <button class="btn btn-sm text-white mt-2 fw-bold w-100" style="background-color: #33B27B;">Continue to Checkout</button>
+   <hr>
+     `
   });
 };
 
