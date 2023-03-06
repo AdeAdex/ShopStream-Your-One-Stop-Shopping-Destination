@@ -235,6 +235,7 @@ setTodaysDeal = () => {
       productNewPrice: adminNewPrice.value,
       productBy: adminDealBy.value,
       productBrand: adminBrand.value,
+      productTotalItem: adminTotalItem.value,
       productIDNumber: Math.floor(Math.random() * 1000000),
       productSavePrice: adminOldPrice.value - adminNewPrice.value,
       productOff: Math.ceil(
@@ -357,7 +358,7 @@ setEachCartItem = () => {
       cartPrice: eachTopDealProduct[index].productSelectNewPrice,
       cartSoldBy: eachTopDealProduct[index].productSelectSoldBy,
       eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice,
-      eachItemNumber: eachTopDealProduct[index].productNumberOfItem,
+      eachItemNumber: eachTopDealProduct[index].productNumberOfItem + 1,
     };
     allProducts[index].myCart.push(myCartHistory);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
@@ -428,7 +429,7 @@ showMyCart = () => {
        >
          <div>₦${eachTopDealProduct[index].cartPrice}</div>
          <div>x</div>
-         <div>0</div>
+         <div>${eachTopDealProduct[index].eachItemNumber}</div>
          <div>item</div>
        </div>
      </div>
@@ -486,32 +487,30 @@ showMyCart = () => {
 
 let count = 0;
 increment = (myIncrement) => {
-  count += 1;
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct[myIncrement].eachCartTotalPrice =
     Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
     Number(eachTopDealProduct[myIncrement].cartPrice);
-    eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + count
+    eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
-
-  // totalCart.innerHTML = count;
-  totalButtonCart.innerHTML = count;
 };
+
+
 decrement = (myDecrement) => {
-  // if (eachTopDealProduct[myDecrement].eachItemNumber === 1) {
-  // minusBtn.disabled = true;
-  // } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
-  // minusBtn.disabled = false;
+  if (eachTopDealProduct[myDecrement].eachItemNumber === 1) {
+  minusBtn.disabled = true;
+  } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
+  minusBtn.disabled = false;
   count -= 1;
   eachTopDealProduct = allProducts[currentProductIndex].myCart;
   eachTopDealProduct[myDecrement].eachCartTotalPrice =
     Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
     Number(eachTopDealProduct[myDecrement].cartPrice);
-    eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - count
+    eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - 1
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
-  // }
+  }
 };
 
 topDealProductPage = (eachTopDeal) => {
