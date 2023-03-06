@@ -363,16 +363,16 @@ setEachCartItem = () => {
       eachItemTotalAvailable: eachTopDealProduct[index].productSelectTotalItem,
     };
     allProducts[index].myCart.push(myCartHistory);
-    // localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    // allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].eachCartTotalPrice)
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    alert(allProducts[currentProductIndex].totalBalance)
-    // window.location.href = "shoppingCart.html";
+    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice)
+    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    window.location.href = "shoppingCart.html";
   }
 };
 
 del = (userDelete) => {
   allProducts[currentProductIndex].myCart.splice(userDelete, 1);
+  allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
 };
@@ -459,7 +459,7 @@ showMyCart = () => {
 
      subtotalAndTotalPrice.innerHTML = `
      <div>Subtotal ( ${ eachTopDealProduct.length} Item )</div>
-     <div class="fw-bold" style="font-size: 14px" id="total">₦$</div>
+     <div class="fw-bold" style="font-size: 14px" id="total">₦${allProducts[currentProductIndex].totalBalance}</div>
      `
 
      orderSummaryOnLargeScreen.innerHTML = `
@@ -478,12 +478,12 @@ showMyCart = () => {
    <hr>
    <div class="d-flex justify-content-between w-100">
          <div class="" style="font-size: 12px;">Subtotal:</div>
-         <div class="fw-bold" style="font-size: 14px;">₦18399</div>
+         <div class="fw-bold" style="font-size: 14px;">₦${allProducts[currentProductIndex].totalBalance}</div>
    </div>
    <hr>
    <div class="d-flex justify-content-between w-100">
          <div class="fw-bold">Total:</div>
-         <div class="fw-bold" style="font-size: 18px;">₦18399</div>
+         <div class="fw-bold" style="font-size: 18px;">₦${allProducts[currentProductIndex].totalBalance}</div>
    </div>
    <hr>
    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
@@ -504,7 +504,8 @@ increment = (myIncrement) => {
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
       Number(eachTopDealProduct[myIncrement].cartPrice);
-      eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1
+      eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1,
+      allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   }
   showMyCart();
@@ -522,6 +523,7 @@ decrement = (myDecrement) => {
     Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
     Number(eachTopDealProduct[myDecrement].cartPrice);
     eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - 1
+    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[myDecrement].cartPrice)
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   showMyCart();
   }
