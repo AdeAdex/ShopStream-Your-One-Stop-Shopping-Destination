@@ -488,13 +488,13 @@ showMyCart = () => {
    <hr>
      `
   });
-   if (eachTopDealProduct.length == 1) {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
-    itemLScreen.innerHTML = `Item`
-  } else {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
-    itemLScreen.innerHTML = `Items`
-  }
+  //  if (eachTopDealProduct.length == 1) {
+  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
+  //   itemLScreen.innerHTML = `Item`
+  // } else {
+  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
+  //   itemLScreen.innerHTML = `Items`
+  // }
 };
 
 let count = 0;
@@ -546,12 +546,22 @@ decrement = (myDecrement) => {
 };
 
 del = (userDelete) => {
-  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachShoppingCart.innerHTML =  ""
+  if (eachTopDealProduct.length == 0) {
+    eachShoppingCart.innerHTML = `
+      <div class="row d-flex flex-column justify-content-center gap-4">
+        <img src="Images/pink-truck-icon.png" alt="" class="col mx-auto" style="width: 100px;">
+        <div class="mx-auto" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
+      </div>
+    `
+  } else {
+    eachTopDealProduct = allProducts[currentProductIndex].myCart;
   allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
   allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
   allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
+}
 };
 
 topDealProductPage = (eachTopDeal) => {
