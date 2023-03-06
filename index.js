@@ -577,6 +577,8 @@ topDealProductPage = (eachTopDeal) => {
 };
 
 hey = () => {
+  totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
+  totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
   productPageDetails.innerHTML = "";
   productPageSoldBy.innerHTML = "";
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
@@ -770,6 +772,8 @@ hey = () => {
 };
 
 displayProducts = () => {
+  totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
+  totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
   todaysDeal.innerHTML = "";
   eachTopDealProduct = allProducts[currentProductIndex].topDeal;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
