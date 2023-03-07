@@ -160,11 +160,6 @@ if (localStorage.companyProduct) {
 
 text = () => {
   let products = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
     topDeal: [],
     sponsorProduct: [],
     recommendedProduct: [],
@@ -180,17 +175,105 @@ text = () => {
     fitnessToolsEquipment: [],
     kidsWearAccessories: [],
     topDealOnTelevision: [],
-    myCart: [],
-    myProductSelect: [],
-    totalBalance: 0,
-    totalCart: 0,
   };
 
   allProducts.push(products);
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-
-  // window.location.href = `index.html`;
 };
+
+
+
+
+let allCustomer = [];
+if (localStorage.ourCustomerDetails) {
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+}
+
+
+openAccount = () => {
+  let foundInRegistry = false;
+  for (let index = 0; index < allCustomer.length; index++) {
+    if (allCustomer[index].phoneNumber == phoneNumber.value || allCustomer[index].email == email.value) {
+      foundInRegistry = true;
+    }
+  }
+ 
+  if (phoneNumber.value == "" && email.value == "") {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Try again',
+      text: 'Please fill out all the field!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+    // successModalContainer.style.display = "none"
+  } if (foundInRegistry) {
+    // successModalContainer.style.display = "none"
+    Swal.fire({
+      icon: 'error',
+      title: 'Details found!',
+      text: `This Mobile Number or email has already been registered. \nKindly proceed to Login with your details and if you need any assistance,\nWe are always here to help you. \nContact us: adeoluadex@gmail.com Telephone: 234-7033959586`,
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  } else if (foundInRegistry === false && phoneNumber.value != "") {
+    // sweet()
+    let customerDetails = {
+      firstName: fName.value,
+      lastName: lName.value,
+      email: email.value,
+      phoneNumber: phoneNumber.value,
+      password: password.value,
+      totalBalance: 0,
+      totalCart: 0,
+      myCart: [],
+      myProductSelect: [],
+    };
+    allCustomer.push(customerDetails);
+    localStorage.setItem(
+      "ourCustomerDetails",
+      JSON.stringify(allCustomer)
+    );
+
+  }
+};
+
+signIn = () => {
+  let found = false;
+  // allCustomer = JSON.parse(localStorage.getItem("customerPersonalDetails"));
+  allCustomer.map((loads, index) => {
+      if (
+        (allCustomer[index].email == userEmail.value || allCustomer[index].phoneNumber == userEmail.value) &&
+        allCustomer[index].password == pass.value
+      ) {
+        localStorage.setItem("currentCustomerIndex", index);
+        found = true;
+        return
+      }})
+    if (found) {
+      window.location.href = "index.html";
+    } else {
+      sweet2()
+    }
+    
+}
+
+sweet2 = () => {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'Incorrect details. Try again!',
+    footer: '<a href="">Why do I have this issue?</a>'
+  })
+}
+
+// firstName: "",
+//     lastName: "",
+//     email: "",
+//     phoneNumber: "",
+//     password: "",
+//     totalBalance: 0,
+//     totalCart: 0,
+//     myCart: [],
+//     myProductSelect: [],
 
 // let myPic = ""
 
@@ -348,12 +431,12 @@ setBrowsingHistory = () => {
 //   const data = await getBase64(e.target.files[0])
 //   localStorage.setItem('img-BASE64', data)
 // })
-
-currentProductIndex = localStorage.getItem("currentUserIndex");
+currentUserIndex = localStorage.getItem("currentUserIndex")
+currentCustomerIndex = localStorage.getItem("currentCustomerIndex");
 
 setEachCartItem = () => {
-  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     let myCartHistory = {
       cartName: eachTopDealProduct[index].productSelectName,
@@ -363,11 +446,11 @@ setEachCartItem = () => {
       eachItemNumber: eachTopDealProduct[index].productNumberOfItem + 1,
       eachItemTotalAvailable: eachTopDealProduct[index].productSelectTotalItem,
     };
-    allProducts[index].myCart.push(myCartHistory);
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice);
-    allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) + Number(eachTopDealProduct[index].productNumberOfItem + 1)
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    allCustomer[index].myCart.push(myCartHistory);
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice);
+    allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) + Number(eachTopDealProduct[index].productNumberOfItem + 1)
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     window.location.href = "shoppingCart.html";
   }
 };
@@ -375,10 +458,10 @@ setEachCartItem = () => {
 showMyCart = () => {
   eachShoppingCart.innerHTML = "";
   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
-    totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
-    totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
+    totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
+    totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
     eachShoppingCart.innerHTML += `
      <div class="d-flex bg-white px-3 cart-details">
      <div class="w-50 d-flex cart-img">
@@ -456,7 +539,7 @@ showMyCart = () => {
 
      subtotalAndTotalPrice.innerHTML = `
      <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
-     <div class="fw-bold" style="font-size: 14px" id="total">₦${allProducts[currentProductIndex].totalBalance}</div>
+     <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
      `
 
      orderSummaryOnLargeScreen.innerHTML = `
@@ -475,12 +558,12 @@ showMyCart = () => {
    <hr>
    <div class="d-flex justify-content-between w-100">
          <div class="" style="font-size: 12px;">Subtotal:</div>
-         <div class="fw-bold" style="font-size: 14px;">₦${allProducts[currentProductIndex].totalBalance}</div>
+         <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
    </div>
    <hr>
    <div class="d-flex justify-content-between w-100">
          <div class="fw-bold">Total:</div>
-         <div class="fw-bold" style="font-size: 18px;">₦${allProducts[currentProductIndex].totalBalance}</div>
+         <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
    </div>
    <hr>
    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
@@ -515,14 +598,14 @@ increment = (myIncrement) => {
     alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`)
   }else {
     document.getElementById("leftItems").style.setProperty("display", "block", "important");
-    eachTopDealProduct = allProducts[currentProductIndex].myCart;
+    eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
       Number(eachTopDealProduct[myIncrement].cartPrice);
       eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1,
-      allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
-      allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) + 1
-  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
+      allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) + 1
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   showMyCart();
   }  
   
@@ -538,14 +621,14 @@ decrement = (myDecrement) => {
   } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
   minusBtn.disabled = false;
   count -= 1;
-  eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct[myDecrement].eachCartTotalPrice =
     Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
     Number(eachTopDealProduct[myDecrement].cartPrice);
     eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - 1
-    allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[myDecrement].cartPrice)
-    allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) - 1
-  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) - Number(eachTopDealProduct[myDecrement].cartPrice)
+    allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) - 1
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   showMyCart();
   }
   
@@ -557,17 +640,17 @@ decrement = (myDecrement) => {
 };
 
 del = (userDelete) => {
-  eachTopDealProduct = allProducts[currentProductIndex].myCart;
-  allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
-  allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
-  allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
-  localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
+  allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
+  allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
+  allCustomer[currentCustomerIndex].myCart.splice(userDelete, 1); 
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   location.reload();
 };
 
 topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < allProducts.length; index++) {
     let productSelect = {
       productSelectName: eachTopDealProduct[eachTopDeal].productName,
@@ -581,19 +664,21 @@ topDealProductPage = (eachTopDeal) => {
       productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
       myProductSelect: [],
     };
-    allProducts[index].myProductSelect.splice(0, 1, productSelect);
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    allCustomer[index].myProductSelect.splice(0, 1, productSelect);
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   }
   window.location.href = "topDealProductPage.html";
 };
 
 hey = () => {
-  totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
-  totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
+  myName.innerHTML = allCustomer[currentCustomerIndex].firstName
+  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName
+  totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
   productPageDetails.innerHTML = "";
   productPageSoldBy.innerHTML = "";
-  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  eachTopDealProduct = allProducts[currentProductIndex].myProductSelect;
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   eachTopDealProduct.map((eachUser, index) => {
     productPageDetails.innerHTML = `
      <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
@@ -783,10 +868,10 @@ hey = () => {
 };
 
 displayProducts = () => {
-  totalCartNo.innerHTML = allProducts[currentProductIndex].totalCart
-  totalCartNoOnSmallScreen.innerHTML = allProducts[currentProductIndex].totalCart
+  // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
   todaysDeal.innerHTML = "";
-  eachTopDealProduct = allProducts[currentProductIndex].topDeal;
+  eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     todaysDeal.innerHTML += `
     <div
@@ -841,7 +926,7 @@ displayProducts = () => {
         `;
   }
 
-  eachSponsoredProduct = allProducts[currentProductIndex].sponsorProduct;
+  eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
   for (let index = 0; index < eachSponsoredProduct.length; index++) {
     sponsoredPro.innerHTML += `
   <div
@@ -896,7 +981,7 @@ displayProducts = () => {
   `;
   }
 
-  eachRecommendedProduct = allProducts[currentProductIndex].recommendedProduct;
+  eachRecommendedProduct = allProducts[currentUserIndex].recommendedProduct;
   for (let index = 0; index < eachRecommendedProduct.length; index++) {
     recommendedPro.innerHTML += `
     <div
@@ -951,7 +1036,7 @@ displayProducts = () => {
         `;
   }
 
-  eachInspiredProduct = allProducts[currentProductIndex].inspiredProduct;
+  eachInspiredProduct = allProducts[currentUserIndex].inspiredProduct;
   for (let index = 0; index < eachInspiredProduct.length; index++) {
     inspiredPro.innerHTML += `
   <div
@@ -1006,7 +1091,7 @@ displayProducts = () => {
   `;
   }
 
-  eachBrowsingProduct = allProducts[currentProductIndex].browsingProduct;
+  eachBrowsingProduct = allProducts[currentUserIndex].browsingProduct;
   for (let index = 0; index < eachBrowsingProduct.length; index++) {
     browsingHistoryPro.innerHTML += `
   <div

@@ -823,6 +823,10 @@ nav .dropbtn:hover {
 
   #secondNav .small-screen-cart-icon {
     display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 10px;
   }
 
   #footerTwo .footerconnect {

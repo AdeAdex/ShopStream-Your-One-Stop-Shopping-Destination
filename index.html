@@ -1261,7 +1261,7 @@
           <input
             type="email"
             class="form-control input-lg"
-            id="exampleInputEmail1"
+            id="userEmail"
             aria-describedby="emailHelp"
             placeholder="Enter Email Address Or Phone Number"
           />
@@ -1274,7 +1274,7 @@
           <input
             type="password"
             class="form-control input-lg"
-            id="exampleInputPassword1"
+            id="pass"
             placeholder="Enter Password"
           />
         </div>
@@ -1284,7 +1284,7 @@
             >Check me out</label
           >
         </div>
-        <button type="submit" class="btn btn-lg btn-success w-100">
+        <button type="submit" class="btn btn-lg btn-success w-100" onclick="signIn()">
           Login
         </button>
         <div class="w-100 d-flex mt-5">
@@ -1341,7 +1341,7 @@
           data-bs-dismiss="offcanvas"
           aria-label="Close"
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
+          data-bs-target=""
           >Don't have an account? Sign Up</a
         >
         <div class="w-100 dont-have-account-small-screen gap-2 py-3">
@@ -1349,7 +1349,7 @@
           <button class="w-100 btn d-flex justify-content-center create-btn" data-bs-dismiss="offcanvas"
           aria-label="Close"
           data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop">Create an Account</button>
+          data-bs-target="">Create an Account</button>
         </div>
       </div>
     </div>
@@ -1397,7 +1397,7 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="fName"
                   aria-describedby="emailHelp"
                 />
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
@@ -1409,7 +1409,7 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="lName"
                   aria-describedby="emailHelp"
                 />
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
@@ -1421,7 +1421,7 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="email"
                   aria-describedby="emailHelp"
                 />
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
@@ -1433,7 +1433,7 @@
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="phoneNumber"
                   aria-describedby="emailHelp"
                 />
                 <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
@@ -1445,14 +1445,14 @@
                 <input
                   type="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
                 />
               </div>
               <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
-              <button type="submit" class="btn w-100 btn-success mt-3">
+              <button type="submit" class="btn w-100 btn-success mt-3" onclick="openAccount()">
                 Create an Account
               </button>
               <span class="px-3 mt-4"
