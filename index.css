@@ -407,6 +407,11 @@ nav .dropbtn:hover {
   display: none !important;
 }
 
+#cartMain .empty-cart-container {
+  width: 25% !important;
+  margin-top: 100px !important;
+}
+
 }
 
 

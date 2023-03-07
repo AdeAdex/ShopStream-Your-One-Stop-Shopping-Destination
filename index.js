@@ -488,6 +488,18 @@ showMyCart = () => {
    <hr>
      `
   });
+
+  if (eachTopDealProduct.length == 0) {
+    cartMain.innerHTML = `
+    <div class="d-flex" id="" style="padding: 0px 20px; height: 100vh; width: 100%;">
+      <div class="container-fluid shadow mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50 bg-white empty-cart-container">
+        <img src="Images/pink-truck-icon.png" alt="" class="mx-auto" style="width: 100px;">
+        <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
+      </div>
+    </div>
+    `
+    // cartM.style.setProperty("display", "block", "important");
+  }
   //  if (eachTopDealProduct.length == 1) {
   //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
   //   itemLScreen.innerHTML = `Item`
@@ -546,22 +558,23 @@ decrement = (myDecrement) => {
 };
 
 del = (userDelete) => {
-  eachShoppingCart.innerHTML =  ""
-  if (eachTopDealProduct.length == 0) {
-    eachShoppingCart.innerHTML = `
-      <div class="row d-flex flex-column justify-content-center gap-4">
-        <img src="Images/pink-truck-icon.png" alt="" class="col mx-auto" style="width: 100px;">
-        <div class="mx-auto" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
-      </div>
-    `
-  } else {
-    eachTopDealProduct = allProducts[currentProductIndex].myCart;
+  eachTopDealProduct = allProducts[currentProductIndex].myCart;
   allProducts[currentProductIndex].totalBalance = Number(allProducts[currentProductIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
   allProducts[currentProductIndex].totalCart = Number(allProducts[currentProductIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
   allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
-}
+  if (eachTopDealProduct.length == 0) {
+    eachShoppingCart.innerHTML = `
+    <div class="container-fluid shadow position-absolute bg-primary" id="" style="padding: 100px 0px; top: 0; height: 100vh; width: 100%; z-index: 9;">
+      <div class="row d-flex flex-column justify-content-center gap-4">
+        <img src="Images/pink-truck-icon.png" alt="" class="col mx-auto" style="width: 100px;">
+        <div class="mx-auto" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
+      </div>
+    </div>
+    `
+    // cartM.style.setProperty("display", "block", "important");
+  }
 };
 
 topDealProductPage = (eachTopDeal) => {
