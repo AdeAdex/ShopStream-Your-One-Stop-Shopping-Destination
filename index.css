@@ -1096,7 +1096,10 @@ nav .dropbtn:hover {
 
   .div2 .checkout-btn {
     display: block !important;
-    margin-top: 50px;
+    /* margin-top: 50px; */
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
   
   
