@@ -492,8 +492,8 @@ showMyCart = () => {
   if (eachTopDealProduct.length == 0) {
     cartMain.innerHTML = `
     <div class="d-flex" id="" style="padding: 0px 20px; height: 100vh; width: 100%;">
-      <div class="container-fluid shadow mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50 bg-white empty-cart-container">
-        <img src="Images/pink-truck-icon.png" alt="" class="mx-auto" style="width: 100px;">
+      <div class="container-fluid shadow bg-white mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50  empty-cart-container">
+        <img src="Images/empty-cart.png" alt="" class="mx-auto" style="width: 100px;">
         <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
       </div>
     </div>
