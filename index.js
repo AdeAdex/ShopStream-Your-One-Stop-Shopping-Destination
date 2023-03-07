@@ -498,15 +498,14 @@ showMyCart = () => {
       </div>
     </div>
     `
-    // cartM.style.setProperty("display", "block", "important");
   }
-  //  if (eachTopDealProduct.length == 1) {
-  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
-  //   itemLScreen.innerHTML = `Item`
-  // } else {
-  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
-  //   itemLScreen.innerHTML = `Items`
-  // }
+   if (eachTopDealProduct.length == 1) {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
+    itemLScreen.innerHTML = `Item`
+  } else {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
+    itemLScreen.innerHTML = `Items`
+  }
 };
 
 let count = 0;
@@ -564,17 +563,6 @@ del = (userDelete) => {
   allProducts[currentProductIndex].myCart.splice(userDelete, 1); 
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
   location.reload();
-  if (eachTopDealProduct.length == 0) {
-    eachShoppingCart.innerHTML = `
-    <div class="container-fluid shadow position-absolute bg-primary" id="" style="padding: 100px 0px; top: 0; height: 100vh; width: 100%; z-index: 9;">
-      <div class="row d-flex flex-column justify-content-center gap-4">
-        <img src="Images/pink-truck-icon.png" alt="" class="col mx-auto" style="width: 100px;">
-        <div class="mx-auto" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
-      </div>
-    </div>
-    `
-    // cartM.style.setProperty("display", "block", "important");
-  }
 };
 
 topDealProductPage = (eachTopDeal) => {
