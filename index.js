@@ -457,6 +457,8 @@ setEachCartItem = () => {
 
 showMyCart = () => {
   eachShoppingCart.innerHTML = "";
+  myName.innerHTML = allCustomer[currentCustomerIndex].firstName
+  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName
   // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
