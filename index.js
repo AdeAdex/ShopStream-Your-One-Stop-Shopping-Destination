@@ -181,39 +181,39 @@ text = () => {
   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
 };
 
-
-
-
 let allCustomer = [];
 if (localStorage.ourCustomerDetails) {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
 }
 
-
 openAccount = () => {
   let foundInRegistry = false;
   for (let index = 0; index < allCustomer.length; index++) {
-    if (allCustomer[index].phoneNumber == phoneNumber.value || allCustomer[index].email == email.value) {
+    if (
+      allCustomer[index].phoneNumber == phoneNumber.value ||
+      allCustomer[index].email == email.value
+    ) {
       foundInRegistry = true;
     }
   }
- 
+
   if (phoneNumber.value == "" && email.value == "") {
     Swal.fire({
-      icon: 'warning',
-      title: 'Try again',
-      text: 'Please fill out all the field!',
-      footer: '<a href="">Why do I have this issue?</a>'
-    })
+      icon: "warning",
+      title: "Try again",
+      text: "Please fill out all the field!",
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
     // successModalContainer.style.display = "none"
-  } if (foundInRegistry) {
+  }
+  if (foundInRegistry) {
     // successModalContainer.style.display = "none"
     Swal.fire({
-      icon: 'error',
-      title: 'Details found!',
-      text: `This Mobile Number or email has already been registered. \nKindly proceed to Login with your details and if you need any assistance,\nWe are always here to help you. \nContact us: adeoluadex@gmail.com Telephone: 234-7033959586`,
-      footer: '<a href="">Why do I have this issue?</a>'
-    })
+      icon: "error",
+      title: "Details found!",
+      text: `This Mobile Number or email has already been registered. \nKindly proceed to Login with your details and if you need any assistance,\nWe are always here to help you. \nContact us: adeoluamole@gmail.com Telephone: 234-7033959586`,
+      footer: '<a href="">Why do I have this issue?</a>',
+    });
   } else if (foundInRegistry === false && phoneNumber.value != "") {
     // sweet()
     let customerDetails = {
@@ -228,54 +228,39 @@ openAccount = () => {
       myProductSelect: [],
     };
     allCustomer.push(customerDetails);
-    localStorage.setItem(
-      "ourCustomerDetails",
-      JSON.stringify(allCustomer)
-    );
-
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   }
 };
 
 signIn = () => {
   let found = false;
-  // allCustomer = JSON.parse(localStorage.getItem("customerPersonalDetails"));
   allCustomer.map((loads, index) => {
-      if (
-        (allCustomer[index].email == userEmail.value || allCustomer[index].phoneNumber == userEmail.value) &&
-        allCustomer[index].password == pass.value
-      ) {
-        localStorage.setItem("currentCustomerIndex", index);
-        found = true;
-        return
-      }})
-    if (found) {
-      window.location.href = "index.html";
-    } else {
-      sweet2()
+    if (
+      (allCustomer[index].email == userEmail.value ||
+        allCustomer[index].phoneNumber == userEmail.value) &&
+      allCustomer[index].password == pass.value
+    ) {
+      localStorage.setItem("currentCustomerIndex", index);
+      found = true;
+      return;
     }
-    
-}
+  });
+  if (found) {
+    window.location.href = "index.html";
+  } else {
+    sweet2();
+  }
+};
 
 sweet2 = () => {
   Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Incorrect details. Try again!',
-    footer: '<a href="">Why do I have this issue?</a>'
-  })
-}
+    icon: "error",
+    title: "Oops...",
+    text: "Incorrect details. Try again!",
+    footer: '<a href="">Why do I have this issue?</a>',
+  });
+};
 
-// firstName: "",
-//     lastName: "",
-//     email: "",
-//     phoneNumber: "",
-//     password: "",
-//     totalBalance: 0,
-//     totalCart: 0,
-//     myCart: [],
-//     myProductSelect: [],
-
-// let myPic = ""
 
 // function readURL(input)
 // {
@@ -431,25 +416,30 @@ setBrowsingHistory = () => {
 //   const data = await getBase64(e.target.files[0])
 //   localStorage.setItem('img-BASE64', data)
 // })
-currentUserIndex = localStorage.getItem("currentUserIndex")
+currentUserIndex = localStorage.getItem("currentUserIndex");
 currentCustomerIndex = localStorage.getItem("currentCustomerIndex");
 
-setEachCartItem = () => {
+setEachCartItem = (setEach) => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     let myCartHistory = {
-      cartName: eachTopDealProduct[index].productSelectName,
-      cartPrice: eachTopDealProduct[index].productSelectNewPrice,
-      cartSoldBy: eachTopDealProduct[index].productSelectSoldBy,
-      eachCartTotalPrice: eachTopDealProduct[index].productSelectNewPrice,
-      eachItemNumber: eachTopDealProduct[index].productNumberOfItem + 1,
-      eachItemTotalAvailable: eachTopDealProduct[index].productSelectTotalItem,
+      cartName: eachTopDealProduct[setEach].productSelectName,
+      cartPrice: eachTopDealProduct[setEach].productSelectNewPrice,
+      cartSoldBy: eachTopDealProduct[setEach].productSelectSoldBy,
+      eachCartTotalPrice: eachTopDealProduct[setEach].productSelectNewPrice,
+      eachItemNumber: eachTopDealProduct[setEach].productNumberOfItem + 1,
+      eachItemTotalAvailable:
+        eachTopDealProduct[setEach].productSelectTotalItem,
     };
-    allCustomer[index].myCart.push(myCartHistory);
+    allCustomer[currentCustomerIndex].myCart.push(myCartHistory);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-    allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) + Number(eachTopDealProduct[index].productSelectNewPrice);
-    allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) + Number(eachTopDealProduct[index].productNumberOfItem + 1)
+    allCustomer[currentCustomerIndex].totalBalance =
+      Number(allCustomer[currentCustomerIndex].totalBalance) +
+      Number(eachTopDealProduct[index].productSelectNewPrice);
+    allCustomer[currentCustomerIndex].totalCart =
+      Number(allCustomer[currentCustomerIndex].totalCart) +
+      Number(eachTopDealProduct[index].productNumberOfItem + 1);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     window.location.href = "shoppingCart.html";
   }
@@ -457,13 +447,13 @@ setEachCartItem = () => {
 
 showMyCart = () => {
   eachShoppingCart.innerHTML = "";
-  myName.innerHTML = allCustomer[currentCustomerIndex].firstName
-  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName
-  // allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  myName.innerHTML = allCustomer[currentCustomerIndex].firstName;
+  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName;
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
-    totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
-    totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
+    totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart;
+    totalCartNoOnSmallScreen.innerHTML =
+      allCustomer[currentCustomerIndex].totalCart;
     eachShoppingCart.innerHTML += `
      <div class="d-flex bg-white px-3 cart-details">
      <div class="w-50 d-flex cart-img">
@@ -539,12 +529,12 @@ showMyCart = () => {
    </div>
      `;
 
-     subtotalAndTotalPrice.innerHTML = `
+    subtotalAndTotalPrice.innerHTML = `
      <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
      <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
-     `
+     `;
 
-     orderSummaryOnLargeScreen.innerHTML = `
+    orderSummaryOnLargeScreen.innerHTML = `
      <div class="d-flex justify-content-between fw-bold">
      <div>Order Summary</div>
      <div class="d-flex gap-2">
@@ -571,7 +561,7 @@ showMyCart = () => {
    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
    <button class="btn btn-sm text-white mt-2 fw-bold w-100" style="background-color: #33B27B;">Continue to Checkout</button>
    <hr>
-     `
+     `;
   });
 
   if (eachTopDealProduct.length == 0) {
@@ -582,70 +572,88 @@ showMyCart = () => {
         <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
       </div>
     </div>
-    `
+    `;
   }
-   if (eachTopDealProduct.length == 1) {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `
-    itemLScreen.innerHTML = `Item`
+  if (eachTopDealProduct.length == 1) {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `;
+    itemLScreen.innerHTML = `Item`;
   } else {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`
-    itemLScreen.innerHTML = `Items`
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`;
+    itemLScreen.innerHTML = `Items`;
   }
 };
 
 let count = 0;
 increment = (myIncrement) => {
-  if (eachTopDealProduct[myIncrement].eachItemNumber == eachTopDealProduct[myIncrement].eachItemTotalAvailable) {
+  if (
+    eachTopDealProduct[myIncrement].eachItemNumber ==
+    eachTopDealProduct[myIncrement].eachItemTotalAvailable
+  ) {
     // document.getElementById("leftItems").style.setProperty("display", "block", "important");
-    alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`)
-  }else {
-    document.getElementById("leftItems").style.setProperty("display", "block", "important");
+    alert(
+      `Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`
+    );
+  } else {
+    document
+      .getElementById("leftItems")
+      .style.setProperty("display", "block", "important");
     eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
       Number(eachTopDealProduct[myIncrement].cartPrice);
-      eachTopDealProduct[myIncrement].eachItemNumber = eachTopDealProduct[myIncrement].eachItemNumber + 1,
-      allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) + Number(eachTopDealProduct[myIncrement].cartPrice)
-      allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) + 1
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-  showMyCart();
-  }  
-  
-  if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
-    totalForEach.innerHTML = `Items`
-  } 
-};
+    (eachTopDealProduct[myIncrement].eachItemNumber =
+      eachTopDealProduct[myIncrement].eachItemNumber + 1),
+      (allCustomer[currentCustomerIndex].totalBalance =
+        Number(allCustomer[currentCustomerIndex].totalBalance) +
+        Number(eachTopDealProduct[myIncrement].cartPrice));
+    allCustomer[currentCustomerIndex].totalCart =
+      Number(allCustomer[currentCustomerIndex].totalCart) + 1;
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    showMyCart();
+  }
 
+  if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
+    totalForEach[myIncrement].innerHTML = `Items`;
+  }
+};
 
 decrement = (myDecrement) => {
   if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
-  minusBtn.disabled = true;
+    minusBtn.disabled = true;
   } else if (eachTopDealProduct[myDecrement].eachItemNumber >= 1) {
-  minusBtn.disabled = false;
-  count -= 1;
-  eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
-  eachTopDealProduct[myDecrement].eachCartTotalPrice =
-    Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
-    Number(eachTopDealProduct[myDecrement].cartPrice);
-    eachTopDealProduct[myDecrement].eachItemNumber = eachTopDealProduct[myDecrement].eachItemNumber - 1
-    allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) - Number(eachTopDealProduct[myDecrement].cartPrice)
-    allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) - 1
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-  showMyCart();
+    minusBtn.disabled = false;
+    count -= 1;
+    eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
+    eachTopDealProduct[myDecrement].eachCartTotalPrice =
+      Number(eachTopDealProduct[myDecrement].eachCartTotalPrice) -
+      Number(eachTopDealProduct[myDecrement].cartPrice);
+    eachTopDealProduct[myDecrement].eachItemNumber =
+      eachTopDealProduct[myDecrement].eachItemNumber - 1;
+    allCustomer[currentCustomerIndex].totalBalance =
+      Number(allCustomer[currentCustomerIndex].totalBalance) -
+      Number(eachTopDealProduct[myDecrement].cartPrice);
+    allCustomer[currentCustomerIndex].totalCart =
+      Number(allCustomer[currentCustomerIndex].totalCart) - 1;
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    showMyCart();
   }
-  
+
   if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
-    totalForEach.innerHTML = `Item`
+    totalForEach.innerHTML = `Item`;
   } else {
-    totalForEach.innerHTML = `Items`
-  } 
+    totalForEach[myDecrement].innerHTML = `Items`;
+  }
 };
 
 del = (userDelete) => {
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
-  allCustomer[currentCustomerIndex].totalBalance = Number(allCustomer[currentCustomerIndex].totalBalance) - Number(eachTopDealProduct[userDelete].eachCartTotalPrice)
-  allCustomer[currentCustomerIndex].totalCart = Number(allCustomer[currentCustomerIndex].totalCart) -  Number(eachTopDealProduct[userDelete].eachItemNumber)
-  allCustomer[currentCustomerIndex].myCart.splice(userDelete, 1); 
+  allCustomer[currentCustomerIndex].totalBalance =
+    Number(allCustomer[currentCustomerIndex].totalBalance) -
+    Number(eachTopDealProduct[userDelete].eachCartTotalPrice);
+  allCustomer[currentCustomerIndex].totalCart =
+    Number(allCustomer[currentCustomerIndex].totalCart) -
+    Number(eachTopDealProduct[userDelete].eachItemNumber);
+  allCustomer[currentCustomerIndex].myCart.splice(userDelete, 1);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   location.reload();
 };
@@ -666,17 +674,22 @@ topDealProductPage = (eachTopDeal) => {
       productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
       myProductSelect: [],
     };
-    allCustomer[index].myProductSelect.splice(0, 1, productSelect);
+    allCustomer[currentCustomerIndex].myProductSelect.splice(
+      0,
+      1,
+      productSelect
+    );
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   }
   window.location.href = "topDealProductPage.html";
 };
 
 hey = () => {
-  myName.innerHTML = allCustomer[currentCustomerIndex].firstName
-  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName
-  totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
-  totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  myName.innerHTML = allCustomer[currentCustomerIndex].firstName;
+  myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName;
+  totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart;
+  totalCartNoOnSmallScreen.innerHTML =
+    allCustomer[currentCustomerIndex].totalCart;
   productPageDetails.innerHTML = "";
   productPageSoldBy.innerHTML = "";
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
