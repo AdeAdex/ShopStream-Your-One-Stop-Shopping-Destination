@@ -205,10 +205,8 @@ openAccount = () => {
       text: "Please fill out all the field!",
       footer: '<a href="">Why do I have this issue?</a>',
     });
-    // successModalContainer.style.display = "none"
   }
   if (foundInRegistry) {
-    // successModalContainer.style.display = "none"
     Swal.fire({
       icon: "error",
       title: "Details found!",
@@ -216,7 +214,6 @@ openAccount = () => {
       footer: '<a href="">Why do I have this issue?</a>',
     });
   } else if (foundInRegistry === false && phoneNumber.value != "") {
-    // sweet()
     let customerDetails = {
       firstName: fName.value,
       lastName: lName.value,
@@ -230,9 +227,18 @@ openAccount = () => {
     };
     allCustomer.push(customerDetails);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    sweet()
   }
-  window.location.href = ""
 };
+
+sweet = () => {
+  swal.fire("Good job!", "Thank you for creating an account with us at Adex International Limited. Thanks", "success"
+  ).then((result) => {
+    if (result.isConfirmed) {
+      successModalContainer.style.setProperty("display", "none", "important");
+    }
+  })
+}
 
 openSignUpModal = () => {
   successModalContainer.style.setProperty("display", "block", "important");
@@ -1340,7 +1346,7 @@ function payWithPaystack() {
         icon: "success",
         title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        footer: 'Your Order is on the way, Click <a href="">here</a> to track your order',
+        footer: 'Your Order is on the way Click <a href="">here</a>' + 'to track your order',
       });
     }
   });
