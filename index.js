@@ -562,7 +562,7 @@ showMyCart = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm">Continue to Checkout</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="payWithPaystack()">Continue to Checkout</button>
 </div>
     <hr>
      `;
@@ -1314,26 +1314,23 @@ function readMore() {
 
 
 
-// const paymentForm = document.getElementById('paymentForm');
 paymentForm.addEventListener("click", payWithPaystack, false);
 function payWithPaystack() {
-  alert("hiiiii")
-  // e.preventDefault();
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  let handler = PaystackPop.setup({
+    key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537', // Replace with your public key
+    email: /* allCustomer[currentCustomerIndex].email */ "adex@gmail.com",
+    amount: allCustomer[currentCustomerIndex].totalBalance * 100,
+    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+    // label: "Optional string that replaces customer email"
+    onClose: function(){
+      alert('Window closed.');
+    },
+    callback: function(response){
+      let message = 'Payment complete! Reference: ' + response.reference;
+      alert(message);
+    }
+  });
 
-  // let handler = PaystackPop.setup({
-  //   key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537', // Replace with your public key
-  //   email: allCustomer[currentCustomerIndex].email,
-  //   amount: allCustomer[currentCustomerIndex].totalBalance * 100,
-  //   ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-  //   // label: "Optional string that replaces customer email"
-  //   onClose: function(){
-  //     alert('Window closed.');
-  //   },
-  //   callback: function(response){
-  //     let message = 'Payment complete! Reference: ' + response.reference;
-  //     alert(message);
-  //   }
-  // });
-
-  // handler.openIframe();
+  handler.openIframe();
 }
