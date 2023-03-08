@@ -1319,7 +1319,7 @@ function payWithPaystack() {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   let handler = PaystackPop.setup({
     key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537', // Replace with your public key
-    email: /* allCustomer[currentCustomerIndex].email */ "adex@gmail.com",
+    email: allCustomer[currentCustomerIndex].email,
     amount: allCustomer[currentCustomerIndex].totalBalance * 100,
     ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
     // label: "Optional string that replaces customer email"
