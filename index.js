@@ -535,32 +535,36 @@ showMyCart = () => {
      `;
 
     orderSummaryOnLargeScreen.innerHTML = `
-     <div class="d-flex justify-content-between fw-bold">
-     <div>Order Summary</div>
-     <div class="d-flex gap-2">
-       <div>${eachTopDealProduct.length}</div>
-       <div id="itemLScreen">Item</div>
-     </div>
-   </div>
-   <hr>
-   <div class="d-flex justify-content-between w-100">
-         <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
-         <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
-   </div>
-   <hr>
-   <div class="d-flex justify-content-between w-100">
-         <div class="" style="font-size: 12px;">Subtotal:</div>
-         <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
-   </div>
-   <hr>
-   <div class="d-flex justify-content-between w-100">
-         <div class="fw-bold">Total:</div>
-         <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
-   </div>
-   <hr>
-   <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
-   <button class="btn btn-sm text-white mt-2 fw-bold w-100" style="background-color: #33B27B;">Continue to Checkout</button>
-   <hr>
+    <div class=" details-off">
+    <div class="d-flex justify-content-between fw-bold details-off">
+      <div>Order Summary</div>
+      <div class="d-flex gap-2">
+        <div>${eachTopDealProduct.length}</div>
+        <div id="itemLScreen">Item</div>
+      </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
+          <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="" style="font-size: 12px;">Subtotal:</div>
+          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="fw-bold">Total:</div>
+          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    </div>
+    <hr>
+    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
+  </div>
+  <div class="w-100 checkout-btn bg-white p-3">
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm">Continue to Checkout</button>
+</div>
+    <hr>
      `;
   });
 
@@ -1306,3 +1310,30 @@ function readMore() {
 //     // break;
 //   }
 // }
+
+
+
+
+// const paymentForm = document.getElementById('paymentForm');
+paymentForm.addEventListener("click", payWithPaystack, false);
+function payWithPaystack() {
+  alert("hiiiii")
+  // e.preventDefault();
+
+  // let handler = PaystackPop.setup({
+  //   key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537', // Replace with your public key
+  //   email: allCustomer[currentCustomerIndex].email,
+  //   amount: allCustomer[currentCustomerIndex].totalBalance * 100,
+  //   ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+  //   // label: "Optional string that replaces customer email"
+  //   onClose: function(){
+  //     alert('Window closed.');
+  //   },
+  //   callback: function(response){
+  //     let message = 'Payment complete! Reference: ' + response.reference;
+  //     alert(message);
+  //   }
+  // });
+
+  // handler.openIframe();
+}

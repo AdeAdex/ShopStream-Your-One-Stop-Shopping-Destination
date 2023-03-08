@@ -350,6 +350,30 @@ nav .dropbtn:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width: 1024px) {
   #footerTwo {
     justify-content: start;
@@ -435,7 +459,36 @@ nav .dropbtn:hover {
   margin-top: 100px !important;
 }
 
+.div2 .checkout-btn {
+  position: unset !important;
+  bottom: unset !important;;
+  left: unset !important;
+  padding: unset !important;
+  margin-top: 10px;
 }
+
+.checkout-btn button {
+  font-size: 12px;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1099,7 +1152,7 @@ nav .dropbtn:hover {
   }
 
   .div2 .checkout-btn {
-    display: block !important;
+    /* display: block !important; */
     /* margin-top: 50px; */
     position: fixed;
     bottom: 0;
