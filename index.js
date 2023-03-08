@@ -1318,17 +1318,22 @@ paymentForm.addEventListener("click", payWithPaystack, false);
 function payWithPaystack() {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   let handler = PaystackPop.setup({
-    key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537', // Replace with your public key
+    key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537',
     email: allCustomer[currentCustomerIndex].email,
     amount: allCustomer[currentCustomerIndex].totalBalance * 100,
-    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-    // label: "Optional string that replaces customer email"
+    ref: 'Adex'+Math.floor((Math.random() * 1000000000) + 1), 
     onClose: function(){
       alert('Window closed.');
     },
     callback: function(response){
-      let message = 'Payment complete! Reference: ' + response.reference;
-      alert(message);
+      allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+      let message = 'Payment completed! Your Reference Number is: ' + response.reference;
+      Swal.fire({
+        icon: "success",
+        title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
+        text: message,
+        footer: 'Your Order is on the way, Click <a href="">here</a> to track your order',
+      });
     }
   });
 
