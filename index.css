@@ -344,9 +344,41 @@ nav .dropbtn:hover {
 
 
 
+#successModal {
+  position: fixed;
+  z-index: 4;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: black;
+}
 
+@-webkit-keyframes animatetop {
+  from {
+    top: -1000px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 
-
+@keyframes animatetop {
+  from {
+    top: -1000px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 
 
 
@@ -469,6 +501,22 @@ nav .dropbtn:hover {
 
 .checkout-btn button {
   font-size: 12px;
+}
+
+#successModal {
+  position: fixed;
+  z-index: 4;
+  left: 35% !important;
+  bottom: 0;
+  width: 30%;
+  /* margin-left: auto !important; */
+  /* margin-right: auto !important; */
+  overflow: auto;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: black;
 }
 
 }

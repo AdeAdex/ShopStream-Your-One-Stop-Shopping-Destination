@@ -187,6 +187,7 @@ if (localStorage.ourCustomerDetails) {
 }
 
 openAccount = () => {
+  // e.preventDefault();
   let foundInRegistry = false;
   for (let index = 0; index < allCustomer.length; index++) {
     if (
@@ -230,7 +231,17 @@ openAccount = () => {
     allCustomer.push(customerDetails);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   }
+  window.location.href = ""
 };
+
+openSignUpModal = () => {
+  successModalContainer.style.setProperty("display", "block", "important");
+}
+
+closeMyModal = () => {
+  successModalContainer.style.display = "none"
+      // window.location.reload()
+}
 
 signIn = () => {
   let found = false;
@@ -664,6 +675,7 @@ del = (userDelete) => {
 
 topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < allProducts.length; index++) {
     let productSelect = {
@@ -678,11 +690,7 @@ topDealProductPage = (eachTopDeal) => {
       productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
       myProductSelect: [],
     };
-    allCustomer[currentCustomerIndex].myProductSelect.splice(
-      0,
-      1,
-      productSelect
-    );
+    allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   }
   window.location.href = "topDealProductPage.html";
@@ -1314,7 +1322,7 @@ function readMore() {
 
 
 
-paymentForm.addEventListener("click", payWithPaystack, false);
+// paymentForm.addEventListener("click", payWithPaystack, false);
 function payWithPaystack() {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   let handler = PaystackPop.setup({
