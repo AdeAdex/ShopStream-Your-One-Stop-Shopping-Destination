@@ -236,6 +236,7 @@ sweet = () => {
   ).then((result) => {
     if (result.isConfirmed) {
       successModalContainer.style.setProperty("display", "none", "important");
+      loginOffcanvas.style.setProperty("display", "block", "important");
     }
   })
 }
