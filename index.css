@@ -1233,7 +1233,7 @@ nav .dropbtn:hover {
     flex-direction: column;
     gap: 15px;
   }
-  .delivery-address .delivery-address1, .delivery-address .delivery-address2 {
+  .delivery-address .delivery-address1, .delivery-address .delivery-address2, .div1 .delivery-address11 {
     width: 100% !important;
   }
   .div1 .nxt-div {
