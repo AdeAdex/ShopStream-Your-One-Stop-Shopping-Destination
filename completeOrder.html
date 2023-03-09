@@ -214,6 +214,7 @@
                         font-size: 12px;
                         border-radius: 3px;
                       "
+                      data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
                     >
                       select pickup location
                     </button>
@@ -270,14 +271,14 @@
       </section>
     </div>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="height: 100vh;">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasRightLabel">Address Form</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body position-relative" style="overflow-y: auto; height: 100vh;">
+  <div class="offcanvas-body" style="overflow-y: scroll; height: 50% !important;">
     <!-- <form class="row g-3"> -->
-      <div class="row g-3">
+      <div class="row g-3 h-100">
       <div class="col-md-6">
         <label for="validationServer01" class="form-label">First name</label>
         <input type="text" class="form-control" id="validationServer01" value="" required>
@@ -292,16 +293,6 @@
           Looks good!
         </div>
       </div>
-      <!-- <div class="col-md-4">
-        <label for="validationServerUsername" class="form-label">Username</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
-          <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-          <div id="validationServerUsernameFeedback" class="invalid-feedback">
-            Please choose a username.
-          </div>
-        </div>
-      </div> -->
       <div class="col-md-12">
         <label for="validationServer03" class="form-label">Phone Number</label>
         <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
@@ -354,6 +345,7 @@
     <!-- </form> -->
   </div>
 </div>
+
 
     <script src="index.js"></script>
     <script src="bootstrap.bundle.js"></script>
