@@ -264,11 +264,15 @@ signIn = () => {
     ) {
       localStorage.setItem("currentCustomerIndex", index);
       found = true;
-      return;
+      // return;
     }
   });
   if (found) {
-    window.location.href = "index.html";
+    signInBtn.innerHTML = "Sign In";
+    // alert(signInBtn.innerHTML)
+    // window.location.href = "index.html";
+    // signInBtn.style.setProperty("display", "none", "important")
+    // myAccountDropdown.style.setProperty("display", "block", "important")
   } else {
     sweet2();
   }
@@ -584,7 +588,7 @@ showMyCart = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="payWithPaystack()">Continue to Checkout</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Continue to Checkout</button>
 </div>
     <hr>
      `;
@@ -638,9 +642,9 @@ increment = (myIncrement) => {
     showMyCart();
   }
 
-  if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
-    totalForEach[myIncrement].innerHTML = `Items`;
-  }
+  // if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
+  //   totalForEach[myIncrement].innerHTML = `Items`;
+  // }
 };
 
 decrement = (myDecrement) => {
@@ -664,11 +668,11 @@ decrement = (myDecrement) => {
     showMyCart();
   }
 
-  if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
-    totalForEach.innerHTML = `Item`;
-  } else {
-    totalForEach[myDecrement].innerHTML = `Items`;
-  }
+  // if (eachTopDealProduct[myDecrement].eachItemNumber == 1) {
+  //   totalForEach.innerHTML = `Item`;
+  // } else {
+  //   totalForEach[myDecrement].innerHTML = `Items`;
+  // }
 };
 
 del = (userDelete) => {
@@ -905,9 +909,73 @@ hey = () => {
   });
 };
 
+oderConfirm = () => {
+  myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
+  eachShoppingCart.innerHTML = "";
+  eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
+  eachTopDealProduct.map((eachUser, index) => {
+    subtotalAndTotalPrice.innerHTML = `
+     <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
+     <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+     `;
+
+    orderSummaryOnLargeScreen.innerHTML = `
+    <div class=" details-off">
+    <div class="d-flex justify-content-between fw-bold details-off">
+      <div>Order Summary</div>
+      <div class="d-flex gap-2">
+        <div>${eachTopDealProduct.length}</div>
+        <div id="itemLScreen">Item</div>
+      </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
+          <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="" style="font-size: 12px;">Subtotal:</div>
+          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between w-100">
+          <div class="fw-bold">Total:</div>
+          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    </div>
+    <hr>
+    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
+  </div>
+  <div class="w-100 checkout-btn bg-white p-3">
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Continue to Checkout</button>
+</div>
+    <hr>
+     `;
+  });
+
+  if (eachTopDealProduct.length == 0) {
+    cartMain.innerHTML = `
+    <div class="d-flex" id="" style="padding: 0px 20px; height: 100vh; width: 100%;">
+      <div class="container-fluid shadow bg-white mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50  empty-cart-container">
+        <img src="Images/empty-cart.png" alt="" class="mx-auto" style="width: 100px;">
+        <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
+      </div>
+    </div>
+    `;
+  }
+  if (eachTopDealProduct.length == 1) {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `;
+    itemLScreen.innerHTML = `Item`;
+  } else {
+    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`;
+    itemLScreen.innerHTML = `Items`;
+  }
+}
+
 displayProducts = () => {
   // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   todaysDeal.innerHTML = "";
   eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < eachTopDealProduct.length; index++) {

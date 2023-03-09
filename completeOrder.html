@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link href="fontawesome-free-6.1.1-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+    <title>complete order</title>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+  </head>
+  <body onload="oderConfirm()">
+    <nav class="border d-flex" style="height: 100px; background-color: #ed017f"">
+      <div
+        class="w-100 justify-content-between d-flex position-relative my-auto"
+        style="height: 30px; padding: 0px 5%; background-color: #ed017f"
+        id=""
+      >
+        <div
+          class="my-auto d-flex pe-4 logo-div position-relative"
+          style="height: 100%"
+        >
+          <i
+            class="fas fa-angle-left icon text-white me-2"
+            id="dropIcon"
+            style="font-size: 25px; top: -2px; position: relative"
+            onclick="window.history.back();"
+          ></i>
+          <img src="Images/ade.png" alt="" class="w-100 h-100" />
+          <h4 class="text-white my-auto" style="font-family: cursive">ADEX</h4>
+        </div>
+        <div class="my-auto text-white" style="font-size: 24px">Checkout</div>
+        <div
+          class="dropdown h-100"
+          id="myAccountDropdown"
+          style="background-color: #ed017f"
+        >
+          <button
+            class="dropdown-toggle px-3 border-0 nav2-btn h-100"
+            style="background-color: inherit; z-index: 2"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            My Account
+          </button>
+          <ul class="dropdown-menu my-account-dropdown">
+            <li><span class="dropdown-item fw-bold" id="myNameHere"></span></li>
+            <li><a class="dropdown-item" href="#">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">My orders</a></li>
+            <li><a class="dropdown-item" href="#">My Saved Items</a></li>
+            <li><a class="dropdown-item" href="#">Track My Order</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="cart-main" id="cartMain"
+      style="width: 100%; padding: 0px; background-color: #f2f2f2"
+    >
+      <section class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2" id="subtotalAndTotalPrice">
+      </section>
+      <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
+        <div class="w-75 d-flex flex-column gap-1 div1">
+                <div class="w-100" style="height: 150px; padding-bottom: 20px;">
+                        <div
+                          class="d-flex justify-content-between py-2 px-4 fw-bold"
+                          style="background-color: #94004F; font-size: 14px; height: 100%;"
+                        >
+                        <div class="my-auto position-relative">
+                              <div class="bg-warning d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-check fs-4 d-flex my-auto text-white"></i></div>
+                              <div class="position-absolute text-white verify1" style="width: 200px !important; font-size: 12px;">Verify cart Content</div>
+                        </div>
+                        <div class="bg-warning my-auto" style="height: 8px; width: 45%;"></div>
+                        <div class="my-auto position-relative">
+                              <div class="bg-warning d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-2 d-flex my-auto text-black"></i></div>
+                              <div class="position-absolute text-white verify2" style="width: 200px !important; font-size: 12px;">Delivery Address</div>
+                        </div>
+                        <div class="bg-white my-auto" style="height: 8px; width: 45%;"></div>
+                        <div class="my-auto position-relative">
+                              <div class="bg-white d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-3 d-flex my-auto text-black"></i></div>
+                              <div class="position-absolute text-white verify3" style="width: 200px !important; font-size: 12px;">Payment</div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="w-100 px-3 bg-white d-flex justify-content-start" style="height: 30px;">
+                       <div class="my-auto text-uppercase fw-bold" style="font-size: 14px;">1. choose delivery option</div>
+                      </div>
+                      <div>
+                      <input type="radio" name="" id="">
+                        
+                      </div>
+          <div class="d-flex flex-column gap-2" id="eachShoppingCart"></div>
+        </div>
+        <div class="w-25 h-100 bg-white d-flex flex-column p-3 div2">
+          <div class="w-100" id="orderSummaryOnLargeScreen">   
+        </div>
+          <div class="d-flex justify-content-between accept-payment" style="margin-top: -10px; color: #CBCBCB;">
+                <div class="my-auto" style="font-size: 12px;">We accept:</div>
+                <img src="Images/mastercard.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/visa.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/verve.png" class="my-auto" style="height: 15px;" alt="">
+                <img src="Images/opay.png" class="my-auto" style="height: 15px;" alt="">
+          </div>
+          <div class="d-flex gap-2 mt-2">
+                <img class="my-auto" src="Images/padlock.jpeg" style="height: 30px;" alt="">
+                <div class="my-auto" style="font-size: 12px; color: #CBCBCB;">Transaction are 100% Safe and Secure</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="index.js"></script>
+    <script src="bootstrap.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+  </body>
+</html>

@@ -133,8 +133,10 @@
           ><span class="my-auto">Help</span>
           <i class="fas fa-angle-down my-auto"></i>
         </button>
-        <button
+        <div class="h-100 d-flex position-relative">
+          <button
           class="px-3 border-0 nav2-btn"
+          id="signInBtn"
           style="background-color: inherit"
           data-bs-toggle="offcanvas"
           data-bs-target="#loginOffcanvas"
@@ -142,6 +144,20 @@
         >
           Login / Signup
         </button>
+        <div class="dropdown h-100 d-none position-absolute" id="myAccountDropdown" style="z-index: 2; background-color: #ed017f;">
+          <button class="dropdown-toggle px-3 border-0 nav2-btn h-100" style="background-color: inherit; z-index: 2;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            My Account
+          </button>
+          <ul class="dropdown-menu my-account-dropdown">
+            <li><span class="dropdown-item fw-bold" id="myNameHere"></span></li>
+            <li><a class="dropdown-item" href="#">My Profile</a></li>
+            <li><a class="dropdown-item" href="#">My orders</a></li>
+            <li><a class="dropdown-item" href="#">My Saved Items</a></li>
+            <li><a class="dropdown-item" href="#">Track My Order</a></li>
+            <li><a class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </div>
+        </div>
         <button
         class="w-auto d-flex flex-column my-auto border-0 justify-content-center px-4 position-relative"
         id="cartBtn"

@@ -519,6 +519,19 @@ nav .dropbtn:hover {
   color: black;
 }
 
+.my-account-dropdown {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  top: -3px !important;
+  border-radius: unset !important;
+}
+
+.my-account-dropdown .dropdown-item {
+  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 }
 
 
@@ -1205,6 +1218,15 @@ nav .dropbtn:hover {
     position: fixed;
     bottom: 0;
     left: 0;
+  }
+
+
+  .div1 .verify1, .div1 .verify2 {
+    max-width: 120px !important;
+  }
+
+  .div1 .verify3{
+    max-width: 50px !important;
   }
   
   

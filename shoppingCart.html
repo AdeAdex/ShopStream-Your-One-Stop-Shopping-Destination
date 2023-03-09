@@ -15,7 +15,11 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
   </head>
   <body class="cart-body position-relative" onload="showMyCart()">
-    <nav class="nav" id="navBar" style="width: 100%; position: sticky; top: -155px; z-index: 6">
+    <nav
+      class="nav"
+      id="navBar"
+      style="width: 100%; position: sticky; top: -155px; z-index: 6"
+    >
       <div
         class="w-100 d-flex justify-content-center py-2"
         style="height: 35px; background-color: white"
@@ -69,17 +73,25 @@
         style="height: 55px; padding: 0px 5%; background-color: #ed017f"
         id="secondNav"
       >
-        <div class="my-auto d-flex pe-4 logo-div position-relative" style="height: 60%">
-          <i class="fas fa-angle-left icon text-white me-2" id="dropIcon"  style="font-size: 25px; top: -2px; position: relative;"  onclick="window.history.back();"></i>
+        <div
+          class="my-auto d-flex pe-4 logo-div position-relative"
+          style="height: 60%"
+        >
+          <i
+            class="fas fa-angle-left icon text-white me-2"
+            id="dropIcon"
+            style="font-size: 25px; top: -2px; position: relative"
+            onclick="window.history.back();"
+          ></i>
           <img src="Images/ade.png" alt="" class="w-100 h-100" />
           <h4 class="text-white my-auto" style="font-family: cursive">ADEX</h4>
         </div>
         <button
-            class="px-3 border-0 nav2-btn"
-            style="background-color: inherit"
-          >
-            Store Locator
-          </button>
+          class="px-3 border-0 nav2-btn"
+          style="background-color: inherit"
+        >
+          Store Locator
+        </button>
         <button
           class="px-3 border-0 nav2-btn"
           style="background-color: inherit"
@@ -142,32 +154,71 @@
           Login / Signup
         </button>
         <button
-        class="w-auto d-flex flex-column my-auto border-0 justify-content-center px-4 position-relative"
-        id="cartBtn"
-        style="background-color: #2d9e6d; border-radius: 3px; height: auto;" onclick="window.location.href = 'shoppingCart.html'"
-      >
-      <div class="d-flex w-100 mt-1 justify-content-center">
-        <i class="fas fa-cart-shopping my-auto" style="font-size: 14px"></i>
-        <span class="my-auto me-2">My Cart</span>
-        <div
-          class="bg-white px-2 text-dark my-auto fw-bold"
-          style="border-radius: 2px; padding-top: 2px; padding-bottom: 2px"  id="totalCartNo"
+          class="w-auto d-flex flex-column my-auto border-0 justify-content-center px-4 position-relative"
+          id="cartBtn"
+          style="background-color: #2d9e6d; border-radius: 3px; height: auto"
+          onclick="window.location.href = 'shoppingCart.html'"
         >
-          0
+          <div class="d-flex w-100 mt-1 justify-content-center">
+            <i class="fas fa-cart-shopping my-auto" style="font-size: 14px"></i>
+            <span class="my-auto me-2">My Cart</span>
+            <div
+              class="bg-white px-2 text-dark my-auto fw-bold"
+              style="border-radius: 2px; padding-top: 2px; padding-bottom: 2px"
+              id="totalCartNo"
+            >
+              0
+            </div>
+          </div>
+          <div
+            class="text-capitalize w-100 position-relative text-center"
+            id="myNameLS"
+            style="margin-top: -6px"
+          >
+            .
+          </div>
+        </button>
+        <div class="my-auto text-white d-none small-screen-cart-icon">
+          <div class="d-flex gap-2">
+            <i class="fas fa-store" style="font-size: 20px"></i>
+            <i
+              class="fas fa-cart-shopping position-relative"
+              style="font-size: 20px"
+              ><div
+                class="position-absolute"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  border-radius: 50%;
+                  top: -10px;
+                  left: 8px;
+                  background-color: #27b913;
+                  font-size: 10px;
+                  text-align: center;
+                  padding: 5px 0px;
+                "
+                id="totalCartNoOnSmallScreen"
+                onclick="window.location.href = 'shoppingCart.html'"
+              >
+                0
+              </div></i
+            >
+          </div>
+          <div
+            class="text-capitalize mx-auto"
+            id="myName"
+            style="font-size: 12px"
+          ></div>
         </div>
       </div>
-      <div class="text-capitalize w-100 position-relative text-center" id="myNameLS" style="margin-top: -6px;">.</div>
-      </button>
-      <div class="my-auto text-white d-none small-screen-cart-icon">
-        <div class="d-flex gap-2">
-          <i class="fas fa-store" style="font-size: 20px"></i>
-        <i class="fas fa-cart-shopping position-relative" style="font-size: 20px"><div class="position-absolute" style="width: 20px; height: 20px; border-radius: 50%; top: -10px; left: 8px; background-color: #27B913; font-size: 10px; text-align: center; padding: 5px 0px;" id="totalCartNoOnSmallScreen" onclick="window.location.href = 'shoppingCart.html'">0</div></i>
-        </div>
-        <div class="text-capitalize mx-auto" id="myName" style="font-size: 12px;">
-        </div>
-      </div>
-      </div>
-      <input type="text" name="" id="searchOnSmallScreen" class="search-on-small w-100 d-none p-2 mt-2 border-0" style="background-color: #E8E8E8;"  placeholder="Search for products, brands and categories...">
+      <input
+        type="text"
+        name=""
+        id="searchOnSmallScreen"
+        class="search-on-small w-100 d-none p-2 mt-2 border-0"
+        style="background-color: #e8e8e8"
+        placeholder="Search for products, brands and categories..."
+      />
       <div
         class="w-100"
         style="height: 35px; background-color: #94004f"
@@ -1176,62 +1227,146 @@
           </li>
         </ul>
 
-
-
-        <div class="d-none" id="smallScreenDropdown" style="padding: 10px;">
+        <div class="d-none" id="smallScreenDropdown" style="padding: 10px">
           <div class="d-flex w-100 gap-3" id="loginSignupOnSmallScreen">
-            <button class="btn w-50" style="border: 1px solid #ed017f;" data-bs-toggle="offcanvas"
-            data-bs-target="#loginOffcanvas"
-            aria-controls="loginOffcanvas">Login</button>
-            <button class="btn w-50" style="border: 1px solid #ed017f;"
-            onclick="openSignUpModal()">Signup</button>
+            <button
+              class="btn w-50"
+              style="border: 1px solid #ed017f"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#loginOffcanvas"
+              aria-controls="loginOffcanvas"
+            >
+              Login
+            </button>
+            <button
+              class="btn w-50"
+              style="border: 1px solid #ed017f"
+              onclick="openSignUpModal()"
+            >
+              Signup
+            </button>
           </div>
           <div class="d-flex w-100 flex-wrap mt-2" id="tracksOnSmallScreen">
             <div class="w-50 border d-flex gap-3 p-2">
-              <i class="fas fa-location-dot my-auto" style="font-size: 20px;"></i>
-              <div class="d-grid" style="font-size: 12px;">
+              <i
+                class="fas fa-location-dot my-auto"
+                style="font-size: 20px"
+              ></i>
+              <div class="d-grid" style="font-size: 12px">
                 <span class="">Track orders</span>
                 <span>view order status</span>
               </div>
             </div>
             <div class="w-50 border d-flex gap-3 p-2">
-              <i class="far fa-star my-auto" style="font-size: 20px;"></i>
-              <div class="d-grid" style="font-size: 12px;">
+              <i class="far fa-star my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
                 <span class="">Pending items</span>
                 <span></span>
               </div>
             </div>
             <div class="w-50 border d-flex gap-3 p-2">
-              <i class="fas fa-tag my-auto" style="font-size: 20px;"></i>
-              <div class="d-grid" style="font-size: 12px;">
+              <i class="fas fa-tag my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
                 <span class="">Sell on Adex</span>
                 <span>Join other merchants</span>
               </div>
             </div>
             <div class="w-50 border d-flex gap-3 p-2">
-              <i class="fas fa-store my-auto" style="font-size: 20px;"></i>
-              <div class="d-grid" style="font-size: 12px;">
+              <i class="fas fa-store my-auto" style="font-size: 20px"></i>
+              <div class="d-grid" style="font-size: 12px">
                 <span class="">Physical Stores</span>
                 <span>Stores around you</span>
               </div>
             </div>
           </div>
-          <div class="d-grid w-100 position-relative" style="border-top: 2px solid lightgray;">
-            <h6 class="my-auto d-flex px-3" style="padding: 12px 5px;" id="category"><i class="fas fa-angle-left fs-3 d-none" style="cursor: pointer;" id="cateAngle" onclick="closeThis()"></i><span class="d-flex my-auto w-100" id="cate">Categories</span></h6>
-            <div class="small-screen-dropdown-links d-grid text-capitalize" id="yhes">
-              <button onclick="dropDropdown('computer')" class=" btn d-flex justify-content-between">computers and accessories <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('phone')" class="btn d-flex justify-content-between">phones and tablets <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('electronics')" class="btn d-flex justify-content-between">electronics <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('fashion')" class="btn d-flex justify-content-between">adex fashion <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('kitchen')" class="btn d-flex justify-content-between">home and kitchen <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('babies')" class="btn d-flex justify-content-between">babies, kids and toy <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('other')" class="btn d-flex justify-content-between">other categories <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('grocery')" class="btn d-flex justify-content-between">groceries <i class="fas fa-angle-right fs-3"></i></button>
-              <button onclick="dropDropdown('intel')" class="btn d-flex justify-content-between">intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i></button>
+          <div
+            class="d-grid w-100 position-relative"
+            style="border-top: 2px solid lightgray"
+          >
+            <h6
+              class="my-auto d-flex px-3"
+              style="padding: 12px 5px"
+              id="category"
+            >
+              <i
+                class="fas fa-angle-left fs-3 d-none"
+                style="cursor: pointer"
+                id="cateAngle"
+                onclick="closeThis()"
+              ></i
+              ><span class="d-flex my-auto w-100" id="cate">Categories</span>
+            </h6>
+            <div
+              class="small-screen-dropdown-links d-grid text-capitalize"
+              id="yhes"
+            >
+              <button
+                onclick="dropDropdown('computer')"
+                class="btn d-flex justify-content-between"
+              >
+                computers and accessories
+                <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('phone')"
+                class="btn d-flex justify-content-between"
+              >
+                phones and tablets <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('electronics')"
+                class="btn d-flex justify-content-between"
+              >
+                electronics <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('fashion')"
+                class="btn d-flex justify-content-between"
+              >
+                adex fashion <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('kitchen')"
+                class="btn d-flex justify-content-between"
+              >
+                home and kitchen <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('babies')"
+                class="btn d-flex justify-content-between"
+              >
+                babies, kids and toy <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('other')"
+                class="btn d-flex justify-content-between"
+              >
+                other categories <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('grocery')"
+                class="btn d-flex justify-content-between"
+              >
+                groceries <i class="fas fa-angle-right fs-3"></i>
+              </button>
+              <button
+                onclick="dropDropdown('intel')"
+                class="btn d-flex justify-content-between"
+              >
+                intel 11th gen campaing <i class="fas fa-angle-right fs-3"></i>
+              </button>
             </div>
-            <div class="w-100 d-none flex-column position-absolute start-0" style="top: 45px; z-index: 5 !important; height: 100vh; padding-bottom: 100px; background-color: #F5F5F5;" id="bringItUp">
-              
-            </div>
+            <div
+              class="w-100 d-none flex-column position-absolute start-0"
+              style="
+                top: 45px;
+                z-index: 5 !important;
+                height: 100vh;
+                padding-bottom: 100px;
+                background-color: #f5f5f5;
+              "
+              id="bringItUp"
+            ></div>
           </div>
         </div>
       </div>
@@ -1246,9 +1381,7 @@
       aria-labelledby="loginOffcanvasLabel"
     >
       <div class="offcanvas-header container-fluid shadow shadow-lg">
-        <h4 class="offcanvas-title fw-bold" id="offcanvasTitle">
-          Login
-        </h4>
+        <h4 class="offcanvas-title fw-bold" id="offcanvasTitle">Login</h4>
         <button
           type="button"
           class="btn-close"
@@ -1288,7 +1421,11 @@
             >Check me out</label
           >
         </div>
-        <button type="submit" class="btn btn-lg btn-success w-100" onclick="signIn()">
+        <button
+          type="submit"
+          class="btn btn-lg btn-success w-100"
+          onclick="signIn()"
+        >
           Login
         </button>
         <div class="w-100 d-flex mt-5">
@@ -1343,23 +1480,36 @@
           class="text-decoration-none my-auto"
           style="color: #ed017f"
           data-bs-dismiss="offcanvas"
-          aria-label="Close" onclick="openSignUpModal()"
+          aria-label="Close"
+          onclick="openSignUpModal()"
           >Don't have an account? Sign Up</a
         >
         <div class="w-100 dont-have-account-small-screen gap-2 py-3">
           <span class="text-center">Dont have an Account?</span>
-          <button class="w-100 btn d-flex justify-content-center create-btn" data-bs-dismiss="offcanvas"
-          aria-label="Close"
-          onclick="openSignUpModal()">Create an Account</button>
+          <button
+            class="w-100 btn d-flex justify-content-center create-btn"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            onclick="openSignUpModal()"
+          >
+            Create an Account
+          </button>
         </div>
       </div>
     </div>
 
-     <div id="successModalContainer" class="my-modal d-none position-fixed" style="top: 0 !important; z-index: 99; height: 100vh;">
+    <div
+      id="successModalContainer"
+      class="my-modal d-none position-fixed"
+      style="top: 0 !important; z-index: 99; height: 100vh"
+    >
       <div id="successModal" style="top: 0" class="bg-white">
         <div class="modal-content">
           <div class="modal-header py-2 px-2">
-            <h1 class="modal-title fs-5 text-capitalize" id="staticBackdropLabel">
+            <h1
+              class="modal-title fs-5 text-capitalize"
+              id="staticBackdropLabel"
+            >
               create an account
             </h1>
             <button class="btn btn-lg d-flex">
@@ -1432,17 +1582,17 @@
                 <label for="exampleInputPassword1" class="form-label"
                   >Password</label
                 >
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                />
+                <input type="password" class="form-control" id="password" />
               </div>
               <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
-              <button type="submit" class="btn w-100 btn-success mt-3" onclick="openAccount()">
+              <button
+                type="submit"
+                class="btn w-100 btn-success mt-3"
+                onclick="openAccount()"
+              >
                 Create an Account
               </button>
               <span class="px-3 mt-4"
@@ -1451,7 +1601,7 @@
                 <a href="" style="color: #ed017f">privacy policy</a></span
               >
             </div>
-          <!-- </form> -->
+            <!-- </form> -->
           </div>
           <div
             class="modal-footer mt-5 pb-3 px-5"
@@ -1463,7 +1613,8 @@
             <button
               type="button"
               class="btn btn-light w-100"
-              style="border: 1px solid #ed017f" data-bs-toggle="offcanvas"
+              style="border: 1px solid #ed017f"
+              data-bs-toggle="offcanvas"
               data-bs-target="#loginOffcanvas"
               aria-controls="loginOffcanvas"
               onclick="closeMyModal()"
@@ -1476,7 +1627,8 @@
     </div>
 
     <div
-      class="cart-main" id="cartMain"
+      class="cart-main"
+      id="cartMain"
       style="width: 100%; padding: 0px; background-color: #f2f2f2"
     >
       <section
@@ -1500,8 +1652,10 @@
         </div>
         <h1 class="fw-bold">Shopping Cart</h1>
       </section>
-      <section class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2" id="subtotalAndTotalPrice">
-      </section>
+      <section
+        class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2"
+        id="subtotalAndTotalPrice"
+      ></section>
       <section style="padding: 10px 5%">
         <button
           class="d-flex btn btn-sm w-auto py-2 px-2 gap-2"
@@ -1517,32 +1671,118 @@
       </section>
       <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
         <div class="w-75 d-flex flex-column gap-1 div1">
+          <div class="w-100" style="height: 150px; padding-bottom: 20px">
+            <div
+              class="d-flex justify-content-between py-2 px-4 fw-bold"
+              style="background-color: #94004f; font-size: 14px; height: 100%"
+            >
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-warning d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-1 d-flex my-auto text-white"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify1"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Verify cart Content
+                </div>
+              </div>
+              <div
+                class="bg-white my-auto"
+                style="height: 8px; width: 45%"
+              ></div>
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-white d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-2 d-flex my-auto text-black"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify2"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Delivery Address
+                </div>
+              </div>
+              <div
+                class="bg-white my-auto"
+                style="height: 8px; width: 45%"
+              ></div>
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-white d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-3 d-flex my-auto text-black"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify3"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Payment
+                </div>
+              </div>
+            </div>
+          </div>
           <div
             class="d-flex py-2 px-4 fw-bold cart-head"
             style="background-color: #e6e6e6; font-size: 14px"
           >
             <span class="w-50">Items Details</span>
-            <div class="d-flex " style="width: 35%;">
-              <span class="text-center" style="width: 40%;">Quantity</span>
-              <span class="ps-5" style="width: 60%;">Item Price</span>
+            <div class="d-flex" style="width: 35%">
+              <span class="text-center" style="width: 40%">Quantity</span>
+              <span class="ps-5" style="width: 60%">Item Price</span>
             </div>
             <span class="text-end" style="width: 15%">Action</span>
           </div>
           <div class="d-flex flex-column gap-2" id="eachShoppingCart"></div>
         </div>
         <div class="w-25 h-100 bg-white d-flex flex-column p-3 div2">
-          <div class="w-100" id="orderSummaryOnLargeScreen">   
-        </div>
-          <div class="d-flex justify-content-between accept-payment" style="margin-top: -10px; color: #CBCBCB;">
-                <div class="my-auto" style="font-size: 12px;">We accept:</div>
-                <img src="Images/mastercard.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/visa.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/verve.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/opay.png" class="my-auto" style="height: 15px;" alt="">
+          <div class="w-100" id="orderSummaryOnLargeScreen"></div>
+          <div
+            class="d-flex justify-content-between accept-payment"
+            style="margin-top: -10px; color: #cbcbcb"
+          >
+            <div class="my-auto" style="font-size: 12px">We accept:</div>
+            <img
+              src="Images/mastercard.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/visa.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/verve.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/opay.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
           </div>
           <div class="d-flex gap-2 mt-2">
-                <img class="my-auto" src="Images/padlock.jpeg" style="height: 30px;" alt="">
-                <div class="my-auto" style="font-size: 12px; color: #CBCBCB;">Transaction are 100% Safe and Secure</div>
+            <img
+              class="my-auto"
+              src="Images/padlock.jpeg"
+              style="height: 30px"
+              alt=""
+            />
+            <div class="my-auto" style="font-size: 12px; color: #cbcbcb">
+              Transaction are 100% Safe and Secure
+            </div>
           </div>
         </div>
       </section>
