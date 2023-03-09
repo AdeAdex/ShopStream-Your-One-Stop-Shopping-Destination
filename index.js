@@ -224,6 +224,7 @@ openAccount = () => {
       totalCart: 0,
       myCart: [],
       myProductSelect: [],
+      myAddress: [],
     };
     allCustomer.push(customerDetails);
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
@@ -270,7 +271,7 @@ signIn = () => {
   if (found) {
     signInBtn.innerHTML = "Sign In";
     // alert(signInBtn.innerHTML)
-    // window.location.href = "index.html";
+    window.location.href = "index.html";
     // signInBtn.style.setProperty("display", "none", "important")
     // myAccountDropdown.style.setProperty("display", "block", "important")
   } else {

@@ -610,6 +610,15 @@ nav .dropbtn:hover {
     display: none !important;
   }
 
+  #myAccountDropdown button, .checkout {
+    color: white;
+    font-size: 12px !important;
+  }
+  #myAccountDropdown button:hover {
+    background-color: whitesmoke !important;
+    color: #ed017f;
+  }
+
   #thirdNav {
     display: none;
   }
@@ -1122,10 +1131,18 @@ nav .dropbtn:hover {
 
 
   .cart-main {
-    margin-top: 60px;
+    margin-top: 140px;
   }
   .cart-main .cart-top div {
     display: none !important;
+  }
+
+  .checkout-body .cart-main {
+    margin-top: -70px;
+  }
+
+  .checkout-body .div2 {
+    margin-top: 140px;
   }
 
   .cart-top {
@@ -1139,7 +1156,7 @@ nav .dropbtn:hover {
 
   .shipping-info {
     flex-direction: column;
-    padding: 10px 2% !important;
+    padding: 10px 2% 100px 2% !important;
   }
   .shipping-info .div1 {
     width: 100% !important;
@@ -1150,6 +1167,10 @@ nav .dropbtn:hover {
   }
   .shipping-info .cart-head {
     display: none !important;
+  }
+
+  #eachShoppingCart {
+    margin-top: -150px;
   }
 
   #eachShoppingCart .cart-details {
@@ -1225,6 +1246,14 @@ nav .dropbtn:hover {
     max-width: 120px !important;
   }
 
+  .div1 .verify2 {
+    left: -15px;
+  }
+
+  .div1 .verify3 {
+    left: -40px;
+  }
+
   .div1 .verify3{
     max-width: 50px !important;
   }
@@ -1260,6 +1289,17 @@ nav .dropbtn:hover {
   top: 60px;
   left: 0;
 } 
+
+.delivey-nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 60px !important;
+}
+
+.delivery-nav-contenet {
+  height: 100% !important;
+}
   
   
 }

@@ -14,10 +14,10 @@
     <title>complete order</title>
     <script src="https://js.paystack.co/v1/inline.js"></script>
   </head>
-  <body onload="oderConfirm()">
-    <nav class="border d-flex" style="height: 100px; background-color: #ed017f">
+  <body onload="oderConfirm()" class="checkout-body">
+    <nav class="border d-flex delivey-nav" style="height: 100px; background-color: #ed017f">
       <div
-        class="w-100 justify-content-between d-flex position-relative my-auto"
+        class="w-100 justify-content-between d-flex position-relative my-auto delivery-nav-contenet"
         style="height: 30px; padding: 0px 5%; background-color: #ed017f"
         id=""
       >
@@ -25,23 +25,17 @@
           class="my-auto d-flex pe-4 logo-div position-relative"
           style="height: 100%"
         >
-          <i
-            class="fas fa-angle-left icon text-white me-2"
-            id="dropIcon"
-            style="font-size: 25px; top: -2px; position: relative"
-            onclick="window.history.back();"
-          ></i>
           <img src="Images/ade.png" alt="" class="w-100 h-100" />
           <h4 class="text-white my-auto" style="font-family: cursive">ADEX</h4>
         </div>
-        <div class="my-auto text-white" style="font-size: 24px">Checkout</div>
+        <div class="my-auto text-white checkout" style="font-size: 24px">Checkout</div>
         <div
           class="dropdown h-100"
           id="myAccountDropdown"
           style="background-color: #ed017f"
         >
           <button
-            class="dropdown-toggle px-3 border-0 nav2-btn h-100"
+            class="dropdown-toggle px-3 border-0 nav2-btn2 h-100"
             style="background-color: inherit; z-index: 2"
             type="button"
             data-bs-toggle="dropdown"
@@ -74,7 +68,7 @@
         <div class="w-75 d-flex flex-column gap-1 div1">
           <div class="w-100" style="height: 150px; padding-bottom: 20px">
             <div
-              class="d-flex justify-content-between py-2 px-4 fw-bold"
+              class="my-page d-flex justify-content-between py-2 px-4 fw-bold"
               style="background-color: #94004f; font-size: 14px; height: 100%"
             >
               <div class="my-auto position-relative">
@@ -163,7 +157,7 @@
                       background-color: #ed017f;
                       font-size: 12px;
                       border-radius: 3px;
-                    "
+                    " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"
                   >
                     add delivery address
                   </button>
@@ -275,6 +269,79 @@
         </div>
       </section>
     </div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Address Form</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label for="validationServer01" class="form-label">First name</label>
+        <input type="text" class="form-control is-valid" id="validationServer01" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationServer02" class="form-label">Last name</label>
+        <input type="text" class="form-control is-valid" id="validationServer02" value="" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+        <label for="validationServerUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+          <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+          <div id="validationServerUsernameFeedback" class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div> -->
+      <div class="col-md-6">
+        <label for="validationServer03" class="form-label">City</label>
+        <input type="text" class="form-control is-invalid" id="validationServer03" aria-describedby="validationServer03Feedback" required>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationServer04" class="form-label">State</label>
+        <select class="form-select is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+          <option selected disabled value="">Choose...</option>
+          <option>...</option>
+        </select>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+          Please select a valid state.
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationServer05" class="form-label">Zip</label>
+        <input type="text" class="form-control is-invalid" id="validationServer05" aria-describedby="validationServer05Feedback" required>
+        <div id="validationServer05Feedback" class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+          <label class="form-check-label" for="invalidCheck3">
+            Agree to terms and conditions
+          </label>
+          <div id="invalidCheck3Feedback" class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </div>
+    </form>
+  </div>
+</div>
 
     <script src="index.js"></script>
     <script src="bootstrap.bundle.js"></script>
