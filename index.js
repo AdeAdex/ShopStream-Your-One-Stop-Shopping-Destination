@@ -236,9 +236,13 @@ sweet = () => {
   ).then((result) => {
     if (result.isConfirmed) {
       successModalContainer.style.setProperty("display", "none", "important");
-      loginOffcanvas.style.setProperty("display", "block", "important");
+      loginOffcanvas.classList.toggle("show")
     }
   })
+}
+
+mumu = () => {
+  loginOffcanvas.classList.toggle("offcanvas");
 }
 
 openSignUpModal = () => {
@@ -1347,7 +1351,7 @@ function payWithPaystack() {
         icon: "success",
         title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        footer: 'Your Order is on the way Click <a href="">here</a>' + 'to track your order',
+        footer: 'Your Order is on the way Click <a href="#">here</a>' + 'to track your order',
       });
     }
   });
