@@ -1240,6 +1240,10 @@ nav .dropbtn:hover {
     width: 20px !important;
     height: 20px !important;
   }
+
+  .div1 .fa-check {
+    font-size: 12px !important;
+  }
   
   
 }
