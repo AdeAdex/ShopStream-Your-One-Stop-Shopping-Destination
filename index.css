@@ -1244,6 +1244,10 @@ nav .dropbtn:hover {
   .div1 .fa-check {
     font-size: 12px !important;
   }
+
+  .div1 .line {
+    height: 2px !important;
+  }
   
   
 }
