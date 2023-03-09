@@ -588,7 +588,7 @@ showMyCart = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Continue to Checkout</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Procced To Delivery </button>
 </div>
     <hr>
      `;
@@ -947,7 +947,7 @@ oderConfirm = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Continue to Checkout</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'payment.html'">Procced To Payment</button>
 </div>
     <hr>
      `;
