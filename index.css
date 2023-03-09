@@ -1236,6 +1236,10 @@ nav .dropbtn:hover {
   .delivery-address .delivery-address1, .delivery-address .delivery-address2 {
     width: 100% !important;
   }
+  .div1 .nxt-div {
+    width: 20px !important;
+    height: 20px !important;
+  }
   
   
 }
