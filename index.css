@@ -1228,6 +1228,14 @@ nav .dropbtn:hover {
   .div1 .verify3{
     max-width: 50px !important;
   }
+
+  .div1 .delivery-address {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .delivery-address .delivery-address1, .delivery-address .delivery-address2 {
+    width: 100% !important;
+  }
   
   
 }
