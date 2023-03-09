@@ -15,7 +15,7 @@
     <script src="https://js.paystack.co/v1/inline.js"></script>
   </head>
   <body onload="oderConfirm()">
-    <nav class="border d-flex" style="height: 100px; background-color: #ed017f"">
+    <nav class="border d-flex" style="height: 100px; background-color: #ed017f">
       <div
         class="w-100 justify-content-between d-flex position-relative my-auto"
         style="height: 30px; padding: 0px 5%; background-color: #ed017f"
@@ -62,68 +62,172 @@
     </nav>
 
     <div
-      class="cart-main" id="cartMain"
+      class="cart-main"
+      id="cartMain"
       style="width: 100%; padding: 0px; background-color: #f2f2f2"
     >
-      <section class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2" id="subtotalAndTotalPrice">
-      </section>
+      <section
+        class="d-flex justify-content-between w-100 cart-total-on-small-screen bg-white py-2 px-4 mb-2"
+        id="subtotalAndTotalPrice"
+      ></section>
       <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
         <div class="w-75 d-flex flex-column gap-1 div1">
-                <div class="w-100" style="height: 150px; padding-bottom: 20px;">
-                        <div
-                          class="d-flex justify-content-between py-2 px-4 fw-bold"
-                          style="background-color: #94004F; font-size: 14px; height: 100%;"
-                        >
-                        <div class="my-auto position-relative">
-                              <div class="bg-warning d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-check fs-4 d-flex my-auto text-white"></i></div>
-                              <div class="position-absolute text-white verify1" style="width: 200px !important; font-size: 12px;">Verify cart Content</div>
-                        </div>
-                        <div class="bg-warning my-auto" style="height: 8px; width: 45%;"></div>
-                        <div class="my-auto position-relative">
-                              <div class="bg-warning d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-2 d-flex my-auto text-black"></i></div>
-                              <div class="position-absolute text-white verify2" style="width: 200px !important; font-size: 12px;">Delivery Address</div>
-                        </div>
-                        <div class="bg-white my-auto" style="height: 8px; width: 45%;"></div>
-                        <div class="my-auto position-relative">
-                              <div class="bg-white d-flex justify-content-center" style="width: 50px; height: 50px; border-radius: 50%;"><i class="fas fa-3 d-flex my-auto text-black"></i></div>
-                              <div class="position-absolute text-white verify3" style="width: 200px !important; font-size: 12px;">Payment</div>
-                        </div>
-                        </div>
-                      </div>
-                      <div class="w-100 px-3 bg-white d-flex justify-content-start" style="height: 30px;">
-                       <div class="my-auto text-uppercase fw-bold" style="font-size: 14px;">1. choose delivery option</div>
-                      </div>
-                      <div class="w-100 d-flex flex-column gap-2">
-                      <!-- <input type="radio" name="" id="" class="w-100"> Deliver to me -->
-                      <div class="d-flex w-100 justify-content-between ps-3" style="font-size: 12px;">
-                        <div class="w-100">
-                                <div>Hi Adeolu, Click on Add Address to specify a delivery address.</div>
-                           <button class="btn btn-lg text-capitalize text-white mt-3" style="background-color: #ed017f; font-size: 12px; border-radius: 3px;">add delivery address</button>
-                        </div>
-                        <div>
-                          <div class="w-100">
-                             Your item should be delivered to you in about 5 working days within Lagos & Abuja, and 7 to 14 days outside Lagos & Abuja.
-                          </div>
-                        </div>
-                      </div>
-                      
-                        
-                      </div>
+          <div class="w-100" style="height: 150px; padding-bottom: 20px">
+            <div
+              class="d-flex justify-content-between py-2 px-4 fw-bold"
+              style="background-color: #94004f; font-size: 14px; height: 100%"
+            >
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-warning d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-check fs-4 d-flex my-auto text-white"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify1"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Verify cart Content
+                </div>
+              </div>
+              <div
+                class="bg-warning my-auto"
+                style="height: 8px; width: 45%"
+              ></div>
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-warning d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-2 d-flex my-auto text-black"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify2"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Delivery Address
+                </div>
+              </div>
+              <div
+                class="bg-white my-auto"
+                style="height: 8px; width: 45%"
+              ></div>
+              <div class="my-auto position-relative">
+                <div
+                  class="bg-white d-flex justify-content-center"
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                >
+                  <i class="fas fa-3 d-flex my-auto text-black"></i>
+                </div>
+                <div
+                  class="position-absolute text-white verify3"
+                  style="width: 200px !important; font-size: 12px"
+                >
+                  Payment
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="" style="background-color: #f5f7f8">
+            <div
+              class="w-100 px-3 bg-white d-flex justify-content-start"
+              style="height: 30px"
+            >
+              <div
+                class="my-auto text-uppercase fw-bold"
+                style="font-size: 14px"
+              >
+                1. choose delivery option
+              </div>
+            </div>
+            <div class="w-100 d-flex flex-column gap-2">
+              <div class="d-flex gap-3 ps-5 mt-4">
+                <input type="radio" name="" id="" checked class="" />
+                <span style="font-size: 12px; font-weight: bold">
+                  Deliver to me</span
+                >
+              </div>
+              <div
+                class="d-flex justify-content-evenly"
+                style="font-size: 12px; width: 100%"
+              >
+                <div class="bg-white py-4 ps-3" style="width: 40%">
+                  <div>
+                    Hi Adeolu, Click on Add Address to specify a delivery
+                    address.
+                  </div>
+                  <button
+                    class="btn btn-lg text-capitalize text-white mt-3"
+                    style="
+                      background-color: #ed017f;
+                      font-size: 12px;
+                      border-radius: 3px;
+                    "
+                  >
+                    add delivery address
+                  </button>
+                </div>
+                <div
+                  class="py-4 ps-3"
+                  style="background-color: #fff8fc; width: 40%; color: #ed017f"
+                >
+                  <div>
+                    Your item should be delivered to you in about 5 working days
+                    within Lagos & Abuja, and 7 to 14 days outside Lagos &
+                    Abuja.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white">
+                
+            </div>
+          </div>
           <div class="d-flex flex-column gap-2" id="eachShoppingCart"></div>
         </div>
         <div class="w-25 h-100 bg-white d-flex flex-column p-3 div2">
-          <div class="w-100" id="orderSummaryOnLargeScreen">   
-        </div>
-          <div class="d-flex justify-content-between accept-payment" style="margin-top: -10px; color: #CBCBCB;">
-                <div class="my-auto" style="font-size: 12px;">We accept:</div>
-                <img src="Images/mastercard.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/visa.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/verve.png" class="my-auto" style="height: 15px;" alt="">
-                <img src="Images/opay.png" class="my-auto" style="height: 15px;" alt="">
+          <div class="w-100" id="orderSummaryOnLargeScreen"></div>
+          <div
+            class="d-flex justify-content-between accept-payment"
+            style="margin-top: -10px; color: #cbcbcb"
+          >
+            <div class="my-auto" style="font-size: 12px">We accept:</div>
+            <img
+              src="Images/mastercard.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/visa.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/verve.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
+            <img
+              src="Images/opay.png"
+              class="my-auto"
+              style="height: 15px"
+              alt=""
+            />
           </div>
           <div class="d-flex gap-2 mt-2">
-                <img class="my-auto" src="Images/padlock.jpeg" style="height: 30px;" alt="">
-                <div class="my-auto" style="font-size: 12px; color: #CBCBCB;">Transaction are 100% Safe and Secure</div>
+            <img
+              class="my-auto"
+              src="Images/padlock.jpeg"
+              style="height: 30px"
+              alt=""
+            />
+            <div class="my-auto" style="font-size: 12px; color: #cbcbcb">
+              Transaction are 100% Safe and Secure
+            </div>
           </div>
         </div>
       </section>
