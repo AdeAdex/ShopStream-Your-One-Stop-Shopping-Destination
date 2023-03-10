@@ -1427,3 +1427,22 @@ function payWithPaystack() {
 
   handler.openIframe();
 }
+
+
+function submitAddress() {
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  allCustomer.map((eachUser, index) => {
+  let customerAddress = {
+    firstName: addressFname.value,
+    lastName: addressLname.value,
+    phoneNumber: addressPhoneNumber.value,
+    street: addressStreet.value,
+    direction: addressDirection.value,
+    city: addressCity.value,
+    state: addressState.value,
+    lga: addressLGA.value,
+  }
+  allCustomer[currentCustomerIndex].myAddress.push(customerAddress);
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+})
+}

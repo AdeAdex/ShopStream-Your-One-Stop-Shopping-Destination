@@ -649,6 +649,10 @@ nav .dropbtn:hover {
     height: 30px;
   }
 
+  #offcanvasRight {
+    width: 100% !important;
+  }
+
   .offcanvas-body, .offcanvas-body input, .offcanvas-body button {
     font-size: 12px;
   }
@@ -1307,6 +1311,10 @@ nav .dropbtn:hover {
 
 .delivery-nav-contenet {
   height: 100% !important;
+}
+
+#addressState {
+  max-width: 100%;
 }
   
   
