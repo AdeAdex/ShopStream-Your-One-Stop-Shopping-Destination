@@ -1136,9 +1136,9 @@ oderConfirm = (myChoice) => {
     } else {
       addressHere.innerHTML = `
       <div class="d-flex flex-column gap-2 ps-2 mt-4">
-      <div class="d-flex">${mumuSelect[index].firstName} ${mumuSelect[index].lastName}</div>
-      <div class="my-auto">${mumuSelect[index].street} ${mumuSelect[index].city}  ${mumuSelect[index].state}</div>
-      <div class="my-auto">${mumuSelect[index].phoneNumber}</div>
+      <div class="d-flex">${mumuSelect[currentCustomerIndex].firstName} ${mumuSelect[currentCustomerIndex].lastName}</div>
+      <div class="my-auto">${mumuSelect[currentCustomerIndex].street} ${mumuSelect[currentCustomerIndex].city}  ${mumuSelect[currentCustomerIndex].state}</div>
+      <div class="my-auto">${mumuSelect[currentCustomerIndex].phoneNumber}</div>
       </div>
       `
     }
