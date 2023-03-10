@@ -911,9 +911,10 @@ hey = () => {
   });
 };
 
-oderConfirm = () => {
+oderConfirm = (myChoice) => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   addressContainer.innerHTML = "";
+  mumuSelect = allCustomer[currentCustomerIndex].myAddressChoice
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     addressContainer.innerHTML = `
@@ -1086,19 +1087,64 @@ oderConfirm = () => {
   }
 
 
-
-  // if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
-  //   addressHere.innerHTML = `adex`
-  // } else {
-  //   addressHere.innerHTML = `yooooo`
-  // }
+  eachTopDealProduct.map((eachUser, index) => {
+    if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
+      addressHere.innerHTML = `
+      <div class="d-flex gap-3 ps-5 mt-4">
+      <input type="radio" name="" id="" checked class="" />
+      <span style="font-size: 12px; font-weight: bold"> Deliver to me</span>
+    </div>
+    <div
+      class="d-flex justify-content-evenly delivery-address"
+      style="font-size: 12px; width: 100%"
+    >
+      <div class="bg-white py-4 ps-3 delivery-address1" style="width: 40%">
+        <div class="d-flex">
+          <div class="text-capitalize">
+            Hi ${allCustomer[currentCustomerIndex].firstName}
+          </div>
+          , Click on Add Address to specify a delivery address.
+        </div>
+        <button
+          class="btn btn-lg text-capitalize text-white mt-3"
+          style="background-color: #ed017f; font-size: 12px; border-radius: 3px"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+          onclick="displayAddress()"
+        >
+          add delivery address
+        </button>
+      </div>
+      <div
+        class="py-4 ps-3 delivery-address2"
+        style="background-color: #fff8fc; width: 40%; color: #ed017f"
+      >
+        <div>
+          Your item should be delivered to you in about 5 working days within
+          Lagos & Abuja, and 7 to 14 days outside Lagos & Abuja.
+        </div>
+      </div>
+    </div>
+      `
+    } else {
+      addressHere.innerHTML = `
+      <div class="d-flex flex-column gap-2 ps-2 mt-4">
+      <div class="d-flex">${mumuSelect[index].firstName} ${mumuSelect[index].lastName}</div>
+      <div class="my-auto">${mumuSelect[index].street} ${mumuSelect[index].city}  ${mumuSelect[index].state}</div>
+      <div class="my-auto">${mumuSelect[index].phoneNumber}</div>
+      </div>
+      `
+    }
+  })
+ 
 }
 
 displayAddress = () => {
-  offcanvasAddressContainer.innerHTML = "";
+  // offcanvasAddressContainer.innerHTML = "";
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
-  allCustomer.map((eachUser, index) => {
+  eachCustomerAddress.map((eachUser, index) => {
     if (allCustomer[currentCustomerIndex].myAddress.length == 0) {
       offcanvasAddressContainer.innerHTML = `
       <div class="row h-100 position-relative">
@@ -1248,24 +1294,24 @@ displayAddress = () => {
 </div>
       `
     } else if (allCustomer[currentCustomerIndex].myAddress.length != 0) {
-      offcanvasAddressContainer.innerHTML = `
+      offcanvasAddressContainer.innerHTML += `
       <div class="border shadow px-3 pt-3 pb-3" onclick="pickThisAddressForMe(${index})">
         <div class="d-flex gap-3">
           <input type="radio">
-          <div>${eachCustomerAddress[currentCustomerIndex].firstName} ${eachCustomerAddress[currentCustomerIndex].lastName}</div>
+          <div>${eachCustomerAddress[index].firstName} ${eachCustomerAddress[index].lastName}</div>
         </div>
         <hr>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-user  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[currentCustomerIndex].firstName} ${eachCustomerAddress[currentCustomerIndex].lastName}</div>
+          <div class="my-auto">${eachCustomerAddress[index].firstName} ${eachCustomerAddress[index].lastName}</div>
         </div>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-location-dot  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[currentCustomerIndex].street} ${eachCustomerAddress[currentCustomerIndex].city}  ${eachCustomerAddress[currentCustomerIndex].state}</div>
+          <div class="my-auto">${eachCustomerAddress[index].street} ${eachCustomerAddress[index].city}  ${eachCustomerAddress[index].state}</div>
         </div>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-phone  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[currentCustomerIndex].phoneNumber}</div>
+          <div class="my-auto">${eachCustomerAddress[index].phoneNumber}</div>
         </div>
       </div>
       `
@@ -1273,11 +1319,179 @@ displayAddress = () => {
   })
 }
 
+addNewAddress = () => {
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
+  allCustomer.map((eachUser, index) => {
+      offcanvasAddressContainer.innerHTML = `
+      <div class="row h-100 position-relative">
+  <div class="col-md-6">
+    <label for="validationServer01" class="form-label"
+      >First name</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressFname"
+      value=""
+      required
+    />
+    <!-- <div class="valid-feedback">
+  Looks good!
+</div> -->
+  </div>
+  <div class="col-md-6">
+    <label for="validationServer02" class="form-label">Last name</label>
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressLname"
+      value=""
+      required
+    />
+    <!-- <div class="valid-feedback">
+  Looks good!
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Phone Number</label
+    >
+    <input
+      type="tel"
+      class="form-control text-capitalize"
+      id="addressPhoneNumber"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Street Address</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressStreet"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Direction (Optional)</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressDirection"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label">City</label>
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressCity"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12 position-relative">
+    <label for="validationServer04" class="form-label">State</label>
+    <select
+      class="form-select position-relative"
+      id="addressState"
+      aria-describedby="validationServer04Feedback"
+      required
+    >
+      <option selected disabled value="">Choose...</option>
+      <option class="text-capitalize" value="oyo">oyo state</option>
+      <option class="text-capitalize" value="osun">osun state</option>
+      <option class="text-capitalize" value="lagos">lagos state</option>
+      <option class="text-capitalize" value="ondo">ondo state</option>
+      <option class="text-capitalize" value="ogun">ogun state</option>
+      <option class="text-capitalize" value="kwara">kwara state</option>
+      <option class="text-capitalize" value="ekiti">ekiti state</option>
+      <option class="text-capitalize" value="akwaibom">
+        akwa ibom state
+      </option>
+      <option class="text-capitalize" value="imo">imo state</option>
+      <option class="text-capitalize" value="abia">abia state</option>
+      <option class="text-capitalize" value="rivers">
+        rivers state
+      </option>
+      <option class="text-capitalize" value="anambra">
+        anambra state
+      </option>
+      <option class="text-capitalize" value="kano">kano state</option>
+      <option class="text-capitalize" value="kaduna">
+        kaduna state
+      </option>
+      <option class="text-capitalize" value="benue">benue state</option>
+    </select>
+    <!-- <div id="validationServer04Feedback" class="invalid-feedback">
+  Please select a valid state.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer05" class="form-label"
+      >LGA (Local Government Area)</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressLGA"
+      aria-describedby="validationServer05Feedback"
+      required
+    />
+    <!-- <div id="validationServer05Feedback" class="invalid-feedback">
+  Please provide a valid zip.
+</div> -->
+  </div>
+  <div class="col-12 mt-4">
+    <button class="btn btn-primary col-12" onclick="submitAddress()">
+      Submit form
+    </button>
+  </div>
+</div>
+      `
+  })
+}
+
 
 pickThisAddressForMe = (myChoice) => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
-  allCustomer[currentCustomerIndex].myAddressChoice
-  
+  spliceAddress = allCustomer[currentCustomerIndex].myAddress;
+  allCustomer.map((eachUser, index) => {
+    let ourCustomerAddressChoice = {
+      firstName: spliceAddress[myChoice].firstName,
+      lastName: spliceAddress[myChoice].lastName,
+      phoneNumber: spliceAddress[myChoice].phoneNumber,
+      street:spliceAddress[myChoice].street,
+      direction: spliceAddress[myChoice].direction,
+      city: spliceAddress[myChoice].city,
+      state: spliceAddress[myChoice].state,
+      lga: spliceAddress[myChoice].lga,
+  }
+  allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  })
+  window.location.href = "completeOrder.html"
 }
 
 displayProducts = () => {
