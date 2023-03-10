@@ -1169,6 +1169,14 @@ nav .dropbtn:hover {
     display: none !important;
   }
 
+  .shipping-info textarea {
+    width: 100%;
+  }
+
+  .shipping-info .pickup {
+    padding-left: 20px !important;
+  }
+
   #eachShoppingCart {
     margin-top: -150px;
   }
