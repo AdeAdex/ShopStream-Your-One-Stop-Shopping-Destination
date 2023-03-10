@@ -928,6 +928,7 @@ oderConfirm = (myChoice) => {
               >
                 1. choose delivery option
               </div>
+              <button onclick="bringMyAddress()">Change</button>
             </div>
             <div class="w-100 d-flex flex-column gap-2" id="addressHere">
               <div class="d-flex gap-3 ps-5 mt-4">
