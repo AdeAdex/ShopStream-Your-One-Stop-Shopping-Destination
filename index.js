@@ -1301,7 +1301,7 @@ displayAddress = () => {
       `
     } else if (allCustomer[currentCustomerIndex].myAddress.length != 0) {
       offcanvasAddressContainer.innerHTML += `
-      <div class="border shadow px-3 pt-3 pb-3" onclick="pickThisAddressForMe(${index})">
+      <div class="border shadow px-3 pt-3 pb-3 mb-3" onclick="pickThisAddressForMe(${index})">
         <div class="d-flex gap-3">
           <input type="radio">
           <div>${eachCustomerAddress[index].firstName} ${eachCustomerAddress[index].lastName}</div>
