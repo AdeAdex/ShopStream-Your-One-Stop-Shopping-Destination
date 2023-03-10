@@ -912,9 +912,121 @@ hey = () => {
 
 oderConfirm = () => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
-  eachShoppingCart.innerHTML = "";
+  addressContainer.innerHTML = "";
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
+    addressContainer.innerHTML = `
+    <div
+              class="w-100 px-3 bg-white d-flex justify-content-start"
+              style="height: 30px"
+            >
+              <div
+                class="my-auto text-uppercase fw-bold"
+                style="font-size: 14px"
+              >
+                1. choose delivery option
+              </div>
+            </div>
+            <div class="w-100 d-flex flex-column gap-2">
+              <div class="d-flex gap-3 ps-5 mt-4">
+                <input type="radio" name="" id="" checked class="" />
+                <span style="font-size: 12px; font-weight: bold">
+                  Deliver to me</span
+                >
+              </div>
+              <div
+                class="d-flex justify-content-evenly delivery-address"
+                style="font-size: 12px; width: 100%"
+              >
+                <div
+                  class="bg-white py-4 ps-3 delivery-address1"
+                  style="width: 40%"
+                >
+                  <div class="d-flex">
+                    <div class="text-capitalize">Hi ${allCustomer[currentCustomerIndex].firstName}</div>, Click on Add Address to specify a delivery
+                    address.
+                  </div>
+                  <button
+                    class="btn btn-lg text-capitalize text-white mt-3"
+                    style="
+                      background-color: #ed017f;
+                      font-size: 12px;
+                      border-radius: 3px;
+                    "
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
+                    onclick="displayAddress()"
+                  >
+                    add delivery address
+                  </button>
+                </div>
+                <div
+                  class="py-4 ps-3 delivery-address2"
+                  style="background-color: #fff8fc; width: 40%; color: #ed017f"
+                >
+                  <div>
+                    Your item should be delivered to you in about 5 working days
+                    within Lagos & Abuja, and 7 to 14 days outside Lagos &
+                    Abuja.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-white mt-4 ps-5 pt-3 pb-4 pickup">
+              <div class="dropdown position-relative pb-3">
+                <div
+                  class="d-flex gap-3"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <input type="checkbox" name="" id="" />
+                  <span style="font-size: 12px"
+                    >check this box if you have any instruction regarding this
+                    order</span
+                  >
+                </div>
+                <textarea
+                  class="dropdown-menu position-relative"
+                  name=""
+                  id=""
+                  cols="100"
+                  rows="3"
+                >
+                </textarea>
+              </div>
+              <div class="w-100 d-flex flex-column gap-2">
+                <div class="d-flex gap-3 mt-4">
+                  <input type="radio" name="" id="" class="" />
+                  <span style="font-size: 12px; font-weight: bold">
+                    Pick up from a Store</span
+                  >
+                </div>
+                <div
+                  class="bg-white py-4 ps-3 border delivery-address11"
+                  style="width: 40%; font-size: 12px"
+                >
+                  <div>
+                    Select a pickup location in your area from our 34 locations
+                    nationwide.
+                  </div>
+                  <button
+                    class="btn btn-lg text-capitalize text-white mt-3"
+                    style="
+                      background-color: #ed017f;
+                      font-size: 12px;
+                      border-radius: 3px;
+                    "
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"
+                  >
+                    select pickup location
+                  </button>
+                </div>
+              </div>
+            </div>
+    `
     subtotalAndTotalPrice.innerHTML = `
      <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
      <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
@@ -970,6 +1082,32 @@ oderConfirm = () => {
   } else {
     item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`;
     itemLScreen.innerHTML = `Items`;
+  }
+}
+
+displayAddress = () => {
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  if (allCustomer[currentCustomerIndex].myAddress.length == 2) {
+    offcanvasAddressContainer.innerHTML = `
+    <div class="d-flex mt-3 justify-content-between">
+      <span class="my-auto" style="font-size: 12px;">Want to Add another address?</span>
+      <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2">Add Address</button>
+    </div>
+    <hr>
+    <div class="border shadow px-3 pt-3 pb-5">
+      <div class="d-flex gap-3">
+        <input type="radio">
+        <div>${allCustomer[currentCustomerIndex].firstName} ${allCustomer[currentCustomerIndex].lastName}</div>
+      </div>
+      <hr>
+      <div>
+        <i class="fas fa-user"></i>
+        <div></div>
+        </div>
+    </div>
+    `
+  } else {
+    offcanvasAddressContainer.innerHTML = (allCustomer[currentCustomerIndex].myAddress.length)
   }
 }
 
