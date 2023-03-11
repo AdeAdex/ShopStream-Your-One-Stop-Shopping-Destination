@@ -531,6 +531,14 @@ nav .dropbtn:hover {
   padding-top: 8px;
   padding-bottom: 8px;
 }
+.payment-body #paymentContainer {
+  margin-top: 0px !important;
+}
+
+.payment-body .select-payment {
+  position: relative !important;
+  top: -15px !important;
+}
 
 }
 

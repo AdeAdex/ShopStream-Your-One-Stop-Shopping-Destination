@@ -1324,7 +1324,7 @@ displayAddress = () => {
       `
     } else if (allCustomer[currentCustomerIndex].myAddress.length != 0) {
       offcanvasAddressContainer.innerHTML += `
-      <div class="border shadow px-3 pt-3 pb-3 mb-3" onclick="pickThisAddressForMe(${index})">
+      <div class="border shadow px-3 pt-3 pb-3 mb-3" style="cursor: pointer" onclick="pickThisAddressForMe(${index})">
         <div class="d-flex gap-3">
           <input type="radio">
           <div>${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
@@ -2102,10 +2102,10 @@ function payWithPaystack() {
     onClose: function(){
       let message = "You just cancel this transaction";
       Swal.fire({
-        icon: "success",
-        title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
+        icon: "error",
+        title: "Dear " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        footer: 'Your Order is on the way Click <a href="#">here</a>' + 'to track your order',
+        footer: 'For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com',
       });
     },
     callback: function(response){
@@ -2115,7 +2115,7 @@ function payWithPaystack() {
         icon: "success",
         title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        footer: 'Call us  ',
+        footer: 'Your Order is on the way Click <a href="#">here</a>' + 'to track your order',
       });
     }
   });
@@ -2144,13 +2144,20 @@ function makePayment() {
     customizations: {
       title: "Adex International Limited",
       description: "Payment for an awesome cruise",
-      logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+      logo: "http://127.0.0.1:5501/Images/ade.png",
     },
     onclose: function(incomplete) {
       if (incomplete === true) {
-        alert("Payment")
+        let message = "You just cancel this transaction";
+      Swal.fire({
+        icon: "error",
+        title: "Dear " + allCustomer[currentCustomerIndex].firstName,
+        text: message,
+        footer: 'For further assistance, please call us at +2347033959586 or email us at adeoluamole@gmail.com',
+      });
       }
   }
+  
   });
 
   
