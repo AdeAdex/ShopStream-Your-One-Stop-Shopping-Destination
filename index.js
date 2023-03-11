@@ -981,7 +981,7 @@ oderConfirm = () => {
         </div>
       </div>
     </div>
-    <div class="bg-white mt-4 ps-5 pt-3 pb-4 pickup">
+    <div class="bg-white mt-4 ps-5 pt-3 pb-4 pickup" id="pickUp">
       <div class="dropdown position-relative pb-3">
         <div
           class="d-flex gap-3"
@@ -1132,13 +1132,36 @@ oderConfirm = () => {
         </div>
       </div>
     </div>
+    
       `
     } else {
+      pickUp.style.display = 'none';
       addressHere.innerHTML = `
-      <div class="d-flex flex-column gap-2 ps-2 mt-4">
-      <div class="d-flex">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickFirstName} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickLastName}</div>
-      <div class="my-auto">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickStreet} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickCity}  ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickState}</div>
-      <div class="my-auto">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
+      <div class="d-flex flex-column gap-1 ps-4 mt-2 py-4 bg-white">
+      <div class="d-flex text-capitalize fw-bold mb-2" style="font-size: 14px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickFirstName} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickLastName}</div>
+      <div class="my-auto text-capitalize" style="font-size: 12px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickStreet} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickCity}  ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickState}</div>
+      <div class="my-auto" style="font-size: 12px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
+      <div class="dropdown position-relative pb-3">
+        <div
+          class="d-flex gap-3"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <input type="checkbox" name="" id="" />
+          <span style="font-size: 12px"
+            >check this box if you have any instruction regarding this
+            order</span
+          >
+        </div>
+        <textarea
+          class="dropdown-menu position-relative"
+          name=""
+          id=""
+          cols="100"
+          rows="3"
+        >
+        </textarea>
+      </div>
       </div>
       `
     }
@@ -1408,7 +1431,7 @@ bringMyAddress = () => {
       </div>
     </div>
   </div>
-  <div class="bg-white mt-4 ps-5 pt-3 pb-4 pickup">
+  <div class="bg-white mt-4 ps-5 pt-3 pb-4 pickup" id="pickUp">
     <div class="dropdown position-relative pb-3">
       <div
         class="d-flex gap-3"
