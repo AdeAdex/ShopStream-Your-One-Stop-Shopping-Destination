@@ -2100,7 +2100,13 @@ function payWithPaystack() {
     amount: allCustomer[currentCustomerIndex].totalBalance * 100,
     ref: 'Adex'+Math.floor((Math.random() * 1000000000) + 1), 
     onClose: function(){
-      alert('Window closed.');
+      let message = "You just cancel this transaction";
+      Swal.fire({
+        icon: "success",
+        title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
+        text: message,
+        footer: 'Your Order is on the way Click <a href="#">here</a>' + 'to track your order',
+      });
     },
     callback: function(response){
       allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
@@ -2109,7 +2115,7 @@ function payWithPaystack() {
         icon: "success",
         title: "Thank You " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        footer: 'Your Order is on the way Click <a href="#">here</a>' + 'to track your order',
+        footer: 'Call us  ',
       });
     }
   });
@@ -2121,8 +2127,8 @@ function payWithPaystack() {
 function makePayment() {
   FlutterwaveCheckout({
     public_key: "FLWPUBK_TEST-20234fad6166a9e0d3fbb7f9ed6b4d86-X",
-    tx_ref: "titanic-48981487343MDI0NzMx",
-    amount: 54600,
+    tx_ref: "Adex-48981487343MDI0NzMx",
+    amount: allCustomer[currentCustomerIndex].totalBalance,
     currency: "NGN",
     payment_options: "card, banktransfer, ussd",
     redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
@@ -2131,17 +2137,25 @@ function makePayment() {
       consumer_mac: "92a3-912ba-1192a",
     },
     customer: {
-      email: "rose@unsinkableship.com",
-      phone_number: "08102909304",
-      name: "Rose DeWitt Bukater",
+      email: allCustomer[currentCustomerIndex].email,
+      phone_number: allCustomer[currentCustomerIndex].phoneNumber,
+      name: allCustomer[currentCustomerIndex].firstName,
     },
     customizations: {
-      title: "The Titanic Store",
+      title: "Adex International Limited",
       description: "Payment for an awesome cruise",
       logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
     },
+    onclose: function(incomplete) {
+      if (incomplete === true) {
+        alert("Payment")
+      }
+  }
   });
+
+  
 }
+
 
 
 

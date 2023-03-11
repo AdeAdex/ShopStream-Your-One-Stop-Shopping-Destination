@@ -1317,6 +1317,14 @@ nav .dropbtn:hover {
   max-width: 100%;
 }
   
+
+.payment-body .select-payment {
+  top: 130px !important;
+}
+
+.payment-body #paymentContainer {
+  margin-top: -130px !important;
+}
   
 }
 

@@ -16,7 +16,7 @@
     <script src="https://checkout.flutterwave.com/v3.js"></script>
   </head>
 
-  <body">
+  <body class="payment-body">
     <nav
       class="border d-flex delivey-nav"
       style="height: 100px; background-color: #ed017f"
@@ -132,24 +132,61 @@
           </div>
           <div
             class="w-100 d-flex position-relative"
-            style="background-color: #f5f7f8"
+            style="background-color: #f5f7f8; margin-top: 40px"
             id="paymentContainer"
           >
-          <div class="text-uppercase d-flex justify-content-center position-fixed w-100 bg-black start-0 text-white py-2" style="top: 241px;">select payment method</div>
-          <div class="d-flex flex-column">
-                <div class="container-fluid shadow d-flex">
-                        <div class="d-flex flex-column">
-                                <div>bank transfer</div>
-                                <div>make payment using </div>
-                        </div>
-                        <div></div>
+            <div
+              class="text-uppercase d-flex justify-content-center position-fixed w-100 bg-black start-0 text-white py-2 select-payment"
+              style="top: 241px"
+            >
+              select payment method
+            </div>
+            <div class="d-flex flex-column w-100 gap-3">
+              <div
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+              >
+                <div class="d-flex flex-column">
+                  <div class="fw-bold text-capitalize">bank transfer</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment using bank transfer</div>
                 </div>
+                <img
+                  src="Images/bank-transfer.png"
+                  alt=""
+                  style="width: 50px; object-fit: contain;"
+                />
+              </div>
+              <div
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+              >
+                <div class="d-flex flex-column" onclick="payWithPaystack()">
+                  <div class="fw-bold text-capitalize">card</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment with your credit or debit card <br>via paystack</div>
+                </div>
+                <img
+                  src="Images/paystack.png"
+                  alt="" class="d-flex my-auto"
+                  style="width: 50px; object-fit: contain; border: 1px solid #73D0EE; height: 35px;"
+                />
+              </div>
+              <div
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+              >
+                <div class="d-flex flex-column" onclick="makePayment()">
+                  <div class="fw-bold text-capitalize">card</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment with your credit or debit card <br>via flutterwave</div>
+                </div>
+                <img
+                  src="Images/flutterwave.png"
+                  alt="" class="d-flex my-auto"
+                  style="width: 50px; object-fit: contain; border: 1px solid #73D0EE; height: 35px;"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="w-100" id="orderSummaryOnLargeScreen"></div>
+          <div class="w-100" id="orderSummaryOnLargeScreen"></div>
           <div
             class="d-flex justify-content-between accept-payment"
-            style="margin-top: -10px; color: #cbcbcb"
+            style="margin-top: 40px; color: #cbcbcb"
           >
             <div class="my-auto" style="font-size: 12px">We accept:</div>
             <img
