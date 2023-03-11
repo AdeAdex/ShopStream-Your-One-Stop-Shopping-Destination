@@ -13,6 +13,7 @@
     />
     <title>complete order</title>
     <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
   </head>
   <body onload="oderConfirm()" class="checkout-body">
     <nav
@@ -135,6 +136,7 @@
           ></div>
         </div>
         <div class="w-25 h-100 bg-white d-flex flex-column p-3 div2">
+          <!-- <button type="button" id="start-payment-button" onclick="makePayment()">Pay Now</button> -->
           <div class="w-100" id="orderSummaryOnLargeScreen"></div>
           <div
             class="d-flex justify-content-between accept-payment"

@@ -35,19 +35,19 @@ function navDropdown(parameters) {
   }
 }
 
-window.onscroll = function () {
-  scrollFunction();
-};
+// window.onscroll = function () {
+//   scrollFunction();
+// };
 
-function scrollFunction() {
-  if (
-    document.body.scrollTop > 130 ||
-    document.documentElement.scrollTop > 130
-  ) {
-    navBar.style.top = "-40px";
-  } else {
-  }
-}
+// function scrollFunction() {
+//   if (
+//     document.body.scrollTop > 130 ||
+//     document.documentElement.scrollTop > 130
+//   ) {
+//     navBar.style.top = "-40px";
+//   } else {
+//   }
+// }
 
 closeThis = () => {
   shut = false;
@@ -918,7 +918,7 @@ hey = () => {
   });
 };
 
-oderConfirm = (myChoice) => {
+oderConfirm = () => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   addressContainer.innerHTML = "";
   mumuSelect = allCustomer[currentCustomerIndex].myAddressChoice
@@ -1093,7 +1093,7 @@ oderConfirm = (myChoice) => {
   }
 
 
-  eachTopDealProduct.map((eachUser, index) => {
+  mumuSelect.map((eachUser, index) => {
     if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
       addressHere.innerHTML = `
       <div class="d-flex gap-3 ps-5 mt-4">
@@ -1136,9 +1136,9 @@ oderConfirm = (myChoice) => {
     } else {
       addressHere.innerHTML = `
       <div class="d-flex flex-column gap-2 ps-2 mt-4">
-      <div class="d-flex">${mumuSelect[currentCustomerIndex].firstName} ${mumuSelect[currentCustomerIndex].lastName}</div>
-      <div class="my-auto">${mumuSelect[currentCustomerIndex].street} ${mumuSelect[currentCustomerIndex].city}  ${mumuSelect[currentCustomerIndex].state}</div>
-      <div class="my-auto">${mumuSelect[currentCustomerIndex].phoneNumber}</div>
+      <div class="d-flex">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickFirstName} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickLastName}</div>
+      <div class="my-auto">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickStreet} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickCity}  ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickState}</div>
+      <div class="my-auto">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
       </div>
       `
     }
@@ -1304,25 +1304,50 @@ displayAddress = () => {
       <div class="border shadow px-3 pt-3 pb-3 mb-3" onclick="pickThisAddressForMe(${index})">
         <div class="d-flex gap-3">
           <input type="radio">
-          <div>${eachCustomerAddress[index].firstName} ${eachCustomerAddress[index].lastName}</div>
+          <div>${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
         </div>
         <hr>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-user  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[index].firstName} ${eachCustomerAddress[index].lastName}</div>
+          <div class="my-auto">${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
         </div>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-location-dot  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[index].street} ${eachCustomerAddress[index].city}  ${eachCustomerAddress[index].state}</div>
+          <div class="my-auto">${eachCustomerAddress[index].addressStreet} ${eachCustomerAddress[index].addressCity}  ${eachCustomerAddress[index].addressState}</div>
         </div>
         <div class="d-flex gap-3 py-2">
           <i class="fas fa-phone  my-auto"></i>
-          <div class="my-auto">${eachCustomerAddress[index].phoneNumber}</div>
+          <div class="my-auto">${eachCustomerAddress[index].addressPhoneNumber}</div>
         </div>
       </div>
       `
     }
   })
+}
+
+function submitAddress() {
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  if (addressFname.value == "" || addressPhoneNumber == "") {
+    sweet2()
+  }
+  else {
+  allCustomer.map((eachUser, index) => {
+  let customerAddress = {
+    addressFirstName: addressFname.value,
+    addressLastName: addressLname.value,
+    addressPhoneNumber: addressPhoneNumber.value,
+    addressStreet: addressStreet.value,
+    addressDirection: addressDirection.value,
+    addressCity: addressCity.value,
+    addressState: addressState.value,
+    addressLGA: addressLGA.value,
+  }
+  allCustomer[currentCustomerIndex].myAddress.push(customerAddress);
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+})
+window.location.href = `completeOrder.html`
+  }
+  
 }
 
 bringMyAddress = () => {
@@ -1599,14 +1624,14 @@ pickThisAddressForMe = (myChoice) => {
   spliceAddress = allCustomer[currentCustomerIndex].myAddress;
   allCustomer.map((eachUser, index) => {
     let ourCustomerAddressChoice = {
-      firstName: spliceAddress[myChoice].firstName,
-      lastName: spliceAddress[myChoice].lastName,
-      phoneNumber: spliceAddress[myChoice].phoneNumber,
-      street:spliceAddress[myChoice].street,
-      direction: spliceAddress[myChoice].direction,
-      city: spliceAddress[myChoice].city,
-      state: spliceAddress[myChoice].state,
-      lga: spliceAddress[myChoice].lga,
+      pickFirstName: spliceAddress[myChoice].addressFirstName,
+      pickLastName: spliceAddress[myChoice].addressLastName,
+      pickPhoneNumber: spliceAddress[myChoice].addressPhoneNumber,
+      pickStreet:spliceAddress[myChoice].addressStreet,
+      pickDirection: spliceAddress[myChoice].addressDirection,
+      pickCity: spliceAddress[myChoice].addressCity,
+      pickState: spliceAddress[myChoice].addressState,
+      pickLGA: spliceAddress[myChoice].addressLGA,
   }
   allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
@@ -2070,27 +2095,30 @@ function payWithPaystack() {
 }
 
 
-function submitAddress() {
-  if (addressFname.value == "" || addressPhoneNumber == "") {
-    sweet2()
-  }
-  else {
-    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
-  allCustomer.map((eachUser, index) => {
-  let customerAddress = {
-    firstName: addressFname.value,
-    lastName: addressLname.value,
-    phoneNumber: addressPhoneNumber.value,
-    street: addressStreet.value,
-    direction: addressDirection.value,
-    city: addressCity.value,
-    state: addressState.value,
-    lga: addressLGA.value,
-  }
-  allCustomer[currentCustomerIndex].myAddress.push(customerAddress);
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-})
-window.location.href = `completeOrder.html`
-  }
-  
+function makePayment() {
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-20234fad6166a9e0d3fbb7f9ed6b4d86-X",
+    tx_ref: "titanic-48981487343MDI0NzMx",
+    amount: 54600,
+    currency: "NGN",
+    payment_options: "card, banktransfer, ussd",
+    redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+    meta: {
+      consumer_id: 23,
+      consumer_mac: "92a3-912ba-1192a",
+    },
+    customer: {
+      email: "rose@unsinkableship.com",
+      phone_number: "08102909304",
+      name: "Rose DeWitt Bukater",
+    },
+    customizations: {
+      title: "The Titanic Store",
+      description: "Payment for an awesome cruise",
+      logo: "https://www.logolynx.com/images/logolynx/22/2239ca38f5505fbfce7e55bbc0604386.jpeg",
+    },
+  });
 }
+
+
+
