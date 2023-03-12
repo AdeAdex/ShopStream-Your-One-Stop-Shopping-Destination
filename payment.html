@@ -73,58 +73,51 @@
       ></section>
       <section class="d-flex gap-4 shipping-info" style="padding: 10px 5%">
         <div class="w-75 d-flex flex-column gap-1 div1 mx-auto">
-          <div class="w-100" style="height: 150px; padding-bottom: 20px">
+          <div class="w-100" style="height: 120px; padding-bottom: 20px">
             <div
-              class="my-page d-flex justify-content-between py-2 px-4 fw-bold"
-              style="background-color: #94004f; font-size: 14px; height: 100%"
+              class="my-page d-flex flex-column py-2 px-4 fw-bold"
+              style="background-color: #226600; font-size: 14px; height: 100%"
             >
-              <div class="my-auto position-relative">
-                <div
-                  class="bg-warning d-flex justify-content-center nxt-div"
-                  style="width: 50px; height: 50px; border-radius: 50%"
-                >
-                  <i class="fas fa-check fs-4 d-flex my-auto text-white"></i>
+              <div class="d-flex my-auto" style="width: 100%">
+                <div class="d-flex" style="width: 47%">
+                  <div
+                    class="bg-warning my-auto d-flex justify-content-center nxt-div"
+                    style="width: 50px; height: 50px; border-radius: 50%"
+                  >
+                    <i class="fas fa-check fs-4 d-flex my-auto text-white"></i>
+                  </div>
+                  <div
+                    class="bg-warning my-auto line"
+                    style="height: 8px; width: 90%"
+                  ></div>
+                </div>
+                <div class="d-flex" style="width: 47%">
+                  <div
+                    class="bg-warning my-auto d-flex justify-content-center nxt-div"
+                    style="width: 50px; height: 50px; border-radius: 50%"
+                  >
+                    <i class="fas fa-check fs-4 d-flex my-auto text-white"></i>
+                  </div>
+                  <div
+                    class="bg-warning my-auto line"
+                    style="height: 8px; width: 90%"
+                  ></div>
                 </div>
                 <div
-                  class="position-absolute text-white verify1"
-                  style="width: 200px !important; font-size: 12px"
+                  class="bg-warning my-auto d-flex justify-content-center nxt-div"
+                  style="width: 50px; height: 50px; border-radius: 50%"
                 >
+                  <i class="fas fa-3 fs-4 d-flex my-auto text-white"></i>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between w-100">
+                <div class="text-white verif" style="font-size: 12px">
                   Verify cart Content
                 </div>
-              </div>
-              <div
-                class="bg-warning my-auto line"
-                style="height: 8px; width: 45%"
-              ></div>
-              <div class="my-auto position-relative">
-                <div
-                  class="bg-warning d-flex justify-content-center nxt-div"
-                  style="width: 50px; height: 50px; border-radius: 50%"
-                >
-                  <i class="fas fa-check d-flex my-auto text-white"></i>
-                </div>
-                <div
-                  class="position-absolute text-white verify2"
-                  style="width: 200px !important; font-size: 12px"
-                >
+                <div class="text-white verif" style="font-size: 12px">
                   Delivery Address
                 </div>
-              </div>
-              <div
-                class="bg-warning my-auto line"
-                style="height: 8px; width: 45%"
-              ></div>
-              <div class="my-auto position-relative">
-                <div
-                  class="bg-warning d-flex justify-content-center nxt-div"
-                  style="width: 50px; height: 50px; border-radius: 50%"
-                >
-                  <i class="fas fa-3 d-flex my-auto text-white"></i>
-                </div>
-                <div
-                  class="position-absolute text-white verify3"
-                  style="width: 200px !important; font-size: 12px"
-                >
+                <div class="text-white verif" style="font-size: 12px">
                   Payment
                 </div>
               </div>
@@ -143,42 +136,67 @@
             </div>
             <div class="d-flex flex-column w-100 gap-3">
               <div
-                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100" style="cursor: pointer;"
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+                style="cursor: pointer"
               >
                 <div class="d-flex flex-column">
                   <div class="fw-bold text-capitalize">bank transfer</div>
-                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment using bank transfer</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px">
+                    make payment using bank transfer
+                  </div>
                 </div>
                 <img
                   src="Images/bank-transfer.png"
                   alt=""
-                  style="width: 50px; object-fit: contain;"
+                  style="width: 50px; object-fit: contain"
                 />
               </div>
               <div
-                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100" style="cursor: pointer;"
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+                style="cursor: pointer"
+                onclick="payWithPaystack()"
               >
-                <div class="d-flex flex-column" onclick="payWithPaystack()">
+                <div class="d-flex flex-column">
                   <div class="fw-bold text-capitalize">card</div>
-                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment with your credit or debit card <br>via paystack</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px">
+                    make payment with your credit or debit card <br />via
+                    paystack
+                  </div>
                 </div>
                 <img
                   src="Images/paystack.png"
-                  alt="" class="d-flex my-auto"
-                  style="width: 50px; object-fit: contain; border: 1px solid #73D0EE; height: 35px;"
+                  alt=""
+                  class="d-flex my-auto"
+                  style="
+                    width: 50px;
+                    object-fit: contain;
+                    border: 1px solid #73d0ee;
+                    height: 35px;
+                  "
                 />
               </div>
               <div
-                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100" style="cursor: pointer;"
+                class="container-fluid shadow d-flex py-3 bg-white justify-content-between w-100"
+                style="cursor: pointer"
+                onclick="makePayment()"
               >
-                <div class="d-flex flex-column" onclick="makePayment()">
+                <div class="d-flex flex-column">
                   <div class="fw-bold text-capitalize">card</div>
-                  <div class="fw-bold text-capitalize" style="font-size: 12px;">make payment with your credit or debit card <br>via flutterwave</div>
+                  <div class="fw-bold text-capitalize" style="font-size: 12px">
+                    make payment with your credit or debit card <br />via
+                    flutterwave
+                  </div>
                 </div>
                 <img
                   src="Images/flutterwave.png"
-                  alt="" class="d-flex my-auto"
-                  style="width: 50px; object-fit: contain; border: 1px solid #73D0EE; height: 35px;"
+                  alt=""
+                  class="d-flex my-auto"
+                  style="
+                    width: 50px;
+                    object-fit: contain;
+                    border: 1px solid #73d0ee;
+                    height: 35px;
+                  "
                 />
               </div>
             </div>
@@ -214,7 +232,7 @@
               alt=""
             />
           </div>
-          <div class="d-flex gap-2 mt-2">
+          <div class="d-flex gap-2 mt-2 key">
             <img
               class="my-auto"
               src="Images/padlock.jpeg"

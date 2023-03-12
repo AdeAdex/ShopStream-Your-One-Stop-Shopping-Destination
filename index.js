@@ -2091,7 +2091,6 @@ function readMore() {
 
 
 
-// paymentForm.addEventListener("click", payWithPaystack, false);
 function payWithPaystack() {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   let handler = PaystackPop.setup({
@@ -2131,7 +2130,7 @@ function makePayment() {
     amount: allCustomer[currentCustomerIndex].totalBalance,
     currency: "NGN",
     payment_options: "card, banktransfer, ussd",
-    redirect_url: "https://glaciers.titanic.com/handle-flutterwave-payment",
+    redirect_url: "completeOrder.html",
     meta: {
       consumer_id: 23,
       consumer_mac: "92a3-912ba-1192a",

@@ -540,6 +540,16 @@ nav .dropbtn:hover {
   top: -15px !important;
 }
 
+.payment-body .accept-payment, .payment-body .key {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.payment-body .key {
+
+}
+
 }
 
 
@@ -1272,9 +1282,6 @@ nav .dropbtn:hover {
 
   .div1 .verify3 {
     left: -40px;
-  }
-
-  .div1 .verify3{
     max-width: 50px !important;
   }
 
@@ -1298,17 +1305,22 @@ nav .dropbtn:hover {
     height: 2px !important;
   }
   
- .div1 .fa-1, .fa-2, .fa-3{
+ .my-page .fa-1, .fa-2, .fa-3{
    font-size: 8px !important;
  } 
  
 .div1 .my-page {
   position: fixed;
   width: 100%;
-  height: 70px !important;
+  height: 50px !important;
   top: 60px;
   left: 0;
 } 
+
+.my-page .chk-con {
+  margin-top: unset !important;
+  margin-bottom: unset !important;;
+}
 
 .delivey-nav {
   position: fixed;
