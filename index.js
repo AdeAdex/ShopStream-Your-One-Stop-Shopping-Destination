@@ -926,7 +926,7 @@ oderConfirm = () => {
   eachTopDealProduct.map((eachUser, index) => {
     addressContainer.innerHTML = `
     <div
-      class="w-100 px-3 bg-white d-flex justify-content-between">
+      class="w-100 px-3 mt-3 bg-white d-flex justify-content-between">
       <div
         class="my-auto text-uppercase fw-bold"
         style="font-size: 14px"
@@ -1376,7 +1376,7 @@ window.location.href = `completeOrder.html`
 bringMyAddress = () => {
   addressContainer.innerHTML = `
   <div
-    class="w-100 px-3 bg-white d-flex justify-content-between">
+    class="w-100 px-3 mt-3 bg-white d-flex justify-content-between">
     <div
       class="my-auto text-uppercase fw-bold"
       style="font-size: 14px"
