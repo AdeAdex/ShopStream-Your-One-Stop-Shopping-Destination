@@ -537,7 +537,7 @@ nav .dropbtn:hover {
 
 .payment-body .select-payment {
   position: relative !important;
-  top: -15px !important;
+  top: -24px !important;
 }
 
 .payment-body .accept-payment, .payment-body .key {
@@ -1339,11 +1339,11 @@ nav .dropbtn:hover {
   
 
 .payment-body .select-payment {
-  top: 130px !important;
+  top: 110px !important;
 }
 
 .payment-body #paymentContainer {
-  margin-top: -130px !important;
+  margin-top: -100px !important;
 }
   
 }
