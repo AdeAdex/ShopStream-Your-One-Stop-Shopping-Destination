@@ -1305,7 +1305,7 @@ nav .dropbtn:hover {
     height: 2px !important;
   }
   
- .my-page .fa-1, .fa-2, .fa-3{
+ .my-page .fa-1, .my-page .fa-2, .my-page .fa-3{
    font-size: 8px !important;
  } 
  
