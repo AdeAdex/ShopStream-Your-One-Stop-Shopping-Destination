@@ -1051,9 +1051,19 @@ oderConfirm = () => {
       </div>
     </div>
     `
-    subtotalAndTotalPrice.innerHTML = `
-     <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
-     <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    subtotalAndTotalPriceOnCheckout.innerHTML = `
+    <div class="d-flex w-100 justify-content-between">
+      <div id="">Subtotal:</div>
+      <div class="" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+      <div id="">Delivery Fee:</div>
+      <div class="" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].deliveryCharge}</div>
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+      <div class="fw-bold">Total:</div>
+      <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance + allCustomer[currentCustomerIndex].myAddressChoice[index].pickDeliveryCharge}</div>
+    </div>
      `;
 
     orderSummaryOnLargeScreen.innerHTML = `
@@ -1100,13 +1110,13 @@ oderConfirm = () => {
     </div>
     `;
   }
-  if (eachTopDealProduct.length == 1) {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `;
-    itemLScreen.innerHTML = `Item`;
-  } else {
-    item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`;
-    itemLScreen.innerHTML = `Items`;
-  }
+  // if (eachTopDealProduct.length == 1) {
+  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `;
+  //   itemLScreen.innerHTML = `Item`;
+  // } else {
+  //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Items )`;
+  //   itemLScreen.innerHTML = `Items`;
+  // }
 
 
   mySelected.map((eachUser, index) => {
@@ -1697,6 +1707,7 @@ pickThisAddressForMe = (myChoice) => {
   allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   allCustomer[currentCustomerIndex].deliveryCharge = allCustomer[currentCustomerIndex].myAddressChoice[index].pickDeliveryCharge;
+  // allCustomer[currentCustomerIndex].totalBalance +=  allCustomer[currentCustomerIndex].deliveryCharge
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
 
   })

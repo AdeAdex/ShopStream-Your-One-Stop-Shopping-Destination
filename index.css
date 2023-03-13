@@ -550,6 +550,10 @@ nav .dropbtn:hover {
 
 }
 
+.checkout-body .cart-total-on-small-screen {
+ display: none !important; 
+}
+
 }
 
 
