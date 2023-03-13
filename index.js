@@ -35,19 +35,19 @@ function navDropdown(parameters) {
   }
 }
 
-// window.onscroll = function () {
-//   scrollFunction();
-// };
+window.onscroll = function () {
+  scrollFunction();
+};
 
-// function scrollFunction() {
-//   if (
-//     document.body.scrollTop > 130 ||
-//     document.documentElement.scrollTop > 130
-//   ) {
-//     navBar.style.top = "-40px";
-//   } else {
-//   }
-// }
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 130 ||
+    document.documentElement.scrollTop > 130
+  ) {
+    navBar.style.top = "-40px";
+  } else {
+  }
+}
 
 closeThis = () => {
   shut = false;
@@ -229,6 +229,7 @@ openAccount = () => {
       password: password.value,
       totalBalance: 0,
       totalCart: 0,
+      deliveryCharge: 0,
       myCart: [],
       myProductSelect: [],
       myAddress: [],
@@ -921,7 +922,7 @@ hey = () => {
 oderConfirm = () => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   addressContainer.innerHTML = "";
-  mumuSelect = allCustomer[currentCustomerIndex].myAddressChoice
+  mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     addressContainer.innerHTML = `
@@ -1034,6 +1035,21 @@ oderConfirm = () => {
         </div>
       </div>
     </div>
+    <div class="w-100 px-3 py-3 mt-3 bg-white">
+      <div class="fw-bold text-capitalize mb-3" style="font-size: 14px">delivery options:</div>
+      <div class="d-flex gap-3 mt-2">
+        <input type="radio" name="" id="" class="" />
+        <span class="d-flex gap-3" style="font-size: 12px; font-weight: bold">
+          AdexNow - (1 - 6 hours Estimated time) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
+        >
+      </div>
+      <div class="d-flex gap-3 mt-2">
+        <input type="radio" name="" id="" class="" />
+        <span class="d-flex gap-3" style="font-size: 12px; font-weight: bold">
+          Standard Delivery (3 - 5 Business days Estimated) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
+        >
+      </div>
+    </div>
     `
     subtotalAndTotalPrice.innerHTML = `
      <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
@@ -1093,7 +1109,7 @@ oderConfirm = () => {
   }
 
 
-  mumuSelect.map((eachUser, index) => {
+  mySelected.map((eachUser, index) => {
     if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
       addressHere.innerHTML = `
       <div class="d-flex gap-3 ps-5 mt-4">
@@ -1354,6 +1370,11 @@ function submitAddress() {
     sweet2()
   }
   else {
+    if (addressState.value == "oyo") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 200
+    } else if (addressState.value == "lagos") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 500
+    }
   allCustomer.map((eachUser, index) => {
   let customerAddress = {
     addressFirstName: addressFname.value,
@@ -1364,6 +1385,7 @@ function submitAddress() {
     addressCity: addressCity.value,
     addressState: addressState.value,
     addressLGA: addressLGA.value,
+    addressStateDeliveryCharge: allCustomer[currentCustomerIndex].deliveryCharge,
   }
   allCustomer[currentCustomerIndex].myAddress.push(customerAddress);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
@@ -1484,6 +1506,21 @@ bringMyAddress = () => {
       </div>
     </div>
   </div>
+  <div class="w-100 px-3 py-3 mt-3 bg-white">
+      <div class="fw-bold text-capitalize mb-3" style="font-size: 14px">delivery options:</div>
+      <div class="d-flex gap-3 mt-2">
+        <input type="radio" name="" id="" class="" />
+        <span class="d-flex gap-3" style="font-size: 12px; font-weight: bold">
+          AdexNow - (1 - 6 hours Estimated time) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
+        >
+      </div>
+      <div class="d-flex gap-3 mt-2">
+        <input type="radio" name="" id="" class="" />
+        <span class="d-flex gap-3" style="font-size: 12px; font-weight: bold">
+          Standard Delivery (3 - 5 Business days Estimated) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
+        >
+      </div>
+    </div>
   `
 }
 
@@ -1655,9 +1692,13 @@ pickThisAddressForMe = (myChoice) => {
       pickCity: spliceAddress[myChoice].addressCity,
       pickState: spliceAddress[myChoice].addressState,
       pickLGA: spliceAddress[myChoice].addressLGA,
+      pickDeliveryCharge: spliceAddress[myChoice].addressStateDeliveryCharge,
   }
   allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  allCustomer[currentCustomerIndex].deliveryCharge = allCustomer[currentCustomerIndex].myAddressChoice[index].pickDeliveryCharge;
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+
   })
   window.location.href = "completeOrder.html"
 }
