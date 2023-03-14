@@ -632,6 +632,12 @@ nav .dropbtn:hover {
     display: none !important;
   }
 
+  #myAccountDropdown {
+    position: absolute !important;
+    right: 0;
+    z-index: 33;
+  }
+
   #myAccountDropdown button, .checkout {
     color: white;
     font-size: 12px !important;

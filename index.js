@@ -625,7 +625,7 @@ showMyCart = () => {
 };
 
 setTotal = () => {
-  allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + 
+  // allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance +  allCustomer[currentCustomerIndex].myAddressChoice[currentCustomerIndex].pickDeliveryCharge
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   window.location.href = 'completeOrder.html'
 }
@@ -1086,11 +1086,6 @@ oderConfirm = () => {
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
-          <div class="" style="font-size: 12px; width: 60%;">Delivery Charges:</div>
-          <div class="text-end" style="font-size: 10px; width: 35%;">Add your Delivery address at checkout to see delivery charges</div>
-    </div>
-    <hr>
-    <div class="d-flex justify-content-between w-100">
           <div class="" style="font-size: 12px;">Subtotal:</div>
           <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
     </div>
@@ -1381,6 +1376,7 @@ displayAddress = () => {
           <i class="fas fa-phone  my-auto"></i>
           <div class="my-auto">${eachCustomerAddress[index].addressPhoneNumber}</div>
         </div>
+        <div class="d-flex justify-content-center mt-2"><i class="fas fa-user fs-3 text-danger"></i></div>
       </div>
       `
     }
