@@ -550,7 +550,7 @@ nav .dropbtn:hover {
 
 }
 
-.checkout-body .cart-total-on-small-screen {
+.checkout-body .check-out-on-small-screen {
  display: none !important; 
 }
 
@@ -1169,6 +1169,10 @@ nav .dropbtn:hover {
 
   .checkout-body .div2 {
     margin-top: 0px;
+  }
+
+  .checkout-body #addressContainer {
+    margin-top: 30px !important;
   }
 
   .cart-top {

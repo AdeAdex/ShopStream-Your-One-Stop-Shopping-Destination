@@ -229,7 +229,8 @@ openAccount = () => {
       password: password.value,
       totalBalance: 0,
       totalCart: 0,
-      deliveryCharge: 0,
+      allTotalBalance: 0,
+      deliveryCharge: 200,
       myCart: [],
       myProductSelect: [],
       myAddress: [],
@@ -598,7 +599,7 @@ showMyCart = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'completeOrder.html'">Procced To Delivery </button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="setTotal()">Proceed To Delivery </button>
 </div>
     <hr>
      `;
@@ -622,6 +623,12 @@ showMyCart = () => {
     itemLScreen.innerHTML = `Items`;
   }
 };
+
+setTotal = () => {
+  allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + 
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  window.location.href = 'completeOrder.html'
+}
 
 let count = 0;
 increment = (myIncrement) => {
@@ -923,6 +930,8 @@ oderConfirm = () => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   addressContainer.innerHTML = "";
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
+  // allCustomer[currentCustomerIndex].allTotalBalance = mySelected[index].pickDeliveryCharge;
+  // localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     addressContainer.innerHTML = `
@@ -1054,19 +1063,19 @@ oderConfirm = () => {
     subtotalAndTotalPriceOnCheckout.innerHTML = `
     <div class="d-flex w-100 justify-content-between">
       <div id="">Subtotal:</div>
-      <div class="" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+      <div class="" style="font-size: 14px" id="">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div id="">Delivery Fee:</div>
-      <div class="" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].deliveryCharge}</div>
+      <div class="" style="font-size: 14px" id="">₦${mySelected[index].pickDeliveryCharge}</div>
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div class="fw-bold">Total:</div>
-      <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance + allCustomer[currentCustomerIndex].myAddressChoice[index].pickDeliveryCharge}</div>
+      <div class="fw-bold" style="font-size: 14px" id="allTotal">₦${allCustomer[currentCustomerIndex].allTotalBalance}</div>
     </div>
      `;
 
-    orderSummaryOnLargeScreen.innerHTML = `
+     orderSummaryOnLargeScreenForCheckout.innerHTML = `
     <div class=" details-off">
     <div class="d-flex justify-content-between fw-bold details-off">
       <div>Order Summary</div>
@@ -1087,14 +1096,18 @@ oderConfirm = () => {
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
-          <div class="fw-bold">Total:</div>
-          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+          <div class="" style="font-size: 12px;">Delivery Fee:</div>
+          <div class="fw-bold" style="font-size: 14px;">₦${mySelected[index].pickDeliveryCharge}</div>
     </div>
     <hr>
-    <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
-  </div>
+    <div class="d-flex justify-content-between w-100">
+          <div class="fw-bold">Total:</div>
+          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].allTotalBalance}</div>
+    </div>
+    <hr>
+    </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'payment.html'">Procced To Payment</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'payment.html'">Proceed To Payment</button>
 </div>
     <hr>
      `;
@@ -1381,7 +1394,7 @@ function submitAddress() {
   }
   else {
     if (addressState.value == "oyo") {
-      allCustomer[currentCustomerIndex].deliveryCharge = 200
+      allCustomer[currentCustomerIndex].deliveryCharge = 300
     } else if (addressState.value == "lagos") {
       allCustomer[currentCustomerIndex].deliveryCharge = 500
     }
@@ -1691,13 +1704,14 @@ addNewAddress = () => {
 
 pickThisAddressForMe = (myChoice) => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   spliceAddress = allCustomer[currentCustomerIndex].myAddress;
   allCustomer.map((eachUser, index) => {
     let ourCustomerAddressChoice = {
       pickFirstName: spliceAddress[myChoice].addressFirstName,
       pickLastName: spliceAddress[myChoice].addressLastName,
       pickPhoneNumber: spliceAddress[myChoice].addressPhoneNumber,
-      pickStreet:spliceAddress[myChoice].addressStreet,
+      pickStreet: spliceAddress[myChoice].addressStreet,
       pickDirection: spliceAddress[myChoice].addressDirection,
       pickCity: spliceAddress[myChoice].addressCity,
       pickState: spliceAddress[myChoice].addressState,
@@ -1706,10 +1720,9 @@ pickThisAddressForMe = (myChoice) => {
   }
   allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-  allCustomer[currentCustomerIndex].deliveryCharge = allCustomer[currentCustomerIndex].myAddressChoice[index].pickDeliveryCharge;
-  // allCustomer[currentCustomerIndex].totalBalance +=  allCustomer[currentCustomerIndex].deliveryCharge
+  let latestPrice = mySelected[index].pickDeliveryCharge + allCustomer[currentCustomerIndex].totalBalance
+  allCustomer[currentCustomerIndex].allTotalBalance = latestPrice
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-
   })
   window.location.href = "completeOrder.html"
 }
@@ -2148,7 +2161,7 @@ function payWithPaystack() {
   let handler = PaystackPop.setup({
     key: 'pk_test_a70c6dbb491c1021f98ea8cf0b840542607c2537',
     email: allCustomer[currentCustomerIndex].email,
-    amount: allCustomer[currentCustomerIndex].totalBalance * 100,
+    amount: allCustomer[currentCustomerIndex].allTotalBalance * 100,
     ref: 'Adex'+Math.floor((Math.random() * 1000000000) + 1), 
     onClose: function(){
       let message = "You just cancel this transaction";
@@ -2179,7 +2192,7 @@ function makePayment() {
   FlutterwaveCheckout({
     public_key: "FLWPUBK_TEST-20234fad6166a9e0d3fbb7f9ed6b4d86-X",
     tx_ref: "Adex-48981487343MDI0NzMx",
-    amount: allCustomer[currentCustomerIndex].totalBalance,
+    amount: allCustomer[currentCustomerIndex].allTotalBalance,
     currency: "NGN",
     payment_options: "card, banktransfer, ussd",
     redirect_url: "completeOrder.html",
