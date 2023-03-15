@@ -625,8 +625,16 @@ showMyCart = () => {
 };
 
 setTotal = () => {
-  // allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance +  allCustomer[currentCustomerIndex].myAddressChoice[currentCustomerIndex].pickDeliveryCharge
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  delivery = allCustomer[currentCustomerIndex].myAddressChoice
+  delivery.map((eachUser, index) => {
+    if (delivery.length == 0) {
+      allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + delivery[index].pickDeliveryCharge
+    } else {
+      allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + delivery[index].pickDeliveryCharge
+    }
+    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  })
   window.location.href = 'completeOrder.html'
 }
 
@@ -1067,13 +1075,15 @@ oderConfirm = () => {
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div id="">Delivery Fee:</div>
-      <div class="" style="font-size: 14px" id="">₦</div>
+      <div class="" style="font-size: 14px" id="deliveryPriceSmall"></div>
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div class="fw-bold">Total:</div>
       <div class="fw-bold" style="font-size: 14px" id="allTotal">₦${allCustomer[currentCustomerIndex].allTotalBalance}</div>
     </div>
      `;
+
+    
 
      orderSummaryOnLargeScreenForCheckout.innerHTML = `
     <div class=" details-off">
@@ -1092,7 +1102,7 @@ oderConfirm = () => {
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="" style="font-size: 12px;">Delivery Fee:</div>
-          <div class="fw-bold" style="font-size: 14px;">₦</div>
+          <div class="fw-bold" style="font-size: 14px;" id="deliveryPriceLarge"></div>
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
@@ -1107,6 +1117,11 @@ oderConfirm = () => {
     <hr>
      `;
   });
+
+  mySelected.map((eacDelivery, index) => {
+    deliveryPriceSmall.innerHTML = `₦${mySelected[index].pickDeliveryCharge}`
+    deliveryPriceLarge.innerHTML = `₦${mySelected[index].pickDeliveryCharge}`
+   })
 
   if (eachTopDealProduct.length == 0) {
     cartMain.innerHTML = `
@@ -1209,7 +1224,7 @@ displayAddress = () => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
   // for (let index = 0; index < eachCustomerAddress.length; index++) {
-  // allCustomer.map((eachUser, index) => {
+  allCustomer.map((eachUser, index) => {
     if (eachCustomerAddress.length == 0) {
       offInside.innerHTML = `
       <div class="row h-100 position-relative">
@@ -1390,7 +1405,7 @@ displayAddress = () => {
           <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2" onclick="addNewAddress()">Add Address</button>
       `
     }
-  // })
+  })
 // }
 }
 
@@ -1916,7 +1931,7 @@ pickThisAddressForMe = (myChoice) => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   spliceAddress = allCustomer[currentCustomerIndex].myAddress;
-  allCustomer.map((eachUser, index) => {
+  mySelected.map((eachUser, index) => {
     let ourCustomerAddressChoice = {
       pickFirstName: spliceAddress[myChoice].addressFirstName,
       pickLastName: spliceAddress[myChoice].addressLastName,
