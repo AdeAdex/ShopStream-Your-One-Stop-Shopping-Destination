@@ -631,11 +631,13 @@ setTotal = () => {
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
   allCustomer.map((eachUser, index) => {
     if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
-      myAllTotal = allCustomer[currentCustomerIndex].totalBalance + allCustomer[currentCustomerIndex].deliveryCharge
+      myAllTotal = allCustomer[currentCustomerIndex].totalBalance
       allCustomer[currentCustomerIndex].allTotalBalance = myAllTotal
     } else {
-      myAllTotal = allCustomer[currentCustomerIndex].totalBalance + setDelivery[index].pickDeliveryCharge;
-      allCustomer[currentCustomerIndex].allTotalBalance = myAllTotal
+      setDelivery.map((eachUser, index) => {
+        myAllTotal = allCustomer[currentCustomerIndex].totalBalance + setDelivery[index].pickDeliveryCharge;
+        allCustomer[currentCustomerIndex].allTotalBalance = myAllTotal
+      })
     }
   })
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
@@ -1116,7 +1118,7 @@ oderConfirm = () => {
     <hr>
     </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="window.location.href = 'payment.html'">Proceed To Payment</button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="proceedToPayment()">Proceed To Payment</button>
 </div>
     <hr>
      `;
@@ -1127,16 +1129,16 @@ oderConfirm = () => {
     deliveryPriceLarge.innerHTML = `₦${mySelected[index].pickDeliveryCharge}`
    })
 
-  if (eachTopDealProduct.length == 0) {
-    cartMain.innerHTML = `
-    <div class="d-flex" id="" style="padding: 0px 20px; height: 100vh; width: 100%;">
-      <div class="container-fluid shadow bg-white mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50  empty-cart-container">
-        <img src="Images/empty-cart.png" alt="" class="mx-auto" style="width: 100px;">
-        <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
-      </div>
-    </div>
-    `;
-  }
+  // if (eachTopDealProduct.length == 0) {
+  //   cartMain.innerHTML = `
+  //   <div class="d-flex" id="" style="padding: 0px 20px; height: 100vh; width: 100%;">
+  //     <div class="container-fluid shadow bg-white mx-auto mt-5 d-flex flex-column justify-content-center gap-3 w-100 h-50  empty-cart-container">
+  //       <img src="Images/empty-cart.png" alt="" class="mx-auto" style="width: 100px;">
+  //       <div class="mx-auto fw-bold" style="text-align: center;">Your cart is empty <br> You have not added any item to your cart </div>
+  //     </div>
+  //   </div>
+  //   `;
+  // }
   // if (eachTopDealProduct.length == 1) {
   //   item.innerHTML = `Subtotal ( ${eachTopDealProduct.length} Item ) `;
   //   itemLScreen.innerHTML = `Item`;
@@ -1193,7 +1195,7 @@ oderConfirm = () => {
       <div class="d-flex flex-column gap-1 ps-4 mt-2 py-4 bg-white">
       <div class="d-flex text-capitalize fw-bold mb-2" style="font-size: 14px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickFirstName} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickLastName}</div>
       <div class="my-auto text-capitalize" style="font-size: 12px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickStreet} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickCity}  ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickState}</div>
-      <div class="my-auto" style="font-size: 12px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
+      <div class="my-auto" style="font-size: 12px" id="pickPhoneNo">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
       <div class="dropdown position-relative pb-3">
         <div
           class="d-flex gap-3"
@@ -1220,6 +1222,18 @@ oderConfirm = () => {
     }
   })
  
+}
+
+proceedToPayment = () => {
+  mySelected = allCustomer[currentCustomerIndex].myAddressChoice
+  mySelected.map((eacDelivery, index) => {
+    if (deliveryPriceSmall.innerHTML == mySelected[index].pickDeliveryCharge) {
+      alert("kole work")
+    } else {
+      alert("oti lo")
+    }
+  })
+  // window.location.href = 'payment.html'
 }
 
 displayAddress = () => {
