@@ -625,16 +625,20 @@ showMyCart = () => {
 };
 
 setTotal = () => {
+  let myAllTotal;
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
-  delivery = allCustomer[currentCustomerIndex].myAddressChoice
-  delivery.map((eachUser, index) => {
-    if (delivery.length == 0) {
-      allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + delivery[index].pickDeliveryCharge
+  setDelivery = allCustomer[currentCustomerIndex].myAddressChoice
+  eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
+  allCustomer.map((eachUser, index) => {
+    if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
+      myAllTotal = allCustomer[currentCustomerIndex].totalBalance + allCustomer[currentCustomerIndex].deliveryCharge
+      allCustomer[currentCustomerIndex].allTotalBalance = myAllTotal
     } else {
-      allCustomer[currentCustomerIndex].allTotalBalance = allCustomer[currentCustomerIndex].totalBalance + delivery[index].pickDeliveryCharge
+      myAllTotal = allCustomer[currentCustomerIndex].totalBalance + setDelivery[index].pickDeliveryCharge;
+      allCustomer[currentCustomerIndex].allTotalBalance = myAllTotal
     }
-    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   })
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   window.location.href = 'completeOrder.html'
 }
 
