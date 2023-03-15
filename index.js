@@ -943,9 +943,8 @@ hey = () => {
 oderConfirm = () => {
   myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
   addressContainer.innerHTML = "";
-  mySelected = allCustomer[currentCustomerIndex].myAddressChoice
-  // allCustomer[currentCustomerIndex].allTotalBalance = mySelected[index].pickDeliveryCharge;
-  // localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress;
+  mySelected = allCustomer[currentCustomerIndex].myAddressChoice;
   eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     addressContainer.innerHTML = `
@@ -1149,7 +1148,7 @@ oderConfirm = () => {
 
 
   mySelected.map((eachUser, index) => {
-    if (allCustomer[currentCustomerIndex].myAddressChoice.length == 0) {
+    if (mySelected.length == 0) {
       addressHere.innerHTML = `
       <div class="d-flex gap-3 ps-5 mt-4">
       <input type="radio" name="" id="" checked class="" />
@@ -1222,6 +1221,13 @@ oderConfirm = () => {
     }
   })
  
+
+  allCustomer.map((eachUser, index) => {
+    if (eachCustomerAddress.length == 0) {
+      mySelected.splice(0, 1)
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer)); 
+    }
+  })
 }
 
 proceedToPayment = () => {
@@ -1438,7 +1444,7 @@ delThisAddress = (useraddress) => {
 
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
   eachCustomerAddress.map((eachUser, index) => {
-    if (allCustomer[currentCustomerIndex].myAddress.length == 0) {
+    if (eachCustomerAddress.length == 0) {
       window.location.reload()
       offcanvasAddressContainer.innerHTML = `
       <div class="row h-100 position-relative">
@@ -1956,7 +1962,7 @@ pickThisAddressForMe = (myChoice) => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   spliceAddress = allCustomer[currentCustomerIndex].myAddress;
-  mySelected.map((eachUser, index) => {
+  spliceAddress.map((eachUser, index) => {
     let ourCustomerAddressChoice = {
       pickFirstName: spliceAddress[myChoice].addressFirstName,
       pickLastName: spliceAddress[myChoice].addressLastName,
@@ -1968,12 +1974,15 @@ pickThisAddressForMe = (myChoice) => {
       pickLGA: spliceAddress[myChoice].addressLGA,
       pickDeliveryCharge: spliceAddress[myChoice].addressStateDeliveryCharge,
   }
-  allCustomer[currentCustomerIndex].myAddressChoice.splice(0, 1, ourCustomerAddressChoice);
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-  let latestPrice = mySelected[index].pickDeliveryCharge + allCustomer[currentCustomerIndex].totalBalance
-  allCustomer[currentCustomerIndex].allTotalBalance = latestPrice
+  mySelected.splice(0, 1, ourCustomerAddressChoice);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   })
+
+  mySelected.map((eachUser, index) => {
+    let latestPrice = mySelected[index].pickDeliveryCharge + allCustomer[currentCustomerIndex].totalBalance
+    allCustomer[currentCustomerIndex].allTotalBalance = latestPrice
+  })
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
   window.location.href = "completeOrder.html"
 }
 
