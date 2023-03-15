@@ -1193,9 +1193,9 @@ oderConfirm = () => {
       pickUp.style.display = 'none';
       addressHere.innerHTML = `
       <div class="d-flex flex-column gap-1 ps-4 mt-2 py-4 bg-white">
-      <div class="d-flex text-capitalize fw-bold mb-2" style="font-size: 14px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickFirstName} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickLastName}</div>
-      <div class="my-auto text-capitalize" style="font-size: 12px">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickStreet} ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickCity}  ${allCustomer[currentCustomerIndex].myAddressChoice[index].pickState}</div>
-      <div class="my-auto" style="font-size: 12px" id="pickPhoneNo">${allCustomer[currentCustomerIndex].myAddressChoice[index].pickPhoneNumber}</div>
+      <div class="d-flex text-capitalize fw-bold mb-2" style="font-size: 14px">${mySelected[index].pickFirstName} ${mySelected[index].pickLastName}</div>
+      <div class="my-auto text-capitalize" style="font-size: 12px">${mySelected[index].pickStreet} ${mySelected[index].pickCity}  ${mySelected[index].pickState}</div>
+      <div class="my-auto" style="font-size: 12px" id="">${mySelected[index].pickPhoneNumber}</div>
       <div class="dropdown position-relative pb-3">
         <div
           class="d-flex gap-3"
@@ -1226,14 +1226,20 @@ oderConfirm = () => {
 
 proceedToPayment = () => {
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
-  mySelected.map((eacDelivery, index) => {
-    if (deliveryPriceSmall.innerHTML == mySelected[index].pickDeliveryCharge) {
-      alert("kole work")
+  // mySelected.map((eacDelivery, index) => {
+    if (pickUp.style.display != "none") {
+      let message = "You've not select any address please select an address and then proceed"
+      Swal.fire({
+        icon: "warning",
+        title: "Dear " + allCustomer[currentCustomerIndex].firstName,
+        text: message,
+        // showCancelButton: true,
+        footer: '',
+      })
     } else {
-      alert("oti lo")
+      window.location.href = 'payment.html'
     }
-  })
-  // window.location.href = 'payment.html'
+  // })
 }
 
 displayAddress = () => {
@@ -1241,8 +1247,6 @@ displayAddress = () => {
   // offTop.innerHTML = ""
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
-  // for (let index = 0; index < eachCustomerAddress.length; index++) {
-  allCustomer.map((eachUser, index) => {
     if (eachCustomerAddress.length == 0) {
       offInside.innerHTML = `
       <div class="row h-100 position-relative">
@@ -1396,6 +1400,7 @@ displayAddress = () => {
           <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2" onclick="addNewAddress()">Add Address</button>
       `
     } else if (eachCustomerAddress.length != 0) {
+      eachCustomerAddress.map((eachUser, index) => {
       offInside.innerHTML += `
       <div class="border shadow px-3 pt-3 pb-3 mb-3">
         <div class="d-flex gap-3" style="cursor: pointer" onclick="pickThisAddressForMe(${index})">
@@ -1415,16 +1420,18 @@ displayAddress = () => {
           <i class="fas fa-phone  my-auto"></i>
           <div class="my-auto">${eachCustomerAddress[index].addressPhoneNumber}</div>
         </div>
-        <div class="d-flex justify-content-center mt-2"><i class="fas fa-trash shadow fs-3 text-danger d-flex justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; padding: 7px 0px; cursor: pointer" onclick="delThisAddress(${index})"></i></div>
+        <div class="d-flex justify-content-center mt-2 gap-3">
+          <i class="fas fa-edit shadow fs-3 text-warning d-flex justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; padding: 7px 0px; cursor: pointer"></i>
+          <i class="fas fa-trash shadow fs-3 text-danger d-flex justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; padding: 7px 0px; cursor: pointer" onclick="delThisAddress(${index})"></i>
+        </div>
       </div>
       `
       offTop.innerHTML = `
       <span class="my-auto" style="font-size: 12px;">Want to Add another address?</span>
           <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2" onclick="addNewAddress()">Add Address</button>
       `
+    })
     }
-  })
-// }
 }
 
 delThisAddress = (useraddress) => {
