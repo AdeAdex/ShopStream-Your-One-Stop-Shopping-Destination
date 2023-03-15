@@ -1067,7 +1067,7 @@ oderConfirm = () => {
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div id="">Delivery Fee:</div>
-      <div class="" style="font-size: 14px" id="">₦${mySelected[index].pickDeliveryCharge}</div>
+      <div class="" style="font-size: 14px" id="">₦</div>
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div class="fw-bold">Total:</div>
@@ -1092,7 +1092,7 @@ oderConfirm = () => {
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="" style="font-size: 12px;">Delivery Fee:</div>
-          <div class="fw-bold" style="font-size: 14px;">₦${mySelected[index].pickDeliveryCharge}</div>
+          <div class="fw-bold" style="font-size: 14px;">₦</div>
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
@@ -1204,11 +1204,202 @@ oderConfirm = () => {
 }
 
 displayAddress = () => {
-  // offcanvasAddressContainer.innerHTML = "";
+  offInside.innerHTML = "";
+  // offTop.innerHTML = ""
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+  eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
+  // for (let index = 0; index < eachCustomerAddress.length; index++) {
+  // allCustomer.map((eachUser, index) => {
+    if (eachCustomerAddress.length == 0) {
+      offInside.innerHTML = `
+      <div class="row h-100 position-relative">
+  <div class="col-md-6">
+    <label for="validationServer01" class="form-label"
+      >First name</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressFname"
+      value=""
+      required
+    />
+    <!-- <div class="valid-feedback">
+  Looks good!
+</div> -->
+  </div>
+  <div class="col-md-6">
+    <label for="validationServer02" class="form-label">Last name</label>
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressLname"
+      value=""
+      required
+    />
+    <!-- <div class="valid-feedback">
+  Looks good!
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Phone Number</label
+    >
+    <input
+      type="tel"
+      class="form-control text-capitalize"
+      id="addressPhoneNumber"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Street Address</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressStreet"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label"
+      >Direction (Optional)</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressDirection"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer03" class="form-label">City</label>
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressCity"
+      aria-describedby="validationServer03Feedback"
+      required
+    />
+    <!-- <div id="validationServer03Feedback" class="invalid-feedback">
+  Please provide a valid city.
+</div> -->
+  </div>
+  <div class="col-md-12 position-relative">
+    <label for="validationServer04" class="form-label">State</label>
+    <select
+      class="form-select position-relative"
+      id="addressState"
+      aria-describedby="validationServer04Feedback"
+      required
+    >
+      <option selected disabled value="">Choose...</option>
+      <option class="text-capitalize" value="oyo">oyo state</option>
+      <option class="text-capitalize" value="osun">osun state</option>
+      <option class="text-capitalize" value="lagos">lagos state</option>
+      <option class="text-capitalize" value="ondo">ondo state</option>
+      <option class="text-capitalize" value="ogun">ogun state</option>
+      <option class="text-capitalize" value="kwara">kwara state</option>
+      <option class="text-capitalize" value="ekiti">ekiti state</option>
+      <option class="text-capitalize" value="akwaibom">
+        akwa ibom state
+      </option>
+      <option class="text-capitalize" value="imo">imo state</option>
+      <option class="text-capitalize" value="abia">abia state</option>
+      <option class="text-capitalize" value="rivers">
+        rivers state
+      </option>
+      <option class="text-capitalize" value="anambra">
+        anambra state
+      </option>
+      <option class="text-capitalize" value="kano">kano state</option>
+      <option class="text-capitalize" value="kaduna">
+        kaduna state
+      </option>
+      <option class="text-capitalize" value="benue">benue state</option>
+    </select>
+    <!-- <div id="validationServer04Feedback" class="invalid-feedback">
+  Please select a valid state.
+</div> -->
+  </div>
+  <div class="col-md-12">
+    <label for="validationServer05" class="form-label"
+      >LGA (Local Government Area)</label
+    >
+    <input
+      type="text"
+      class="form-control text-capitalize"
+      id="addressLGA"
+      aria-describedby="validationServer05Feedback"
+      required
+    />
+    <!-- <div id="validationServer05Feedback" class="invalid-feedback">
+  Please provide a valid zip.
+</div> -->
+  </div>
+  <div class="col-12 mt-4">
+    <button class="btn btn-primary col-12" onclick="addNewAddress()">
+      Submit form
+    </button>
+  </div>
+</div>
+      `
+      offTop.innerHTML = `
+      <span class="my-auto" style="font-size: 12px;">Want to Add another address?</span>
+          <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2" onclick="addNewAddress()">Add Address</button>
+      `
+    } else if (eachCustomerAddress.length != 0) {
+      offInside.innerHTML += `
+      <div class="border shadow px-3 pt-3 pb-3 mb-3">
+        <div class="d-flex gap-3" style="cursor: pointer" onclick="pickThisAddressForMe(${index})">
+          <input type="radio">
+          <div>${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
+        </div>
+        <hr>
+        <div class="d-flex gap-3 py-2">
+          <i class="fas fa-user  my-auto"></i>
+          <div class="my-auto">${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
+        </div>
+        <div class="d-flex gap-3 py-2">
+          <i class="fas fa-location-dot  my-auto"></i>
+          <div class="my-auto">${eachCustomerAddress[index].addressStreet} ${eachCustomerAddress[index].addressCity}  ${eachCustomerAddress[index].addressState}</div>
+        </div>
+        <div class="d-flex gap-3 py-2">
+          <i class="fas fa-phone  my-auto"></i>
+          <div class="my-auto">${eachCustomerAddress[index].addressPhoneNumber}</div>
+        </div>
+        <div class="d-flex justify-content-center mt-2"><i class="fas fa-trash shadow fs-3 text-danger d-flex justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; padding: 7px 0px; cursor: pointer" onclick="delThisAddress(${index})"></i></div>
+      </div>
+      `
+      offTop.innerHTML = `
+      <span class="my-auto" style="font-size: 12px;">Want to Add another address?</span>
+          <button class="btn btn-white my-auto" style="font-size: 14px; color: #F84CA2; border: 1px solid #F84CA2" onclick="addNewAddress()">Add Address</button>
+      `
+    }
+  // })
+// }
+}
+
+delThisAddress = (useraddress) => {
+
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
   eachCustomerAddress.map((eachUser, index) => {
     if (allCustomer[currentCustomerIndex].myAddress.length == 0) {
+      window.location.reload()
       offcanvasAddressContainer.innerHTML = `
       <div class="row h-100 position-relative">
   <div class="col-md-6">
@@ -1356,6 +1547,7 @@ displayAddress = () => {
   </div>
 </div>
       `
+
     } else if (allCustomer[currentCustomerIndex].myAddress.length != 0) {
       offcanvasAddressContainer.innerHTML += `
       <div class="border shadow px-3 pt-3 pb-3 mb-3" style="cursor: pointer" onclick="pickThisAddressForMe(${index})">
@@ -1376,11 +1568,33 @@ displayAddress = () => {
           <i class="fas fa-phone  my-auto"></i>
           <div class="my-auto">${eachCustomerAddress[index].addressPhoneNumber}</div>
         </div>
-        <div class="d-flex justify-content-center mt-2"><i class="fas fa-user fs-3 text-danger"></i></div>
+        <div class="d-flex justify-content-center mt-2"><i class="fas fa-trash shadow fs-3 text-danger d-flex justify-content-center" style="width: 40px; height: 40px; border-radius: 50%; padding: 7px 0px" onclick="delThisAddress(${index})"></i></div>
       </div>
       `
     }
   })
+
+  let message = `Are you sure you want to delete this address, this cant be undone and will permanently delete this address`
+  Swal.fire({
+    icon: "error",
+    title: "Dear " + allCustomer[currentCustomerIndex].firstName,
+    text: message,
+    showCancelButton: true,
+    footer: '',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        position: 'top',
+        icon: 'success',
+        title: 'Address has been deleted',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+  });
+  allCustomer[currentCustomerIndex].myAddress.splice(useraddress, 1);
+  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  displayAddress()
 }
 
 function submitAddress() {
@@ -1394,7 +1608,7 @@ function submitAddress() {
     } else if (addressState.value == "lagos") {
       allCustomer[currentCustomerIndex].deliveryCharge = 500
     }
-  allCustomer.map((eachUser, index) => {
+
   let customerAddress = {
     addressFirstName: addressFname.value,
     addressLastName: addressLname.value,
@@ -1408,7 +1622,6 @@ function submitAddress() {
   }
   allCustomer[currentCustomerIndex].myAddress.push(customerAddress);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-})
 window.location.href = `completeOrder.html`
   }
   
@@ -1544,6 +1757,7 @@ bringMyAddress = () => {
 }
 
 addNewAddress = () => {
+  offcanvasAddressContainer.innerHTML = ""
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachCustomerAddress = allCustomer[currentCustomerIndex].myAddress
   allCustomer.map((eachUser, index) => {
@@ -1688,7 +1902,7 @@ addNewAddress = () => {
 </div> -->
   </div>
   <div class="col-12 mt-4">
-    <button class="btn btn-primary col-12" onclick="submitAddress()">
+    <button class="btn btn-primary col-12" onclick="submitAddress(${index})">
       Submit form
     </button>
   </div>
