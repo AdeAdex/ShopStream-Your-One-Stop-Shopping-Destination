@@ -646,14 +646,14 @@ setTotal = () => {
 
 let count = 0;
 increment = (myIncrement) => {
-  if (
-    eachTopDealProduct[myIncrement].eachItemNumber ==
-    eachTopDealProduct[myIncrement].eachItemTotalAvailable
-  ) {
+  // if (
+  //   eachTopDealProduct[myIncrement].eachItemNumber ==
+  //   eachTopDealProduct[myIncrement].eachItemTotalAvailable
+  // ) {
+  //   // document.getElementById("leftItems").style.setProperty("display", "block", "important");
+  //   // alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`);
+  // } else {
     // document.getElementById("leftItems").style.setProperty("display", "block", "important");
-    // alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`);
-  } else {
-    document.getElementById("leftItems").style.setProperty("display", "block", "important");
     eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
@@ -667,7 +667,7 @@ increment = (myIncrement) => {
       Number(allCustomer[currentCustomerIndex].totalCart) + 1;
     localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     showMyCart();
-  }
+  // }
 
   // if (eachTopDealProduct[myIncrement].eachItemNumber != 1) {
   //   totalForEach[myIncrement].innerHTML = `Items`;
@@ -748,6 +748,7 @@ hey = () => {
   productPageSoldBy.innerHTML = "";
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
+  eachCart = allCustomer[currentCustomerIndex].myCart;
   eachTopDealProduct.map((eachUser, index) => {
     productPageDetails.innerHTML = `
      <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
@@ -777,9 +778,8 @@ hey = () => {
       </button>
       <button
         class="btn btn-light btn-sm border px-3"
-        style="border-radius: 0px 0px 0px 0px" id="totalButtonCart"
+        style="border-radius: 0px 0px 0px 0px" id="totalCartBtn"
       >
-      ${eachTopDealProduct[index].productNumberOfItem}
       </button>
       <button
         class="btn btn-light btn-sm border fw-bold"
@@ -934,6 +934,10 @@ hey = () => {
           </div>
      `;
   });
+
+  eachCart.map((eachUser, index) => {
+    totalCartBtn.innerHTML = eachCart[index].eachItemNumber
+  })
 };
 
 oderConfirm = () => {
@@ -1683,7 +1687,7 @@ bringMyAddress = () => {
   </div>
   <div class="w-100 d-flex flex-column gap-2" id="addressHere">
     <div class="d-flex gap-3 ps-5 mt-4">
-      <input type="radio" name="" id="deliver" class="radio" onclick="selectDeliveryType(${index})" checked class="" />
+      <input type="radio" name="" id="deliver" class="radio"  checked class="" />
       <span style="font-size: 12px; font-weight: bold">
         Deliver to me</span
       >
@@ -1751,7 +1755,7 @@ bringMyAddress = () => {
     </div>
     <div class="w-100 d-flex flex-column gap-2">
       <div class="d-flex gap-3 mt-4">
-        <input type="radio" name="" id="pick" class="radio" onclick="selectDeliveryType(${index})" class="" />
+        <input type="radio" name="" id="pick" class="radio" class="" />
         <span style="font-size: 12px; font-weight: bold">
           Pick up from a Store</span
         >
