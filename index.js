@@ -651,13 +651,9 @@ increment = (myIncrement) => {
     eachTopDealProduct[myIncrement].eachItemTotalAvailable
   ) {
     // document.getElementById("leftItems").style.setProperty("display", "block", "important");
-    alert(
-      `Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`
-    );
+    // alert(`Only ${eachTopDealProduct[myIncrement].eachItemTotalAvailable} items left`);
   } else {
-    document
-      .getElementById("leftItems")
-      .style.setProperty("display", "block", "important");
+    document.getElementById("leftItems").style.setProperty("display", "block", "important");
     eachTopDealProduct = allCustomer[currentCustomerIndex].myCart;
     eachTopDealProduct[myIncrement].eachCartTotalPrice =
       Number(eachTopDealProduct[myIncrement].eachCartTotalPrice) +
@@ -775,7 +771,7 @@ hey = () => {
     <div class="d-flex cart-btn-container">
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 2px 0px 0px 2px" onclick="s(${index})" id="minusBtn"
+        style="border-radius: 2px 0px 0px 2px" onclick="decrement(${index})" id="minusBtn"
       >
         -
       </button>
@@ -787,7 +783,7 @@ hey = () => {
       </button>
       <button
         class="btn btn-light btn-sm border fw-bold"
-        style="border-radius: 0px 2px 2px 0px" onclick="ds(${index})" id="plusBtn"
+        style="border-radius: 0px 2px 2px 0px" onclick="increment(${index})" id="plusBtn"
       >
         +
       </button>
@@ -1410,7 +1406,7 @@ displayAddress = () => {
       offInside.innerHTML += `
       <div class="border shadow px-3 pt-3 pb-3 mb-3">
         <div class="d-flex gap-3" style="cursor: pointer" onclick="pickThisAddressForMe(${index})">
-          <input type="radio">
+          <input type="radio" name="" id="chk">
           <div>${eachCustomerAddress[index].addressFirstName} ${eachCustomerAddress[index].addressLastName}</div>
         </div>
         <hr>
@@ -1687,7 +1683,7 @@ bringMyAddress = () => {
   </div>
   <div class="w-100 d-flex flex-column gap-2" id="addressHere">
     <div class="d-flex gap-3 ps-5 mt-4">
-      <input type="radio" name="" id="" checked class="" />
+      <input type="radio" name="" id="deliver" class="radio" onclick="selectDeliveryType(${index})" checked class="" />
       <span style="font-size: 12px; font-weight: bold">
         Deliver to me</span
       >
@@ -1755,7 +1751,7 @@ bringMyAddress = () => {
     </div>
     <div class="w-100 d-flex flex-column gap-2">
       <div class="d-flex gap-3 mt-4">
-        <input type="radio" name="" id="" class="" />
+        <input type="radio" name="" id="pick" class="radio" onclick="selectDeliveryType(${index})" class="" />
         <span style="font-size: 12px; font-weight: bold">
           Pick up from a Store</span
         >
@@ -1801,6 +1797,13 @@ bringMyAddress = () => {
     </div>
   `
 }
+
+// selectDeliveryType = (enipe) => {
+//   let lovely = document.querySelectorAll(".radio")
+//   lovely.map((eachUser, index) => {
+//     mad[enipe].checked
+//   })
+// }
 
 addNewAddress = () => {
   offcanvasAddressContainer.innerHTML = ""
@@ -1959,6 +1962,7 @@ addNewAddress = () => {
 
 
 pickThisAddressForMe = (myChoice) => {
+  chk[myChoice].checked = true
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   spliceAddress = allCustomer[currentCustomerIndex].myAddress;
