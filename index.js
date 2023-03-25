@@ -2766,7 +2766,7 @@ const payWithTransfer = () => {
   let message = "This transaction method is unavailable at the moment, try another means"
   Swal.fire({
     icon: "warning",
-    title: "Dear " + allCustomer[currentCustomerIndex].firstName,
+    title: allCustomer[currentCustomerIndex].firstName,
     text: message,
     // footer: '',
   })
