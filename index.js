@@ -299,38 +299,6 @@ sweet2 = () => {
 };
 
 
-// function readURL(input)
-// {
-//     img.style.display = "block";
-//     if (input.files && input.files[0]) {
-//         var reader = new FileReader();
-
-//         reader.onload = function (e) {
-//             img.src =  e.target.result;
-//         }
-
-//         reader.readAsDataURL(input.files[0]);
-//     }
-// }
-
-// if(localStorage.getItem('img-BASE64')){
-//   document.querySelector('#img').src=localStorage.getItem('img-BASE64')
-// }
-// function getBase64(file) {
-//   return new Promise((resolve,reject)=>{
-//   var reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onload = function () {
-//     resolve(reader.result)
-//   };
-//   reader.onerror = reject
-//   })
-// }
-// document.querySelector('#adminDealImg').addEventListener('change', async(e)=>{
-//   const data = await getBase64(e.target.files[0])
-//   console.log(e)
-//   localStorage.setItem('img-BASE64', data)
-// })
 
 setTodaysDeal = () => {
   for (let index = 0; index < allProducts.length; index++) {
@@ -354,6 +322,299 @@ setTodaysDeal = () => {
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
     localStorage.setItem("currentUserIndex", index);
   }
+};
+
+// document.getElementById('adminDealImg').addEventListener('change', () => {
+//   const file = adminDealImg.file[0]
+//   const reader = new FileReader()
+
+//   reader.addEventListener('click', () => {
+//     productPicture.style .backgroundImage = `url(${reader.result})`
+//     productPicture.innerHTML = ""
+//     productImg = reader.result
+//   })
+//   reader.readAsDataURL(file)
+// })
+
+displayProducts = () => {
+  // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
+  // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
+  todaysDeal.innerHTML = "";
+  eachTopDealProduct = allProducts[currentUserIndex].topDeal;
+  for (let index = 0; index < eachTopDealProduct.length; index++) {
+    todaysDeal.innerHTML += `
+    <div
+    onclick="topDealProductPage(${index})"
+    class="d-flex p-3 shadow each-todays-deal gap-3 position-relative"
+    id="eachTodaysDeal"
+    style="width: 32.7%; height: 120px; cursor: pointer"
+  >
+    <div
+      id="percentOff"
+      class="text-white fw-bold d-flex position-absolute"
+      style="
+        width: 55px;
+        height: 35px;
+        border-top-right-radius: 40%;
+        border-bottom-right-radius: 40%;
+        background-color: #ff3b3b;
+        font-size: 10px;
+      "
+    >
+      <span class="my-auto mx-auto"
+        >${eachTopDealProduct[index].productOff}% OFF</span
+      >
+    </div>
+    <img src="Images/todays_deal8.webp" alt="" id="dealsImg" />
+    <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
+      <div class="text-capitalize" style="font-size: 14px" id="dealsProductName">
+        ${eachTopDealProduct[index].productName}
+      </div>
+      <div class="">
+        <div class="d-flex gap-2">
+          <div class="fw-bold fs-5" id="dealsNewPrice">
+            ₦${eachTopDealProduct[index].productNewPrice}
+          </div>
+          <div
+            class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
+            id="dealsOldPrice"
+          >
+            ₦${eachTopDealProduct[index].productOldPrice}
+          </div>
+        </div>
+        <div
+          class="fw-bold"
+          style="font-size: 10px; color: #33b27b"
+          id="dealsSave"
+        >
+          You save ₦${eachTopDealProduct[index].productSavePrice}
+        </div>
+      </div>
+    </div>
+  </div>
+        `;
+  }
+
+  // eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
+  // for (let index = 0; index < eachSponsoredProduct.length; index++) {
+  //   sponsoredPro.innerHTML += `
+  // <div
+  //     class="d-flex flex-column shadow pt-2 pb-5 position-relative"
+  //     style="height: 300px; min-width: 19.5%; cursor: pointer"
+  //     id="sponsoredProProduct"
+  //   >
+  //     <div
+  //       id="sponsorPercentOff"
+  //       class="text-white fw-bold d-flex position-absolute"
+  //       style="
+  //         width: 55px;
+  //         height: 35px;
+  //         border-top-right-radius: 40%;
+  //         border-bottom-right-radius: 40%;
+  //         background-color: #ff3b3b;
+  //         font-size: 10px;
+  //       "
+  //     >
+  //       <span class="my-auto mx-auto">${eachSponsoredProduct[index].productOff}% OFF</span>
+  //     </div>
+  //     <img
+  //       src="Images/sponsor14.jpg"
+  //       class="w-100"
+  //       style="height: 80%; object-fit: contain;"
+  //       alt=""
+  //     />
+  //     <div class="px-2">
+  //     <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 12px;">${eachSponsoredProduct[index].productName}</div>
+  //     <div class="">
+  //     <div class="d-flex gap-2">
+  //       <div class="fw-bold fs-5" id="dealsNewPrice">
+  //         ₦${eachSponsoredProduct[index].productNewPrice}
+  //       </div>
+  //       <div
+  //         class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
+  //         id="dealsOldPrice"
+  //       >
+  //         ₦${eachSponsoredProduct[index].productOldPrice}
+  //       </div>
+  //     </div>
+  //     <div
+  //       class="fw-bold"
+  //       style="font-size: 10px; color: #33b27b"
+  //       id="dealsSave"
+  //     >
+  //       You save ₦${eachSponsoredProduct[index].productSavePrice}
+  //     </div>
+  //   </div>
+  //   </div>
+  //   </div>
+  // `;
+  // }
+
+  // eachRecommendedProduct = allProducts[currentUserIndex].recommendedProduct;
+  // for (let index = 0; index < eachRecommendedProduct.length; index++) {
+  //   recommendedPro.innerHTML += `
+  //   <div
+  //   onclick="topDealProductPage(${index})"
+  //   class="d-flex p-3 shadow each-todays-deal gap-3 position-relative"
+  //   id="eachTodaysDeal"
+  //   style="width: 32.5%; height: 120px; cursor: pointer"
+  // >
+  //   <div
+  //     id="percentOff"
+  //     class="text-white fw-bold d-flex position-absolute"
+  //     style="
+  //       width: 55px;
+  //       height: 35px;
+  //       border-top-right-radius: 40%;
+  //       border-bottom-right-radius: 40%;
+  //       background-color: #ff3b3b;
+  //       font-size: 10px;
+  //     "
+  //   >
+  //     <span class="my-auto mx-auto"
+  //       >${eachRecommendedProduct[index].productOff}% OFF</span
+  //     >
+  //   </div>
+  //   <img src="Images/recommended2.webp" alt="" id="dealsImg" />
+  //   <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
+  //     <div class="text-capitalize" id="dealsProductName" style="font-size: 14px">
+  //       ${eachRecommendedProduct[index].productName}
+  //     </div>
+  //     <div class="">
+  //       <div class="d-flex gap-2">
+  //         <div class="fw-bold fs-5" id="dealsNewPrice">
+  //           ₦${eachRecommendedProduct[index].productNewPrice}
+  //         </div>
+  //         <div
+  //           class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
+  //           id="dealsOldPrice"
+  //         >
+  //           ₦${eachRecommendedProduct[index].productOldPrice}
+  //         </div>
+  //       </div>
+  //       <div
+  //         class="fw-bold"
+  //         style="font-size: 10px; color: #33b27b"
+  //         id="dealsSave"
+  //       >
+  //         You save ₦${eachRecommendedProduct[index].productSavePrice}
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
+  //       `;
+  // }
+
+  // eachInspiredProduct = allProducts[currentUserIndex].inspiredProduct;
+  // for (let index = 0; index < eachInspiredProduct.length; index++) {
+  //   inspiredPro.innerHTML += `
+  // <div
+  //     class="d-flex flex-column shadow pt-2 pb-5 position-relative"
+  //     style="height: 300px; min-width: 19.5%; cursor: pointer"
+  //     id="inspiredProProduct"
+  //   >
+  //     <div
+  //       id="sponsorPercentOff"
+  //       class="text-white fw-bold d-flex position-absolute"
+  //       style="
+  //         width: 55px;
+  //         height: 35px;
+  //         border-top-right-radius: 40%;
+  //         border-bottom-right-radius: 40%;
+  //         background-color: #ff3b3b;
+  //         font-size: 10px;
+  //       "
+  //     >
+  //       <span class="my-auto mx-auto">${eachInspiredProduct[index].productOff}% OFF</span>
+  //     </div>
+  //     <img
+  //       src="Images/inspiredby6.webp"
+  //       class="w-100"
+  //       style="height: 80%; object-fit: contain;"
+  //       alt=""
+  //     />
+  //     <div class="px-2">
+  //     <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 14px;">${eachInspiredProduct[index].productName}</div>
+  //     <div class="">
+  //     <div class="d-flex gap-2">
+  //       <div class="fw-bold fs-5" id="dealsNewPrice">
+  //         ₦${eachInspiredProduct[index].productNewPrice}
+  //       </div>
+  //       <div
+  //         class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
+  //         id="dealsOldPrice"
+  //       >
+  //         ₦${eachInspiredProduct[index].productOldPrice}
+  //       </div>
+  //     </div>
+  //     <div
+  //       class="fw-bold"
+  //       style="font-size: 10px; color: #33b27b"
+  //       id="dealsSave"
+  //     >
+  //       You save ₦${eachInspiredProduct[index].productSavePrice}
+  //     </div>
+  //   </div>
+  //   </div>
+  //   </div>
+  // `;
+  // }
+
+  // eachBrowsingProduct = allProducts[currentUserIndex].browsingProduct;
+  // for (let index = 0; index < eachBrowsingProduct.length; index++) {
+  //   browsingHistoryPro.innerHTML += `
+  // <div
+  //     class="d-flex flex-column shadow pt-2 pb-5 position-relative"
+  //     style="height: 300px; min-width: 19.5%; cursor: pointer"
+  //     id="browsingProProduct"
+  //   >
+  //     <div
+  //       id="sponsorPercentOff"
+  //       class="text-white fw-bold d-flex position-absolute"
+  //       style="
+  //         width: 55px;
+  //         height: 35px;
+  //         border-top-right-radius: 40%;
+  //         border-bottom-right-radius: 40%;
+  //         background-color: #ff3b3b;
+  //         font-size: 10px;
+  //       "
+  //     >
+  //       <span class="my-auto mx-auto">${eachBrowsingProduct[index].productOff}% OFF</span>
+  //     </div>
+  //     <img
+  //       src="Images/browsingHistory2.webp"
+  //       class="w-100"
+  //       style="height: 80%; object-fit: contain;"
+  //       alt=""
+  //     />
+  //     <div class="px-2">
+  //     <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 14px;">${eachBrowsingProduct[index].productName}</div>
+  //     <div class="">
+  //     <div class="d-flex gap-2">
+  //       <div class="fw-bold fs-5" id="dealsNewPrice">
+  //         ₦${eachBrowsingProduct[index].productNewPrice}
+  //       </div>
+  //       <div
+  //         class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
+  //         id="dealsOldPrice"
+  //       >
+  //         ₦${eachBrowsingProduct[index].productOldPrice}
+  //       </div>
+  //     </div>
+  //     <div
+  //       class="fw-bold"
+  //       style="font-size: 10px; color: #33b27b"
+  //       id="dealsSave"
+  //     >
+  //       You save ₦${eachBrowsingProduct[index].productSavePrice}
+  //     </div>
+  //   </div>
+  //   </div>
+  //   </div>
+  // `;
+  // }
 };
 
 setSponsored = () => {
@@ -436,23 +697,6 @@ setBrowsingHistory = () => {
   }
 };
 
-// if(localStorage.getItem('img-BASE64')){
-//   document.querySelector('#img').src=localStorage.getItem('img-BASE64')
-// }
-// function getBase64(file) {
-//   return new Promise((resolve,reject)=>{
-//   var reader = new FileReader();
-//   reader.readAsDataURL(file);
-//   reader.onload = function () {
-//     resolve(reader.result)
-//   };
-//   reader.onerror = reject
-//   })
-// }
-// document.querySelector('#adminDealImg').addEventListener('change', async(e)=>{
-//   const data = await getBase64(e.target.files[0])
-//   localStorage.setItem('img-BASE64', data)
-// })
 currentUserIndex = localStorage.getItem("currentUserIndex");
 currentCustomerIndex = localStorage.getItem("currentCustomerIndex");
 
@@ -1986,287 +2230,6 @@ pickThisAddressForMe = (myChoice) => {
   window.location.href = "completeOrder.html"
 }
 
-displayProducts = () => {
-  // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
-  // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
-  // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
-  todaysDeal.innerHTML = "";
-  eachTopDealProduct = allProducts[currentUserIndex].topDeal;
-  for (let index = 0; index < eachTopDealProduct.length; index++) {
-    todaysDeal.innerHTML += `
-    <div
-    onclick="topDealProductPage(${index})"
-    class="d-flex p-3 shadow each-todays-deal gap-3 position-relative"
-    id="eachTodaysDeal"
-    style="width: 32.7%; height: 120px; cursor: pointer"
-  >
-    <div
-      id="percentOff"
-      class="text-white fw-bold d-flex position-absolute"
-      style="
-        width: 55px;
-        height: 35px;
-        border-top-right-radius: 40%;
-        border-bottom-right-radius: 40%;
-        background-color: #ff3b3b;
-        font-size: 10px;
-      "
-    >
-      <span class="my-auto mx-auto"
-        >${eachTopDealProduct[index].productOff}% OFF</span
-      >
-    </div>
-    <img src="Images/todays_deal8.webp" alt="" id="dealsImg" />
-    <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
-      <div class="text-capitalize" style="font-size: 14px" id="dealsProductName">
-        ${eachTopDealProduct[index].productName}
-      </div>
-      <div class="">
-        <div class="d-flex gap-2">
-          <div class="fw-bold fs-5" id="dealsNewPrice">
-            ₦${eachTopDealProduct[index].productNewPrice}
-          </div>
-          <div
-            class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
-            id="dealsOldPrice"
-          >
-            ₦${eachTopDealProduct[index].productOldPrice}
-          </div>
-        </div>
-        <div
-          class="fw-bold"
-          style="font-size: 10px; color: #33b27b"
-          id="dealsSave"
-        >
-          You save ₦${eachTopDealProduct[index].productSavePrice}
-        </div>
-      </div>
-    </div>
-  </div>
-        `;
-  }
-
-  eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
-  for (let index = 0; index < eachSponsoredProduct.length; index++) {
-    sponsoredPro.innerHTML += `
-  <div
-      class="d-flex flex-column shadow pt-2 pb-5 position-relative"
-      style="height: 300px; min-width: 19.5%; cursor: pointer"
-      id="sponsoredProProduct"
-    >
-      <div
-        id="sponsorPercentOff"
-        class="text-white fw-bold d-flex position-absolute"
-        style="
-          width: 55px;
-          height: 35px;
-          border-top-right-radius: 40%;
-          border-bottom-right-radius: 40%;
-          background-color: #ff3b3b;
-          font-size: 10px;
-        "
-      >
-        <span class="my-auto mx-auto">${eachSponsoredProduct[index].productOff}% OFF</span>
-      </div>
-      <img
-        src="Images/sponsor14.jpg"
-        class="w-100"
-        style="height: 80%; object-fit: contain;"
-        alt=""
-      />
-      <div class="px-2">
-      <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 12px;">${eachSponsoredProduct[index].productName}</div>
-      <div class="">
-      <div class="d-flex gap-2">
-        <div class="fw-bold fs-5" id="dealsNewPrice">
-          ₦${eachSponsoredProduct[index].productNewPrice}
-        </div>
-        <div
-          class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
-          id="dealsOldPrice"
-        >
-          ₦${eachSponsoredProduct[index].productOldPrice}
-        </div>
-      </div>
-      <div
-        class="fw-bold"
-        style="font-size: 10px; color: #33b27b"
-        id="dealsSave"
-      >
-        You save ₦${eachSponsoredProduct[index].productSavePrice}
-      </div>
-    </div>
-    </div>
-    </div>
-  `;
-  }
-
-  eachRecommendedProduct = allProducts[currentUserIndex].recommendedProduct;
-  for (let index = 0; index < eachRecommendedProduct.length; index++) {
-    recommendedPro.innerHTML += `
-    <div
-    onclick="topDealProductPage(${index})"
-    class="d-flex p-3 shadow each-todays-deal gap-3 position-relative"
-    id="eachTodaysDeal"
-    style="width: 32.5%; height: 120px; cursor: pointer"
-  >
-    <div
-      id="percentOff"
-      class="text-white fw-bold d-flex position-absolute"
-      style="
-        width: 55px;
-        height: 35px;
-        border-top-right-radius: 40%;
-        border-bottom-right-radius: 40%;
-        background-color: #ff3b3b;
-        font-size: 10px;
-      "
-    >
-      <span class="my-auto mx-auto"
-        >${eachRecommendedProduct[index].productOff}% OFF</span
-      >
-    </div>
-    <img src="Images/recommended2.webp" alt="" id="dealsImg" />
-    <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
-      <div class="text-capitalize" id="dealsProductName" style="font-size: 14px">
-        ${eachRecommendedProduct[index].productName}
-      </div>
-      <div class="">
-        <div class="d-flex gap-2">
-          <div class="fw-bold fs-5" id="dealsNewPrice">
-            ₦${eachRecommendedProduct[index].productNewPrice}
-          </div>
-          <div
-            class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
-            id="dealsOldPrice"
-          >
-            ₦${eachRecommendedProduct[index].productOldPrice}
-          </div>
-        </div>
-        <div
-          class="fw-bold"
-          style="font-size: 10px; color: #33b27b"
-          id="dealsSave"
-        >
-          You save ₦${eachRecommendedProduct[index].productSavePrice}
-        </div>
-      </div>
-    </div>
-  </div>
-        `;
-  }
-
-  eachInspiredProduct = allProducts[currentUserIndex].inspiredProduct;
-  for (let index = 0; index < eachInspiredProduct.length; index++) {
-    inspiredPro.innerHTML += `
-  <div
-      class="d-flex flex-column shadow pt-2 pb-5 position-relative"
-      style="height: 300px; min-width: 19.5%; cursor: pointer"
-      id="inspiredProProduct"
-    >
-      <div
-        id="sponsorPercentOff"
-        class="text-white fw-bold d-flex position-absolute"
-        style="
-          width: 55px;
-          height: 35px;
-          border-top-right-radius: 40%;
-          border-bottom-right-radius: 40%;
-          background-color: #ff3b3b;
-          font-size: 10px;
-        "
-      >
-        <span class="my-auto mx-auto">${eachInspiredProduct[index].productOff}% OFF</span>
-      </div>
-      <img
-        src="Images/inspiredby6.webp"
-        class="w-100"
-        style="height: 80%; object-fit: contain;"
-        alt=""
-      />
-      <div class="px-2">
-      <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 14px;">${eachInspiredProduct[index].productName}</div>
-      <div class="">
-      <div class="d-flex gap-2">
-        <div class="fw-bold fs-5" id="dealsNewPrice">
-          ₦${eachInspiredProduct[index].productNewPrice}
-        </div>
-        <div
-          class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
-          id="dealsOldPrice"
-        >
-          ₦${eachInspiredProduct[index].productOldPrice}
-        </div>
-      </div>
-      <div
-        class="fw-bold"
-        style="font-size: 10px; color: #33b27b"
-        id="dealsSave"
-      >
-        You save ₦${eachInspiredProduct[index].productSavePrice}
-      </div>
-    </div>
-    </div>
-    </div>
-  `;
-  }
-
-  eachBrowsingProduct = allProducts[currentUserIndex].browsingProduct;
-  for (let index = 0; index < eachBrowsingProduct.length; index++) {
-    browsingHistoryPro.innerHTML += `
-  <div
-      class="d-flex flex-column shadow pt-2 pb-5 position-relative"
-      style="height: 300px; min-width: 19.5%; cursor: pointer"
-      id="browsingProProduct"
-    >
-      <div
-        id="sponsorPercentOff"
-        class="text-white fw-bold d-flex position-absolute"
-        style="
-          width: 55px;
-          height: 35px;
-          border-top-right-radius: 40%;
-          border-bottom-right-radius: 40%;
-          background-color: #ff3b3b;
-          font-size: 10px;
-        "
-      >
-        <span class="my-auto mx-auto">${eachBrowsingProduct[index].productOff}% OFF</span>
-      </div>
-      <img
-        src="Images/browsingHistory2.webp"
-        class="w-100"
-        style="height: 80%; object-fit: contain;"
-        alt=""
-      />
-      <div class="px-2">
-      <div class="mb-2 mt-0 fw-bold text-capitalize" id="sponsorProductName" style="font-size: 14px;">${eachBrowsingProduct[index].productName}</div>
-      <div class="">
-      <div class="d-flex gap-2">
-        <div class="fw-bold fs-5" id="dealsNewPrice">
-          ₦${eachBrowsingProduct[index].productNewPrice}
-        </div>
-        <div
-          class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
-          id="dealsOldPrice"
-        >
-          ₦${eachBrowsingProduct[index].productOldPrice}
-        </div>
-      </div>
-      <div
-        class="fw-bold"
-        style="font-size: 10px; color: #33b27b"
-        id="dealsSave"
-      >
-        You save ₦${eachBrowsingProduct[index].productSavePrice}
-      </div>
-    </div>
-    </div>
-    </div>
-  `;
-  }
-};
-
 showForEach = () => {
   let myAngle = document.querySelectorAll(".fa-angle-down");
   for (let index = 0; index < myAngle.length; index++) {
@@ -2386,9 +2349,9 @@ showForEachLargeScreen = (param) => {
 };
 
 var mediaQuery = window.matchMedia("(max-width: 600px)");
-if (mediaQuery.matches) {
-  othersAdsOne.src = "Images/ads.jpg";
-}
+// if (mediaQuery.matches) {
+//   othersAdsOne.src = "Images/ads.jpg";
+// }
 
 function readMore() {
   if (readDots.style.display === "none") {
