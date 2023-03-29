@@ -14,27 +14,28 @@
     <title>Adex Admin</title>
   </head>
   <body onload="check()">
-    <div class="d-flex flex-column w-100 gap-3 p-5">
-      <button
+    <div class="container w-75 mx-auto">
+      <div class="row gap-3 mt-4">
+        <div class="d-grid col-12 col-lg-4 mx-auto">
+          <button
         id="adminTopDealPush"
         class="btn btn-lg btn-success"
-        style="width: 30%"
         data-bs-toggle="modal"
         data-bs-target="#staticBackdrop"
       >
         Top deal
       </button>
-      <button
+        </div>
+        <div class="d-grid col-12 col-lg-4 mx-auto">
+          <button
         id="adminSponsorPush"
         class="btn btn-lg btn-success"
-        style="width: 30%"
         onclick="text()"
       >
-        Sponsored Products
+        Initialize The Site
       </button>
-      <img src="" id="img" alt="" style="width: 100px;">
-      <button class="btn btn-primary" id="reader">Home</button>
-      <div id="productPicture">hello</div>
+        </div>
+      </div>
     </div>
 
     <div
@@ -131,7 +132,7 @@
         </div>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script src="adminPage.js"></script>
     <script src="bootstrap.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
   </body>

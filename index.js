@@ -158,36 +158,6 @@ if (localStorage.companyProduct) {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
 }
 
-text = () => {
-    let products = {
-      topDeal: [],
-      sponsorProduct: [],
-      recommendedProduct: [],
-      inspiredProduct: [],
-      browsingProduct: [],
-      laptops: [],
-      smartPhone: [],
-      healthBeauty: [],
-      groceries: [],
-      videoGames: [],
-      mobileAccessories: [],
-      homeFurnishings: [],
-      fitnessToolsEquipment: [],
-      kidsWearAccessories: [],
-      topDealOnTelevision: [],
-    };
-    allProducts.push(products);
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    window.location.reload()
-};
-
-check = () => {
-  if (allProducts.length == "") {
-  } else {
-    adminSponsorPush.disabled = true
-  }
-}
-
 let allCustomer = [];
 if (localStorage.ourCustomerDetails) {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
@@ -300,41 +270,6 @@ sweet2 = () => {
 
 
 
-setTodaysDeal = () => {
-  for (let index = 0; index < allProducts.length; index++) {
-    let topDealProduct = {
-      productImg: adminDealImg.value,
-      productName: adminDealName.value,
-      productOldPrice: adminOldPrice.value,
-      productCategory: `product`,
-      productNewPrice: adminNewPrice.value,
-      productBy: adminDealBy.value,
-      productBrand: adminBrand.value,
-      productTotalItem: adminTotalItem.value,
-      productIDNumber: Math.floor(Math.random() * 1000000),
-      productSavePrice: adminOldPrice.value - adminNewPrice.value,
-      productOff: Math.ceil(
-        ((adminOldPrice.value - adminNewPrice.value) / adminOldPrice.value) *
-          100
-      ),
-    };
-    allProducts[index].topDeal.push(topDealProduct);
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    localStorage.setItem("currentUserIndex", index);
-  }
-};
-
-// document.getElementById('adminDealImg').addEventListener('change', () => {
-//   const file = adminDealImg.file[0]
-//   const reader = new FileReader()
-
-//   reader.addEventListener('click', () => {
-//     productPicture.style .backgroundImage = `url(${reader.result})`
-//     productPicture.innerHTML = ""
-//     productImg = reader.result
-//   })
-//   reader.readAsDataURL(file)
-// })
 
 displayProducts = () => {
   // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
@@ -366,7 +301,7 @@ displayProducts = () => {
         >${eachTopDealProduct[index].productOff}% OFF</span
       >
     </div>
-    <img src="Images/todays_deal8.webp" alt="" id="dealsImg" />
+    <img src="${eachTopDealProduct[index].productImg}" alt="" id="dealsImg" />
     <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
       <div class="text-capitalize" style="font-size: 14px" id="dealsProductName">
         ${eachTopDealProduct[index].productName}
@@ -705,6 +640,7 @@ setEachCartItem = (setEach) => {
   eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     let myCartHistory = {
+      cartImg: eachTopDealProduct[setEach].productSelectImg,
       cartName: eachTopDealProduct[setEach].productSelectName,
       cartPrice: eachTopDealProduct[setEach].productSelectNewPrice,
       cartSoldBy: eachTopDealProduct[setEach].productSelectSoldBy,
@@ -739,7 +675,7 @@ showMyCart = () => {
      <div class="d-flex bg-white px-3 cart-details">
      <div class="w-50 d-flex cart-img">
        <img
-         src="Images/browsingHistory1.webp"
+         src="${eachTopDealProduct[index].cartImg}"
          alt=""
          style="width: 150px" class=""
        />
@@ -969,6 +905,7 @@ topDealProductPage = (eachTopDeal) => {
   eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < allProducts.length; index++) {
     let productSelect = {
+      productSelectImg: eachTopDealProduct[eachTopDeal].productImg,
       productSelectName: eachTopDealProduct[eachTopDeal].productName,
       productSelectNewPrice: eachTopDealProduct[eachTopDeal].productNewPrice,
       productSelectOldPrice: eachTopDealProduct[eachTopDeal].productOldPrice,
@@ -997,6 +934,94 @@ hey = () => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   eachTopDealProduct.map((eachUser, index) => {
+
+    carouselImg.innerHTML = `
+    <div
+              id="productCarousel"
+              class="carousel carousel-dark slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-indicators">
+                <img
+                  src="${eachTopDealProduct[index].productSelectImg}"
+                  style="height: 30px; width: 50px; object-fit: cover"
+                  data-bs-target="#productCarousel"
+                  data-bs-slide-to="0"
+                  class="active border border-2 border-warning py-3 px-2 bg-white"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                />
+                <img
+                  src="${eachTopDealProduct[index].productSelectImg}"
+                  style="height: 30px; width: 50px; object-fit: cover"
+                  data-bs-target="#productCarousel"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                  class="border border-2 border-warning py-3 px-2 bg-white"
+                />
+                <img
+                  src="${eachTopDealProduct[index].productSelectImg}"
+                  style="height: 30px; width: 50px; object-fit: cover"
+                  data-bs-target="#productCarousel"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                  class="border border-2 border-warning py-3 px-2 bg-white"
+                />
+              </div>
+              <div class="carousel-inner w-100 h-100">
+                <div class="carousel-item active w-100" data-bs-interval="8000">
+                  <img
+                    src="${eachTopDealProduct[index].productSelectImg}"
+                    class="d-block w-100"
+                    style="height: 500px"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item w-100" data-bs-interval="8000">
+                  <img
+                    src="${eachTopDealProduct[index].productSelectImg}"
+                    class="d-block w-100"
+                    style="height: 500px"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item w-100" data-bs-interval="8000">
+                  <img
+                    src="${eachTopDealProduct[index].productSelectImg}"
+                    class="d-block w-100"
+                    style="height: 500px"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#productCarousel"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#productCarousel"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+    `
+
+
     productPageDetails.innerHTML = `
      <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
