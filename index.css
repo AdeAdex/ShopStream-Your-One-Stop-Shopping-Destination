@@ -414,6 +414,11 @@ nav .dropbtn:hover {
   display: none;
 }
 
+.add-product .product-form {
+  overflow-y: scroll;
+  height: 100%;
+}
+
 
 
 
