@@ -304,7 +304,7 @@ displayProducts = () => {
     <img src="${eachTopDealProduct[index].productImg}" alt="" id="dealsImg" />
     <div class="d-flex flex-column gap-3 pro-details w-100" id="proDetails">
       <div class="text-capitalize" style="font-size: 14px" id="dealsProductName">
-        ${eachTopDealProduct[index].productName}
+        ${eachTopDealProduct[index].productFullName}
       </div>
       <div class="">
         <div class="d-flex gap-2">
@@ -779,7 +779,7 @@ showMyCart = () => {
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
   </div>
   <div class="w-100 checkout-btn bg-white p-3">
-  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="setTotal()">Proceed To Delivery </button>
+  <button class="btn text-white fw-bold w-100" style="background-color: #33B27B;" id="paymentForm" onclick="setTotal()">Proceed To Checkout </button>
 </div>
     <hr>
      `;
@@ -901,26 +901,37 @@ del = (userDelete) => {
 
 topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
-  eachTopDealProduct = allProducts[currentUserIndex].topDeal;
-  for (let index = 0; index < allProducts.length; index++) {
-    let productSelect = {
-      productSelectImg: eachTopDealProduct[eachTopDeal].productImg,
-      productSelectName: eachTopDealProduct[eachTopDeal].productName,
-      productSelectNewPrice: eachTopDealProduct[eachTopDeal].productNewPrice,
-      productSelectOldPrice: eachTopDealProduct[eachTopDeal].productOldPrice,
-      productSelectSavePrice: eachTopDealProduct[eachTopDeal].productSavePrice,
-      productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
-      productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
-      productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
-      productNumberOfItem: 0,
-      productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
-      myProductSelect: [],
-    };
-    allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
-    localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  if (!(localStorage.ourCustomerDetails)) {
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Oops...",
+      //   text: "Dear customer, it seems you've not create an account with us",
+      // });
+      successModalContainer.style.setProperty("display", "block", "important");
+  } else {
+    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+    eachTopDealProduct = allProducts[currentUserIndex].topDeal;
+    for (let index = 0; index < allProducts.length; index++) {
+      let productSelect = {
+        productSelectImg: eachTopDealProduct[eachTopDeal].productImg,
+        productSelectName: eachTopDealProduct[eachTopDeal].productName,
+        productSelectFullName: eachTopDealProduct[eachTopDeal].productFullName,
+        productSelectNewPrice: eachTopDealProduct[eachTopDeal].productNewPrice,
+        productSelectOldPrice: eachTopDealProduct[eachTopDeal].productOldPrice,
+        productSelectSavePrice: eachTopDealProduct[eachTopDeal].productSavePrice,
+        productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
+        productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
+        productSelectCategory: eachTopDealProduct[eachTopDeal].productCategory,
+        productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
+        productNumberOfItem: 0,
+        productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
+        myProductSelect: [],
+      };
+      allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    }
+    window.location.href = "topDealProductPage.html";
   }
-  window.location.href = "topDealProductPage.html";
 };
 
 hey = () => {
@@ -934,6 +945,31 @@ hey = () => {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   eachTopDealProduct = allCustomer[currentCustomerIndex].myProductSelect;
   eachTopDealProduct.map((eachUser, index) => {
+
+    productMoreDetails.innerHTML = `
+    <div class="d-flex gap-2">
+          <a
+            href=""
+            class="text-decoration-none text-dark my-auto"
+            style="font-size: 12px"
+            >Home</a
+          >
+          <i class="fas fa-angle-right my-auto" style="font-size: 10px"></i>
+          <a
+            href=""
+            class="text-decoration-none text-dark my-auto"
+            style="font-size: 12px"
+            >${eachTopDealProduct[index].productSelectBrand}</a
+          ><i class="fas fa-angle-right my-auto" style="font-size: 10px"></i>
+          <a
+            href=""
+            class="text-decoration-none text-dark my-auto"
+            style="font-size: 12px"
+            >${eachTopDealProduct[index].productSelectCategory}</a
+          >
+        </div>
+        <h1 class="fw-bold">${eachTopDealProduct[index].productSelectName}</h1>
+    `
 
     carouselImg.innerHTML = `
     <div
@@ -1023,7 +1059,7 @@ hey = () => {
 
 
     productPageDetails.innerHTML = `
-     <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectName}</h2>
+     <h2 class="text-capitalize">${eachTopDealProduct[index].productSelectFullName}</h2>
    <h5 class="d-flex gap-2" style="font-size: 14px; color: gray">
     Product Code: <div class="text-dark" id="productID">${eachTopDealProduct[index].productSelectId}</div>
    </h5>
@@ -1340,6 +1376,7 @@ oderConfirm = () => {
           Standard Delivery (3 - 5 Business days Estimated) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
         >
       </div>
+      <div>adex</div>
     </div>
     `
     subtotalAndTotalPriceOnCheckout.innerHTML = `
