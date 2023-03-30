@@ -380,11 +380,39 @@ nav .dropbtn:hover {
   }
 }
 
-/* .product-body .product-main {
-  margin-top: 100px;
-} */
+#adminSponsorPush {
+  animation: blink-animation .5s steps(5, start) infinite;
+}
 
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
 
+.admin-btn-container {
+  background-color: whitesmoke;
+}
+
+.admin-btn-container .admin-profile-btn {
+  background-color: inherit;
+  text-transform: capitalize;
+  border-top: unset;
+  border-bottom: 1px solid gray;
+  padding: 10px 0px;
+  border-left: unset;
+  border-right: unset;
+  border-radius: unset;
+  
+}
+
+.btn11 {
+  border-top: 1px solid gray !important;
+}
+
+.add-product .fa-bars {
+  display: none;
+}
 
 
 
@@ -584,6 +612,30 @@ nav .dropbtn:hover {
 
 
 @media screen and (max-width: 1024px) {
+
+  .admin-main .admin-btn-container {
+    display: none !important;
+  }
+
+  .add-product .fa-bars {
+    display: block;
+  }
+
+  .add-product .admin-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .admin-nav img {
+    height: 50% !important;
+  }
+
+  /* .admin-main .add-product {
+    width: ;
+  } */
+
   #navBar {
     position: fixed !important;
     top: 0 !important;
