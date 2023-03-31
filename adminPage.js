@@ -237,40 +237,123 @@ check = () => {
 
 setTodaysDeal = () => {
   if (productOnPage.value == "TodaysDealProducts") {
-    alert(1)
+    for (let index = 0; index < allProducts.length; index++) {
+      let topDealProduct = {
+        productImg: productImg,
+        productFullName: productLongName.value,
+        productName: productSortName.value,
+        productOldPrice: productOldPrice.value,
+        productNewPrice: productNewPrice.value,
+        productCategory: productCategory.value,
+        productBrand: productBrand.value,
+        productBy: productSellerName.value,
+        productTotalItem: productNumberOfItems.value,
+        productIDNumber: Math.floor(Math.random() * 1000000),
+        productSavePrice: productOldPrice.value - productNewPrice.value,
+        productOff: Math.ceil(
+          ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+            100
+        ),
+      };
+      allProducts[index].topDeal.push(topDealProduct);
+      localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      localStorage.setItem("currentUserIndex", index);
+    }
   } else if (productOnPage.value == "SponsoredProducts") {
-    alert(2)
+    for (let index = 0; index < allProducts.length; index++) {
+      let topDealProduct = {
+        productImg: productImg,
+        productFullName: productLongName.value,
+        productName: productSortName.value,
+        productOldPrice: productOldPrice.value,
+        productNewPrice: productNewPrice.value,
+        productCategory: productCategory.value,
+        productBrand: productBrand.value,
+        productBy: productSellerName.value,
+        productTotalItem: productNumberOfItems.value,
+        productIDNumber: Math.floor(Math.random() * 1000000),
+        productSavePrice: productOldPrice.value - productNewPrice.value,
+        productOff: Math.ceil(
+          ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+            100
+        ),
+      };
+      allProducts[index].sponsorProduct.push(topDealProduct);
+      localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      // localStorage.setItem("currentUserIndex", index);
+    }
   } else if (productOnPage.value == "RecommendedProducts") {
-    alert(3)
+    for (let index = 0; index < allProducts.length; index++) {
+      let topDealProduct = {
+        productImg: productImg,
+        productFullName: productLongName.value,
+        productName: productSortName.value,
+        productOldPrice: productOldPrice.value,
+        productNewPrice: productNewPrice.value,
+        productCategory: productCategory.value,
+        productBrand: productBrand.value,
+        productBy: productSellerName.value,
+        productTotalItem: productNumberOfItems.value,
+        productIDNumber: Math.floor(Math.random() * 1000000),
+        productSavePrice: productOldPrice.value - productNewPrice.value,
+        productOff: Math.ceil(
+          ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+            100
+        ),
+      };
+      allProducts[index].recommendedProduct.push(topDealProduct);
+      localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      // localStorage.setItem("currentUserIndex", index);
+    }
   } else if (productOnPage.value == "InspiredProducts") {
-    alert(4)
+    for (let index = 0; index < allProducts.length; index++) {
+      let topDealProduct = {
+        productImg: productImg,
+        productFullName: productLongName.value,
+        productName: productSortName.value,
+        productOldPrice: productOldPrice.value,
+        productNewPrice: productNewPrice.value,
+        productCategory: productCategory.value,
+        productBrand: productBrand.value,
+        productBy: productSellerName.value,
+        productTotalItem: productNumberOfItems.value,
+        productIDNumber: Math.floor(Math.random() * 1000000),
+        productSavePrice: productOldPrice.value - productNewPrice.value,
+        productOff: Math.ceil(
+          ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+            100
+        ),
+      };
+      allProducts[index].inspiredProduct.push(topDealProduct);
+      localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      // localStorage.setItem("currentUserIndex", index);
+    }
   }else if (productOnPage.value == "BrowsingHistoryProducts") {
-    alert(5)
+     for (let index = 0; index < allProducts.length; index++) {
+      let topDealProduct = {
+        productImg: productImg,
+        productFullName: productLongName.value,
+        productName: productSortName.value,
+        productOldPrice: productOldPrice.value,
+        productNewPrice: productNewPrice.value,
+        productCategory: productCategory.value,
+        productBrand: productBrand.value,
+        productBy: productSellerName.value,
+        productTotalItem: productNumberOfItems.value,
+        productIDNumber: Math.floor(Math.random() * 1000000),
+        productSavePrice: productOldPrice.value - productNewPrice.value,
+        productOff: Math.ceil(
+          ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+            100
+        ),
+      };
+    allProducts[index].browsingProduct.push(topDealProduct);
+    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+    // localStorage.setItem("currentUserIndex", index);
+  }
   } else {
     alert(6)
   }
-  // for (let index = 0; index < allProducts.length; index++) {
-  //   let topDealProduct = {
-  //     productImg: productImg,
-  //     productFullName: productLongName.value,
-  //     productName: productSortName.value,
-  //     productOldPrice: productOldPrice.value,
-  //     productNewPrice: productNewPrice.value,
-  //     productCategory: productCategory.value,
-  //     productBrand: productBrand.value,
-  //     productBy: productSellerName.value,
-  //     productTotalItem: productNumberOfItems.value,
-  //     productIDNumber: Math.floor(Math.random() * 1000000),
-  //     productSavePrice: productOldPrice.value - productNewPrice.value,
-  //     productOff: Math.ceil(
-  //       ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
-  //         100
-  //     ),
-  //   };
-  //   allProducts[index].topDeal.push(topDealProduct);
-  //   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-  //   localStorage.setItem("currentUserIndex", index);
-  // }
 };
 
 setPage = () => {
