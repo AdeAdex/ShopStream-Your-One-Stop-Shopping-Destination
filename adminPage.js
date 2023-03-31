@@ -170,11 +170,20 @@ check = () => {
                 aria-describedby="validationServer04Feedback"
                 required
               >
-                <option selected disabled value="">Choose...</option>
-                <option value="electronics">Electronics</option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <option selected disabled value="">Choose category</option>
+                <option value="Automotive and Transport">Automotive and Transport</option>
+                <option value="Business and Finance">Business and Finance</option>
+                <option value="Chemicals and Materials">Chemicals and Materials</option>
+                <option value="Consumer Goods and Services">Consumer Goods and Services</option>
+                <option value="Energy and Natural Resources">Energy and Natural Resources</option>
+                <option value="Food and Beverages">Food and Beverages</option>
+                <option value="Government and Public Sector">Government and Public Sector</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Books">Books</option>
+                <option value="Manufacturing and Construction">Manufacturing and Construction</option>
+                <option value="Military Aerospace and Defence">Military Aerospace and Defence</option>
+                <option value="Pharmaceuticals">Pharmaceuticals</option>
+                <option value="Telecommunication and Computing">Telecommunication and Computing</option>
                 <option value=""></option>
               </select>
             </div>
@@ -188,12 +197,59 @@ check = () => {
                 aria-describedby="validationServer04Feedback"
                 required
               >
-                <option selected disabled value="">Choose...</option>
-                <option value="electronics">Electronics</option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <option selected disabled value="">Choose brand</option>
+                <option value="Netflix">Netflix</option>
+                <option value="Costco">Costco</option>
+                <option value="Chick-fil-A">Chick-fil-A</option>
+                <option value="Amazon">Amazon</option>
+                <option value="Apple">Apple</option>
+                <option value="Nike">Nike</option>
+                <option value="Target">Target</option>
+                <option value="Google">Google</option>
+                <option value="Spotify">Spotify</option>
+                <option value="Trader Joe's">Trader Joe's</option>
+                <option value="Zoom">Zoom</option>
+                <option value="Roblox">Roblox</option>
+                <option value="Vans">Vans</option>
+                <option value="Nintendo">Nintendo</option>
+                <option value="Headspace Health">Headspace Health</option>
+                <option value="Rei">Rei</option>
+                <option value="Lego Group">Lego Group</option>
+                <option value="Microsoft">Microsoft</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Linkedln">Linkedln</option>
+                <option value="PlayStation">PlayStation</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Honda">Honda</option>
+                <option value="Red Bull">Red Bull</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Shopify">Shopify</option>
+                <option value="Coca-Cola">Coca-Cola</option>
+                <option value="Adidas">Adidas</option>
+                <option value="PUMA">PUMA</option>
+                <option value="Versace">Versace</option>
+                <option value="Visa">Visa</option>
+                <option value="Cisco">Cisco</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Tecno">Tecno</option>
+                <option value="Infinix">Infinix</option>
+                <option value="Nokia">Nokia</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="7-Eleven">7-Eleven</option>
+                <option value="Philips">Philips</option>
+                <option value="Hisense">Hisense</option>
+                <option value="LG">LG</option>
+                <option value="Paystack">Paystack</option>
+                <option value="Intel">Intel</option>
+                <option value="HP">HP</option>
+                <option value="Dell">Dell</option>
+                <option value="Sony">Sony</option>
+                <option value="Deloitte">Deloitte</option>
+                <option value="Chevron">Chevron</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Others">Others</option>
               </select>
             </div>
             <div class="col-lg-12 col-sm-12 mb-2">
