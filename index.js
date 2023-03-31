@@ -335,7 +335,7 @@ displayProducts = () => {
   for (let index = 0; index < eachSponsoredProduct.length; index++) {
     sponsoredPro.innerHTML += `
   <div
-  onclick="topDealProductPage(${index})"
+  onclick="topDealProductPage2(${index})"
       class="d-flex flex-column shadow pt-2 pb-5 position-relative"
       style="height: 300px; min-width: 19.5%; cursor: pointer"
       id="sponsoredProProduct"
@@ -391,7 +391,7 @@ displayProducts = () => {
   for (let index = 0; index < eachRecommendedProduct.length; index++) {
     recommendedPro.innerHTML += `
     <div
-    onclick="topDealProductPage(${index})"
+    onclick="topDealProductPage3(${index})"
     class="d-flex p-3 shadow each-todays-deal gap-3 position-relative"
     id="eachTodaysDeal"
     style="width: 32.5%; height: 120px; cursor: pointer"
@@ -446,6 +446,7 @@ displayProducts = () => {
   for (let index = 0; index < eachInspiredProduct.length; index++) {
     inspiredPro.innerHTML += `
   <div
+  onclick="topDealProductPage4(${index})"
       class="d-flex flex-column shadow pt-2 pb-5 position-relative"
       style="height: 300px; min-width: 19.5%; cursor: pointer"
       id="inspiredProProduct"
@@ -501,6 +502,7 @@ displayProducts = () => {
   for (let index = 0; index < eachBrowsingProduct.length; index++) {
     browsingHistoryPro.innerHTML += `
   <div
+  onclick="topDealProductPage5(${index})"
       class="d-flex flex-column shadow pt-2 pb-5 position-relative"
       style="height: 300px; min-width: 19.5%; cursor: pointer"
       id="browsingProProduct"
@@ -825,7 +827,7 @@ topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
-  } else {
+  }else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachTopDealProduct = allProducts[currentUserIndex].topDeal;
     for (let index = 0; index < allProducts.length; index++) {
@@ -842,6 +844,126 @@ topDealProductPage = (eachTopDeal) => {
         productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
+        myProductSelect: [],
+      };
+      allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    }
+    window.location.href = "topDealProductPage.html";
+  }
+};
+
+topDealProductPage2 = (eachTopDeal) => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  if (!(localStorage.ourCustomerDetails)) {
+      successModalContainer.style.setProperty("display", "block", "important");
+  } else {
+    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+    eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
+    for (let index = 0; index < allProducts.length; index++) {
+      let productSelect = {
+        productSelectImg: eachSponsoredProduct[eachTopDeal].productImg,
+        productSelectName: eachSponsoredProduct[eachTopDeal].productName,
+        productSelectFullName: eachSponsoredProduct[eachTopDeal].productFullName,
+        productSelectNewPrice: eachSponsoredProduct[eachTopDeal].productNewPrice,
+        productSelectOldPrice: eachSponsoredProduct[eachTopDeal].productOldPrice,
+        productSelectSavePrice: eachSponsoredProduct[eachTopDeal].productSavePrice,
+        productSelectId: eachSponsoredProduct[eachTopDeal].productIDNumber,
+        productSelectSoldBy: eachSponsoredProduct[eachTopDeal].productBy,
+        productSelectCategory: eachSponsoredProduct[eachTopDeal].productCategory,
+        productSelectBrand: eachSponsoredProduct[eachTopDeal].productBrand,
+        productNumberOfItem: 0,
+        productSelectTotalItem: eachSponsoredProduct[eachTopDeal].productTotalItem,
+        myProductSelect: [],
+      };
+      allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    }
+    window.location.href = "topDealProductPage.html";
+  }
+};
+
+topDealProductPage3 = (eachTopDeal) => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  if (!(localStorage.ourCustomerDetails)) {
+      successModalContainer.style.setProperty("display", "block", "important");
+  } else {
+    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+    eachRecommendedProduct = allProducts[currentUserIndex].recommendedProduct;
+    for (let index = 0; index < allProducts.length; index++) {
+      let productSelect = {
+        productSelectImg: eachRecommendedProduct[eachTopDeal].productImg,
+        productSelectName: eachRecommendedProduct[eachTopDeal].productName,
+        productSelectFullName: eachRecommendedProduct[eachTopDeal].productFullName,
+        productSelectNewPrice: eachRecommendedProduct[eachTopDeal].productNewPrice,
+        productSelectOldPrice: eachRecommendedProduct[eachTopDeal].productOldPrice,
+        productSelectSavePrice: eachRecommendedProduct[eachTopDeal].productSavePrice,
+        productSelectId: eachRecommendedProduct[eachTopDeal].productIDNumber,
+        productSelectSoldBy: eachRecommendedProduct[eachTopDeal].productBy,
+        productSelectCategory: eachRecommendedProduct[eachTopDeal].productCategory,
+        productSelectBrand: eachRecommendedProduct[eachTopDeal].productBrand,
+        productNumberOfItem: 0,
+        productSelectTotalItem: eachRecommendedProduct[eachTopDeal].productTotalItem,
+        myProductSelect: [],
+      };
+      allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    }
+    window.location.href = "topDealProductPage.html";
+  }
+};
+
+topDealProductPage4 = (eachTopDeal) => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  if (!(localStorage.ourCustomerDetails)) {
+      successModalContainer.style.setProperty("display", "block", "important");
+  } else {
+    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+    eachInspiredProduct = allProducts[currentUserIndex].inspiredProduct;
+    for (let index = 0; index < allProducts.length; index++) {
+      let productSelect = {
+        productSelectImg: eachInspiredProduct[eachTopDeal].productImg,
+        productSelectName: eachInspiredProduct[eachTopDeal].productName,
+        productSelectFullName: eachInspiredProduct[eachTopDeal].productFullName,
+        productSelectNewPrice: eachInspiredProduct[eachTopDeal].productNewPrice,
+        productSelectOldPrice: eachInspiredProduct[eachTopDeal].productOldPrice,
+        productSelectSavePrice: eachInspiredProduct[eachTopDeal].productSavePrice,
+        productSelectId: eachInspiredProduct[eachTopDeal].productIDNumber,
+        productSelectSoldBy: eachInspiredProduct[eachTopDeal].productBy,
+        productSelectCategory: eachInspiredProduct[eachTopDeal].productCategory,
+        productSelectBrand: eachInspiredProduct[eachTopDeal].productBrand,
+        productNumberOfItem: 0,
+        productSelectTotalItem: eachInspiredProduct[eachTopDeal].productTotalItem,
+        myProductSelect: [],
+      };
+      allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+    }
+    window.location.href = "topDealProductPage.html";
+  }
+};
+
+topDealProductPage5 = (eachTopDeal) => {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  if (!(localStorage.ourCustomerDetails)) {
+      successModalContainer.style.setProperty("display", "block", "important");
+  } else {
+    allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
+    eachBrowsingProduct = allProducts[currentUserIndex].browsingProduct;
+    for (let index = 0; index < allProducts.length; index++) {
+      let productSelect = {
+        productSelectImg: eachBrowsingProduct[eachTopDeal].productImg,
+        productSelectName: eachBrowsingProduct[eachTopDeal].productName,
+        productSelectFullName: eachBrowsingProduct[eachTopDeal].productFullName,
+        productSelectNewPrice: eachBrowsingProduct[eachTopDeal].productNewPrice,
+        productSelectOldPrice: eachBrowsingProduct[eachTopDeal].productOldPrice,
+        productSelectSavePrice: eachBrowsingProduct[eachTopDeal].productSavePrice,
+        productSelectId: eachBrowsingProduct[eachTopDeal].productIDNumber,
+        productSelectSoldBy: eachBrowsingProduct[eachTopDeal].productBy,
+        productSelectCategory: eachBrowsingProduct[eachTopDeal].productCategory,
+        productSelectBrand: eachBrowsingProduct[eachTopDeal].productBrand,
+        productNumberOfItem: 0,
+        productSelectTotalItem: eachBrowsingProduct[eachTopDeal].productTotalItem,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
