@@ -99,6 +99,24 @@ check = () => {
               />
             </div>
             <div class="col-lg-12 col-sm-12 mb-2">
+            <label for="exampleInputEmail1" class="form-label"
+              >Choose Where To Add Product To</label
+            >
+            <select
+              class="form-select position-relative"
+              id="productOnPage"
+              aria-describedby="validationServer04Feedback"
+              required
+            >
+              <option selected disabled value="">Choose Where to add product</option>
+              <option value="TodaysDealProducts">Todays Deal Products</option>
+              <option value="SponsoredProducts">Sponsored Products</option>
+              <option value="RecommendedProducts">Recommended Products</option>
+              <option value="InspiredProducts">Inspired Products</option>
+              <option value="BrowsingHistoryProducts">Browsing History Products</option>
+            </select>
+          </div>
+            <div class="col-lg-12 col-sm-12 mb-2">
               <label for="exampleInputEmail1" class="form-label"
                 >Product Sort Name</label
               >
@@ -218,28 +236,41 @@ check = () => {
 };
 
 setTodaysDeal = () => {
-  for (let index = 0; index < allProducts.length; index++) {
-    let topDealProduct = {
-      productImg: productImg,
-      productFullName: productLongName.value,
-      productName: productSortName.value,
-      productOldPrice: productOldPrice.value,
-      productNewPrice: productNewPrice.value,
-      productCategory: productCategory.value,
-      productBrand: productBrand.value,
-      productBy: productSellerName.value,
-      productTotalItem: productNumberOfItems.value,
-      productIDNumber: Math.floor(Math.random() * 1000000),
-      productSavePrice: productOldPrice.value - productNewPrice.value,
-      productOff: Math.ceil(
-        ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
-          100
-      ),
-    };
-    allProducts[index].topDeal.push(topDealProduct);
-    localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    localStorage.setItem("currentUserIndex", index);
+  if (productOnPage.value == "TodaysDealProducts") {
+    alert(1)
+  } else if (productOnPage.value == "SponsoredProducts") {
+    alert(2)
+  } else if (productOnPage.value == "RecommendedProducts") {
+    alert(3)
+  } else if (productOnPage.value == "InspiredProducts") {
+    alert(4)
+  }else if (productOnPage.value == "BrowsingHistoryProducts") {
+    alert(5)
+  } else {
+    alert(6)
   }
+  // for (let index = 0; index < allProducts.length; index++) {
+  //   let topDealProduct = {
+  //     productImg: productImg,
+  //     productFullName: productLongName.value,
+  //     productName: productSortName.value,
+  //     productOldPrice: productOldPrice.value,
+  //     productNewPrice: productNewPrice.value,
+  //     productCategory: productCategory.value,
+  //     productBrand: productBrand.value,
+  //     productBy: productSellerName.value,
+  //     productTotalItem: productNumberOfItems.value,
+  //     productIDNumber: Math.floor(Math.random() * 1000000),
+  //     productSavePrice: productOldPrice.value - productNewPrice.value,
+  //     productOff: Math.ceil(
+  //       ((productOldPrice.value - productNewPrice.value) / productOldPrice.value) *
+  //         100
+  //     ),
+  //   };
+  //   allProducts[index].topDeal.push(topDealProduct);
+  //   localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+  //   localStorage.setItem("currentUserIndex", index);
+  // }
 };
 
 setPage = () => {
