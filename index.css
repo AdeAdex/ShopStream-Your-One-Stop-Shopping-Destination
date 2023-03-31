@@ -380,7 +380,7 @@ nav .dropbtn:hover {
   }
 }
 
-#adminSponsorPush {
+#adminInitBtn {
   animation: blink-animation .5s steps(5, start) infinite;
 }
 
