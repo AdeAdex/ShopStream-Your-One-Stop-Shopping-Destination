@@ -29,12 +29,44 @@ text = () => {
 check = () => {
   if (!(localStorage.companyProduct)) {
     adminMain.innerHTML = `
-    <div class="d-flex flex-column w-100 shadow text-white pt-5 px-3" style="background-color: #9e4172;">
+    <div class="d-flex flex-column w-100 shadow text-white pt-5 px-3" style="background-color: #ddd;">
         <h2 class="admin-h2 text-capitalize fw-bold mx-auto">welcome to adex admin page</h2>
         <button class="my-auto mx-auto btn btn-lg btn-primary" id="adminInitBtn" onclick="text()">Click to Continue</button>
       </div>
     `
   } else {
+    Swal.fire({
+      title: `What's Your Name`,
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'on'
+      },
+      showCancelButton: false,
+      confirmButtonText: 'Save changes',
+      showLoaderOnConfirm: true,
+      preConfirm: (login) => {
+        return fetch(`//api.github.com/users/${login}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(response.statusText)
+            }
+            return response.json()
+          })
+          .catch(error => {
+            Swal.showValidationMessage(
+              `Request failed: ${error}`
+            )
+          })
+      },
+      // allowOutsideClick: () => !Swal.isLoading()
+    })/* .then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `${result.value.login}'s avatar`,
+          imageUrl: result.value.avatar_url
+        })
+      }
+    }) */
     adminMain.innerHTML = `
     <div class="shadow admin-btn-container d-flex flex-column w-25 pb-3">
         <h4 class="text-center mb-3 pt-3">Admin</h4>
