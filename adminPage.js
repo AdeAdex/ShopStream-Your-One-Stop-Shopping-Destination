@@ -35,6 +35,12 @@ check = () => {
       </div>
     `
   } else {
+    let adminName = []
+    if (localStorage.adminDetails) {
+      adminName = JSON.parse(localStorage.getItem("adminDetails"));
+    }
+    
+
     Swal.fire({
       title: `What's Your Name`,
       input: 'text',
@@ -44,29 +50,30 @@ check = () => {
       showCancelButton: false,
       confirmButtonText: 'Save changes',
       showLoaderOnConfirm: true,
-      preConfirm: (login) => {
-        return fetch(`//api.github.com/users/${login}`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(error => {
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
-      },
-      // allowOutsideClick: () => !Swal.isLoading()
-    })/* .then((result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: `${result.value.login}'s avatar`,
-          imageUrl: result.value.avatar_url
-        })
+        Swal.fire(
+          'Good job!',
+           `Wlcome ${result.value}`,
+          'success'
+        )
       }
-    }) */
+
+      let theAdminName = {
+        adminFName: result.value
+      }
+      adminName.push(theAdminName);
+      localStorage.setItem("adminDetails", JSON.stringify(adminName));
+      adminName.map((eachAdmin, index) => {
+        localStorage.setItem("currentAdminIndex", index);
+      })
+    })
+
+    
+    currentAdminIndex = localStorage.getItem("currentAdminIndex");
+    adminName.map((eachAdmin, index) => {
+      offcanvasWithBothOptionsLabel.innerHTML = `${adminName[index].adminFName}`
+    })
     adminMain.innerHTML = `
     <div class="shadow admin-btn-container d-flex flex-column w-25 pb-3">
         <h4 class="text-center mb-3 pt-3">Admin</h4>
