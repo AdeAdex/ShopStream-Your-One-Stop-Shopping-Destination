@@ -114,7 +114,7 @@ check = () => {
               data-bs-target="#offcanvasWithBothOptions"
               aria-controls="offcanvasWithBothOptions"
             ></i>
-            <img src="Images/adexlogo.png" class="h-75 my-auto" alt="" onclick="window.location.href = 'index.html'"/>
+            <img src="Images/adexlogo.png" class="adex-logo h-75 my-auto" alt="" onclick="window.location.href = 'index.html'"/>
           </div>
           <h3 class="my-auto">Add Products</h3>
           <button

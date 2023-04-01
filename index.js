@@ -1013,7 +1013,7 @@ hey = () => {
     carouselImg.innerHTML = `
     <div
               id="productCarousel"
-              class="carousel carousel-dark slide"
+              class="carousel carousel-dark slide w-100"
               data-bs-ride="carousel"
             >
               <div class="carousel-indicators">
@@ -1043,28 +1043,25 @@ hey = () => {
                   class="border border-2 border-warning py-3 px-2 bg-white"
                 />
               </div>
-              <div class="carousel-inner w-100 h-100">
-                <div class="carousel-item active w-100" data-bs-interval="8000">
+              <div class="carousel-inner">
+                <div class="carousel-item active w-100 h-100" data-bs-interval="8000">
                   <img
                     src="${eachTopDealProduct[index].productSelectImg}"
-                    class="d-block w-100"
-                    style="height: 500px"
+                    class="d-block"
                     alt="..."
                   />
                 </div>
-                <div class="carousel-item w-100" data-bs-interval="8000">
+                <div class="carousel-item w-100 h-100" data-bs-interval="8000">
                   <img
                     src="${eachTopDealProduct[index].productSelectImg}"
-                    class="d-block w-100"
-                    style="height: 500px"
+                    class="d-block"
                     alt="..."
                   />
                 </div>
-                <div class="carousel-item w-100" data-bs-interval="8000">
+                <div class="carousel-item w-100 h-100" data-bs-interval="8000">
                   <img
                     src="${eachTopDealProduct[index].productSelectImg}"
-                    class="d-block w-100"
-                    style="height: 500px"
+                    class="d-block"
                     alt="..."
                   />
                 </div>
