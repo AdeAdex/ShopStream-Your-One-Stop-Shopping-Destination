@@ -72,7 +72,7 @@
       >
         <div class="my-auto d-flex pe-4 logo-div position-relative" style="height: 60%">
           <i class="fas fa-bars icon text-white me-2" id="dropIcon"  style="font-size: 25px; top: -2px; position: relative;"  onclick="navDropdown('dropdownAll')"></i>
-          <img src="Images/adexlogo.png" alt="" class="w-100 h-100" />
+          <img src="Images/adexlogo.png" alt="" class="w-100 h-100" onclick="window.location.href = 'index.html'"/>
           <!-- <h4 class="text-white my-auto" style="font-family: Arial, Helvetica, sans-serif; font-weight: bolder; font-size: 25px;">ADEX</h4> -->
         </div>
         <button
@@ -2488,19 +2488,19 @@
       </div>
     </footer>
     <footer class="d-none w-100 navbar position-fixed bottom-0 pt-3 px-3" style="z-index: 10; background-color: white;" id="fixedFooter">
-      <div class="d-grid gap-2">
+      <div class="d-grid gap-2" onclick="window.location.href = 'index.html'">
         <i class="fas fa-home mx-auto" style="font-size: 20px;"></i>
         <div class="text-capitalize" style="font-size: 12px;">home</div>
       </div>
       <div class="d-grid gap-2">
-        <i class="fas fa-tag mx-auto" style="font-size: 20px;"></i>
-        <div class="text-capitalize" style="font-size: 12px;" onclick="window.location.href = 'adminPage.html'">deals</div>
+        <i class="fas fa-user mx-auto" style="font-size: 20px;"></i>
+        <div class="text-capitalize" style="font-size: 12px;" onclick="window.location.href = 'adminPage.html'">admin</div>
       </div>
       <div class="d-grid gap-2" onclick="window.location.href = 'shoppingCart.html'">
         <i class="fas fa-cart-shopping mx-auto" style="font-size: 20px;"></i>
         <div class="text-capitalize" style="font-size: 12px;">cart</div>
       </div>
-      <div class="d-grid gap-2">
+      <div class="d-grid gap-2"  onclick="navDropdown('dropdownAll')">
         <i class="fas fa-bars-staggered mx-auto" style="font-size: 20px;"></i>
         <div class="text-capitalize" style="font-size: 12px;">more</div>
       </div>
