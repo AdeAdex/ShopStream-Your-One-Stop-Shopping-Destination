@@ -275,7 +275,19 @@ displayProducts = () => {
   // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
-  todaysDeal.innerHTML = "";
+  if (!localStorage.companyProduct) {
+      Swal.fire({
+        icon: "warning",
+        title: "Welcome Sir/Ma",
+        allowOutsideClick: false,
+        text: `I'm still working on this site, and currently their's no database connected to this site. I recommend you act as this website administrator and try adding a product and after you've added at least one product from the Admin page, then come back to this page by clicking the 'Go Home' button or the 'Home' icon to buy any of the products/play around with it.`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = 'adminPage.html'
+        }
+      });
+  } else {
+    todaysDeal.innerHTML = "";
   eachTopDealProduct = allProducts[currentUserIndex].topDeal;
   for (let index = 0; index < eachTopDealProduct.length; index++) {
     todaysDeal.innerHTML += `
@@ -328,7 +340,7 @@ displayProducts = () => {
       </div>
     </div>
   </div>
-        `;
+        `
   }
 
   eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
@@ -553,6 +565,8 @@ displayProducts = () => {
     </div>
   `;
   }
+  }
+  
 };
 
 

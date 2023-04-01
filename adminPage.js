@@ -46,6 +46,7 @@ check = () => {
       Swal.fire({
         title: `What's Your Name`,
         input: 'text',
+        allowOutsideClick: false,
         inputAttributes: {
           autocapitalize: 'on'
         },

@@ -484,7 +484,9 @@ nav .dropbtn:hover {
   transform: rotate(360deg);
 }
 
-
+.colored-toast .swal2-title {
+  color: red !important;
+}
 
 
 
@@ -1207,6 +1209,8 @@ nav .dropbtn:hover {
     margin-bottom: auto;
     /* border: 1px solid red; */
   }
+
+ 
   
   #productCarousel .carousel-inner{
     width: 100%;
