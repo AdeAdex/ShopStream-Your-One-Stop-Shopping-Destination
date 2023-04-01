@@ -1067,7 +1067,7 @@ hey = () => {
                 </div>
               </div>
               <button
-                class="carousel-control-prev"
+                class="carousel-control-prev  my-auto ms-4 carousel-control-btn"
                 type="button"
                 data-bs-target="#productCarousel"
                 data-bs-slide="prev"
@@ -1079,7 +1079,7 @@ hey = () => {
                 <span class="visually-hidden">Previous</span>
               </button>
               <button
-                class="carousel-control-next"
+                class="carousel-control-next  my-auto me-4 carousel-control-btn"
                 type="button"
                 data-bs-target="#productCarousel"
                 data-bs-slide="next"

@@ -212,9 +212,19 @@ nav .dropbtn:hover {
   cursor: pointer;;
 }
 
-.carousel-dark:hover .carousel-control-button {
+#carouselExampleDark .carousel-control-button {
+  transition: all ease-in-out .5s;
+  opacity: 0;
+}
+#carouselExampleDark:hover .carousel-control-button {
+  transform: rotate(360deg);;
+  opacity: 1;
   background-color: white;
   box-shadow: 0px 0px 10px rgb(127, 126, 126);
+}
+
+#carouselExampleDark .carousel-control-button:hover {
+  transform: scale(1.2);
 }
  
 .contact:hover .contact-link {
@@ -458,6 +468,21 @@ nav .dropbtn:hover {
   object-fit: contain;
 }
 
+#productCarousel .carousel-control-btn {
+  background-color: white;
+  border-radius: 50%; 
+  width: 60px; 
+  height: 60px;
+  transition: all ease-in-out .3s;
+}
+
+#productCarousel:hover .carousel-control-btn {
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(127, 126, 126);
+}
+#productCarousel .carousel-control-btn:hover {
+  transform: rotate(360deg);
+}
 
 
 
@@ -1138,13 +1163,6 @@ nav .dropbtn:hover {
     padding-right: 8px !important;
   }
 
-  #productCarouselContainer .carousel-indicators {
-    left: 0 !important;
-    justify-content: start !important;
-    width: 100% !important;
-    margin: 0px !important;
-    /* bottom: 40px; */
-  }
 
   .buy-now-and-save-btn button:first-child {
     width: 85% !important;
@@ -1171,15 +1189,62 @@ nav .dropbtn:hover {
     font-size: 12px !important;
   }
 
-  #productCarouselContainer .carousel-indicators img {
-    padding: 0px !important;
-    height: 50px !important;
-  }
 
-  #productCarousel .carousel-inner img {
-    height: 350px !important;
-    border: 1px solid red;
+  .product-main .product-caro {
+    margin-left: 1% !important;
+    margin-right: 1% !important;
   }
+  #carouselImg {
+    height: 500px;
+  }
+  
+  #productCarousel {
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    height: 90%;
+    margin-top: auto;
+    margin-bottom: auto;
+    /* border: 1px solid red; */
+  }
+  
+  #productCarousel .carousel-inner{
+    width: 100%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid green; */
+  }
+  
+  #productCarousel .carousel-indicators{
+    width: 50%;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  #productCarousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  #productCarousel .carousel-control-btn {
+    background-color: white;
+    border-radius: 50%; 
+    width: 60px; 
+    height: 60px;
+    transition: all ease-in-out .3s;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+  }
+  
+  #productCarousel:hover .carousel-control-btn {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgb(127, 126, 126);
+  }
+  #productCarousel .carousel-control-btn:hover {
+    transform: rotate(360deg);
+  } 
 
   .product-main {
     padding: 10px !important;
