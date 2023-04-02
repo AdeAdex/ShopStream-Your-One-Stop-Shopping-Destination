@@ -250,6 +250,22 @@ signIn = () => {
   });
   if (found) {
     signInBtn.innerHTML = "Sign In";
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'center',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+    
+    Toast.fire({
+      icon: 'success',
+      title: 'Signed in successfully'
+    })
     // alert(signInBtn.innerHTML)
     window.location.href = "index.html";
     // signInBtn.style.setProperty("display", "none", "important")
@@ -275,7 +291,7 @@ displayProducts = () => {
   // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
-  if (!localStorage.companyProduct) {
+  if ((!localStorage.companyProduct) ) {
       Swal.fire({
         icon: "warning",
         title: "Welcome Sir/Ma",

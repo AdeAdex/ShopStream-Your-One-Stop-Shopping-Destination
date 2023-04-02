@@ -29,7 +29,7 @@ text = () => {
 check = () => {
   if (!(localStorage.companyProduct)) {
     adminMain.innerHTML = `
-    <div class="d-flex flex-column w-100 shadow text-white pt-5 px-3" style="background-color: #ddd;">
+    <div class="d-flex flex-column w-100 shadow text-dark pt-5 px-3" style="background-color: #ddd;">
         <h2 class="admin-h2 text-capitalize fw-bold mx-auto">welcome to adex admin page</h2>
         <button class="my-auto mx-auto btn btn-lg btn-primary" id="adminInitBtn" onclick="text()">Click to Continue</button>
       </div>
@@ -41,37 +41,36 @@ check = () => {
       if (localStorage.adminDetails) {
         adminName = JSON.parse(localStorage.getItem("adminDetails"));
       }
-      
+
   
       Swal.fire({
         title: `What's Your Name`,
-        input: 'text',
+        input: "text",
         allowOutsideClick: false,
         inputAttributes: {
-          autocapitalize: 'on'
+          autocapitalize: "on",
         },
         showCancelButton: false,
-        confirmButtonText: 'Save changes',
+        confirmButtonText: "Save changes",
         showLoaderOnConfirm: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire(
-            'Good job!',
-             `Wlcome ${result.value}`,
-            'success'
-          )
-        }
-  
-        let theAdminName = {
-          adminFName: result.value
-        }
-        adminName.push(theAdminName);
-        localStorage.setItem("adminDetails", JSON.stringify(adminName));
-        adminName.map((eachAdmin, index) => {
-          localStorage.setItem("currentAdminIndex", index);
-        })
-        window.location.href = `adminPage.html`
-      })
+        preConfirm: (name) => {
+          if (!name || name.trim() === "") {
+            Swal.showValidationMessage("Please enter your name");
+          } else {
+            Swal.fire("Good job!", `Welcome ${name}`, "success");
+
+            let theAdminName = {
+              adminFName: name,
+            };
+            adminName.push(theAdminName);
+            localStorage.setItem("adminDetails", JSON.stringify(adminName));
+            adminName.map((eachAdmin, index) => {
+              localStorage.setItem("currentAdminIndex", index);
+            });
+            window.location.href = `adminPage.html`;
+          }
+        },
+      });
   
       
       
@@ -363,6 +362,7 @@ setTodaysDeal = () => {
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
       localStorage.setItem("currentUserIndex", index);
     }
+    
   } else if (productOnPage.value == "SponsoredProducts") {
     for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -456,7 +456,11 @@ setTodaysDeal = () => {
     // localStorage.setItem("currentUserIndex", index);
   }
   } else {
-    alert(6)
+    swal.fire({
+      title: 'Error!',
+      text: 'Select where product should be added to.',
+      timer: 3000
+    })
   }
 };
 

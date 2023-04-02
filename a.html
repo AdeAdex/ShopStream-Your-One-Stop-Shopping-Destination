@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="check()">
+    <script>
+      if (!localStorage.adminDetails) {
+        let adminName = [];
+        if (localStorage.adminDetails) {
+          adminName = JSON.parse(localStorage.getItem("adminDetails"));
+        }
+        check = () => {
+          Swal.fire({
+            title: `What's Your Name`,
+            input: "text",
+            allowOutsideClick: false,
+            inputAttributes: {
+              autocapitalize: "on",
+            },
+            showCancelButton: false,
+            confirmButtonText: "Save changes",
+            showLoaderOnConfirm: true,
+            preConfirm: (name) => {
+              if (!name || name.trim() === "") {
+                Swal.showValidationMessage("Please enter your name");
+              } else {
+                Swal.fire("Good job!", `Welcome ${name}`, "success");
+
+                let theAdminName = {
+                  adminFName: name,
+                };
+                adminName.push(theAdminName);
+                localStorage.setItem("adminDetails", JSON.stringify(adminName));
+                adminName.map((eachAdmin, index) => {
+                  localStorage.setItem("currentAdminIndex", index);
+                });
+                window.location.href = `adminPage.html`;
+              }
+            },
+          });
+        };
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+  </body>
+</html>
