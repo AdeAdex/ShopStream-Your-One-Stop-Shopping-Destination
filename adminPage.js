@@ -362,7 +362,28 @@ setTodaysDeal = () => {
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
       localStorage.setItem("currentUserIndex", index);
     }
-    
+    Swal.fire({
+      icon: 'success',
+      title: 'Product added successfully',
+      text: 'Do you want to add another produc?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Proceed',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else if (result.isDenied) {
+        window.location.href = `index.html`;
+      }
+    })
   } else if (productOnPage.value == "SponsoredProducts") {
     for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -384,8 +405,29 @@ setTodaysDeal = () => {
       };
       allProducts[index].sponsorProduct.push(topDealProduct);
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-      // localStorage.setItem("currentUserIndex", index);
     }
+    Swal.fire({
+      icon: 'success',
+      title: 'Product added successfully',
+      text: 'Do you want to add another produc?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Proceed',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else if (result.isDenied) {
+        window.location.href = `index.html`;
+      }
+    })
   } else if (productOnPage.value == "RecommendedProducts") {
     for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -409,6 +451,28 @@ setTodaysDeal = () => {
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
       // localStorage.setItem("currentUserIndex", index);
     }
+    Swal.fire({
+      icon: 'success',
+      title: 'Product added successfully',
+      text: 'Do you want to add another produc?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Proceed',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else if (result.isDenied) {
+        window.location.href = `index.html`;
+      }
+    })
   } else if (productOnPage.value == "InspiredProducts") {
     for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -432,6 +496,28 @@ setTodaysDeal = () => {
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
       // localStorage.setItem("currentUserIndex", index);
     }
+    Swal.fire({
+      icon: 'success',
+      title: 'Product added successfully',
+      text: 'Do you want to add another produc?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Proceed',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else if (result.isDenied) {
+        window.location.href = `index.html`;
+      }
+    })
   }else if (productOnPage.value == "BrowsingHistoryProducts") {
      for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -455,6 +541,28 @@ setTodaysDeal = () => {
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
     // localStorage.setItem("currentUserIndex", index);
   }
+  Swal.fire({
+      icon: 'success',
+      title: 'Product added successfully',
+      text: 'Do you want to add another produc?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Yes',
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Proceed',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else if (result.isDenied) {
+        window.location.href = `index.html`;
+      }
+    })
   } else {
     swal.fire({
       title: 'Error!',
