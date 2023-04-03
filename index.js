@@ -222,7 +222,7 @@ sweet = () => {
   })
 }
 
-mumu = () => {
+bringOffcanvas = () => {
   loginOffcanvas.classList.toggle("offcanvas");
 }
 
