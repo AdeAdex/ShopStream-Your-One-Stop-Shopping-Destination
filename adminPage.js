@@ -339,6 +339,9 @@ check = () => {
 };
 
 setTodaysDeal = () => {
+  allProducts.map((eachPro, index) => {
+    localStorage.setItem("hello", index)
+  })
   if (productOnPage.value == "TodaysDealProducts") {
     for (let index = 0; index < allProducts.length; index++) {
       let topDealProduct = {
@@ -405,6 +408,7 @@ setTodaysDeal = () => {
       };
       allProducts[index].sponsorProduct.push(topDealProduct);
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
+      localStorage.setItem("currentUserIndex", index);
     }
     Swal.fire({
       icon: 'success',
@@ -449,7 +453,7 @@ setTodaysDeal = () => {
       };
       allProducts[index].recommendedProduct.push(topDealProduct);
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-      // localStorage.setItem("currentUserIndex", index);
+      localStorage.setItem("currentUserIndex", index);
     }
     Swal.fire({
       icon: 'success',
@@ -494,7 +498,7 @@ setTodaysDeal = () => {
       };
       allProducts[index].inspiredProduct.push(topDealProduct);
       localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-      // localStorage.setItem("currentUserIndex", index);
+      localStorage.setItem("currentUserIndex", index);
     }
     Swal.fire({
       icon: 'success',
@@ -539,7 +543,7 @@ setTodaysDeal = () => {
       };
     allProducts[index].browsingProduct.push(topDealProduct);
     localStorage.setItem("companyProduct", JSON.stringify(allProducts));
-    // localStorage.setItem("currentUserIndex", index);
+    localStorage.setItem("currentUserIndex", index);
   }
   Swal.fire({
       icon: 'success',

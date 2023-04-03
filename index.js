@@ -295,7 +295,7 @@ displayProducts = () => {
     
   // })
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
-  if ((!localStorage.companyProduct) || (!localStorage.currentCustomerIndex) ) {
+  if ((!localStorage.companyProduct) || (!localStorage.hello)) {
       Swal.fire({
         icon: "warning",
         title: "Welcome Sir/Ma",
@@ -854,6 +854,22 @@ del = (userDelete) => {
     Number(eachTopDealProduct[userDelete].eachItemNumber);
   allCustomer[currentCustomerIndex].myCart.splice(userDelete, 1);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-start',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'Product successfully removed from your cart',
+  })
   location.reload();
 };
 
