@@ -294,7 +294,8 @@ displayProducts = () => {
   // allProducts.map((eachProduct, index) => {
     
   // })
-  if ((!localStorage.companyProduct) /* || (allProducts[index].topDeal.length == 0) */ ) {
+  allProducts = JSON.parse(localStorage.getItem("companyProduct"));
+  if ((!localStorage.companyProduct) || (!localStorage.currentCustomerIndex) ) {
       Swal.fire({
         icon: "warning",
         title: "Welcome Sir/Ma",
