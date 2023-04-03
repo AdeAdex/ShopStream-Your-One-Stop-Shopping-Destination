@@ -291,12 +291,15 @@ displayProducts = () => {
   // totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // totalCartNoOnSmallScreen.innerHTML = allCustomer[currentCustomerIndex].totalCart
   // myNameHere.innerHTML = `Hi ` + allCustomer[currentCustomerIndex].firstName;
-  if ((!localStorage.companyProduct) ) {
+  // allProducts.map((eachProduct, index) => {
+    
+  // })
+  if ((!localStorage.companyProduct) /* || (allProducts[index].topDeal.length == 0) */ ) {
       Swal.fire({
         icon: "warning",
         title: "Welcome Sir/Ma",
         allowOutsideClick: false,
-        text: `I'm still working on this site, and currently their's no database connected to this site. I recommend you act as this website administrator and try adding a product and after you've added at least one product from the Admin page, then come back to this page by clicking the 'Go Home' button or the 'Home' icon to buy any of the products/play around with it.`,
+        text: `Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality and so that you can continue checking it out. Thanks`,
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = 'adminPage.html'
@@ -337,13 +340,13 @@ displayProducts = () => {
       <div class="">
         <div class="d-flex gap-2">
           <div class="fw-bold fs-5" id="dealsNewPrice">
-            ₦${eachTopDealProduct[index].productNewPrice}
+            ₦${eachTopDealProduct[index].productNewPrice.toLocaleString()}
           </div>
           <div
             class="my-auto text-decoration-line-through text-secondary" style="font-size: 12px"
             id="dealsOldPrice"
           >
-            ₦${eachTopDealProduct[index].productOldPrice}
+            ₦${eachTopDealProduct[index].productOldPrice.toLocaleString()}
           </div>
         </div>
         <div
@@ -351,7 +354,7 @@ displayProducts = () => {
           style="font-size: 10px; color: #33b27b"
           id="dealsSave"
         >
-          You save ₦${eachTopDealProduct[index].productSavePrice}
+          You save ₦${eachTopDealProduct[index].productSavePrice.toLocaleString()}
         </div>
       </div>
     </div>
@@ -673,12 +676,12 @@ showMyCart = () => {
        <div class="d-none" id="leftItems" style="font-size: 12px">Only ${eachTopDealProduct[index].eachItemTotalAvailable} items left</div>
        </div>
      <div class="d-flex flex-column  my-auto">
-       <div class="fw-bold fs-5" id="">₦${eachTopDealProduct[index].eachCartTotalPrice}</div>
+       <div class="fw-bold fs-5" id="">₦${eachTopDealProduct[index].eachCartTotalPrice.toLocaleString()}</div>
        <div
          class="d-flex gap-1"
          style="color: #bdc7d6; font-size: 14px"
        >
-         <div>₦${eachTopDealProduct[index].cartPrice}</div>
+         <div>₦${eachTopDealProduct[index].cartPrice.toLocaleString()}</div>
          <div>x</div>
          <div>${eachTopDealProduct[index].eachItemNumber}</div>
          <div id="totalForEach">Item</div>
@@ -702,7 +705,7 @@ showMyCart = () => {
 
     subtotalAndTotalPrice.innerHTML = `
      <div id="item">Subtotal ( ${eachTopDealProduct.length} Item )</div>
-     <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+     <div class="fw-bold" style="font-size: 14px" id="total">₦${allCustomer[currentCustomerIndex].totalBalance.toLocaleString()}</div>
      `;
 
     orderSummaryOnLargeScreen.innerHTML = `
@@ -722,12 +725,12 @@ showMyCart = () => {
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="" style="font-size: 12px;">Subtotal:</div>
-          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance.toLocaleString()}</div>
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="fw-bold">Total:</div>
-          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].totalBalance.toLocaleString()}</div>
     </div>
     <hr>
     <div class="w-100 text-end" style="font-size: 12px; margin-top: -15px; color: #DD9E00;">Excluding delivery charges</div>
@@ -1132,12 +1135,12 @@ hey = () => {
    <h5 class="d-flex gap-2 text-capitalize" style="font-size: 14px; color: gray">Brand: ${eachTopDealProduct[index].productSelectBrand}</h5>
    <hr />
    <div class="d-flex gap-3">
-    <h4 class="fw-bold my-auto">₦${eachTopDealProduct[index].productSelectNewPrice}</h4>
+    <h4 class="fw-bold my-auto">₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</h4>
     <h6 class="my-auto text-decoration-line-through text-secondary">
-    ₦${eachTopDealProduct[index].productSelectOldPrice}
+    ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
     </h6>
     <h6 class="my-auto text-success" style="font-size: 12px">
-    ₦${eachTopDealProduct[index].productSelectSavePrice}
+    ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
     </h6>
    </div>
    <hr />
@@ -1235,7 +1238,7 @@ hey = () => {
         alt=""
       />
       <div class="my-auto txt2" style="font-size: 14px">
-        Konga Warehouse
+        Adex Warehouse
       </div>
     </div>
    </div>
@@ -1251,8 +1254,9 @@ hey = () => {
         style="
           width: 80px;
           height: 100%;
-          border-radius: 45%;
+          border-radius: 35px;
           background-color: orange;
+          color: white;
           padding-top: 4px;
         "
       >
@@ -1442,13 +1446,13 @@ oderConfirm = () => {
           Standard Delivery (3 - 5 Business days Estimated) <div> ₦${allCustomer[currentUserIndex].deliveryCharge} </div></span
         >
       </div>
-      <div>adex</div>
+      <div></div>
     </div>
     `
     subtotalAndTotalPriceOnCheckout.innerHTML = `
     <div class="d-flex w-100 justify-content-between">
       <div id="">Subtotal:</div>
-      <div class="" style="font-size: 14px" id="">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+      <div class="" style="font-size: 14px" id="">₦${allCustomer[currentCustomerIndex].totalBalance.toLocaleString()}</div>
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div id="">Delivery Fee:</div>
@@ -1456,7 +1460,7 @@ oderConfirm = () => {
     </div>
     <div class="d-flex w-100 justify-content-between">
       <div class="fw-bold">Total:</div>
-      <div class="fw-bold" style="font-size: 14px" id="allTotal">₦${allCustomer[currentCustomerIndex].allTotalBalance}</div>
+      <div class="fw-bold" style="font-size: 14px" id="allTotal">₦${allCustomer[currentCustomerIndex].allTotalBalance.toLocaleString()}</div>
     </div>
      `;
 
@@ -1474,7 +1478,7 @@ oderConfirm = () => {
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="" style="font-size: 12px;">Subtotal:</div>
-          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance}</div>
+          <div class="fw-bold" style="font-size: 14px;">₦${allCustomer[currentCustomerIndex].totalBalance.toLocaleString()}</div>
     </div>
     <hr>
     <div class="d-flex justify-content-between w-100">
@@ -1484,7 +1488,7 @@ oderConfirm = () => {
     <hr>
     <div class="d-flex justify-content-between w-100">
           <div class="fw-bold">Total:</div>
-          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].allTotalBalance}</div>
+          <div class="fw-bold" style="font-size: 18px;">₦${allCustomer[currentCustomerIndex].allTotalBalance.toLocaleString()}</div>
     </div>
     <hr>
     </div>
@@ -1606,7 +1610,7 @@ proceedToPayment = () => {
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   // mySelected.map((eacDelivery, index) => {
     if (pickUp.style.display != "none") {
-      let message = "You've not select any address please select an address and then proceed"
+      let message = "You've not select any address please select an address or add a new address and then proceed"
       Swal.fire({
         icon: "warning",
         title: "Dear " + allCustomer[currentCustomerIndex].firstName,
