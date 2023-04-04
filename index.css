@@ -394,17 +394,17 @@ nav .dropbtn:hover {
 
 
 
-/* #adminInitBtn {
+.admin-icon {
   animation: blink-animation .5s steps(5, start) infinite;
   border: 5px solid;
-  border-image:linear-gradient(60deg,#00dde1 50%,#f6531d 0) 20;
+  /* border-image:linear-gradient(60deg,#00dde1 50%,#f6531d 0) 20; */
 }
 
 @keyframes blink-animation {
   to {
     visibility: hidden;
   }
-} */
+}
 
 #adminInitBtn {
   border-radius: 15px;
@@ -420,7 +420,7 @@ nav .dropbtn:hover {
       from var(--angle),
       #d53e33 0deg 90deg,
       #fbb300 90deg 180deg,
-      #377af5 180deg 270deg,
+      #f4f5f8 180deg 270deg,
       #399953 270deg 360deg
     )
     1 stretch;
@@ -579,6 +579,66 @@ nav .dropbtn:hover {
 
 
 
+/* .popup-container {
+  border-radius: 10px;
+  padding: 2rem;
+  margin: auto;
+
+  display: grid;
+  place-content: center;
+  text-align: center;
+
+  font-size: 1.5em;
+
+  --border-size: 0.3rem;
+  border: var(--border-size) dotted transparent;
+  background-image: linear-gradient(
+      to right,
+      rgb(255 255 255 / var(--opacity)),
+      rgb(255 255 255 / var(--opacity))
+    ),
+    conic-gradient(
+      from var(--angle),
+      #d53e33 0deg 90deg,
+      #fbb300 90deg 180deg,
+      #377af5 180deg 270deg,
+      #399953 270deg 360deg
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+
+@supports (background: paint(houdini)) {
+  @property --opacity {
+    syntax: "<number>";
+    initial-value: 0.5;
+    inherits: false;
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes opacityChange {
+    to {
+      --opacity: 1;
+    }
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  .popup-container {
+    animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+  }
+
+} */
 
 
 
@@ -1239,6 +1299,10 @@ nav .dropbtn:hover {
     display: flex;
     padding: 8px 0px;
     cursor: pointer;
+  }
+
+  .admin-icon {
+    display: none;
   }
 
 

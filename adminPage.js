@@ -223,7 +223,7 @@ check = () => {
                 <option value="Energy and Natural Resources">Energy and Natural Resources</option>
                 <option value="Food and Beverages">Food and Beverages</option>
                 <option value="Government and Public Sector">Government and Public Sector</option>
-                <option value="Healthcare">Healthcare</option>
+                <option value="Phones and Tablets">Phones and Tablets</option>
                 <option value="Books">Books</option>
                 <option value="Manufacturing and Construction">Manufacturing and Construction</option>
                 <option value="Military Aerospace and Defence">Military Aerospace and Defence</option>
