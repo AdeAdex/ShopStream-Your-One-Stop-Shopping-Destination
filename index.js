@@ -1656,6 +1656,9 @@ proceedToPayment = () => {
     if (pickUp.style.display != "none") {
       let message = "You've not select any address. Please select an address or add a new address and then proceed"
       Swal.fire({
+        customClass: {
+              title: 'addressPrompt',
+            },
         icon: "warning",
         title: "Dear " + allCustomer[currentCustomerIndex].firstName,
         text: message,

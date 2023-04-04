@@ -577,6 +577,10 @@ nav .dropbtn:hover {
   }
 }
 
+.addressPrompt {
+  text-transform: capitalize !important;
+}
+
 
 
 /* .popup-container {
