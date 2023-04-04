@@ -266,7 +266,6 @@ signIn = () => {
       icon: 'success',
       title: 'Signed in successfully'
     })
-    // alert(signInBtn.innerHTML)
     window.location.href = "index.html";
     // signInBtn.style.setProperty("display", "none", "important")
     // myAccountDropdown.style.setProperty("display", "block", "important")
@@ -309,7 +308,7 @@ displayProducts = () => {
         },
         icon: "warning",
         html: '<div class="welcome-txt-container"><h1 class="welcome-txt">You are welcome to Adex</h1></div>' +
-              '<div>Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality. <br>Thanks</div>',
+              '<div>Please note that this site is currently running without any server/database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality. <br>Thanks</div>',
         // title: "welcome",
         allowOutsideClick: false,
         allowEscapeKey: false,
@@ -895,7 +894,9 @@ topDealProductPage = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
-  }else {
+  } else if ((localStorage.ourCustomerDetails) && (!localStorage.currentCustomerIndex)) {
+    loginOffcanvas.classList.toggle("show")
+  } else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachTopDealProduct = allProducts[currentUserIndex].topDeal;
     for (let index = 0; index < allProducts.length; index++) {
@@ -925,6 +926,8 @@ topDealProductPage2 = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
+  } else if ((localStorage.ourCustomerDetails) && (!localStorage.currentCustomerIndex)) {
+    loginOffcanvas.classList.toggle("show")
   } else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachSponsoredProduct = allProducts[currentUserIndex].sponsorProduct;
@@ -955,6 +958,8 @@ topDealProductPage3 = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
+  } else if ((localStorage.ourCustomerDetails) && (!localStorage.currentCustomerIndex)) {
+    loginOffcanvas.classList.toggle("show")
   } else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachRecommendedProduct = allProducts[currentUserIndex].recommendedProduct;
@@ -985,6 +990,8 @@ topDealProductPage4 = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
+  } else if ((localStorage.ourCustomerDetails) && (!localStorage.currentCustomerIndex)) {
+    loginOffcanvas.classList.toggle("show")
   } else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachInspiredProduct = allProducts[currentUserIndex].inspiredProduct;
@@ -1015,6 +1022,8 @@ topDealProductPage5 = (eachTopDeal) => {
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if (!(localStorage.ourCustomerDetails)) {
       successModalContainer.style.setProperty("display", "block", "important");
+  } else if ((localStorage.ourCustomerDetails) && (!localStorage.currentCustomerIndex)) {
+    loginOffcanvas.classList.toggle("show")
   } else {
     allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
     eachBrowsingProduct = allProducts[currentUserIndex].browsingProduct;
@@ -1645,13 +1654,11 @@ proceedToPayment = () => {
   mySelected = allCustomer[currentCustomerIndex].myAddressChoice
   // mySelected.map((eacDelivery, index) => {
     if (pickUp.style.display != "none") {
-      let message = "You've not select any address please select an address or add a new address and then proceed"
+      let message = "You've not select any address. Please select an address or add a new address and then proceed"
       Swal.fire({
         icon: "warning",
         title: "Dear " + allCustomer[currentCustomerIndex].firstName,
         text: message,
-        // showCancelButton: true,
-        footer: '',
       })
     } else {
       window.location.href = 'payment.html'
@@ -2036,7 +2043,8 @@ delThisAddress = (useraddress) => {
     icon: "error",
     title: "Dear " + allCustomer[currentCustomerIndex].firstName,
     text: message,
-    showCancelButton: true,
+    showCloseButton: true,
+    // showCancelButton: true,
     footer: '',
   }).then((result) => {
     if (result.isConfirmed) {
@@ -2047,7 +2055,7 @@ delThisAddress = (useraddress) => {
         showConfirmButton: false,
         timer: 1500
       })
-    }
+    } 
   });
   allCustomer[currentCustomerIndex].myAddress.splice(useraddress, 1);
   localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));

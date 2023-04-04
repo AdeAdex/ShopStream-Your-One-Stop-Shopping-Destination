@@ -47,6 +47,7 @@ check = () => {
         title: `What's Your Name`,
         input: "text",
         allowOutsideClick: false,
+        allowEscapeKey: false,
         inputAttributes: {
           autocapitalize: "on",
         },
@@ -216,20 +217,22 @@ check = () => {
                 required
               >
                 <option selected disabled value="">Choose category</option>
-                <option value="Automotive and Transport">Automotive and Transport</option>
-                <option value="Business and Finance">Business and Finance</option>
-                <option value="Chemicals and Materials">Chemicals and Materials</option>
-                <option value="Consumer Goods and Services">Consumer Goods and Services</option>
-                <option value="Energy and Natural Resources">Energy and Natural Resources</option>
+                <option value="Clothing & Apparel">Clothing & Apparel</option>
+                <option value="Footwear & Shoes">Footwear & Shoes</option>
+                <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                <option value="Games & Toys">Games & Toys</option>
+                <option value="Veterinary & Pet Items">Veterinary & Pet Items</option>
                 <option value="Food and Beverages">Food and Beverages</option>
-                <option value="Government and Public Sector">Government and Public Sector</option>
+                <option value="Furniture and Decor">Furniture and Decor</option>
                 <option value="Phones and Tablets">Phones and Tablets</option>
-                <option value="Books">Books</option>
-                <option value="Manufacturing and Construction">Manufacturing and Construction</option>
-                <option value="Military Aerospace and Defence">Military Aerospace and Defence</option>
+                <option value="Stationery">Stationery</option>
+                <option value="Household items">Household Items</option>
+                <option value="Hand & Power Tools">Hand & Power Tools</option>
                 <option value="Pharmaceuticals">Pharmaceuticals</option>
-                <option value="Telecommunication and Computing">Telecommunication and Computing</option>
-                <option value=""></option>
+                <option value="Tupperware">Tupperware</option>
+                <option value="Sports Products">Sports Products</option>
+                <option value="Health and Safety">Health and Safety</option>
+                <option value="Others">Others</option>
               </select>
             </div>
             <div class="col-lg-12 col-sm-12 mb-2">
@@ -322,13 +325,12 @@ check = () => {
             <!-- <div class="col-lg-12 bg-black mx-auto col-sm-12"> -->
             <button
               type="button"
-              onclick="setTodaysDeal()"
+              onclick="addProduct()"
               class="btn btn-primary mx-auto mt-4"
               style="width: 95%"
             >
               Add Product
             </button>
-            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -338,7 +340,7 @@ check = () => {
   }
 };
 
-setTodaysDeal = () => {
+addProduct = () => {
   allProducts.map((eachPro, index) => {
     localStorage.setItem("hello", index)
   })
@@ -368,7 +370,7 @@ setTodaysDeal = () => {
     Swal.fire({
       icon: 'success',
       title: 'Product added successfully',
-      text: 'Do you want to add another produc?',
+      text: 'Do you want to add another product?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: 'Yes',
