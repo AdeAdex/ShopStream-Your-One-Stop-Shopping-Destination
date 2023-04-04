@@ -2072,7 +2072,8 @@ delThisAddress = (useraddress) => {
         icon: 'success',
         title: 'Address has been deleted successfully',
       })
-      displayAddress()
+      // offcanvasAddressContainer.classList.toggle("show")
+      // displayAddress()
     } else {
       location.reload()
       displayAddress()
