@@ -296,11 +296,27 @@ displayProducts = () => {
   // })
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if ((!localStorage.companyProduct) || (!localStorage.hello)) {
-      Swal.fire({
+    // const mySwal = Swal.mixin({
+    //   customClass: {
+    //     title: 'welcome-txt',
+    //   },
+    // })
+    Swal.fire({
+        // customClass: {
+        //   title: 'welcome-txt',
+        // },
         icon: "warning",
-        title: "Welcome Sir/Ma",
+        html: '<div class="welcome-txt-container"><h1 class="welcome-txt">You are welcome</h1></div>' +
+              '<div>Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality. <br>Thanks</div>',
+        // title: "welcome",
         allowOutsideClick: false,
-        text: `Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality and so that you can continue checking it out. Thanks`,
+        allowEscapeKey: false,
+        backdrop: "rgba(0,0,123,0.4)",
+        // imageUrl: '/Images/200.webp',
+        // imageWidth: 300,
+        // imageHeight: 200,
+        // imageAlt: 'Welcome gif',
+        // text: `Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality. Thanks`,
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = 'adminPage.html'
