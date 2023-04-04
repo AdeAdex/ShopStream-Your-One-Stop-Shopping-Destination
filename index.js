@@ -2043,26 +2043,42 @@ delThisAddress = (useraddress) => {
 
   let message = `Are you sure you want to delete this address, this cant be undone and will permanently delete this address`
   Swal.fire({
+    customClass: {
+      title: 'addressPrompt',
+    },
     icon: "error",
     title: "Dear " + allCustomer[currentCustomerIndex].firstName,
     text: message,
-    showCloseButton: true,
-    // showCancelButton: true,
+    // showCloseButton: true,
+    showCancelButton: true,
     footer: '',
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'Address has been deleted',
+      allCustomer[currentCustomerIndex].myAddress.splice(useraddress, 1);
+      localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
         showConfirmButton: false,
-        timer: 1500
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
       })
-    } 
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Address has been deleted successfully',
+      })
+      displayAddress()
+    } else {
+      location.reload()
+      displayAddress()
+    }
   });
-  allCustomer[currentCustomerIndex].myAddress.splice(useraddress, 1);
-  localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
-  displayAddress()
+  
 }
 
 function submitAddress() {
