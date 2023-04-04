@@ -910,6 +910,7 @@ topDealProductPage = (eachTopDeal) => {
         productSelectId: eachTopDealProduct[eachTopDeal].productIDNumber,
         productSelectSoldBy: eachTopDealProduct[eachTopDeal].productBy,
         productSelectCategory: eachTopDealProduct[eachTopDeal].productCategory,
+        productSelectSubCategory: eachTopDealProduct[eachTopDeal].productSubCategory,
         productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
@@ -942,6 +943,7 @@ topDealProductPage2 = (eachTopDeal) => {
         productSelectId: eachSponsoredProduct[eachTopDeal].productIDNumber,
         productSelectSoldBy: eachSponsoredProduct[eachTopDeal].productBy,
         productSelectCategory: eachSponsoredProduct[eachTopDeal].productCategory,
+        productSelectSubCategory: eachTopDealProduct[eachTopDeal].productSubCategory,
         productSelectBrand: eachSponsoredProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachSponsoredProduct[eachTopDeal].productTotalItem,
@@ -974,6 +976,7 @@ topDealProductPage3 = (eachTopDeal) => {
         productSelectId: eachRecommendedProduct[eachTopDeal].productIDNumber,
         productSelectSoldBy: eachRecommendedProduct[eachTopDeal].productBy,
         productSelectCategory: eachRecommendedProduct[eachTopDeal].productCategory,
+        productSelectSubCategory: eachTopDealProduct[eachTopDeal].productSubCategory,
         productSelectBrand: eachRecommendedProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachRecommendedProduct[eachTopDeal].productTotalItem,
@@ -1006,6 +1009,7 @@ topDealProductPage4 = (eachTopDeal) => {
         productSelectId: eachInspiredProduct[eachTopDeal].productIDNumber,
         productSelectSoldBy: eachInspiredProduct[eachTopDeal].productBy,
         productSelectCategory: eachInspiredProduct[eachTopDeal].productCategory,
+        productSelectSubCategory: eachTopDealProduct[eachTopDeal].productSubCategory,
         productSelectBrand: eachInspiredProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachInspiredProduct[eachTopDeal].productTotalItem,
@@ -1038,6 +1042,7 @@ topDealProductPage5 = (eachTopDeal) => {
         productSelectId: eachBrowsingProduct[eachTopDeal].productIDNumber,
         productSelectSoldBy: eachBrowsingProduct[eachTopDeal].productBy,
         productSelectCategory: eachBrowsingProduct[eachTopDeal].productCategory,
+        productSelectSubCategory: eachTopDealProduct[eachTopDeal].productSubCategory,
         productSelectBrand: eachBrowsingProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachBrowsingProduct[eachTopDeal].productTotalItem,
@@ -1075,13 +1080,13 @@ hey = () => {
             href=""
             class="text-decoration-none text-dark my-auto"
             style="font-size: 12px"
-            >${eachTopDealProduct[index].productSelectBrand}</a
+            >${eachTopDealProduct[index].productSelectCategory}</a
           ><i class="fas fa-angle-right my-auto" style="font-size: 10px"></i>
           <a
             href=""
             class="text-decoration-none text-dark my-auto"
             style="font-size: 12px"
-            >${eachTopDealProduct[index].productSelectCategory}</a
+            >${eachTopDealProduct[index].productSelectSubCategory}</a
           >
         </div>
         <h1 class="fw-bold">${eachTopDealProduct[index].productSelectName}</h1>

@@ -234,7 +234,48 @@ check = () => {
                 <option value="Health and Safety">Health and Safety</option>
                 <option value="Others">Others</option>
               </select>
-            </div>
+            </div><div class="col-lg-12 col-sm-12 mb-2">
+            <label for="exampleInputEmail1" class="form-label"
+              >Choose Product Sub-Category</label
+            >
+            <select
+              class="form-select position-relative"
+              id="productSubCategory"
+              aria-describedby="validationServer04Feedback"
+              required
+            >
+              <option selected disabled value="">Choose Sub-Category</option>
+              <option value="Mobile Phones">Mobile Phones</option>
+              <option value="Mobile Phone Accessories">Mobile Phone Accessories</option>
+              <option value="Tablets">Tablets</option>
+              <option value="Tablets Accessories">Tablets Accessories</option>
+              <option value="Television">Television</option>
+              <option value="Cameras">Cameras</option>
+              <option value="Games and Consoles">Games and Consoles</option>
+              <option value="Home Theatres and Audio System">Home Theatres and Audio System</option>
+              <option value="DVD Players and Recorders">DVD Players and Recorders</option>
+              <option value="Women's Wears">Women's Wears</option>
+              <option value="Women's Accessories">Women's Accessories</option>
+              <option value="Women's Shoes">Women's Shoes</option>
+              <option value="Men's Wears">Men's Wears</option>
+              <option value="Men's Accessories">Men's Accessories</option>
+              <option value="Men's Shoes">Men's Shoes</option>
+              <option value="Laptops">Laptops</option>
+              <option value="Desktop and Monitors">Desktop and Monitors</option>
+              <option value="Computing Accessories">Computing Accessories</option>
+              <option value="Printers">Printers</option>
+              <option value="Scanners & Accessories">Scanners & Accessories</option>
+              <option value="Wifi & Networking">Wifi & Networking</option>
+              <option value="PC Gaming">PC Gaming</option>
+              <option value="Projectors">Projectors</option>
+              <option value="Softwares">Softwares</option>
+              <option value="Kitchen & Dining">Kitchen & Dining</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Home Furnishings">Home Furnishings</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Frozen Food">Frozen Food</option>
+            </select>
+          </div>
             <div class="col-lg-12 col-sm-12 mb-2">
               <label for="exampleInputEmail1" class="form-label"
                 >Choose Product Brand</label
@@ -353,6 +394,7 @@ addProduct = () => {
         productOldPrice: Number(productOldPrice.value),
         productNewPrice: Number(productNewPrice.value),
         productCategory: productCategory.value,
+        productSubCategory: productSubCategory.value,
         productBrand: productBrand.value,
         productBy: productSellerName.value,
         productTotalItem: productNumberOfItems.value,
@@ -398,6 +440,7 @@ addProduct = () => {
         productOldPrice: Number(productOldPrice.value),
         productNewPrice: Number(productNewPrice.value),
         productCategory: productCategory.value,
+        productSubCategory: productSubCategory.value,
         productBrand: productBrand.value,
         productBy: productSellerName.value,
         productTotalItem: productNumberOfItems.value,
@@ -443,6 +486,7 @@ addProduct = () => {
         productOldPrice: Number(productOldPrice.value),
         productNewPrice: Number(productNewPrice.value),
         productCategory: productCategory.value,
+        productSubCategory: productSubCategory.value,
         productBrand: productBrand.value,
         productBy: productSellerName.value,
         productTotalItem: productNumberOfItems.value,
@@ -488,6 +532,7 @@ addProduct = () => {
         productOldPrice: Number(productOldPrice.value),
         productNewPrice: Number(productNewPrice.value),
         productCategory: productCategory.value,
+        productSubCategory: productSubCategory.value,
         productBrand: productBrand.value,
         productBy: productSellerName.value,
         productTotalItem: productNumberOfItems.value,
@@ -533,6 +578,7 @@ addProduct = () => {
         productOldPrice: Number(productOldPrice.value),
         productNewPrice: Number(productNewPrice.value),
         productCategory: productCategory.value,
+        productSubCategory: productSubCategory.value,
         productBrand: productBrand.value,
         productBy: productSellerName.value,
         productTotalItem: productNumberOfItems.value,
