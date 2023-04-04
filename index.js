@@ -1772,32 +1772,33 @@ displayAddress = () => {
       required
     >
       <option selected disabled value="">Choose...</option>
-      <option class="text-capitalize" value="oyo">oyo state</option>
-      <option class="text-capitalize" value="osun">osun state</option>
-      <option class="text-capitalize" value="lagos">lagos state</option>
-      <option class="text-capitalize" value="ondo">ondo state</option>
-      <option class="text-capitalize" value="ogun">ogun state</option>
-      <option class="text-capitalize" value="kwara">kwara state</option>
-      <option class="text-capitalize" value="ekiti">ekiti state</option>
+      <option class="text-capitalize" value="oyo">Oyo State</option>
+      <option class="text-capitalize" value="osun">Osun State</option>
+      <option class="text-capitalize" value="lagos">Lagos State</option>
+      <option class="text-capitalize" value="abuja">FCT Abuja</option>
+      <option class="text-capitalize" value="ondo">Ondo State</option>
+      <option class="text-capitalize" value="ogun">Ogun State</option>
+      <option class="text-capitalize" value="kwara">Kwara State</option>
+      <option class="text-capitalize" value="ekiti">Ekiti State</option>
       <option class="text-capitalize" value="akwaibom">
-        akwa ibom state
+        Akwa Ibom State
       </option>
-      <option class="text-capitalize" value="imo">imo state</option>
-      <option class="text-capitalize" value="abia">abia state</option>
+      <option class="text-capitalize" value="imo">Imo State</option>
+      <option class="text-capitalize" value="abia">Abia State</option>
       <option class="text-capitalize" value="rivers">
-        rivers state
+        Rivers State
       </option>
       <option class="text-capitalize" value="anambra">
-        anambra state
+        Anambra State
       </option>
-      <option class="text-capitalize" value="kano">kano state</option>
+      <option class="text-capitalize" value="kano">Kano State</option>
       <option class="text-capitalize" value="kaduna">
-        kaduna state
+        Kaduna State
       </option>
-      <option class="text-capitalize" value="benue">benue state</option>
+      <option class="text-capitalize" value="benue">Benue State</option>
     </select>
     <!-- <div id="validationServer04Feedback" class="invalid-feedback">
-  Please select a valid state.
+  Please select a valid State.
 </div> -->
   </div>
   <div class="col-md-12">
@@ -2085,13 +2086,45 @@ delThisAddress = (useraddress) => {
 function submitAddress() {
   allCustomer = JSON.parse(localStorage.getItem("ourCustomerDetails"));
   if (addressFname.value == "" || addressPhoneNumber == "") {
-    sweet2()
+    swal.fire({
+      title: 'Ooops!',
+      icon: 'warning',
+      text: 'All fields are required. Please fill in all fields'
+    })
   }
   else {
     if (addressState.value == "oyo") {
-      allCustomer[currentCustomerIndex].deliveryCharge = 300
-    } else if (addressState.value == "lagos") {
       allCustomer[currentCustomerIndex].deliveryCharge = 500
+    } else if (addressState.value == "lagos") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 250
+    } else if (addressState.value == "abuja") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 750
+    }  else if (addressState.value == "osun") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 600
+    }  else if (addressState.value == "ondo") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 550
+    }  else if (addressState.value == "ogun") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 300
+    }  else if (addressState.value == "kwara") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 600
+    }  else if (addressState.value == "ekiti") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 650
+    }  else if (addressState.value == "akwaibom") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 1200
+    }  else if (addressState.value == "imo") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 800
+    }  else if (addressState.value == "abia") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 900
+    }  else if (addressState.value == "rivers") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 1000
+    }  else if (addressState.value == "anambra") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 700
+    }  else if (addressState.value == "kano") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 1300
+    }  else if (addressState.value == "kaduna") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 750
+    }  else if (addressState.value == "benue") {
+      allCustomer[currentCustomerIndex].deliveryCharge = 700
     }
 
   let customerAddress = {
@@ -2343,29 +2376,30 @@ addNewAddress = () => {
       required
     >
       <option selected disabled value="">Choose...</option>
-      <option class="text-capitalize" value="oyo">oyo state</option>
-      <option class="text-capitalize" value="osun">osun state</option>
-      <option class="text-capitalize" value="lagos">lagos state</option>
-      <option class="text-capitalize" value="ondo">ondo state</option>
-      <option class="text-capitalize" value="ogun">ogun state</option>
-      <option class="text-capitalize" value="kwara">kwara state</option>
-      <option class="text-capitalize" value="ekiti">ekiti state</option>
+      <option class="text-capitalize" value="oyo">Oyo State</option>
+      <option class="text-capitalize" value="osun">Osun State</option>
+      <option class="text-capitalize" value="lagos">Lagos State</option>
+      <option class="text-capitalize" value="abuja">FCT Abuja</option>
+      <option class="text-capitalize" value="ondo">Ondo State</option>
+      <option class="text-capitalize" value="ogun">Ogun State</option>
+      <option class="text-capitalize" value="kwara">Kwara State</option>
+      <option class="text-capitalize" value="ekiti">Ekiti State</option>
       <option class="text-capitalize" value="akwaibom">
-        akwa ibom state
+        Akwa Ibom State
       </option>
-      <option class="text-capitalize" value="imo">imo state</option>
-      <option class="text-capitalize" value="abia">abia state</option>
+      <option class="text-capitalize" value="imo">Imo State</option>
+      <option class="text-capitalize" value="abia">Abia State</option>
       <option class="text-capitalize" value="rivers">
-        rivers state
+        Rivers State
       </option>
       <option class="text-capitalize" value="anambra">
-        anambra state
+        Anambra State
       </option>
-      <option class="text-capitalize" value="kano">kano state</option>
+      <option class="text-capitalize" value="kano">Kano State</option>
       <option class="text-capitalize" value="kaduna">
-        kaduna state
+        Kaduna State
       </option>
-      <option class="text-capitalize" value="benue">benue state</option>
+      <option class="text-capitalize" value="benue">Benue State</option>
     </select>
     <!-- <div id="validationServer04Feedback" class="invalid-feedback">
   Please select a valid state.
