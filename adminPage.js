@@ -363,18 +363,6 @@ check = () => {
                 aria-describedby="emailHelp"
               />
             </div>
-            <div class="col-lg-12 col-sm-12 mb-2">
-              <label for="exampleInputEmail1" class="form-label text-danger"
-                >Upload Similar Product</label
-              >
-              <input
-                type="file"
-                class="form-control text-capitalize"
-                id="similarProductImg"
-                onchange="similarImg()"
-                aria-describedby="emailHelp"
-              />
-            </div>
             <!-- <div class="col-lg-12 bg-black mx-auto col-sm-12"> -->
             <button
               type="button"
