@@ -914,12 +914,13 @@ topDealProductPage = (eachTopDeal) => {
         productSelectBrand: eachTopDealProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachTopDealProduct[eachTopDeal].productTotalItem,
+        productSelectOff: eachTopDealProduct[eachTopDeal].productOff,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
       localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     }
-    window.location.href = "topDealProductPage.html";
+    window.location.href = "productOnProductPage.html";
   }
 };
 
@@ -947,12 +948,13 @@ topDealProductPage2 = (eachTopDeal) => {
         productSelectBrand: eachSponsoredProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachSponsoredProduct[eachTopDeal].productTotalItem,
+        productSelectOff: eachTopDealProduct[eachTopDeal].productOff,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
       localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     }
-    window.location.href = "topDealProductPage.html";
+    window.location.href = "productOnProductPage.html";
   }
 };
 
@@ -980,12 +982,13 @@ topDealProductPage3 = (eachTopDeal) => {
         productSelectBrand: eachRecommendedProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachRecommendedProduct[eachTopDeal].productTotalItem,
+        productSelectOff: eachTopDealProduct[eachTopDeal].productOff,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
       localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     }
-    window.location.href = "topDealProductPage.html";
+    window.location.href = "productOnProductPage.html";
   }
 };
 
@@ -1013,12 +1016,13 @@ topDealProductPage4 = (eachTopDeal) => {
         productSelectBrand: eachInspiredProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachInspiredProduct[eachTopDeal].productTotalItem,
+        productSelectOff: eachTopDealProduct[eachTopDeal].productOff,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
       localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     }
-    window.location.href = "topDealProductPage.html";
+    window.location.href = "productOnProductPage.html";
   }
 };
 
@@ -1046,16 +1050,17 @@ topDealProductPage5 = (eachTopDeal) => {
         productSelectBrand: eachBrowsingProduct[eachTopDeal].productBrand,
         productNumberOfItem: 0,
         productSelectTotalItem: eachBrowsingProduct[eachTopDeal].productTotalItem,
+        productSelectOff: eachTopDealProduct[eachTopDeal].productOff,
         myProductSelect: [],
       };
       allCustomer[currentCustomerIndex].myProductSelect.splice(0, 1, productSelect);
       localStorage.setItem("ourCustomerDetails", JSON.stringify(allCustomer));
     }
-    window.location.href = "topDealProductPage.html";
+    window.location.href = "productOnProductPage.html";
   }
 };
 
-hey = () => {
+displayProductPage = () => {
   myName.innerHTML = allCustomer[currentCustomerIndex].firstName;
   myNameLS.innerHTML = allCustomer[currentCustomerIndex].firstName;
   totalCartNo.innerHTML = allCustomer[currentCustomerIndex].totalCart;
@@ -1349,6 +1354,268 @@ hey = () => {
     </div>
    </div>
      `;
+
+     similarContainer.innerHTML = `
+     <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+   <div
+     onclick="topDealProductPage(${index})"
+     class="bg-white pt-2 pb-4 position-relative eachsimilar"
+     style="min-width: 19%; cursor: pointer;"
+   >
+     <div
+       class="text-white fw-bold d-flex position-absolute"
+       style="
+         width: 55px;
+         height: 35px;
+         border-top-right-radius: 40%;
+         border-bottom-right-radius: 40%;
+         background-color: #ff3b3b;
+         font-size: 10px;
+       "
+     >
+       <span class="my-auto mx-auto">${eachTopDealProduct[index].productSelectOff}% OFF</span>
+     </div>
+     <img
+       src="${eachTopDealProduct[index].productSelectImg}"
+       class="w-75 mx-auto d-flex"
+       alt=""
+     />
+     <h3 class="text-capitalize fs-6 px-3">${eachTopDealProduct[index].productSelectName}</h3>
+     <div class="mt-3 px-3 d-flex gap-1">
+       <div class="fw-bold fs-5"> ₦${eachTopDealProduct[index].productSelectNewPrice.toLocaleString()}</div>
+       <div
+         class="text-secondary text-decoration-line-through my-auto"
+         style="font-size: 14px"
+       >
+       ₦${eachTopDealProduct[index].productSelectOldPrice.toLocaleString()}
+       </div>
+     </div>
+     <div class="px-3" style="font-size: 12px; color: #33b27b">
+     You save ₦${eachTopDealProduct[index].productSelectSavePrice.toLocaleString()}
+     </div>
+   </div>   
+     `
 
     productPageSoldBy.innerHTML = `
      <div class="d-flex gap-3 mt-4 txt4"
