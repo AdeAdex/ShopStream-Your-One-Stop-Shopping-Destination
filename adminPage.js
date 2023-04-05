@@ -226,6 +226,7 @@ check = () => {
                 <option value="Furniture and Decor">Furniture and Decor</option>
                 <option value="Phones and Tablets">Phones and Tablets</option>
                 <option value="Stationery">Stationery</option>
+                <option value="Power, Automobile & Industrial">Power, Automobile & Industrial</option>
                 <option value="Household items">Household Items</option>
                 <option value="Hand & Power Tools">Hand & Power Tools</option>
                 <option value="Pharmaceuticals">Pharmaceuticals</option>
@@ -251,6 +252,7 @@ check = () => {
               <option value="Tablets Accessories">Tablets Accessories</option>
               <option value="Television">Television</option>
               <option value="Cameras">Cameras</option>
+              <option value="Generator & Power Solutions">Generator & Power Solutions</option>
               <option value="Games and Consoles">Games and Consoles</option>
               <option value="Home Theatres and Audio System">Home Theatres and Audio System</option>
               <option value="DVD Players and Recorders">DVD Players and Recorders</option>
