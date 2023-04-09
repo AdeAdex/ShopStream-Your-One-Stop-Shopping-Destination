@@ -1,16 +1,3 @@
-// window.onscroll = function() {myFunction()};
-// let sticky = nav.offsetTop;
-
-// function myFunction() {
-//         if (window.pageYOffset >= sticky) {
-//           navbar.classList.add("sticky")
-//         } else {
-//           navbar.classList.remove("sticky");
-//         }
-//       }
-
-// let topbutton = document.querySelector("#topBtn");
-// let sidenav = document.querySelector(".quick-menu");
 
 function navDropdown(parameters) {
   dropIcon.classList.toggle("fa-times");
