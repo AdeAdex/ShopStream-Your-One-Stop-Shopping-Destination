@@ -282,16 +282,10 @@ displayProducts = () => {
   // })
   allProducts = JSON.parse(localStorage.getItem("companyProduct"));
   if ((!localStorage.companyProduct) || (!localStorage.hello)) {
-    // const mySwal = Swal.mixin({
-    //   customClass: {
-    //     title: 'welcome-txt',
-    //   },
-    // })
     Swal.fire({
         customClass: {
           container: 'sweet-alert-container',
           popup: 'popup-container',
-          // title: 'welcome-txt',
         },
         icon: "warning",
         html: '<div class="welcome-txt-container"><h1 class="welcome-txt">You are welcome to Adex</h1></div>' +
@@ -304,7 +298,6 @@ displayProducts = () => {
         // imageWidth: 300,
         // imageHeight: 200,
         // imageAlt: 'Welcome gif',
-        // text: `Please note that this site is currently running without any database connected to it, and while am still working on that, you are required to act as this website administrator by trying to add at least a product to this site for smooth functionality. Thanks`,
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = 'adminPage.html'
