@@ -460,7 +460,7 @@ addProduct = () => {
     Swal.fire({
       icon: 'success',
       title: 'Product added successfully',
-      text: 'Do you want to add another produc?',
+      text: 'Do you want to add another product?',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: 'Yes',
