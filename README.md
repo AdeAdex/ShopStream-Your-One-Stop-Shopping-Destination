@@ -1,5 +1,7 @@
-# E-Commerce Web Application - Your One-Stop Shopping Destination
+# ShopStream - Your One-Stop Shopping Destination
 This e-Commerce project is a feature-rich web application developed to provide you with a seamless and secure online shopping experience. It employs local storage for efficient data management and is hosted on a live server. Your privacy and data security are of utmost importance to us; any information you provide during account creation, sign-in, or payment processing will remain confidential and accessible only through your registered email address when making payments through various payment gateways.
+
+Note: This e-commerce website project, ShopStream, was developed with inspiration drawn from Konga.com. While working on this project, I extensively studied Konga.com as a reference for majority of the design, layout, and functionality.
 
 Notable Features:
 
